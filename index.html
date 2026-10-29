@@ -21,7 +21,6 @@
             <button class="flex-1 md:w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors">
               📈 Analisi Tecnica (RSI)
             </button>
-            <!-- Spazio riservato per future sezioni dinamiche (es. eToro) -->
           </div>
         </div>
       </div>
@@ -34,15 +33,30 @@
 
   <!-- Contenuto principale -->
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
-    <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+    <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
         <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Indicatori</h2>
         <p class="text-slate-400 text-xs md:text-sm mt-1">Monitoraggio in tempo reale dei prezzi di mercato e degli oscillatori RSI.</p>
       </div>
-      <div id="last-update-mobile" class="md:hidden text-xs text-slate-500">
-        Aggiornamento in corso...
+
+      <!-- Barra di ordinamento filtri -->
+      <div class="flex items-center gap-2 bg-slate-800 border border-slate-700 p-2 rounded-lg text-xs">
+        <span class="text-slate-400 font-medium px-1">Ordina per:</span>
+        <select id="sort-select" onchange="sortData()" class="bg-slate-700 text-slate-200 border border-slate-600 rounded px-2 py-1 focus:outline-none focus:border-emerald-500">
+          <option value="default">Predefinito</option>
+          <option value="name_asc">Nome (A-Z)</option>
+          <option value="price_desc">Prezzo (Alto ➔ Basso)</option>
+          <option value="price_asc">Prezzo (Basso ➔ Alto)</option>
+          <option value="rsi_1h">RSI 1h (Crescente)</option>
+          <option value="rsi_1d">RSI 1d (Crescente)</option>
+          <option value="rsi_1w">RSI 1w (Crescente)</option>
+        </select>
       </div>
     </header>
+
+    <div id="last-update-mobile" class="md:hidden text-xs text-slate-500 mb-4">
+      Aggiornamento in corso...
+    </div>
 
     <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
       <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
@@ -64,6 +78,8 @@
   </main>
 
   <script>
+    let globalData = null;
+
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
       const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
@@ -74,31 +90,58 @@
       return `<div class="inline-block px-2 py-1 rounded border text-[11px] ${colorClass}">${signal.rsi} (${signal.status.split(' ')[0]})</div>`;
     }
 
+    function sortData() {
+      if (!globalData || !globalData.items) return;
+      const sortBy = document.getElementById('sort-select').value;
+      
+      let items = [...globalData.items];
+
+      if (sortBy === 'name_asc') {
+        items.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortBy === 'price_desc') {
+        items.sort((a, b) => b.current_price - a.current_price);
+      } else if (sortBy === 'price_asc') {
+        items.sort((a, b) => a.current_price - b.current_price);
+      } else if (sortBy === 'rsi_1h') {
+        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1h'] ? a.rsi_signals['1h'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1h'] ? b.rsi_signals['1h'].rsi : 50)));
+      } else if (sortBy === 'rsi_1d') {
+        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1d'] ? a.rsi_signals['1d'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1d'] ? b.rsi_signals['1d'].rsi : 50)));
+      } else if (sortBy === 'rsi_1w') {
+        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1wk'] ? a.rsi_signals['1wk'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1wk'] ? b.rsi_signals['1wk'].rsi : 50)));
+      }
+
+      renderTable(items);
+    }
+
+    function renderTable(items) {
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '';
+
+      items.forEach(item => {
+        const rsi = item.rsi_signals || {};
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
+            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
+            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
+          </tr>
+        `;
+      });
+    }
+
     async function loadData() {
       try {
         const res = await fetch('./data/history.json?t=' + new Date().getTime());
-        const globalData = await res.json();
+        globalData = await res.json();
         
         const updateText = `Aggiornato: ${new Date(globalData.last_updated).toLocaleString('it-IT')}`;
         document.getElementById('last-update').innerText = updateText;
         document.getElementById('last-update-mobile').innerText = updateText;
 
-        const tbody = document.getElementById('table-body');
-        tbody.innerHTML = '';
-
-        globalData.items.forEach(item => {
-          const rsi = item.rsi_signals || {};
-          tbody.innerHTML += `
-            <tr class="hover:bg-slate-750 transition-colors">
-              <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
-              <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
-              <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency}</td>
-              <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
-              <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
-              <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
-            </tr>
-          `;
-        });
+        sortData(); // Mostra i dati iniziali applicando l'ordinamento corrente
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
