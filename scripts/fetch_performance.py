@@ -53,7 +53,6 @@ def scan_market():
     with open("data/watchlist.json", "r") as f:
         watchlist = json.load(f)
 
-    # Carica lo storico precedente per mantenere il portafoglio ipotetico attivo
     old_data = {}
     if os.path.exists("data/history.json"):
         try:
@@ -64,8 +63,6 @@ def scan_market():
 
     old_items = {item["ticker"]: item for item in old_data.get("items", [])}
     paper_portfolio = old_data.get("paper_portfolio", [])
-    
-    # Mappa delle posizioni ipotetiche già aperte per ticker
     active_paper_trades = {trade["ticker"]: trade for trade in paper_portfolio}
 
     results = []
@@ -113,13 +110,10 @@ def scan_market():
                     status = get_rsi_status(rsi_val)
                     rsi_signals[tf_key] = {"rsi": rsi_val, "status": status}
 
-                    # Controlla se entra in ipervenduto (su qualsiasi timeframe: 1h, 1d o 1w)
                     if "Ipervenduto" in status:
                         is_oversold = True
 
-            # Gestione del portafoglio ipotetico (100$ di acquisto automatico all'ipervenduto)
             if is_oversold and ticker_symbol not in active_paper_trades:
-                # Apre una nuova posizione teorica da 100$
                 invested_usd = 100.0
                 shares = round(invested_usd / current_price, 4)
                 buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
@@ -144,7 +138,6 @@ def scan_market():
                     f"Prezzo di ingresso: {current_price} {currency} (RSI in ipervenduto)"
                 )
             elif ticker_symbol in active_paper_trades:
-                # Aggiorna il valore corrente della posizione esistente
                 trade = active_paper_trades[ticker_symbol]
                 current_value = round(trade["shares"] * current_price, 2)
                 pnl_usd = round(current_value - trade["invested"], 2)
