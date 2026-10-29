@@ -3,27 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investment Tracker & Paper Portfolio</title>
+  <title>Investment Tracker & Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col md:flex-row">
 
-  <!-- Sidebar di controllo -->
+  <!-- Sidebar Navigazione Sezioni -->
   <aside class="w-full md:w-64 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 p-6 flex flex-col justify-between shrink-0">
     <div>
       <h1 class="text-xl font-bold text-emerald-400 mb-1">Investment Tracker</h1>
-      <p class="text-slate-400 text-xs mb-6">Scanner tecnico & Simulatore.</p>
+      <p class="text-slate-400 text-xs mb-6">Pannello di controllo e analytics.</p>
       
-      <div class="space-y-4">
-        <div>
-          <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni</label>
-          <div class="flex flex-row md:flex-col gap-2">
-            <button class="flex-1 md:w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors">
-              📈 Scanner & Portafoglio
-            </button>
-          </div>
-        </div>
-      </div>
+      <nav class="space-y-2">
+        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni Dashboard</label>
+        
+        <button onclick="switchTab('scanner')" id="tab-btn-scanner" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-emerald-600 text-white shadow-lg">
+          📊 Scanner Mercato
+        </button>
+
+        <button onclick="switchTab('unique')" id="tab-btn-unique" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
+          💼 Acquisti Singoli (100$)
+        </button>
+
+        <button onclick="switchTab('dca')" id="tab-btn-dca" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
+          🔄 Piano Accumulo (DCA)
+        </button>
+
+        <button onclick="switchTab('calendar')" id="tab-btn-calendar" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
+          📅 Utili & Dividendi
+        </button>
+      </nav>
     </div>
 
     <div id="last-update" class="hidden md:block text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
@@ -31,58 +40,58 @@
     </div>
   </aside>
 
-  <!-- Contenuto principale -->
+  <!-- Area Contenuto Principale -->
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
-    <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div>
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Simulazione Ipervenduto</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni della tabella per ordinare i dati.</p>
-      </div>
-    </header>
-
     <div id="last-update-mobile" class="md:hidden text-xs text-slate-500 mb-4">
       Aggiornamento in corso...
     </div>
 
-    <!-- Tabella Principale -->
-    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-8">
-      <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-        <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-          <tr>
-            <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-            <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
-            <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-            <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
-            <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
-            <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
-            <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
-            <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
-          </tr>
-        </thead>
-        <tbody id="table-body" class="divide-y divide-slate-700">
-          <!-- Dinamico -->
-        </tbody>
-      </table>
-    </div>
+    <!-- SEZIONE 1: SCANNER MERCATO -->
+    <section id="sec-scanner" class="tab-content">
+      <header class="mb-6">
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni della tabella per ordinare i titoli.</p>
+      </header>
 
-    <!-- Sezione Portafoglio Unico -->
-    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6 mb-8">
-      <div class="mb-4">
-        <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Unico (100$ a Ingresso Unico)</h3>
-        <p class="text-slate-400 text-xs mt-1">Acquisto teorico effettuato una sola volta al primo segnale di ipervenduto.</p>
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
+            <tr>
+              <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
+              <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
+              <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
+              <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
+              <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
+              <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-700">
+            <!-- Dinamico -->
+          </tbody>
+        </table>
       </div>
+    </section>
 
-      <div class="overflow-x-auto">
+    <!-- SEZIONE 2: PORTAFOGLIO UNICO -->
+    <section id="sec-unique" class="tab-content hidden">
+      <header class="mb-6">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto.</p>
+      </header>
+
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
           <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
             <tr>
-              <th class="p-3">Asset</th>
-              <th class="p-3">Data Ingresso</th>
-              <th class="p-3">Prezzo Acquisto</th>
-              <th class="p-3">Valore Attuale</th>
-              <th class="p-3 text-right">Utile Netto ($)</th>
-              <th class="p-3 text-right">P&L (%)</th>
-              <th class="p-3 text-center">Azione</th>
+              <th class="p-3 md:p-4">Asset</th>
+              <th class="p-3 md:p-4">Data Ingresso</th>
+              <th class="p-3 md:p-4">Prezzo Acquisto</th>
+              <th class="p-3 md:p-4">Valore Attuale</th>
+              <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
+              <th class="p-3 md:p-4 text-right">P&L (%)</th>
+              <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
           </thead>
           <tbody id="portfolio-body" class="divide-y divide-slate-700">
@@ -92,24 +101,24 @@
       </div>
     </section>
 
-    <!-- Sezione Portafoglio DCA (Accumulo) -->
-    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6">
-      <div class="mb-4">
-        <h3 class="text-lg font-bold text-emerald-400">🔄 Portafoglio DCA (Accumulo Giornaliero a Ipervenduto)</h3>
-        <p class="text-slate-400 text-xs mt-1">Acquisti ripetuti da 100$ ogni volta che l'asset si trova in ipervenduto in giorni differenti.</p>
-      </div>
+    <!-- SEZIONE 3: PIANO ACCUMULO DCA -->
+    <section id="sec-dca" class="tab-content hidden">
+      <header class="mb-6">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto).</p>
+      </header>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
           <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
             <tr>
-              <th class="p-3">Asset</th>
-              <th class="p-3">Data Quota</th>
-              <th class="p-3">Prezzo Quota</th>
-              <th class="p-3">Valore Attuale</th>
-              <th class="p-3 text-right">Utile Netto ($)</th>
-              <th class="p-3 text-right">P&L (%)</th>
-              <th class="p-3 text-center">Azione</th>
+              <th class="p-3 md:p-4">Asset</th>
+              <th class="p-3 md:p-4">Data Quota</th>
+              <th class="p-3 md:p-4">Prezzo Quota</th>
+              <th class="p-3 md:p-4">Valore Attuale</th>
+              <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
+              <th class="p-3 md:p-4 text-right">P&L (%)</th>
+              <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
           </thead>
           <tbody id="dca-body" class="divide-y divide-slate-700">
@@ -118,14 +127,57 @@
         </table>
       </div>
     </section>
+
+    <!-- SEZIONE 4: UTILI E DIVIDENDI -->
+    <section id="sec-calendar" class="tab-content hidden">
+      <header class="mb-6">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100">📅 Calendario Rilascio Utili & Dividendi</h3>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Date previste per la pubblicazione delle trimestrali e dello stacco dividendi.</p>
+      </header>
+
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+            <tr>
+              <th class="p-3 md:p-4">Asset</th>
+              <th class="p-3 md:p-4">Categoria</th>
+              <th class="p-3 md:p-4 text-center">Prossimi Utili (Earnings)</th>
+              <th class="p-3 md:p-4 text-center">Stacco Dividendo (Ex-Div)</th>
+            </tr>
+          </thead>
+          <tbody id="calendar-body" class="divide-y divide-slate-700">
+            <!-- Dinamico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
   </main>
 
   <script>
     let globalData = null;
     let currentSort = { column: null, ascending: true };
-    // Salviamo un identificativo univoco (es. ticker + data d'acquisto) per permettere futuri reset se il segnale cambia
     let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
     let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+
+      const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
+      const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
+
+      ['scanner', 'unique', 'dca', 'calendar'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabId) {
+          btn.classList.add(...activeBtnClass);
+          btn.classList.remove(...inactiveBtnClass);
+        } else {
+          btn.classList.remove(...activeBtnClass);
+          btn.classList.add(...inactiveBtnClass);
+        }
+      });
+    }
 
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
@@ -240,13 +292,13 @@
 
           tbody.innerHTML += `
             <tr class="hover:bg-slate-750 transition-colors">
-              <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
-              <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
-              <td class="p-3">${trade.buy_price} USD</td>
-              <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
-              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
-              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
-              <td class="p-3 text-center">
+              <td class="p-3 md:p-4 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
+              <td class="p-3 md:p-4 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3 md:p-4">${trade.buy_price} USD</td>
+              <td class="p-3 md:p-4">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+              <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
+              <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
+              <td class="p-3 md:p-4 text-center">
                 <button onclick="removeTrade('${uniqueKey}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">✕</button>
               </td>
             </tr>
@@ -258,10 +310,7 @@
       const dcaTbody = document.getElementById('dca-body');
       dcaTbody.innerHTML = '';
 
-      const activeDca = (dcaPortfolio || []).filter(trade => {
-        const uniqueKey = trade.id; // L'ID del DCA include già data e ora precise
-        return !removedDcaTrades.includes(uniqueKey);
-      });
+      const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
 
       if (activeDca.length === 0) {
         dcaTbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva al momento.</td></tr>`;
@@ -274,19 +323,40 @@
 
           dcaTbody.innerHTML += `
             <tr class="hover:bg-slate-750 transition-colors">
-              <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
-              <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
-              <td class="p-3">${trade.buy_price} USD</td>
-              <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
-              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
-              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
-              <td class="p-3 text-center">
+              <td class="p-3 md:p-4 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
+              <td class="p-3 md:p-4 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3 md:p-4">${trade.buy_price} USD</td>
+              <td class="p-3 md:p-4">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+              <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
+              <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
+              <td class="p-3 md:p-4 text-center">
                 <button onclick="removeDcaTrade('${uniqueKey}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi quota">✕</button>
               </td>
             </tr>
           `;
         });
       }
+    }
+
+    function renderCalendar(calendar) {
+      const tbody = document.getElementById('calendar-body');
+      tbody.innerHTML = '';
+
+      if (!calendar || calendar.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-500">Nessun dato sul calendario disponibile.</td></tr>`;
+        return;
+      }
+
+      calendar.forEach(item => {
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
+            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
+            <td class="p-3 md:p-4 text-center font-mono text-emerald-400">${item.earnings_date}</td>
+            <td class="p-3 md:p-4 text-center font-mono text-amber-400">${item.ex_dividend_date}</td>
+          </tr>
+        `;
+      });
     }
 
     async function loadData() {
@@ -300,6 +370,7 @@
 
         renderTable(globalData.items);
         renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
+        renderCalendar(globalData.earnings_calendar);
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
@@ -308,4 +379,5 @@
     loadData();
   </script>
 </body>
-</html>
+                </html>
+                
