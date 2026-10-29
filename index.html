@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Tracker & RSI Analytics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+  <div class="max-w-7xl mx-auto">
+    <header class="mb-8 border-b border-slate-700 pb-4 flex justify-between items-end">
+      <div>
+        <h1 class="text-3xl font-bold text-emerald-400">Investment Tracker</h1>
+        <p class="text-slate-400 text-sm mt-1">Performance e indicatori RSI (1h, 1d, 1w) in tempo reale</p>
+      </div>
+      <div id="last-update" class="text-xs text-slate-500">
+        Caricamento dati...
+      </div>
+    </header>
+
+    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl">
+      <table class="w-full text-left text-sm border-collapse">
+        <thead class="bg-slate-700 text-slate-300 uppercase text-xs">
+          <tr>
+            <th class="p-4">Asset</th>
+            <th class="p-4">Categoria</th>
+            <th class="p-4">Entry</th>
+            <th class="p-4">Attuale</th>
+            <th class="p-4 text-right">ROI</th>
+            <th class="p-4 text-center">RSI 1h</th>
+            <th class="p-4 text-center">RSI 1d</th>
+            <th class="p-4 text-center">RSI 1w</th>
+          </tr>
+        </thead>
+        <tbody id="table-body" class="divide-y divide-slate-700">
+          <!-- Dinamico -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function renderRsiBadge(signal) {
+      if (!signal) return '<span class="text-slate-500">-</span>';
+      const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
+                         signal.rsi >= 70 ? 'bg-rose-900/50 text-rose-300 border-rose-700' :
+                         signal.rsi <= 25 ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
+                         signal.rsi <= 30 ? 'bg-emerald-900/50 text-emerald-300 border-emerald-700' : 
+                         'bg-slate-700 text-slate-300 border-slate-600';
+      return `<div class="inline-block px-2 py-1 rounded border text-xs ${colorClass}">${signal.rsi} (${signal.status.split(' ')[0]})</div>`;
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('./data/history.json?t=' + new Date().getTime());
+        const data = await res.json();
+        
+        document.getElementById('last-update').innerText = `Aggiornato: ${new Date(data.last_updated).toLocaleString('it-IT')}`;
+        
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = '';
+
+        data.items.forEach(item => {
+          const isPos = item.roi_pct >= 0;
+          const roiColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+          const rsi = item.rsi_signals || {};
+
+          const row = `
+            <tr class="hover:bg-slate-750 transition-colors">
+              <td class="p-4 font-medium">${item.name} <span class="text-xs text-slate-400">(${item.ticker})</span></td>
+              <td class="p-4"><span class="px-2 py-1 bg-slate-700 rounded text-xs">${item.category}</span></td>
+              <td class="p-4">${item.entry_price} ${item.currency}</td>
+              <td class="p-4">${item.current_price} ${item.currency}</td>
+              <td class="p-4 text-right ${roiColor}">${isPos ? '+' : ''}${item.roi_pct}%</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+      } catch (err) {
+        console.error("Errore caricamento:", err);
+      }
+    }
+    loadData();
+  </script>
+</body>
+</html>
