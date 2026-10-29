@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investment Tracker & RSI Analytics</title>
+  <title>Investment Tracker & Analisi Fondamentale</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col md:flex-row">
@@ -12,14 +12,14 @@
   <aside class="w-full md:w-64 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 p-6 flex flex-col justify-between shrink-0">
     <div>
       <h1 class="text-xl font-bold text-emerald-400 mb-1">Investment Tracker</h1>
-      <p class="text-slate-400 text-xs mb-6">Pannello di controllo e monitoraggio.</p>
+      <p class="text-slate-400 text-xs mb-6">Analisi tecnica e fondamentale.</p>
       
       <div class="space-y-4">
         <div>
           <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni</label>
           <div class="flex flex-row md:flex-col gap-2">
             <button class="flex-1 md:w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors">
-              📈 Analisi Tecnica (RSI)
+              📈 Scanner & Fondamentali
             </button>
           </div>
         </div>
@@ -35,8 +35,8 @@
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
     <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Indicatori</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Monitoraggio in tempo reale dei prezzi di mercato e degli oscillatori RSI.</p>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Fondamentale</h2>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Prezzi, valutazioni (P/E), distanza massimi e oscillatori RSI.</p>
       </div>
 
       <!-- Barra di ordinamento filtri -->
@@ -46,10 +46,9 @@
           <option value="default">Predefinito</option>
           <option value="name_asc">Nome (A-Z)</option>
           <option value="price_desc">Prezzo (Alto ➔ Basso)</option>
-          <option value="price_asc">Prezzo (Basso ➔ Alto)</option>
-          <option value="rsi_1h">RSI 1h (Crescente)</option>
+          <option value="pe_asc">P/E Ratio (Basso ➔ Alto)</option>
+          <option value="dist_asc">Dist. Massimi 52w (Più bassi / Scontati)</option>
           <option value="rsi_1d">RSI 1d (Crescente)</option>
-          <option value="rsi_1w">RSI 1w (Crescente)</option>
         </select>
       </div>
     </header>
@@ -63,8 +62,10 @@
         <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
           <tr>
             <th class="p-3 md:p-4">Asset</th>
-            <th class="p-3 md:p-4">Categoria</th>
-            <th class="p-3 md:p-4">Prezzo Corrente</th>
+            <th class="p-3 md:p-4">Cat.</th>
+            <th class="p-3 md:p-4">Prezzo</th>
+            <th class="p-3 md:p-4 text-center">P/E Ratio</th>
+            <th class="p-3 md:p-4 text-center">Dist. 52w</th>
             <th class="p-3 md:p-4 text-center">RSI 1h</th>
             <th class="p-3 md:p-4 text-center">RSI 1d</th>
             <th class="p-3 md:p-4 text-center">RSI 1w</th>
@@ -93,21 +94,18 @@
     function sortData() {
       if (!globalData || !globalData.items) return;
       const sortBy = document.getElementById('sort-select').value;
-      
       let items = [...globalData.items];
 
       if (sortBy === 'name_asc') {
         items.sort((a, b) => a.name.localeCompare(b.name));
       } else if (sortBy === 'price_desc') {
         items.sort((a, b) => b.current_price - a.current_price);
-      } else if (sortBy === 'price_asc') {
-        items.sort((a, b) => a.current_price - b.current_price);
-      } else if (sortBy === 'rsi_1h') {
-        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1h'] ? a.rsi_signals['1h'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1h'] ? b.rsi_signals['1h'].rsi : 50)));
+      } else if (sortBy === 'pe_asc') {
+        items.sort((a, b) => (a.pe_ratio || 9999) - (b.pe_ratio || 9999));
+      } else if (sortBy === 'dist_asc') {
+        items.sort((a, b) => (a.dist_52w_pct || 0) - (b.dist_52w_pct || 0));
       } else if (sortBy === 'rsi_1d') {
         items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1d'] ? a.rsi_signals['1d'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1d'] ? b.rsi_signals['1d'].rsi : 50)));
-      } else if (sortBy === 'rsi_1w') {
-        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1wk'] ? a.rsi_signals['1wk'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1wk'] ? b.rsi_signals['1wk'].rsi : 50)));
       }
 
       renderTable(items);
@@ -119,11 +117,21 @@
 
       items.forEach(item => {
         const rsi = item.rsi_signals || {};
+        const peDisplay = item.pe_ratio ? item.pe_ratio : '<span class="text-slate-500">N/D</span>';
+        
+        let distDisplay = '<span class="text-slate-500">N/D</span>';
+        if (item.dist_52w_pct !== null && item.dist_52w_pct !== undefined) {
+          const distColor = item.dist_52w_pct < 0 ? 'text-amber-400' : 'text-emerald-400';
+          distDisplay = `<span class="${distColor}">${item.dist_52w_pct > 0 ? '+' : ''}${item.dist_52w_pct}%</span>`;
+        }
+
         tbody.innerHTML += `
           <tr class="hover:bg-slate-750 transition-colors">
             <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
             <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
             <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency}</td>
+            <td class="p-3 md:p-4 text-center font-mono">${peDisplay}</td>
+            <td class="p-3 md:p-4 text-center font-mono">${distDisplay}</td>
             <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
             <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
             <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
@@ -141,7 +149,7 @@
         document.getElementById('last-update').innerText = updateText;
         document.getElementById('last-update-mobile').innerText = updateText;
 
-        sortData(); // Mostra i dati iniziali applicando l'ordinamento corrente
+        sortData();
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
