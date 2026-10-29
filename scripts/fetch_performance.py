@@ -46,7 +46,6 @@ def get_rsi_status(rsi):
     return "Neutro ⚪"
 
 def scan_market():
-    # Carica la watchlist dei candidati da scansionare
     if not os.path.exists("data/watchlist.json"):
         print("Watchlist non trovata.")
         return
@@ -54,7 +53,6 @@ def scan_market():
     with open("data/watchlist.json", "r") as f:
         watchlist = json.load(f)
 
-    # Carica lo storico precedente per mantenere i suggerimenti già attivi o tracciati
     old_items = {}
     if os.path.exists("data/history.json"):
         try:
@@ -75,13 +73,12 @@ def scan_market():
 
         try:
             ticker = yf.Ticker(ticker_symbol)
+            info = ticker.info
 
             # Filtro capitalizzazione (> 1B) per le azioni USA
             if category == "AZIONI":
-                info = ticker.info
                 market_cap = info.get("marketCap", 0)
                 if market_cap and market_cap < 1_000_000_000:
-                    print(f"Skipping {ticker_symbol}: Market Cap < 1B ({market_cap})")
                     continue
 
             hist_day = ticker.history(period="1d")
@@ -89,7 +86,16 @@ def scan_market():
                 continue
 
             current_price = round(float(hist_day["Close"].iloc[-1]), 2)
-            currency = "USD" # Default per US/Crypto
+            currency = "USD"
+
+            # Estrazione metriche fondamentali e di posizionamento
+            pe_ratio = info.get("trailingPE") or info.get("forwardPE")
+            pe_ratio = round(float(pe_ratio), 1) if pe_ratio else None
+
+            high_52w = info.get("fiftyTwoWeekHigh")
+            dist_52w_pct = None
+            if high_52w and high_52w > 0:
+                dist_52w_pct = round(((current_price - high_52w) / high_52w) * 100, 1)
 
             rsi_signals = {}
             intervals = {"1h": "60m", "1d": "1d", "1wk": "1wk"}
@@ -104,23 +110,20 @@ def scan_market():
                     status = get_rsi_status(rsi_val)
                     rsi_signals[tf_key] = {"rsi": rsi_val, "status": status}
 
-                    # Condizione di attivazione automatica del consiglio basata su RSI critico
                     if "Ipervenduto" in status or "Ipercomprato" in status:
                         is_interesting = True
 
-            # Se il titolo era già tracciato o rispetta i criteri RSI, lo inseriamo nei risultati attivi
             if ticker_symbol in old_items or is_interesting:
                 entry_price = old_items.get(ticker_symbol, {}).get("entry_price", current_price)
                 entry_date = old_items.get(ticker_symbol, {}).get("entry_date", datetime.utcnow().strftime("%Y-%m-%d"))
                 roi_pct = round(((current_price - entry_price) / entry_price) * 100, 2)
 
-                # Se è un nuovo inserimento per segnale RSI
                 if ticker_symbol not in old_items and is_interesting:
                     alert_msg = (
                         f"🎯 *Nuovo Segnale d'Acquisto Scovato!*\n"
                         f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
                         f"Prezzo Intercettato: {current_price} {currency}\n"
-                        f"RSI segnali attivi sul mercato."
+                        f"P/E: {pe_ratio} | Dist. Massimi: {dist_52w_pct}%"
                     )
                     alerts_to_send.append(alert_msg)
 
@@ -134,6 +137,8 @@ def scan_market():
                     "current_price": current_price,
                     "currency": currency,
                     "roi_pct": roi_pct,
+                    "pe_ratio": pe_ratio,
+                    "dist_52w_pct": dist_52w_pct,
                     "rsi_signals": rsi_signals
                 })
 
@@ -149,3 +154,4 @@ def scan_market():
 
 if __name__ == "__main__":
     scan_market()
+    
