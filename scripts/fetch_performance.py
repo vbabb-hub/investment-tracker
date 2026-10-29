@@ -61,7 +61,6 @@ def scan_market():
         except Exception:
             pass
 
-    old_items = {item["ticker"]: item for item in old_data.get("items", [])}
     paper_portfolio = old_data.get("paper_portfolio", [])
     active_paper_trades = {trade["ticker"]: trade for trade in paper_portfolio}
 
@@ -69,6 +68,7 @@ def scan_market():
     today_str = datetime.utcnow().strftime("%Y-%m-%d")
 
     results = []
+    earnings_calendar = []
     updated_at = datetime.utcnow().isoformat() + "Z"
     alerts_to_send = []
     current_prices = {}
@@ -91,7 +91,7 @@ def scan_market():
                 continue
 
             current_price = round(float(hist_day["Close"].iloc[-1]), 2)
-            currency = "USD"
+            currency = "USD" if "-USD" in ticker_symbol or "=F" in ticker_symbol else "EUR" if (".MI" in ticker_symbol or ".DE" in ticker_symbol) else "USD"
             current_prices[ticker_symbol] = current_price
 
             pe_ratio = info.get("trailingPE") or info.get("forwardPE")
@@ -102,6 +102,35 @@ def scan_market():
             if high_52w and high_52w > 0:
                 dist_52w_pct = round(((current_price - high_52w) / high_52w) * 100, 1)
 
+            # Estrazione date Utili / Dividendi per il calendario
+            earnings_date_raw = info.get("earningsTimestamp") or info.get("mostRecentQuarter")
+            earnings_date_str = "N/D"
+            if earnings_date_raw:
+                try:
+                    if isinstance(earnings_date_raw, int):
+                        earnings_date_str = datetime.utcfromtimestamp(earnings_date_raw).strftime("%Y-%m-%d")
+                    else:
+                        earnings_date_str = str(earnings_date_raw)[:10]
+                except Exception:
+                    pass
+
+            ex_div_raw = info.get("exDividendDate")
+            ex_div_str = "N/D"
+            if ex_div_raw and isinstance(ex_div_raw, int):
+                try:
+                    ex_div_str = datetime.utcfromtimestamp(ex_div_raw).strftime("%Y-%m-%d")
+                except Exception:
+                    pass
+
+            if category in ["AZIONI", "ETF"]:
+                earnings_calendar.append({
+                    "ticker": ticker_symbol,
+                    "name": item["name"],
+                    "category": category,
+                    "earnings_date": earnings_date_str,
+                    "ex_dividend_date": ex_div_str
+                })
+
             rsi_signals = {}
             intervals = {"1h": "60m", "1d": "1d", "1wk": "1wk"}
             periods = {"1h": "5d", "1d": "6mo", "1wk": "2y"}
@@ -109,23 +138,26 @@ def scan_market():
             is_oversold = False
 
             for tf_key, tf_val in intervals.items():
-                hist_tf = ticker.history(period=periods[tf_key], interval=tf_val)
-                if not hist_tf.empty and len(hist_tf) > 15:
-                    rsi_val = calculate_rsi(hist_tf["Close"])
-                    status = get_rsi_status(rsi_val)
-                    rsi_signals[tf_key] = {"rsi": rsi_val, "status": status}
+                try:
+                    hist_tf = ticker.history(period=periods[tf_key], interval=tf_val)
+                    if not hist_tf.empty and len(hist_tf) > 15:
+                        rsi_val = calculate_rsi(hist_tf["Close"])
+                        status = get_rsi_status(rsi_val)
+                        rsi_signals[tf_key] = {"rsi": rsi_val, "status": status}
 
-                    if "Ipervenduto" in status:
-                        is_oversold = True
+                        if "Ipervenduto" in status:
+                            is_oversold = True
+                except Exception:
+                    pass
 
-            # 1. Gestione Portafoglio Unico (Esistente)
+            # 1. Portafoglio Unico
             if is_oversold and ticker_symbol not in active_paper_trades:
                 invested_usd = 100.0
                 shares = round(invested_usd / current_price, 4)
                 buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
                 
                 new_trade = {
-                    "id": f"trade_{ticker_symbol.lower()}",
+                    "id": f"trade_{ticker_symbol.lower().replace('=','_').replace('.','_')}",
                     "ticker": ticker_symbol,
                     "name": item["name"],
                     "buy_date": buy_date,
@@ -141,10 +173,10 @@ def scan_market():
                 alerts_to_send.append(
                     f"🟢 *Simulazione Acquisto Unico (100$)*\n"
                     f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
-                    f"Prezzo: {current_price} {currency}"
+                    f"Prezzo: {current_price}"
                 )
 
-            # 2. Gestione Portafoglio DCA (Nuova Quota se non acquistato oggi)
+            # 2. Portafoglio DCA
             if is_oversold:
                 already_bought_today = any(
                     t["ticker"] == ticker_symbol and t["buy_date"].startswith(today_str) 
@@ -156,7 +188,7 @@ def scan_market():
                     buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
                     
                     new_dca_trade = {
-                        "id": f"dca_{ticker_symbol.lower()}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+                        "id": f"dca_{ticker_symbol.lower().replace('=','_').replace('.','_')}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
                         "ticker": ticker_symbol,
                         "name": item["name"],
                         "buy_date": buy_date,
@@ -172,11 +204,11 @@ def scan_market():
                     alerts_to_send.append(
                         f"🔄 *Simulazione DCA (Quota 100$)*\n"
                         f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
-                        f"Nuovo accumulo a: {current_price} {currency}"
+                        f"Nuovo accumulo a: {current_price}"
                     )
 
             results.append({
-                "id": f"sug_{ticker_symbol.lower().replace('-','_')}",
+                "id": f"sug_{ticker_symbol.lower().replace('=','_').replace('.','_')}",
                 "ticker": ticker_symbol,
                 "name": item["name"],
                 "category": category,
@@ -190,7 +222,7 @@ def scan_market():
         except Exception as e:
             print(f"Errore elaborazione {ticker_symbol}: {e}")
 
-    # Aggiornamento performance portafoglio unico
+    # Aggiornamento performance
     for ticker_symbol, trade in active_paper_trades.items():
         if ticker_symbol in current_prices:
             cp = current_prices[ticker_symbol]
@@ -202,7 +234,6 @@ def scan_market():
             trade["pnl_usd"] = pnl_usd
             trade["pnl_pct"] = pnl_pct
 
-    # Aggiornamento performance portafoglio DCA
     for trade in dca_portfolio:
         ts = trade["ticker"]
         if ts in current_prices:
@@ -224,7 +255,8 @@ def scan_market():
         "last_updated": updated_at,
         "items": results,
         "paper_portfolio": updated_portfolio,
-        "dca_portfolio": dca_portfolio
+        "dca_portfolio": dca_portfolio,
+        "earnings_calendar": earnings_calendar
     }
 
     with open("data/history.json", "w") as f:
@@ -232,4 +264,4 @@ def scan_market():
 
 if __name__ == "__main__":
     scan_market()
-    
+            
