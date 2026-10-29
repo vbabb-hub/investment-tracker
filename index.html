@@ -44,7 +44,7 @@
       Aggiornamento in corso...
     </div>
 
-    <!-- Tabella Principale con ordinamento da intestazione -->
+    <!-- Tabella Principale con ordinamento su tutte le colonne -->
     <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-8">
       <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
         <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
@@ -54,9 +54,9 @@
             <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
             <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
             <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
-            <th class="p-3 md:p-4 text-center">RSI 1h</th>
+            <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
             <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
-            <th class="p-3 md:p-4 text-center">RSI 1w</th>
+            <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
           </tr>
         </thead>
         <tbody id="table-body" class="divide-y divide-slate-700">
@@ -129,9 +129,15 @@
           valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999;
         } else if (column === 'dist_52w_pct') {
           valA = a.dist_52w_pct || 0; valB = b.dist_52w_pct || 0;
+        } else if (column === 'rsi_1h') {
+          valA = a.rsi_signals && a.rsi_signals['1h'] ? a.rsi_signals['1h'].rsi : 50;
+          valB = b.rsi_signals && b.rsi_signals['1h'] ? b.rsi_signals['1h'].rsi : 50;
         } else if (column === 'rsi_1d') {
           valA = a.rsi_signals && a.rsi_signals['1d'] ? a.rsi_signals['1d'].rsi : 50;
           valB = b.rsi_signals && b.rsi_signals['1d'] ? b.rsi_signals['1d'].rsi : 50;
+        } else if (column === 'rsi_1w') {
+          valA = a.rsi_signals && a.rsi_signals['1wk'] ? a.rsi_signals['1wk'].rsi : 50;
+          valB = b.rsi_signals && b.rsi_signals['1wk'] ? b.rsi_signals['1wk'].rsi : 50;
         }
 
         if (valA < valB) return currentSort.ascending ? -1 : 1;
