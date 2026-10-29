@@ -45,6 +45,36 @@ def get_rsi_status(rsi):
         return "Ipervenduto 🔵"
     return "Neutro ⚪"
 
+def calculate_score(rsi_signals, dist_52w, pe_ratio):
+    """ Calcola un punteggio da 0 a 100 basato su RSI, sconto dai massimi e P/E """
+    score = 50.0  # Base neutra
+
+    # 1. Valutazione RSI (fino a +30 punti se in forte ipervenduto)
+    rsi_1d = rsi_signals.get("1d", {}).get("rsi", 50)
+    if rsi_1d <= 20: score += 30
+    elif rsi_1d <= 25: score += 25
+    elif rsi_1d <= 30: score += 18
+    elif rsi_1d >= 75: score -= 20
+
+    rsi_1h = rsi_signals.get("1h", {}).get("rsi", 50)
+    if rsi_1h <= 25: score += 10
+    elif rsi_1h >= 75: score -= 10
+
+    # 2. Sconto dai massimi a 52 settimane (fino a +20 punti se molto scontato)
+    if dist_52w is not None:
+        if dist_52w <= -30: score += 20
+        elif dist_52w <= -15: score += 12
+        elif dist_52w <= -5: score += 5
+        elif dist_52w > 0: score -= 5
+
+    # 3. P/E Ratio (Premia valutazioni sane, penalizza P/E eccessivi o assenti se azioni)
+    if pe_ratio is not None:
+        if 0 < pe_ratio < 15: score += 15
+        elif 15 <= pe_ratio < 25: score += 10
+        elif pe_ratio > 40: score -= 10
+
+    return max(0, min(100, int(score)))
+
 def scan_market():
     if not os.path.exists("data/watchlist.json"):
         print("Watchlist non trovata.")
@@ -102,7 +132,7 @@ def scan_market():
             if high_52w and high_52w > 0:
                 dist_52w_pct = round(((current_price - high_52w) / high_52w) * 100, 1)
 
-            # Estrazione date Utili / Dividendi per il calendario
+            # Calendario Utili / Dividendi
             earnings_date_raw = info.get("earningsTimestamp") or info.get("mostRecentQuarter")
             earnings_date_str = "N/D"
             if earnings_date_raw:
@@ -136,6 +166,7 @@ def scan_market():
             periods = {"1h": "5d", "1d": "6mo", "1wk": "2y"}
 
             is_oversold = False
+            trigger_reason = "-"
 
             for tf_key, tf_val in intervals.items():
                 try:
@@ -147,8 +178,11 @@ def scan_market():
 
                         if "Ipervenduto" in status:
                             is_oversold = True
+                            trigger_reason = f"RSI {tf_key.upper()} ({rsi_val})"
                 except Exception:
                     pass
+
+            score = calculate_score(rsi_signals, dist_52w_pct, pe_ratio)
 
             # 1. Portafoglio Unico
             if is_oversold and ticker_symbol not in active_paper_trades:
@@ -167,12 +201,14 @@ def scan_market():
                     "current_price": current_price,
                     "current_value": invested_usd,
                     "pnl_pct": 0.0,
-                    "pnl_usd": 0.0
+                    "pnl_usd": 0.0,
+                    "trigger_reason": trigger_reason
                 }
                 active_paper_trades[ticker_symbol] = new_trade
                 alerts_to_send.append(
                     f"🟢 *Simulazione Acquisto Unico (100$)*\n"
                     f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
+                    f"Trigger: {trigger_reason}\n"
                     f"Prezzo: {current_price}"
                 )
 
@@ -198,12 +234,14 @@ def scan_market():
                         "current_price": current_price,
                         "current_value": invested_usd,
                         "pnl_pct": 0.0,
-                        "pnl_usd": 0.0
+                        "pnl_usd": 0.0,
+                        "trigger_reason": trigger_reason
                     }
                     dca_portfolio.append(new_dca_trade)
                     alerts_to_send.append(
                         f"🔄 *Simulazione DCA (Quota 100$)*\n"
                         f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
+                        f"Trigger: {trigger_reason}\n"
                         f"Nuovo accumulo a: {current_price}"
                     )
 
@@ -216,6 +254,7 @@ def scan_market():
                 "currency": currency,
                 "pe_ratio": pe_ratio,
                 "dist_52w_pct": dist_52w_pct,
+                "score": score,
                 "rsi_signals": rsi_signals
             })
 
@@ -264,4 +303,4 @@ def scan_market():
 
 if __name__ == "__main__":
     scan_market()
-            
+    
