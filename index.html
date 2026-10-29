@@ -67,9 +67,11 @@
 
     <!-- Sezione Portafoglio Ipotetico (100$ su Ipervenduto) -->
     <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6">
-      <div class="mb-4">
-        <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Ipotetico (100$ su Segnale Ipervenduto)</h3>
-        <p class="text-slate-400 text-xs mt-1">Acquisti teorici effettuati automaticamente quando un asset è entrato in ipervenduto (1h, 1d o 1w).</p>
+      <div class="mb-4 flex justify-between items-center">
+        <div>
+          <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Ipotetico (100$ su Segnale Ipervenduto)</h3>
+          <p class="text-slate-400 text-xs mt-1">Acquisti teorici effettuati automaticamente all'ipervenduto. Puoi rimuovere le righe con la X rossa.</p>
+        </div>
       </div>
 
       <div class="overflow-x-auto">
@@ -80,8 +82,9 @@
               <th class="p-3">Data Ingresso</th>
               <th class="p-3">Prezzo Acquisto</th>
               <th class="p-3">Valore Attuale</th>
+              <th class="p-3 text-right">Utile Netto ($)</th>
               <th class="p-3 text-right">P&L (%)</th>
-              <th class="p-3 text-right">P&L ($)</th>
+              <th class="p-3 text-center">Azione</th>
             </tr>
           </thead>
           <tbody id="portfolio-body" class="divide-y divide-slate-700">
@@ -95,6 +98,7 @@
   <script>
     let globalData = null;
     let currentSort = { column: null, ascending: true };
+    let removedTrades = JSON.parse(localStorage.getItem('removed_trades') || '[]');
 
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
@@ -177,16 +181,24 @@
       });
     }
 
+    function removeTrade(ticker) {
+      removedTrades.push(ticker);
+      localStorage.setItem('removed_trades', JSON.stringify(removedTrades));
+      renderPortfolio(globalData.paper_portfolio);
+    }
+
     function renderPortfolio(portfolio) {
       const tbody = document.getElementById('portfolio-body');
       tbody.innerHTML = '';
 
-      if (!portfolio || portfolio.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500">Nessuna posizione ipotetica aperta al momento (in attesa di segnali di ipervenduto).</td></tr>`;
+      const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(trade.ticker));
+
+      if (activePortfolio.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna posizione ipotetica aperta al momento (in attesa di segnali di ipervenduto).</td></tr>`;
         return;
       }
 
-      portfolio.forEach(trade => {
+      activePortfolio.forEach(trade => {
         const isPos = trade.pnl_pct >= 0;
         const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
         const sign = isPos ? '+' : '';
@@ -197,8 +209,13 @@
             <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
             <td class="p-3">${trade.buy_price} USD</td>
             <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
             <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
-            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} USD</td>
+            <td class="p-3 text-center">
+              <button onclick="removeTrade('${trade.ticker}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">
+                ✕
+              </button>
+            </td>
           </tr>
         `;
       });
