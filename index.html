@@ -6,40 +6,80 @@
   <title>Investment Tracker & RSI Analytics</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
-  <div class="max-w-7xl mx-auto">
-    <header class="mb-8 border-b border-slate-700 pb-4 flex justify-between items-end">
-      <div>
-        <h1 class="text-3xl font-bold text-emerald-400">Investment Tracker</h1>
-        <p class="text-slate-400 text-sm mt-1">Performance e indicatori RSI (1h, 1d, 1w) in tempo reale</p>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex">
+
+  <!-- Sidebar di controllo -->
+  <aside class="w-64 bg-slate-800 border-r border-slate-700 p-6 flex flex-col justify-between shrink-0">
+    <div>
+      <h1 class="text-xl font-bold text-emerald-400 mb-2">Investment Tracker</h1>
+      <p class="text-slate-400 text-xs mb-6">Pannello di controllo e switch viste di mercato.</p>
+      
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Modalità Vista</label>
+          <div class="flex flex-col gap-2">
+            <button onclick="switchView('backtest')" id="btn-backtest" class="w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors">
+              📊 Backtest Consigli (ROI)
+            </button>
+            <button onclick="switchView('technical')" id="btn-technical" class="w-full text-left px-3 py-2 rounded text-sm bg-slate-700 text-slate-300 hover:bg-slate-600 transition-colors">
+              📈 Analisi Tecnica (24h)
+            </button>
+          </div>
+        </div>
       </div>
-      <div id="last-update" class="text-xs text-slate-500">
-        Caricamento dati...
+    </div>
+
+    <div id="last-update" class="text-xs text-slate-500 border-t border-slate-700 pt-4">
+      Caricamento dati...
+    </div>
+  </aside>
+
+  <!-- Contenuto principale -->
+  <main class="flex-1 p-8 overflow-y-auto">
+    <header class="mb-6 flex justify-between items-center">
+      <div>
+        <h2 id="view-title" class="text-2xl font-bold text-slate-100">Backtest & Performance Consigli</h2>
+        <p id="view-desc" class="text-slate-400 text-sm mt-1">Monitoraggio del rendimento teorico basato sul prezzo d'ingresso del segnale.</p>
       </div>
     </header>
 
-    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl">
+    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
       <table class="w-full text-left text-sm border-collapse">
-        <thead class="bg-slate-700 text-slate-300 uppercase text-xs">
-          <tr>
-            <th class="p-4">Asset</th>
-            <th class="p-4">Categoria</th>
-            <th class="p-4">Entry</th>
-            <th class="p-4">Attuale</th>
-            <th class="p-4 text-right">ROI</th>
-            <th class="p-4 text-center">RSI 1h</th>
-            <th class="p-4 text-center">RSI 1d</th>
-            <th class="p-4 text-center">RSI 1w</th>
-          </tr>
+        <thead id="table-head" class="bg-slate-700/50 text-slate-300 uppercase text-xs border-b border-slate-700">
+          <!-- Generato via JS in base alla vista -->
         </thead>
         <tbody id="table-body" class="divide-y divide-slate-700">
           <!-- Dinamico -->
         </tbody>
       </table>
     </div>
-  </div>
+  </main>
 
   <script>
+    let currentView = 'backtest';
+    let globalData = null;
+
+    function switchView(view) {
+      currentView = view;
+      const btnB = document.getElementById('btn-backtest');
+      const btnT = document.getElementById('btn-technical');
+      const title = document.getElementById('view-title');
+      const desc = document.getElementById('view-desc');
+
+      if (view === 'backtest') {
+        btnB.className = "w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors";
+        btnT.className = "w-full text-left px-3 py-2 rounded text-sm bg-slate-700 text-slate-300 hover:bg-slate-600 transition-colors";
+        title.innerText = "Backtest & Performance Consigli";
+        desc.innerText = "Monitoraggio del rendimento teorico basato sul prezzo d'ingresso del segnale.";
+      } else {
+        btnT.className = "w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors";
+        btnB.className = "w-full text-left px-3 py-2 rounded text-sm bg-slate-700 text-slate-300 hover:bg-slate-600 transition-colors";
+        title.innerText = "Analisi Tecnica & Indicatori";
+        desc.innerText = "Panoramica incentrata sui prezzi di mercato correnti e sugli oscillatori RSI.";
+      }
+      renderTable();
+    }
+
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
       const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
@@ -50,25 +90,38 @@
       return `<div class="inline-block px-2 py-1 rounded border text-xs ${colorClass}">${signal.rsi} (${signal.status.split(' ')[0]})</div>`;
     }
 
-    async function loadData() {
-      try {
-        const res = await fetch('./data/history.json?t=' + new Date().getTime());
-        const data = await res.json();
-        
-        document.getElementById('last-update').innerText = `Aggiornato: ${new Date(data.last_updated).toLocaleString('it-IT')}`;
-        
-        const tbody = document.getElementById('table-body');
-        tbody.innerHTML = '';
+    function renderTable() {
+      if (!globalData) return;
 
-        data.items.forEach(item => {
+      const thead = document.getElementById('table-head');
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '';
+
+      if (currentView === 'backtest') {
+        thead.innerHTML = `
+          <tr>
+            <th class="p-4">Asset</th>
+            <th class="p-4">Categoria</th>
+            <th class="p-4">Data Segnale</th>
+            <th class="p-4">Prezzo Entry</th>
+            <th class="p-4">Prezzo Attuale</th>
+            <th class="p-4 text-right">ROI Teorico</th>
+            <th class="p-4 text-center">RSI 1h</th>
+            <th class="p-4 text-center">RSI 1d</th>
+            <th class="p-4 text-center">RSI 1w</th>
+          </tr>
+        `;
+
+        globalData.items.forEach(item => {
           const isPos = item.roi_pct >= 0;
           const roiColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
           const rsi = item.rsi_signals || {};
 
-          const row = `
+          tbody.innerHTML += `
             <tr class="hover:bg-slate-750 transition-colors">
               <td class="p-4 font-medium">${item.name} <span class="text-xs text-slate-400">(${item.ticker})</span></td>
               <td class="p-4"><span class="px-2 py-1 bg-slate-700 rounded text-xs">${item.category}</span></td>
+              <td class="p-4 text-slate-300">${item.entry_date}</td>
               <td class="p-4">${item.entry_price} ${item.currency}</td>
               <td class="p-4">${item.current_price} ${item.currency}</td>
               <td class="p-4 text-right ${roiColor}">${isPos ? '+' : ''}${item.roi_pct}%</td>
@@ -77,12 +130,46 @@
               <td class="p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
             </tr>
           `;
-          tbody.innerHTML += row;
         });
+      } else {
+        thead.innerHTML = `
+          <tr>
+            <th class="p-4">Asset</th>
+            <th class="p-4">Categoria</th>
+            <th class="p-4">Prezzo Corrente</th>
+            <th class="p-4 text-center">RSI 1h</th>
+            <th class="p-4 text-center">RSI 1d</th>
+            <th class="p-4 text-center">RSI 1w</th>
+          </tr>
+        `;
+
+        globalData.items.forEach(item => {
+          const rsi = item.rsi_signals || {};
+          tbody.innerHTML += `
+            <tr class="hover:bg-slate-750 transition-colors">
+              <td class="p-4 font-medium">${item.name} <span class="text-xs text-slate-400">(${item.ticker})</span></td>
+              <td class="p-4"><span class="px-2 py-1 bg-slate-700 rounded text-xs">${item.category}</span></td>
+              <td class="p-4 font-semibold text-slate-200">${item.current_price} ${item.currency}</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
+              <td class="p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
+            </tr>
+          `;
+        });
+      }
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('./data/history.json?t=' + new Date().getTime());
+        globalData = await res.json();
+        document.getElementById('last-update').innerText = `Aggiornato:\n${new Date(globalData.last_updated).toLocaleString('it-IT')}`;
+        renderTable();
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
     }
+
     loadData();
   </script>
 </body>
