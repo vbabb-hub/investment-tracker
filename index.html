@@ -44,7 +44,7 @@
       Aggiornamento in corso...
     </div>
 
-    <!-- Tabella Principale con ordinamento su tutte le colonne -->
+    <!-- Tabella Principale -->
     <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-8">
       <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
         <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
@@ -65,13 +65,11 @@
       </table>
     </div>
 
-    <!-- Sezione Portafoglio Ipotetico (100$ su Ipervenduto) -->
-    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6">
-      <div class="mb-4 flex justify-between items-center">
-        <div>
-          <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Ipotetico (100$ su Segnale Ipervenduto)</h3>
-          <p class="text-slate-400 text-xs mt-1">Acquisti teorici effettuati automaticamente all'ipervenduto. Puoi rimuovere le righe con la X rossa.</p>
-        </div>
+    <!-- Sezione Portafoglio Unico -->
+    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6 mb-8">
+      <div class="mb-4">
+        <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Unico (100$ a Ingresso Unico)</h3>
+        <p class="text-slate-400 text-xs mt-1">Acquisto teorico effettuato una sola volta al primo segnale di ipervenduto.</p>
       </div>
 
       <div class="overflow-x-auto">
@@ -93,12 +91,40 @@
         </table>
       </div>
     </section>
+
+    <!-- Sezione Portafoglio DCA (Accumulo) -->
+    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6">
+      <div class="mb-4">
+        <h3 class="text-lg font-bold text-emerald-400">🔄 Portafoglio DCA (Accumulo Giornaliero a Ipervenduto)</h3>
+        <p class="text-slate-400 text-xs mt-1">Acquisti ripetuti da 100$ ogni volta che l'asset si trova in ipervenduto in giorni differenti.</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+            <tr>
+              <th class="p-3">Asset</th>
+              <th class="p-3">Data Quota</th>
+              <th class="p-3">Prezzo Quota</th>
+              <th class="p-3">Valore Attuale</th>
+              <th class="p-3 text-right">Utile Netto ($)</th>
+              <th class="p-3 text-right">P&L (%)</th>
+              <th class="p-3 text-center">Azione</th>
+            </tr>
+          </thead>
+          <tbody id="dca-body" class="divide-y divide-slate-700">
+            <!-- Dinamico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script>
     let globalData = null;
     let currentSort = { column: null, ascending: true };
     let removedTrades = JSON.parse(localStorage.getItem('removed_trades') || '[]');
+    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades') || '[]');
 
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
@@ -184,41 +210,72 @@
     function removeTrade(ticker) {
       removedTrades.push(ticker);
       localStorage.setItem('removed_trades', JSON.stringify(removedTrades));
-      renderPortfolio(globalData.paper_portfolio);
+      renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
     }
 
-    function renderPortfolio(portfolio) {
+    function removeDcaTrade(tradeId) {
+      removedDcaTrades.push(tradeId);
+      localStorage.setItem('removed_dca_trades', JSON.stringify(removedDcaTrades));
+      renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
+    }
+
+    function renderPortfolio(portfolio, dcaPortfolio) {
       const tbody = document.getElementById('portfolio-body');
       tbody.innerHTML = '';
 
       const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(trade.ticker));
-
       if (activePortfolio.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna posizione ipotetica aperta al momento (in attesa di segnali di ipervenduto).</td></tr>`;
-        return;
+        tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna posizione unica aperta.</td></tr>`;
+      } else {
+        activePortfolio.forEach(trade => {
+          const isPos = trade.pnl_pct >= 0;
+          const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+          const sign = isPos ? '+' : '';
+
+          tbody.innerHTML += `
+            <tr class="hover:bg-slate-750 transition-colors">
+              <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
+              <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3">${trade.buy_price} USD</td>
+              <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
+              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
+              <td class="p-3 text-center">
+                <button onclick="removeTrade('${trade.ticker}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">✕</button>
+              </td>
+            </tr>
+          `;
+        });
       }
 
-      activePortfolio.forEach(trade => {
-        const isPos = trade.pnl_pct >= 0;
-        const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
-        const sign = isPos ? '+' : '';
+      // Render DCA
+      const dcaTbody = document.getElementById('dca-body');
+      dcaTbody.innerHTML = '';
 
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-750 transition-colors">
-            <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
-            <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
-            <td class="p-3">${trade.buy_price} USD</td>
-            <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
-            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
-            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
-            <td class="p-3 text-center">
-              <button onclick="removeTrade('${trade.ticker}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">
-                ✕
-              </button>
-            </td>
-          </tr>
-        `;
-      });
+      const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
+      if (activeDca.length === 0) {
+        dcaTbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva al momento.</td></tr>`;
+      } else {
+        activeDca.forEach(trade => {
+          const isPos = trade.pnl_pct >= 0;
+          const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+          const sign = isPos ? '+' : '';
+
+          dcaTbody.innerHTML += `
+            <tr class="hover:bg-slate-750 transition-colors">
+              <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
+              <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3">${trade.buy_price} USD</td>
+              <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
+              <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
+              <td class="p-3 text-center">
+                <button onclick="removeDcaTrade('${trade.id}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi quota">✕</button>
+              </td>
+            </tr>
+          `;
+        });
+      }
     }
 
     async function loadData() {
@@ -231,7 +288,7 @@
         document.getElementById('last-update-mobile').innerText = updateText;
 
         renderTable(globalData.items);
-        renderPortfolio(globalData.paper_portfolio);
+        renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
