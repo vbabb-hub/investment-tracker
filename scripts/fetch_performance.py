@@ -2,27 +2,6 @@ import os
 import json
 from datetime import datetime
 import yfinance as yf
-import urllib.request
-import urllib.parse
-
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-
-def send_telegram_alert(message):
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload = urllib.parse.urlencode({
-        "chat_id": TELEGRAM_CHAT_ID,
-        "text": message,
-        "parse_mode": "Markdown"
-    }).encode("utf-8")
-    try:
-        req = urllib.request.Request(url, data=payload, method="POST")
-        with urllib.request.urlopen(req) as response:
-            pass
-    except Exception as e:
-        print(f"Errore Telegram: {e}")
 
 def calculate_rsi(series, period=14):
     if len(series) < period + 1:
@@ -46,31 +25,22 @@ def get_rsi_status(rsi):
     return "Neutro ⚪"
 
 def calculate_score(rsi_signals, dist_52w, pe_ratio):
-    """ Calcola un punteggio da 0 a 100 basato su RSI, sconto dai massimi e P/E """
-    score = 50.0  # Base neutra
-
-    # 1. Valutazione RSI (fino a +30 punti se in forte ipervenduto)
+    score = 50.0
     rsi_1d = rsi_signals.get("1d", {}).get("rsi", 50)
     if rsi_1d <= 20: score += 30
     elif rsi_1d <= 25: score += 25
     elif rsi_1d <= 30: score += 18
     elif rsi_1d >= 75: score -= 20
 
-    rsi_1h = rsi_signals.get("1h", {}).get("rsi", 50)
-    if rsi_1h <= 25: score += 10
-    elif rsi_1h >= 75: score -= 10
-
-    # 2. Sconto dai massimi a 52 settimane (fino a +20 punti se molto scontato)
     if dist_52w is not None:
         if dist_52w <= -30: score += 20
         elif dist_52w <= -15: score += 12
         elif dist_52w <= -5: score += 5
         elif dist_52w > 0: score -= 5
 
-    # 3. P/E Ratio (Premia valutazioni sane, penalizza P/E eccessivi o assenti se azioni)
-    if pe_ratio is not None:
-        if 0 < pe_ratio < 15: score += 15
-        elif 15 <= pe_ratio < 25: score += 10
+    if pe_ratio is not None and pe_ratio > 0:
+        if pe_ratio < 15: score += 15
+        elif pe_ratio < 25: score += 10
         elif pe_ratio > 40: score -= 10
 
     return max(0, min(100, int(score)))
@@ -100,7 +70,6 @@ def scan_market():
     results = []
     earnings_calendar = []
     updated_at = datetime.utcnow().isoformat() + "Z"
-    alerts_to_send = []
     current_prices = {}
 
     for item in watchlist:
@@ -132,25 +101,22 @@ def scan_market():
             if high_52w and high_52w > 0:
                 dist_52w_pct = round(((current_price - high_52w) / high_52w) * 100, 1)
 
-            # Calendario Utili / Dividendi
-            earnings_date_raw = info.get("earningsTimestamp") or info.get("mostRecentQuarter")
+            # Calendario
             earnings_date_str = "N/D"
-            if earnings_date_raw:
-                try:
-                    if isinstance(earnings_date_raw, int):
-                        earnings_date_str = datetime.utcfromtimestamp(earnings_date_raw).strftime("%Y-%m-%d")
-                    else:
-                        earnings_date_str = str(earnings_date_raw)[:10]
-                except Exception:
-                    pass
-
-            ex_div_raw = info.get("exDividendDate")
             ex_div_str = "N/D"
-            if ex_div_raw and isinstance(ex_div_raw, int):
-                try:
-                    ex_div_str = datetime.utcfromtimestamp(ex_div_raw).strftime("%Y-%m-%d")
-                except Exception:
-                    pass
+            try:
+                ed_raw = info.get("earningsTimestamp")
+                if ed_raw:
+                    earnings_date_str = datetime.utcfromtimestamp(ed_raw).strftime("%Y-%m-%d")
+            except Exception:
+                pass
+
+            try:
+                ex_raw = info.get("exDividendDate")
+                if ex_raw:
+                    ex_div_str = datetime.utcfromtimestamp(ex_raw).strftime("%Y-%m-%d")
+            except Exception:
+                pass
 
             if category in ["AZIONI", "ETF"]:
                 earnings_calendar.append({
@@ -184,13 +150,13 @@ def scan_market():
 
             score = calculate_score(rsi_signals, dist_52w_pct, pe_ratio)
 
-            # 1. Portafoglio Unico
+            # Portafoglio Unico
             if is_oversold and ticker_symbol not in active_paper_trades:
                 invested_usd = 100.0
                 shares = round(invested_usd / current_price, 4)
                 buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
                 
-                new_trade = {
+                active_paper_trades[ticker_symbol] = {
                     "id": f"trade_{ticker_symbol.lower().replace('=','_').replace('.','_')}",
                     "ticker": ticker_symbol,
                     "name": item["name"],
@@ -204,15 +170,8 @@ def scan_market():
                     "pnl_usd": 0.0,
                     "trigger_reason": trigger_reason
                 }
-                active_paper_trades[ticker_symbol] = new_trade
-                alerts_to_send.append(
-                    f"🟢 *Simulazione Acquisto Unico (100$)*\n"
-                    f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
-                    f"Trigger: {trigger_reason}\n"
-                    f"Prezzo: {current_price}"
-                )
 
-            # 2. Portafoglio DCA
+            # Portafoglio DCA
             if is_oversold:
                 already_bought_today = any(
                     t["ticker"] == ticker_symbol and t["buy_date"].startswith(today_str) 
@@ -223,7 +182,7 @@ def scan_market():
                     shares = round(invested_usd / current_price, 4)
                     buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
                     
-                    new_dca_trade = {
+                    dca_portfolio.append({
                         "id": f"dca_{ticker_symbol.lower().replace('=','_').replace('.','_')}_{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
                         "ticker": ticker_symbol,
                         "name": item["name"],
@@ -236,14 +195,7 @@ def scan_market():
                         "pnl_pct": 0.0,
                         "pnl_usd": 0.0,
                         "trigger_reason": trigger_reason
-                    }
-                    dca_portfolio.append(new_dca_trade)
-                    alerts_to_send.append(
-                        f"🔄 *Simulazione DCA (Quota 100$)*\n"
-                        f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
-                        f"Trigger: {trigger_reason}\n"
-                        f"Nuovo accumulo a: {current_price}"
-                    )
+                    })
 
             results.append({
                 "id": f"sug_{ticker_symbol.lower().replace('=','_').replace('.','_')}",
@@ -259,7 +211,7 @@ def scan_market():
             })
 
         except Exception as e:
-            print(f"Errore elaborazione {ticker_symbol}: {e}")
+            print(f"Errore con {ticker_symbol}: {e}")
 
     # Aggiornamento performance
     for ticker_symbol, trade in active_paper_trades.items():
@@ -285,22 +237,18 @@ def scan_market():
             trade["pnl_usd"] = pnl_usd
             trade["pnl_pct"] = pnl_pct
 
-    for msg in alerts_to_send:
-        send_telegram_alert(msg)
-
-    updated_portfolio = list(active_paper_trades.values())
-
     output = {
         "last_updated": updated_at,
         "items": results,
-        "paper_portfolio": updated_portfolio,
+        "paper_portfolio": list(active_paper_trades.values()),
         "dca_portfolio": dca_portfolio,
         "earnings_calendar": earnings_calendar
     }
 
+    os.makedirs("data", exist_ok=True)
     with open("data/history.json", "w") as f:
         json.dump(output, f, indent=2)
 
 if __name__ == "__main__":
     scan_market()
-    
+              
