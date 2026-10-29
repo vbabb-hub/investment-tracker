@@ -179,4 +179,3 @@ def scan_market():
 
 if __name__ == "__main__":
     scan_market()
-    
