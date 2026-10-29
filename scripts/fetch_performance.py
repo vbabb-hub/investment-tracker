@@ -53,15 +53,20 @@ def scan_market():
     with open("data/watchlist.json", "r") as f:
         watchlist = json.load(f)
 
-    old_items = {}
+    # Carica lo storico precedente per mantenere il portafoglio ipotetico attivo
+    old_data = {}
     if os.path.exists("data/history.json"):
         try:
             with open("data/history.json", "r") as f:
                 old_data = json.load(f)
-                for item in old_data.get("items", []):
-                    old_items[item["ticker"]] = item
         except Exception:
             pass
+
+    old_items = {item["ticker"]: item for item in old_data.get("items", [])}
+    paper_portfolio = old_data.get("paper_portfolio", [])
+    
+    # Mappa delle posizioni ipotetiche già aperte per ticker
+    active_paper_trades = {trade["ticker"]: trade for trade in paper_portfolio}
 
     results = []
     updated_at = datetime.utcnow().isoformat() + "Z"
@@ -75,7 +80,6 @@ def scan_market():
             ticker = yf.Ticker(ticker_symbol)
             info = ticker.info
 
-            # Filtro capitalizzazione (> 1B) per le azioni USA
             if category == "AZIONI":
                 market_cap = info.get("marketCap", 0)
                 if market_cap and market_cap < 1_000_000_000:
@@ -88,7 +92,6 @@ def scan_market():
             current_price = round(float(hist_day["Close"].iloc[-1]), 2)
             currency = "USD"
 
-            # Estrazione metriche fondamentali e di posizionamento
             pe_ratio = info.get("trailingPE") or info.get("forwardPE")
             pe_ratio = round(float(pe_ratio), 1) if pe_ratio else None
 
@@ -101,7 +104,7 @@ def scan_market():
             intervals = {"1h": "60m", "1d": "1d", "1wk": "1wk"}
             periods = {"1h": "5d", "1d": "6mo", "1wk": "2y"}
 
-            is_interesting = False
+            is_oversold = False
 
             for tf_key, tf_val in intervals.items():
                 hist_tf = ticker.history(period=periods[tf_key], interval=tf_val)
@@ -110,37 +113,59 @@ def scan_market():
                     status = get_rsi_status(rsi_val)
                     rsi_signals[tf_key] = {"rsi": rsi_val, "status": status}
 
-                    if "Ipervenduto" in status or "Ipercomprato" in status:
-                        is_interesting = True
+                    # Controlla se entra in ipervenduto (su qualsiasi timeframe: 1h, 1d o 1w)
+                    if "Ipervenduto" in status:
+                        is_oversold = True
 
-            if ticker_symbol in old_items or is_interesting:
-                entry_price = old_items.get(ticker_symbol, {}).get("entry_price", current_price)
-                entry_date = old_items.get(ticker_symbol, {}).get("entry_date", datetime.utcnow().strftime("%Y-%m-%d"))
-                roi_pct = round(((current_price - entry_price) / entry_price) * 100, 2)
-
-                if ticker_symbol not in old_items and is_interesting:
-                    alert_msg = (
-                        f"🎯 *Nuovo Segnale d'Acquisto Scovato!*\n"
-                        f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
-                        f"Prezzo Intercettato: {current_price} {currency}\n"
-                        f"P/E: {pe_ratio} | Dist. Massimi: {dist_52w_pct}%"
-                    )
-                    alerts_to_send.append(alert_msg)
-
-                results.append({
-                    "id": f"sug_{ticker_symbol.lower().replace('-','_')}",
+            # Gestione del portafoglio ipotetico (100$ di acquisto automatico all'ipervenduto)
+            if is_oversold and ticker_symbol not in active_paper_trades:
+                # Apre una nuova posizione teorica da 100$
+                invested_usd = 100.0
+                shares = round(invested_usd / current_price, 4)
+                buy_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M")
+                
+                new_trade = {
+                    "id": f"trade_{ticker_symbol.lower()}",
                     "ticker": ticker_symbol,
                     "name": item["name"],
-                    "category": category,
-                    "entry_date": entry_date,
-                    "entry_price": entry_price,
+                    "buy_date": buy_date,
+                    "buy_price": current_price,
+                    "invested": invested_usd,
+                    "shares": shares,
                     "current_price": current_price,
-                    "currency": currency,
-                    "roi_pct": roi_pct,
-                    "pe_ratio": pe_ratio,
-                    "dist_52w_pct": dist_52w_pct,
-                    "rsi_signals": rsi_signals
-                })
+                    "current_value": invested_usd,
+                    "pnl_pct": 0.0,
+                    "pnl_usd": 0.0
+                }
+                active_paper_trades[ticker_symbol] = new_trade
+                alerts_to_send.append(
+                    f"🟢 *Simulazione Acquisto (100$)*\n"
+                    f"Asset: *{item['name']}* (`{ticker_symbol}`)\n"
+                    f"Prezzo di ingresso: {current_price} {currency} (RSI in ipervenduto)"
+                )
+            elif ticker_symbol in active_paper_trades:
+                # Aggiorna il valore corrente della posizione esistente
+                trade = active_paper_trades[ticker_symbol]
+                current_value = round(trade["shares"] * current_price, 2)
+                pnl_usd = round(current_value - trade["invested"], 2)
+                pnl_pct = round((pnl_usd / trade["invested"]) * 100, 2)
+                
+                trade["current_price"] = current_price
+                trade["current_value"] = current_value
+                trade["pnl_usd"] = pnl_usd
+                trade["pnl_pct"] = pnl_pct
+
+            results.append({
+                "id": f"sug_{ticker_symbol.lower().replace('-','_')}",
+                "ticker": ticker_symbol,
+                "name": item["name"],
+                "category": category,
+                "current_price": current_price,
+                "currency": currency,
+                "pe_ratio": pe_ratio,
+                "dist_52w_pct": dist_52w_pct,
+                "rsi_signals": rsi_signals
+            })
 
         except Exception as e:
             print(f"Errore elaborazione {ticker_symbol}: {e}")
@@ -148,7 +173,14 @@ def scan_market():
     for msg in alerts_to_send:
         send_telegram_alert(msg)
 
-    output = {"last_updated": updated_at, "items": results}
+    updated_portfolio = list(active_paper_trades.values())
+
+    output = {
+        "last_updated": updated_at,
+        "items": results,
+        "paper_portfolio": updated_portfolio
+    }
+
     with open("data/history.json", "w") as f:
         json.dump(output, f, indent=2)
 
