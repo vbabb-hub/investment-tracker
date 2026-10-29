@@ -49,7 +49,7 @@
     <!-- SEZIONE 1: SCANNER MERCATO -->
     <section id="sec-scanner" class="tab-content">
       <header class="mb-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato & Rating</h2>
         <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni della tabella per ordinare i titoli.</p>
       </header>
 
@@ -60,6 +60,7 @@
               <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
               <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
               <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortTable('score')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400 font-bold text-emerald-400">Score (0-100) ↕</th>
               <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
               <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
               <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
@@ -87,6 +88,7 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Data Ingresso</th>
+              <th class="p-3 md:p-4">Trigger Scattato</th>
               <th class="p-3 md:p-4">Prezzo Acquisto</th>
               <th class="p-3 md:p-4">Valore Attuale</th>
               <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
@@ -114,6 +116,7 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Data Quota</th>
+              <th class="p-3 md:p-4">Trigger Scattato</th>
               <th class="p-3 md:p-4">Prezzo Quota</th>
               <th class="p-3 md:p-4">Valore Attuale</th>
               <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
@@ -208,6 +211,8 @@
           valA = a.category; valB = b.category;
         } else if (column === 'current_price') {
           valA = a.current_price; valB = b.current_price;
+        } else if (column === 'score') {
+          valA = a.score || 0; valB = b.score || 0;
         } else if (column === 'pe_ratio') {
           valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999;
         } else if (column === 'dist_52w_pct') {
@@ -238,6 +243,11 @@
       items.forEach(item => {
         const rsi = item.rsi_signals || {};
         const peDisplay = item.pe_ratio ? item.pe_ratio : '<span class="text-slate-500">N/D</span>';
+        const score = item.score !== undefined ? item.score : 50;
+        
+        let scoreColor = 'text-slate-300 bg-slate-700';
+        if (score >= 70) scoreColor = 'text-emerald-300 bg-emerald-950 border border-emerald-800';
+        else if (score <= 40) scoreColor = 'text-rose-300 bg-rose-950 border border-rose-800';
         
         let distDisplay = '<span class="text-slate-500">N/D</span>';
         if (item.dist_52w_pct !== null && item.dist_52w_pct !== undefined) {
@@ -250,6 +260,7 @@
             <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
             <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
             <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency}</td>
+            <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-mono font-bold text-xs ${scoreColor}">${score} / 100</span></td>
             <td class="p-3 md:p-4 text-center font-mono">${peDisplay}</td>
             <td class="p-3 md:p-4 text-center font-mono">${distDisplay}</td>
             <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
@@ -282,18 +293,20 @@
       });
 
       if (activePortfolio.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna posizione unica aperta.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna posizione unica aperta.</td></tr>`;
       } else {
         activePortfolio.forEach(trade => {
           const uniqueKey = `${trade.ticker}_${trade.buy_date}`;
           const isPos = trade.pnl_pct >= 0;
           const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
           const sign = isPos ? '+' : '';
+          const trigger = trade.trigger_reason || 'RSI Ipervenduto';
 
           tbody.innerHTML += `
             <tr class="hover:bg-slate-750 transition-colors">
               <td class="p-3 md:p-4 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
               <td class="p-3 md:p-4 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px] font-mono">${trigger}</span></td>
               <td class="p-3 md:p-4">${trade.buy_price} USD</td>
               <td class="p-3 md:p-4">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
               <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
@@ -313,18 +326,20 @@
       const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
 
       if (activeDca.length === 0) {
-        dcaTbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva al momento.</td></tr>`;
+        dcaTbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva al momento.</td></tr>`;
       } else {
         activeDca.forEach(trade => {
           const uniqueKey = trade.id;
           const isPos = trade.pnl_pct >= 0;
           const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
           const sign = isPos ? '+' : '';
+          const trigger = trade.trigger_reason || 'RSI Ipervenduto';
 
           dcaTbody.innerHTML += `
             <tr class="hover:bg-slate-750 transition-colors">
               <td class="p-3 md:p-4 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
               <td class="p-3 md:p-4 text-slate-300 text-xs">${trade.buy_date}</td>
+              <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px] font-mono">${trigger}</span></td>
               <td class="p-3 md:p-4">${trade.buy_price} USD</td>
               <td class="p-3 md:p-4">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
               <td class="p-3 md:p-4 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
@@ -370,14 +385,4 @@
 
         renderTable(globalData.items);
         renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
-        renderCalendar(globalData.earnings_calendar);
-      } catch (err) {
-        console.error("Errore caricamento:", err);
-      }
-    }
-
-    loadData();
-  </script>
-</body>
-                </html>
-                
+        re
