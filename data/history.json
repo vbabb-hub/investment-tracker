@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29T20:38:26.764820Z",
+  "last_updated": "2026-10-29T20:59:24.484660Z",
   "items": [
     {
       "id": "sug_aapl",
@@ -482,25 +482,193 @@
       }
     },
     {
+      "id": "sug_swda.mi",
+      "ticker": "SWDA.MI",
+      "name": "iShares Core MSCI World ETF",
+      "category": "ETF",
+      "current_price": 131.48,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -0.7,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 46.8,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 48.6,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 65.7,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_sxr8.de",
+      "ticker": "SXR8.DE",
+      "name": "iShares Core S&P 500 ETF",
+      "category": "ETF",
+      "current_price": 746.06,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -1.2,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 34.8,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 44.5,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 65.8,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
       "id": "sug_btc_usd",
       "ticker": "BTC-USD",
       "name": "Bitcoin Spot",
       "category": "CRYPTO",
-      "current_price": 79787.73,
+      "current_price": 78793.17,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -28.5,
+      "dist_52w_pct": -29.4,
       "rsi_signals": {
         "1h": {
-          "rsi": 49.3,
+          "rsi": 40.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 38.8,
+          "rsi": 35.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 66.9,
+          "rsi": 65.4,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_eth_usd",
+      "ticker": "ETH-USD",
+      "name": "Ethereum Spot",
+      "category": "CRYPTO",
+      "current_price": 2258.22,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -42.8,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 36.6,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 27.6,
+          "status": "Ipervenduto \ud83d\udd35"
+        },
+        "1wk": {
+          "rsi": 59.4,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_sol_usd",
+      "ticker": "SOL-USD",
+      "name": "Solana Spot",
+      "category": "CRYPTO",
+      "current_price": 96.21,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -51.4,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 31.6,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 26.2,
+          "status": "Ipervenduto \ud83d\udd35"
+        },
+        "1wk": {
+          "rsi": 60.3,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_bnb_usd",
+      "ticker": "BNB-USD",
+      "name": "Binance Coin",
+      "category": "CRYPTO",
+      "current_price": 697.6,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -37.9,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 17.8,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1d": {
+          "rsi": 39.5,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 63.5,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_gc=f",
+      "ticker": "GC=F",
+      "name": "Oro (Gold Futures)",
+      "category": "COMMODITY",
+      "current_price": 4033.3,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -27.8,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 41.3,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 30.8,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 48.7,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_si=f",
+      "ticker": "SI=F",
+      "name": "Argento (Silver Futures)",
+      "category": "COMMODITY",
+      "current_price": 52.19,
+      "currency": "USD",
+      "pe_ratio": null,
+      "dist_52w_pct": -57.0,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 37.2,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 19.7,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1wk": {
+          "rsi": 40.9,
           "status": "Neutro \u26aa"
         }
       }
@@ -568,6 +736,177 @@
       "invested": 100.0,
       "shares": 1.6116,
       "current_price": 62.05,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    },
+    {
+      "id": "trade_eth-usd",
+      "ticker": "ETH-USD",
+      "name": "Ethereum Spot",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 2258.22,
+      "invested": 100.0,
+      "shares": 0.0443,
+      "current_price": 2258.22,
+      "current_value": 100.04,
+      "pnl_pct": 0.04,
+      "pnl_usd": 0.04
+    },
+    {
+      "id": "trade_sol-usd",
+      "ticker": "SOL-USD",
+      "name": "Solana Spot",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 96.21,
+      "invested": 100.0,
+      "shares": 1.0394,
+      "current_price": 96.21,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    },
+    {
+      "id": "trade_bnb-usd",
+      "ticker": "BNB-USD",
+      "name": "Binance Coin",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 697.6,
+      "invested": 100.0,
+      "shares": 0.1433,
+      "current_price": 697.6,
+      "current_value": 99.97,
+      "pnl_pct": -0.03,
+      "pnl_usd": -0.03
+    },
+    {
+      "id": "trade_si=f",
+      "ticker": "SI=F",
+      "name": "Argento (Silver Futures)",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 52.19,
+      "invested": 100.0,
+      "shares": 1.9161,
+      "current_price": 52.19,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    }
+  ],
+  "dca_portfolio": [
+    {
+      "id": "dca_nvda_20261029205927",
+      "ticker": "NVDA",
+      "name": "NVIDIA Corporation",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 213.66,
+      "invested": 100.0,
+      "shares": 0.468,
+      "current_price": 213.66,
+      "current_value": 99.99,
+      "pnl_pct": -0.01,
+      "pnl_usd": -0.01
+    },
+    {
+      "id": "dca_amzn_20261029205927",
+      "ticker": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 243.79,
+      "invested": 100.0,
+      "shares": 0.4102,
+      "current_price": 243.79,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    },
+    {
+      "id": "dca_googl_20261029205928",
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc. (Google)",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 283.82,
+      "invested": 100.0,
+      "shares": 0.3523,
+      "current_price": 283.82,
+      "current_value": 99.99,
+      "pnl_pct": -0.01,
+      "pnl_usd": -0.01
+    },
+    {
+      "id": "dca_meta_20261029205929",
+      "ticker": "META",
+      "name": "Meta Platforms, Inc.",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 624.52,
+      "invested": 100.0,
+      "shares": 0.1601,
+      "current_price": 624.52,
+      "current_value": 99.99,
+      "pnl_pct": -0.01,
+      "pnl_usd": -0.01
+    },
+    {
+      "id": "dca_nflx_20261029205933",
+      "ticker": "NFLX",
+      "name": "Netflix, Inc.",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 62.05,
+      "invested": 100.0,
+      "shares": 1.6116,
+      "current_price": 62.05,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    },
+    {
+      "id": "dca_eth-usd_20261029205943",
+      "ticker": "ETH-USD",
+      "name": "Ethereum Spot",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 2258.22,
+      "invested": 100.0,
+      "shares": 0.0443,
+      "current_price": 2258.22,
+      "current_value": 100.04,
+      "pnl_pct": 0.04,
+      "pnl_usd": 0.04
+    },
+    {
+      "id": "dca_sol-usd_20261029205944",
+      "ticker": "SOL-USD",
+      "name": "Solana Spot",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 96.21,
+      "invested": 100.0,
+      "shares": 1.0394,
+      "current_price": 96.21,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0
+    },
+    {
+      "id": "dca_bnb-usd_20261029205944",
+      "ticker": "BNB-USD",
+      "name": "Binance Coin",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 697.6,
+      "invested": 100.0,
+      "shares": 0.1433,
+      "current_price": 697.6,
+      "current_value": 99.97,
+      "pnl_pct": -0.03,
+      "pnl_usd": -0.03
+    },
+    {
+      "id": "dca_si=f_20261029205946",
+      "ticker": "SI=F",
+      "name": "Argento (Silver Futures)",
+      "buy_date": "2026-10-29 20:59",
+      "buy_price": 52.19,
+      "invested": 100.0,
+      "shares": 1.9161,
+      "current_price": 52.19,
       "current_value": 100.0,
       "pnl_pct": 0.0,
       "pnl_usd": 0.0
