@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investment Tracker & Analisi Fondamentale</title>
+  <title>Investment Tracker & Paper Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col md:flex-row">
@@ -12,14 +12,14 @@
   <aside class="w-full md:w-64 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 p-6 flex flex-col justify-between shrink-0">
     <div>
       <h1 class="text-xl font-bold text-emerald-400 mb-1">Investment Tracker</h1>
-      <p class="text-slate-400 text-xs mb-6">Analisi tecnica e fondamentale.</p>
+      <p class="text-slate-400 text-xs mb-6">Scanner tecnico & Simulatore.</p>
       
       <div class="space-y-4">
         <div>
           <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni</label>
           <div class="flex flex-row md:flex-col gap-2">
             <button class="flex-1 md:w-full text-left px-3 py-2 rounded text-sm bg-emerald-600 text-white font-medium transition-colors">
-              📈 Scanner & Fondamentali
+              📈 Scanner & Portafoglio
             </button>
           </div>
         </div>
@@ -35,21 +35,8 @@
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
     <header class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Fondamentale</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Prezzi, valutazioni (P/E), distanza massimi e oscillatori RSI.</p>
-      </div>
-
-      <!-- Barra di ordinamento filtri -->
-      <div class="flex items-center gap-2 bg-slate-800 border border-slate-700 p-2 rounded-lg text-xs">
-        <span class="text-slate-400 font-medium px-1">Ordina per:</span>
-        <select id="sort-select" onchange="sortData()" class="bg-slate-700 text-slate-200 border border-slate-600 rounded px-2 py-1 focus:outline-none focus:border-emerald-500">
-          <option value="default">Predefinito</option>
-          <option value="name_asc">Nome (A-Z)</option>
-          <option value="price_desc">Prezzo (Alto ➔ Basso)</option>
-          <option value="pe_asc">P/E Ratio (Basso ➔ Alto)</option>
-          <option value="dist_asc">Dist. Massimi 52w (Più bassi / Scontati)</option>
-          <option value="rsi_1d">RSI 1d (Crescente)</option>
-        </select>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">Analisi Tecnica & Simulazione Ipervenduto</h2>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni della tabella per ordinare i dati.</p>
       </div>
     </header>
 
@@ -57,17 +44,18 @@
       Aggiornamento in corso...
     </div>
 
-    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
+    <!-- Tabella Principale con ordinamento da intestazione -->
+    <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-8">
       <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-        <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+        <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
           <tr>
-            <th class="p-3 md:p-4">Asset</th>
-            <th class="p-3 md:p-4">Cat.</th>
-            <th class="p-3 md:p-4">Prezzo</th>
-            <th class="p-3 md:p-4 text-center">P/E Ratio</th>
-            <th class="p-3 md:p-4 text-center">Dist. 52w</th>
+            <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+            <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
+            <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+            <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
+            <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
             <th class="p-3 md:p-4 text-center">RSI 1h</th>
-            <th class="p-3 md:p-4 text-center">RSI 1d</th>
+            <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
             <th class="p-3 md:p-4 text-center">RSI 1w</th>
           </tr>
         </thead>
@@ -76,10 +64,37 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Sezione Portafoglio Ipotetico (100$ su Ipervenduto) -->
+    <section class="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6">
+      <div class="mb-4">
+        <h3 class="text-lg font-bold text-emerald-400">💼 Portafoglio Ipotetico (100$ su Segnale Ipervenduto)</h3>
+        <p class="text-slate-400 text-xs mt-1">Acquisti teorici effettuati automaticamente quando un asset è entrato in ipervenduto (1h, 1d o 1w).</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+            <tr>
+              <th class="p-3">Asset</th>
+              <th class="p-3">Data Ingresso</th>
+              <th class="p-3">Prezzo Acquisto</th>
+              <th class="p-3">Valore Attuale</th>
+              <th class="p-3 text-right">P&L (%)</th>
+              <th class="p-3 text-right">P&L ($)</th>
+            </tr>
+          </thead>
+          <tbody id="portfolio-body" class="divide-y divide-slate-700">
+            <!-- Dinamico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <script>
     let globalData = null;
+    let currentSort = { column: null, ascending: true };
 
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
@@ -91,22 +106,38 @@
       return `<div class="inline-block px-2 py-1 rounded border text-[11px] ${colorClass}">${signal.rsi} (${signal.status.split(' ')[0]})</div>`;
     }
 
-    function sortData() {
-      if (!globalData || !globalData.items) return;
-      const sortBy = document.getElementById('sort-select').value;
+    function sortTable(column) {
+      if (currentSort.column === column) {
+        currentSort.ascending = !currentSort.ascending;
+      } else {
+        currentSort.column = column;
+        currentSort.ascending = true;
+      }
+
       let items = [...globalData.items];
 
-      if (sortBy === 'name_asc') {
-        items.sort((a, b) => a.name.localeCompare(b.name));
-      } else if (sortBy === 'price_desc') {
-        items.sort((a, b) => b.current_price - a.current_price);
-      } else if (sortBy === 'pe_asc') {
-        items.sort((a, b) => (a.pe_ratio || 9999) - (b.pe_ratio || 9999));
-      } else if (sortBy === 'dist_asc') {
-        items.sort((a, b) => (a.dist_52w_pct || 0) - (b.dist_52w_pct || 0));
-      } else if (sortBy === 'rsi_1d') {
-        items.sort((a, b) => ((a.rsi_signals && a.rsi_signals['1d'] ? a.rsi_signals['1d'].rsi : 50) - (b.rsi_signals && b.rsi_signals['1d'] ? b.rsi_signals['1d'].rsi : 50)));
-      }
+      items.sort((a, b) => {
+        let valA, valB;
+
+        if (column === 'name') {
+          valA = a.name; valB = b.name;
+        } else if (column === 'category') {
+          valA = a.category; valB = b.category;
+        } else if (column === 'current_price') {
+          valA = a.current_price; valB = b.current_price;
+        } else if (column === 'pe_ratio') {
+          valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999;
+        } else if (column === 'dist_52w_pct') {
+          valA = a.dist_52w_pct || 0; valB = b.dist_52w_pct || 0;
+        } else if (column === 'rsi_1d') {
+          valA = a.rsi_signals && a.rsi_signals['1d'] ? a.rsi_signals['1d'].rsi : 50;
+          valB = b.rsi_signals && b.rsi_signals['1d'] ? b.rsi_signals['1d'].rsi : 50;
+        }
+
+        if (valA < valB) return currentSort.ascending ? -1 : 1;
+        if (valA > valB) return currentSort.ascending ? 1 : -1;
+        return 0;
+      });
 
       renderTable(items);
     }
@@ -140,6 +171,33 @@
       });
     }
 
+    function renderPortfolio(portfolio) {
+      const tbody = document.getElementById('portfolio-body');
+      tbody.innerHTML = '';
+
+      if (!portfolio || portfolio.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-500">Nessuna posizione ipotetica aperta al momento (in attesa di segnali di ipervenduto).</td></tr>`;
+        return;
+      }
+
+      portfolio.forEach(trade => {
+        const isPos = trade.pnl_pct >= 0;
+        const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+        const sign = isPos ? '+' : '';
+
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 font-medium">${trade.name} <span class="text-xs text-slate-400">(${trade.ticker})</span></td>
+            <td class="p-3 text-slate-300 text-xs">${trade.buy_date}</td>
+            <td class="p-3">${trade.buy_price} USD</td>
+            <td class="p-3">${trade.current_value} USD <span class="text-xs text-slate-400">(${trade.current_price} USD)</span></td>
+            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
+            <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} USD</td>
+          </tr>
+        `;
+      });
+    }
+
     async function loadData() {
       try {
         const res = await fetch('./data/history.json?t=' + new Date().getTime());
@@ -149,7 +207,8 @@
         document.getElementById('last-update').innerText = updateText;
         document.getElementById('last-update-mobile').innerText = updateText;
 
-        sortData();
+        renderTable(globalData.items);
+        renderPortfolio(globalData.paper_portfolio);
       } catch (err) {
         console.error("Errore caricamento:", err);
       }
