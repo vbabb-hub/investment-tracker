@@ -1,0 +1,79 @@
+{
+  "last_updated": "2026-10-29T16:44:40.390819Z",
+  "items": [
+    {
+      "id": "sug_01",
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "category": "AZIONI",
+      "entry_date": "2026-01-15",
+      "entry_price": 180.0,
+      "current_price": 349.84,
+      "currency": "USD",
+      "roi_pct": 94.36,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 64.7,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 67.3,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 59.1,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_02",
+      "ticker": "SWDA.MI",
+      "name": "iShares Core MSCI World ETF",
+      "category": "ETF",
+      "entry_date": "2026-01-15",
+      "entry_price": 95.5,
+      "current_price": 131.55,
+      "currency": "EUR",
+      "roi_pct": 37.75,
+      "rsi_signals": {}
+    },
+    {
+      "id": "sug_03",
+      "ticker": "BTC-USD",
+      "name": "Bitcoin Spot",
+      "category": "CRYPTO",
+      "entry_date": "2026-02-01",
+      "entry_price": 85000.0,
+      "current_price": 81333.87,
+      "currency": "USD",
+      "roi_pct": -4.31,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 70.2,
+          "status": "Ipercomprato \ud83d\udfe0"
+        },
+        "1d": {
+          "rsi": 45.5,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 68.2,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_04",
+      "ticker": "IT0005564178.MI",
+      "name": "BTP Valore Ottobre 2028",
+      "category": "BTP",
+      "entry_date": "2026-03-10",
+      "entry_price": 99.8,
+      "current_price": 99.8,
+      "currency": "EUR",
+      "roi_pct": 0.0,
+      "rsi_signals": {}
+    }
+  ]
+}
