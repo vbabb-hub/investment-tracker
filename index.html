@@ -123,8 +123,9 @@
   <script>
     let globalData = null;
     let currentSort = { column: null, ascending: true };
-    let removedTrades = JSON.parse(localStorage.getItem('removed_trades') || '[]');
-    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades') || '[]');
+    // Salviamo un identificativo univoco (es. ticker + data d'acquisto) per permettere futuri reset se il segnale cambia
+    let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
+    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
 
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
@@ -207,15 +208,15 @@
       });
     }
 
-    function removeTrade(ticker) {
-      removedTrades.push(ticker);
-      localStorage.setItem('removed_trades', JSON.stringify(removedTrades));
+    function removeTrade(uniqueKey) {
+      removedTrades.push(uniqueKey);
+      localStorage.setItem('removed_unique_trades_v2', JSON.stringify(removedTrades));
       renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
     }
 
-    function removeDcaTrade(tradeId) {
-      removedDcaTrades.push(tradeId);
-      localStorage.setItem('removed_dca_trades', JSON.stringify(removedDcaTrades));
+    function removeDcaTrade(uniqueKey) {
+      removedDcaTrades.push(uniqueKey);
+      localStorage.setItem('removed_dca_trades_v2', JSON.stringify(removedDcaTrades));
       renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
     }
 
@@ -223,11 +224,16 @@
       const tbody = document.getElementById('portfolio-body');
       tbody.innerHTML = '';
 
-      const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(trade.ticker));
+      const activePortfolio = (portfolio || []).filter(trade => {
+        const uniqueKey = `${trade.ticker}_${trade.buy_date}`;
+        return !removedTrades.includes(uniqueKey);
+      });
+
       if (activePortfolio.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna posizione unica aperta.</td></tr>`;
       } else {
         activePortfolio.forEach(trade => {
+          const uniqueKey = `${trade.ticker}_${trade.buy_date}`;
           const isPos = trade.pnl_pct >= 0;
           const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
           const sign = isPos ? '+' : '';
@@ -241,7 +247,7 @@
               <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
               <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
               <td class="p-3 text-center">
-                <button onclick="removeTrade('${trade.ticker}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">✕</button>
+                <button onclick="removeTrade('${uniqueKey}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi posizione">✕</button>
               </td>
             </tr>
           `;
@@ -252,11 +258,16 @@
       const dcaTbody = document.getElementById('dca-body');
       dcaTbody.innerHTML = '';
 
-      const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
+      const activeDca = (dcaPortfolio || []).filter(trade => {
+        const uniqueKey = trade.id; // L'ID del DCA include già data e ora precise
+        return !removedDcaTrades.includes(uniqueKey);
+      });
+
       if (activeDca.length === 0) {
         dcaTbody.innerHTML = `<tr><td colspan="7" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva al momento.</td></tr>`;
       } else {
         activeDca.forEach(trade => {
+          const uniqueKey = trade.id;
           const isPos = trade.pnl_pct >= 0;
           const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
           const sign = isPos ? '+' : '';
@@ -270,7 +281,7 @@
               <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_usd} $</td>
               <td class="p-3 text-right ${pnlColor}">${sign}${trade.pnl_pct}%</td>
               <td class="p-3 text-center">
-                <button onclick="removeDcaTrade('${trade.id}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi quota">✕</button>
+                <button onclick="removeDcaTrade('${uniqueKey}')" class="px-2 py-1 bg-rose-950 text-rose-300 hover:bg-rose-900 border border-rose-800 rounded text-xs transition-colors" title="Rimuovi quota">✕</button>
               </td>
             </tr>
           `;
