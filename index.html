@@ -104,20 +104,20 @@
     <section id="sec-unique" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto.</p>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto. Clicca sulle intestazioni per ordinare.</p>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
             <tr>
-              <th class="p-3 md:p-4">Asset</th>
-              <th class="p-3 md:p-4">Data Ingresso</th>
-              <th class="p-3 md:p-4">Trigger</th>
-              <th class="p-3 md:p-4">Prezzo</th>
-              <th class="p-3 md:p-4">Valore</th>
-              <th class="p-3 md:p-4 text-right">Utile ($)</th>
-              <th class="p-3 md:p-4 text-right">P&L (%)</th>
+              <th onclick="sortPortfolio('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortPortfolio('buy_date')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Data Ingresso ↕</th>
+              <th onclick="sortPortfolio('trigger_reason')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Trigger ↕</th>
+              <th onclick="sortPortfolio('buy_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortPortfolio('current_value')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Valore ↕</th>
+              <th onclick="sortPortfolio('pnl_usd')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">Utile ($) ↕</th>
+              <th onclick="sortPortfolio('pnl_pct')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">P&L (%) ↕</th>
               <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
           </thead>
@@ -132,20 +132,20 @@
     <section id="sec-dca" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto).</p>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto). Clicca sulle intestazioni per ordinare.</p>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
             <tr>
-              <th class="p-3 md:p-4">Asset</th>
-              <th class="p-3 md:p-4">Data Quota</th>
-              <th class="p-3 md:p-4">Trigger</th>
-              <th class="p-3 md:p-4">Prezzo</th>
-              <th class="p-3 md:p-4">Valore</th>
-              <th class="p-3 md:p-4 text-right">Utile ($)</th>
-              <th class="p-3 md:p-4 text-right">P&L (%)</th>
+              <th onclick="sortDca('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortDca('buy_date')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Data Quota ↕</th>
+              <th onclick="sortDca('trigger_reason')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Trigger ↕</th>
+              <th onclick="sortDca('buy_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortDca('current_value')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Valore ↕</th>
+              <th onclick="sortDca('pnl_usd')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">Utile ($) ↕</th>
+              <th onclick="sortDca('pnl_pct')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">P&L (%) ↕</th>
               <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
           </thead>
@@ -228,15 +228,15 @@
         { "id": "trade_gc_f", "ticker": "GC=F", "name": "Oro (Gold Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 4020.7, "invested": 100.0, "shares": 0.0249, "current_price": 4019.4, "current_value": 100.08, "pnl_pct": 0.08, "pnl_usd": 0.08, "trigger_reason": "RSI 1D (31.6)" }
       ],
       "dca_portfolio": [
-        { "id": "dca_nvda_20261029205927", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:59", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
-        { "id": "dca_amzn_20261029205927", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0 },
-        { "id": "dca_googl_20261029205928", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:59", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
-        { "id": "dca_meta_20261029205929", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
-        { "id": "dca_nflx_20261029205933", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0 },
-        { "id": "dca_eth-usd_20261029205943", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65 },
-        { "id": "dca_sol-usd_20261029205944", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84 },
-        { "id": "dca_bnb-usd_20261029205944", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75 },
-        { "id": "dca_si=f_20261029205946", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73 },
+        { "id": "dca_nvda_20261029205927", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:59", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
+        { "id": "dca_amzn_20261029205927", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI" },
+        { "id": "dca_googl_20261029205928", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:59", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
+        { "id": "dca_meta_20261029205929", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
+        { "id": "dca_nflx_20261029205933", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI" },
+        { "id": "dca_eth-usd_20261029205943", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65, "trigger_reason": "RSI" },
+        { "id": "dca_sol-usd_20261029205944", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84, "trigger_reason": "RSI" },
+        { "id": "dca_bnb-usd_20261029205944", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75, "trigger_reason": "RSI" },
+        { "id": "dca_si=f_20261029205946", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73, "trigger_reason": "RSI" },
         { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" },
         { "id": "dca_amzn_20261030004433", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1H (24.8)" },
         { "id": "dca_googl_20261030004434", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-30 00:44", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (26.7)" },
@@ -258,6 +258,9 @@
 
     let currentSort = { column: null, ascending: true };
     let currentSugSort = { column: null, ascending: true };
+    let currentPortSort = { column: null, ascending: true };
+    let currentDcaSort = { column: null, ascending: true };
+
     let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
     let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
 
@@ -335,6 +338,54 @@
       });
 
       renderSuggestions(items);
+    };
+
+    window.sortPortfolio = function(column) {
+      if (!globalData || !globalData.paper_portfolio) return;
+      if (currentPortSort.column === column) {
+        currentPortSort.ascending = !currentPortSort.ascending;
+      } else {
+        currentPortSort.column = column;
+        currentPortSort.ascending = true;
+      }
+
+      let portfolio = [...globalData.paper_portfolio];
+      portfolio.sort((a, b) => {
+        let valA = a[column];
+        let valB = b[column];
+        if (valA === undefined || valA === null) valA = '';
+        if (valB === undefined || valB === null) valB = '';
+
+        if (valA < valB) return currentPortSort.ascending ? -1 : 1;
+        if (valA > valB) return currentPortSort.ascending ? 1 : -1;
+        return 0;
+      });
+
+      renderPortfolio(portfolio, globalData.dca_portfolio);
+    };
+
+    window.sortDca = function(column) {
+      if (!globalData || !globalData.dca_portfolio) return;
+      if (currentDcaSort.column === column) {
+        currentDcaSort.ascending = !currentDcaSort.ascending;
+      } else {
+        currentDcaSort.column = column;
+        currentDcaSort.ascending = true;
+      }
+
+      let dcaPortfolio = [...globalData.dca_portfolio];
+      dcaPortfolio.sort((a, b) => {
+        let valA = a[column];
+        let valB = b[column];
+        if (valA === undefined || valA === null) valA = '';
+        if (valB === undefined || valB === null) valB = '';
+
+        if (valA < valB) return currentDcaSort.ascending ? -1 : 1;
+        if (valA > valB) return currentDcaSort.ascending ? 1 : -1;
+        return 0;
+      });
+
+      renderPortfolio(globalData.paper_portfolio, dcaPortfolio);
     };
 
     function renderRsiBadge(signal) {
