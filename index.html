@@ -102,9 +102,17 @@
 
     <!-- SEZIONE 3: PORTAFOGLIO UNICO -->
     <section id="sec-unique" class="tab-content hidden">
-      <header class="mb-6">
-        <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto. Clicca sulle intestazioni per ordinare.</p>
+      <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
+          <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto.</p>
+        </div>
+        <!-- Card Riepilogativa Totali -->
+        <div id="unique-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-6 shadow-md text-xs md:text-sm">
+          <div><span class="text-slate-400 block">Investito:</span> <span id="unique-tot-invested" class="font-bold text-slate-200">0 $</span></div>
+          <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="unique-tot-value" class="font-bold text-slate-200">0 $</span></div>
+          <div><span class="text-slate-400 block">P&L Overall:</span> <span id="unique-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+        </div>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
@@ -130,9 +138,17 @@
 
     <!-- SEZIONE 4: PIANO ACCUMULO DCA -->
     <section id="sec-dca" class="tab-content hidden">
-      <header class="mb-6">
-        <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto). Clicca sulle intestazioni per ordinare.</p>
+      <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
+          <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto).</p>
+        </div>
+        <!-- Card Riepilogativa Totali -->
+        <div id="dca-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-6 shadow-md text-xs md:text-sm">
+          <div><span class="text-slate-400 block">Investito:</span> <span id="dca-tot-invested" class="font-bold text-slate-200">0 $</span></div>
+          <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="dca-tot-value" class="font-bold text-slate-200">0 $</span></div>
+          <div><span class="text-slate-400 block">P&L Overall:</span> <span id="dca-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+        </div>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
@@ -160,17 +176,17 @@
     <section id="sec-calendar" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">📅 Calendario Rilascio Utili & Dividendi</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Date previste per la pubblicazione delle trimestrali e dello stacco dividendi.</p>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Date previste per la pubblicazione delle trimestrali e dello stacco dividendi. Clicca sulle intestazioni per ordinare.</p>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
             <tr>
-              <th class="p-3 md:p-4">Asset</th>
-              <th class="p-3 md:p-4">Categoria</th>
-              <th class="p-3 md:p-4 text-center">Prossimi Utili</th>
-              <th class="p-3 md:p-4 text-center">Stacco Dividendo</th>
+              <th onclick="sortCalendar('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortCalendar('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Categoria ↕</th>
+              <th onclick="sortCalendar('earnings_date')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Prossimi Utili ↕</th>
+              <th onclick="sortCalendar('ex_dividend_date')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Stacco Dividendo ↕</th>
             </tr>
           </thead>
           <tbody id="calendar-body" class="divide-y divide-slate-700">
@@ -260,6 +276,7 @@
     let currentSugSort = { column: null, ascending: true };
     let currentPortSort = { column: null, ascending: true };
     let currentDcaSort = { column: null, ascending: true };
+    let currentCalSort = { column: null, ascending: true };
 
     let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
     let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
@@ -388,6 +405,27 @@
       renderPortfolio(globalData.paper_portfolio, dcaPortfolio);
     };
 
+    window.sortCalendar = function(column) {
+      if (!globalData || !globalData.earnings_calendar) return;
+      if (currentCalSort.column === column) {
+        currentCalSort.ascending = !currentCalSort.ascending;
+      } else {
+        currentCalSort.column = column;
+        currentCalSort.ascending = true;
+      }
+
+      let calendar = [...globalData.earnings_calendar];
+      calendar.sort((a, b) => {
+        let valA = a[column] || '';
+        let valB = b[column] || '';
+        if (valA < valB) return currentCalSort.ascending ? -1 : 1;
+        if (valA > valB) return currentCalSort.ascending ? 1 : -1;
+        return 0;
+      });
+
+      renderCalendar(calendar);
+    };
+
     function renderRsiBadge(signal) {
       if (!signal) return '<span class="text-slate-500">-</span>';
       const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
@@ -456,10 +494,16 @@
         tbody.innerHTML = '';
         const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(`${trade.ticker}_${trade.buy_date}`));
 
+        let totInvested = 0;
+        let totValue = 0;
+
         if (activePortfolio.length === 0) {
           tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna posizione aperta.</td></tr>`;
         } else {
           activePortfolio.forEach(trade => {
+            totInvested += (trade.invested || 100);
+            totValue += (trade.current_value || trade.buy_price);
+
             const isPos = trade.pnl_pct >= 0;
             const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
             tbody.innerHTML += `
@@ -478,6 +522,17 @@
             `;
           });
         }
+
+        // Calcolo e aggiornamento card riepilogativa Acquisti Singoli
+        const diffUsd = totValue - totInvested;
+        const diffPct = totInvested > 0 ? ((diffUsd / totInvested) * 100).toFixed(2) : 0;
+        const isOverallPos = diffUsd >= 0;
+        const overallColor = isOverallPos ? 'text-emerald-400' : 'text-rose-400';
+
+        document.getElementById('unique-tot-invested').innerText = totInvested.toFixed(2) + ' $';
+        document.getElementById('unique-tot-value').innerText = totValue.toFixed(2) + ' $';
+        document.getElementById('unique-tot-pnl').className = `font-bold ${overallColor}`;
+        document.getElementById('unique-tot-pnl').innerText = `${isOverallPos ? '+' : ''}${diffUsd.toFixed(2)} $ (${isOverallPos ? '+' : ''}${diffPct}%)`;
       }
 
       const dcaTbody = document.getElementById('dca-body');
@@ -485,10 +540,16 @@
         dcaTbody.innerHTML = '';
         const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
 
+        let totDcaInvested = 0;
+        let totDcaValue = 0;
+
         if (activeDca.length === 0) {
           dcaTbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva.</td></tr>`;
         } else {
           activeDca.forEach(trade => {
+            totDcaInvested += (trade.invested || 100);
+            totDcaValue += (trade.current_value || trade.buy_price);
+
             const isPos = trade.pnl_pct >= 0;
             const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
             dcaTbody.innerHTML += `
@@ -507,6 +568,17 @@
             `;
           });
         }
+
+        // Calcolo e aggiornamento card riepilogativa DCA
+        const diffDcaUsd = totDcaValue - totDcaInvested;
+        const diffDcaPct = totDcaInvested > 0 ? ((diffDcaUsd / totDcaInvested) * 100).toFixed(2) : 0;
+        const isDcaPos = diffDcaUsd >= 0;
+        const dcaColor = isDcaPos ? 'text-emerald-400' : 'text-rose-400';
+
+        document.getElementById('dca-tot-invested').innerText = totDcaInvested.toFixed(2) + ' $';
+        document.getElementById('dca-tot-value').innerText = totDcaValue.toFixed(2) + ' $';
+        document.getElementById('dca-tot-pnl').className = `font-bold ${dcaColor}`;
+        document.getElementById('dca-tot-pnl').innerText = `${isDcaPos ? '+' : ''}${diffDcaUsd.toFixed(2)} $ (${isDcaPos ? '+' : ''}${diffDcaPct}%)`;
       }
     }
 
