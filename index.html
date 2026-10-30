@@ -17,7 +17,11 @@
       <nav class="space-y-2">
         <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni Dashboard</label>
         
-        <button onclick="switchTab('suggestions')" id="tab-btn-suggestions" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-emerald-600 text-white shadow-lg">
+        <button onclick="switchTab('scanner')" id="tab-btn-scanner" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-emerald-600 text-white shadow-lg">
+          📊 Scanner & Watchlist
+        </button>
+
+        <button onclick="switchTab('suggestions')" id="tab-btn-suggestions" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
           💡 Suggerimenti & Note
         </button>
 
@@ -35,19 +39,47 @@
       </nav>
     </div>
 
-    <div class="text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
-      Online & Operativo
+    <div id="last-update" class="text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
+      Caricato.
     </div>
   </aside>
 
   <!-- Area Contenuto Principale -->
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
 
-    <!-- SEZIONE 1: SUGGERIMENTI E MOTIVAZIONI -->
-    <section id="sec-suggestions" class="tab-content">
+    <!-- SEZIONE 1: SCANNER & WATCHLIST ORIGINALE -->
+    <section id="sec-scanner" class="tab-content">
       <header class="mb-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">💡 Suggerimenti di Acquisto & Rating</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Elenco dei titoli monitorati con punteggio di attrattiva e motivazione tecnica.</p>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni per ordinare i titoli.</p>
+      </header>
+
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
+            <tr>
+              <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
+              <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
+              <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
+              <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
+              <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
+              <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-700">
+            <!-- Dinamico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEZIONE 2: SUGGERIMENTI E NOTE AGGIUNTIVE -->
+    <section id="sec-suggestions" class="tab-content hidden">
+      <header class="mb-6">
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">💡 Suggerimenti & Note di Acquisto</h2>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Valutazione dei titoli con punteggio (0-100) e motivazione tecnica in chiaro.</p>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
@@ -56,7 +88,7 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Categoria</th>
-              <th class="p-3 md:p-4">Prezzo Attuale</th>
+              <th class="p-3 md:p-4">Prezzo</th>
               <th class="p-3 md:p-4 text-center">Score (0-100)</th>
               <th class="p-3 md:p-4">Motivazione / Note</th>
             </tr>
@@ -68,7 +100,7 @@
       </div>
     </section>
 
-    <!-- SEZIONE 2: PORTAFOGLIO UNICO -->
+    <!-- SEZIONE 3: PORTAFOGLIO UNICO -->
     <section id="sec-unique" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
@@ -96,7 +128,7 @@
       </div>
     </section>
 
-    <!-- SEZIONE 3: PIANO ACCUMULO DCA -->
+    <!-- SEZIONE 4: PIANO ACCUMULO DCA -->
     <section id="sec-dca" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
@@ -124,7 +156,7 @@
       </div>
     </section>
 
-    <!-- SEZIONE 4: UTILI E DIVIDENDI -->
+    <!-- SEZIONE 5: UTILI E DIVIDENDI -->
     <section id="sec-calendar" class="tab-content hidden">
       <header class="mb-6">
         <h3 class="text-xl md:text-2xl font-bold text-slate-100">📅 Calendario Rilascio Utili & Dividendi</h3>
@@ -151,148 +183,34 @@
   </main>
 
   <script>
-    // Dati incorporati sicuri per cellulare e GitHub Pages
+    // Dati incorporati sicuri e completi
     let globalData = {
       "items": [
-        { "name": "Apple Inc.", "ticker": "AAPL", "category": "AZIONI", "current_price": 348.91, "currency": "USD", "score": 50, "note": "RSI Neutro (1D: 66.5) - Nessun segnale di acquisto imminente." },
-        { "name": "Microsoft Corporation", "ticker": "MSFT", "category": "AZIONI", "current_price": 530.14, "currency": "USD", "score": 50, "note": "RSI 1W in ipercomprato estremo (80.9). Valutare prudenza." },
-        { "name": "NVIDIA Corporation", "ticker": "NVDA", "category": "AZIONI", "current_price": 213.66, "currency": "USD", "score": 55, "note": "RSI 1H in ipervenduto (26.2). Buona occasione di rimbalzo." },
-        { "name": "Amazon.com, Inc.", "ticker": "AMZN", "category": "AZIONI", "current_price": 243.79, "currency": "USD", "score": 72, "note": "RSI 1H in forte ipervenduto (24.8) con buon P/E e sconto sui massimi." },
-        { "name": "Alphabet Inc. (Google)", "ticker": "GOOGL", "category": "AZIONI", "current_price": 283.82, "currency": "USD", "score": 100, "note": "Ipervenduto estremo su 1H e 1D (RSI 15.6) + P/E basso (14.8). Ottimo score." },
-        { "name": "Meta Platforms, Inc.", "ticker": "META", "category": "AZIONI", "current_price": 624.52, "currency": "USD", "score": 90, "note": "RSI 1D in ipervenduto (27.8) e titolo scontato del -19.9% dai massimi." },
-        { "name": "Tesla, Inc.", "ticker": "TSLA", "category": "AZIONI", "current_price": 403.3, "currency": "USD", "score": 52, "note": "P/E elevato (443.2). RSI settimanale in ipercomprato." },
-        { "name": "Advanced Micro Devices, Inc.", "ticker": "AMD", "category": "AZIONI", "current_price": 566.42, "currency": "USD", "score": 45, "note": "RSI Neutro su tutti i timeframe. Valutazione P/E alta." },
-        { "name": "Intel Corporation", "ticker": "INTC", "category": "AZIONI", "current_price": 92.07, "currency": "USD", "score": 60, "note": "Forte sconto dai massimi (-35.3%), monitorare per accumulo." },
-        { "name": "QUALCOMM Incorporated", "ticker": "QCOM", "category": "AZIONI", "current_price": 185.41, "currency": "USD", "score": 72, "note": "Buono sconto dai massimi (-28.7%) e P/E equilibrato (21.5)." },
-        { "name": "Netflix, Inc.", "ticker": "NFLX", "category": "AZIONI", "current_price": 62.05, "currency": "USD", "score": 98, "note": "RSI 1D in ipervenduto (26.2) e forte calo dai massimi (-46.8%)." },
-        { "name": "Adobe Inc.", "ticker": "ADBE", "category": "AZIONI", "current_price": 248.12, "currency": "USD", "score": 85, "note": "P/E basso (13.9) e sconto importante dai massimi." },
-        { "name": "PayPal Holdings, Inc.", "ticker": "PYPL", "category": "AZIONI", "current_price": 56.95, "currency": "USD", "score": 77, "note": "P/E molto basso (10.9), profilo interessante per valore." },
-        { "name": "JPMorgan Chase & Co.", "ticker": "JPM", "category": "AZIONI", "current_price": 343.58, "currency": "USD", "score": 70, "note": "RSI 1H in ipercomprato estremo, ma fondamentali solidi." },
-        { "name": "Visa Inc.", "ticker": "V", "category": "AZIONI", "current_price": 410.54, "currency": "USD", "score": 50, "note": "RSI in ipercomprato su più timeframe." },
-        { "name": "Mastercard Incorporated", "ticker": "MA", "category": "AZIONI", "current_price": 635.7, "currency": "USD", "score": 50, "note": "RSI in ipercomprato su più timeframe." },
-        { "name": "Johnson & Johnson", "category": "JNJ", "category": "AZIONI", "current_price": 275.2, "currency": "USD", "score": 40, "note": "Valutazione P/E elevata rispetto alla media storica." },
-        { "name": "Walmart Inc.", "category": "WMT", "category": "AZIONI", "current_price": 121.25, "currency": "USD", "score": 25, "note": "RSI 1D in ipercomprato estremo (76.0)." },
-        { "name": "The Walt Disney Company", "category": "DIS", "category": "AZIONI", "current_price": 110.91, "currency": "USD", "score": 65, "note": "Area neutrale, P/E stabile a 22.9." },
-        { "name": "Exxon Mobil Corporation", "category": "XOM", "category": "AZIONI", "current_price": 183.29, "currency": "USD", "score": 60, "note": "RSI giornaliero in ipercomprato." },
-        { "name": "iShares Core MSCI World ETF", "ticker": "SWDA.MI", "category": "ETF", "current_price": 131.48, "currency": "EUR", "score": 50, "note": "Indice azionario globale in zona di neutralità." },
-        { "name": "iShares Core S&P 500 ETF", "ticker": "SXR8.DE", "category": "ETF", "current_price": 746.06, "currency": "EUR", "score": 50, "note": "S&P 500 stabile, nessun trigger di ipervenduto." },
-        { "name": "Bitcoin Spot", "ticker": "BTC-USD", "category": "CRYPTO", "current_price": 78508.96, "currency": "USD", "score": 62, "note": "RSI 1H in ipervenduto (28.1). Opportunità di accumulo rapido." },
-        { "name": "Ethereum Spot", "ticker": "ETH-USD", "category": "CRYPTO", "current_price": 2242.61, "currency": "USD", "score": 88, "note": "Ipervenduto su 1H e 1D (RSI 26.6). Forte sconto dai massimi." },
-        { "name": "Solana Spot", "ticker": "SOL-USD", "category": "CRYPTO", "current_price": 97.98, "currency": "USD", "score": 88, "note": "RSI 1D in ipervenduto (28.9) e crollo del -50.5% dai massimi." },
-        { "name": "Binance Coin", "ticker": "BNB-USD", "category": "CRYPTO", "current_price": 717.02, "currency": "USD", "score": 70, "note": "RSI 1H in ipervenduto (34.0)." },
-        { "name": "Oro (Gold Futures)", "ticker": "GC=F", "category": "COMMODITY", "current_price": 4019.4, "currency": "USD", "score": 62, "note": "RSI giornaliero vicino alla soglia di ipervenduto (31.6)." },
-        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "score": 100, "note": "RSI 1D in forte ipervenduto (19.9) e -57.3% dai massimi." }
-      ],
-      "paper_portfolio": [
-        { "id": "trade_nvda", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:24", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
-      ],
-      "dca_portfolio": [
-        { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
-      ],
-      "earnings_calendar": [
-        { "ticker": "AAPL", "name": "Apple Inc.", "category": "AZIONI", "earnings_date": "2026-11-02", "ex_dividend_date": "2026-08-10" },
-        { "ticker": "MSFT", "name": "Microsoft Corporation", "category": "AZIONI", "earnings_date": "2026-10-28", "ex_dividend_date": "2026-11-19" },
-        { "ticker": "NVDA", "name": "NVIDIA Corporation", "category": "AZIONI", "earnings_date": "2026-11-17", "ex_dividend_date": "2026-09-10" }
-      ]
-    };
-
-    let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
-    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
-
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      const target = document.getElementById(`sec-${tabId}`);
-      if (target) target.classList.remove('hidden');
-
-      const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
-      const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
-
-      ['suggestions', 'unique', 'dca', 'calendar'].forEach(t => {
-        const btn = document.getElementById(`tab-btn-${t}`);
-        if (btn) {
-          if (t === tabId) {
-            btn.classList.add(...activeBtnClass);
-            btn.classList.remove(...inactiveBtnClass);
-          } else {
-            btn.classList.remove(...activeBtnClass);
-            btn.classList.add(...inactiveBtnClass);
-          }
-        }
-      });
-    }
-
-    function renderSuggestions(items) {
-      const tbody = document.getElementById('suggestions-body');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      items.forEach(item => {
-        const score = item.score !== undefined ? item.score : 50;
-        let scoreColor = 'text-slate-300 bg-slate-700';
-        if (score >= 70) scoreColor = 'text-emerald-300 bg-emerald-950 border border-emerald-800';
-        else if (score <= 40) scoreColor = 'text-rose-300 bg-rose-950 border border-rose-800';
-
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-750 transition-colors">
-            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
-            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
-            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency || 'USD'}</td>
-            <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-mono font-bold text-xs ${scoreColor}">${score} / 100</span></td>
-            <td class="p-3 md:p-4 text-slate-300 text-xs">${item.note || 'Nessuna nota disponibile.'}</td>
-          </tr>
-        `;
-      });
-    }
-
-    function renderPortfolio(portfolio, dcaPortfolio) {
-      const tbody = document.getElementById('portfolio-body');
-      if (tbody) {
-        tbody.innerHTML = '';
-        const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(`${trade.ticker}_${trade.buy_date}`));
-
-        if (activePortfolio.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna posizione unica aperta.</td></tr>`;
-        } else {
-          activePortfolio.forEach(trade => {
-            const isPos = trade.pnl_pct >= 0;
-            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
-            tbody.innerHTML += `
-              <tr class="hover:bg-slate-750 transition-colors">
-                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
-                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
-                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
-                <td class="p-3 md:p-4">${trade.buy_price} $</td>
-                <td class="p-3 md:p-4">${trade.current_value} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
-                <td class="p-3 md:p-4 text-center">
-                  <button onclick="removedTrades.push('${trade.ticker}_${trade.buy_date}'); localStorage.setItem('removed_unique_trades_v2', JSON.stringify(removedTrades)); renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);" class="px-2 py-1 bg-rose-950 text-rose-300 rounded text-xs">✕</button>
-                </td>
-              </tr>
-            `;
-          });
-        }
-      }
-
-      const dcaTbody = document.getElementById('dca-body');
-      if (dcaTbody) {
-        dcaTbody.innerHTML = '';
-        const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
-
-        if (activeDca.length === 0) {
-          dcaTbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva.</td></tr>`;
-        } else {
-          activeDca.forEach(trade => {
-            const isPos = trade.pnl_pct >= 0;
-            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
-            dcaTbody.innerHTML += `
-              <tr class="hover:bg-slate-750 transition-colors">
-                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
-                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
-                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
-                <td class="p-3 md:p-4">${trade.buy_price} $</td>
-                <td class="p-3 md:p-4">${trade.current_value} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
-                <td class="p-3 md:p-4 text-center">
-                  <button onclick="removedDcaTrades.push('${trade.id}'); localStorage.setItem('removed_dca
+        { "name": "Apple Inc.", "ticker": "AAPL", "category": "AZIONI", "current_price": 348.91, "currency": "USD", "pe_ratio": 40.0, "dist_52w_pct": -0.8, "score": 50, "note": "RSI Neutro (1D: 66.5)", "rsi_signals": { "1h": { "rsi": 56.2, "status": "Neutro ⚪" }, "1d": { "rsi": 66.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 58.7, "status": "Neutro ⚪" } } },
+        { "name": "Microsoft Corporation", "ticker": "MSFT", "category": "AZIONI", "current_price": 530.14, "currency": "USD", "pe_ratio": 29.5, "dist_52w_pct": -3.8, "score": 50, "note": "RSI 1W in ipercomprato estremo (80.9)", "rsi_signals": { "1h": { "rsi": 47.5, "status": "Neutro ⚪" }, "1d": { "rsi": 46.3, "status": "Neutro ⚪" }, "1wk": { "rsi": 80.9, "status": "Ipercomprato Estremo 🔴" } } },
+        { "name": "NVIDIA Corporation", "ticker": "NVDA", "category": "AZIONI", "current_price": 213.66, "currency": "USD", "pe_ratio": 27.0, "dist_52w_pct": -12.2, "score": 55, "note": "RSI 1H in ipervenduto (26.2)", "rsi_signals": { "1h": { "rsi": 26.2, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 34.7, "status": "Neutro ⚪" }, "1wk": { "rsi": 53.2, "status": "Neutro ⚪" } } },
+        { "name": "Amazon.com, Inc.", "ticker": "AMZN", "category": "AZIONI", "current_price": 243.79, "currency": "USD", "pe_ratio": 19.6, "dist_52w_pct": -15.1, "score": 72, "note": "RSI 1H in forte ipervenduto (24.8)", "rsi_signals": { "1h": { "rsi": 24.8, "status": "Ipervenduto Estremo 🟢" }, "1d": { "rsi": 34.1, "status": "Neutro ⚪" }, "1wk": { "rsi": 55.1, "status": "Neutro ⚪" } } },
+        { "name": "Alphabet Inc. (Google)", "ticker": "GOOGL", "category": "AZIONI", "current_price": 283.82, "currency": "USD", "pe_ratio": 14.8, "dist_52w_pct": -30.5, "score": 100, "note": "Ipervenduto estremo su 1H e 1D (RSI 15.6) + P/E basso", "rsi_signals": { "1h": { "rsi": 18.1, "status": "Ipervenduto Estremo 🟢" }, "1d": { "rsi": 15.6, "status": "Ipervenduto Estremo 🟢" }, "1wk": { "rsi": 38.1, "status": "Neutro ⚪" } } },
+        { "name": "Meta Platforms, Inc.", "ticker": "META", "category": "AZIONI", "current_price": 624.52, "currency": "USD", "pe_ratio": 21.3, "dist_52w_pct": -19.9, "score": 90, "note": "RSI 1D in ipervenduto (27.8)", "rsi_signals": { "1h": { "rsi": 55.1, "status": "Neutro ⚪" }, "1d": { "rsi": 27.8, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 53.3, "status": "Neutro ⚪" } } },
+        { "name": "Tesla, Inc.", "ticker": "TSLA", "category": "AZIONI", "current_price": 403.3, "currency": "USD", "pe_ratio": 443.2, "dist_52w_pct": -19.2, "score": 52, "note": "P/E elevato (443.2)", "rsi_signals": { "1h": { "rsi": 40.0, "status": "Neutro ⚪" }, "1d": { "rsi": 59.1, "status": "Neutro ⚪" }, "1wk": { "rsi": 74.6, "status": "Ipercomprato 🟠" } } },
+        { "name": "Advanced Micro Devices, Inc.", "ticker": "AMD", "category": "AZIONI", "current_price": 566.42, "currency": "USD", "pe_ratio": 144.5, "dist_52w_pct": -14.0, "score": 45, "note": "RSI Neutro, P/E alto", "rsi_signals": { "1h": { "rsi": 56.7, "status": "Neutro ⚪" }, "1d": { "rsi": 42.0, "status": "Neutro ⚪" }, "1wk": { "rsi": 54.8, "status": "Neutro ⚪" } } },
+        { "name": "Intel Corporation", "ticker": "INTC", "category": "AZIONI", "current_price": 92.07, "currency": "USD", "pe_ratio": 42.6, "dist_52w_pct": -35.3, "score": 60, "note": "Forte sconto dai massimi (-35.3%)", "rsi_signals": { "1h": { "rsi": 39.9, "status": "Neutro ⚪" }, "1d": { "rsi": 35.2, "status": "Neutro ⚪" }, "1wk": { "rsi": 49.9, "status": "Neutro ⚪" } } },
+        { "name": "QUALCOMM Incorporated", "ticker": "QCOM", "category": "AZIONI", "current_price": 185.41, "currency": "USD", "pe_ratio": 21.5, "dist_52w_pct": -28.7, "score": 72, "note": "Buon P/E e sconto dai massimi", "rsi_signals": { "1h": { "rsi": 54.3, "status": "Neutro ⚪" }, "1d": { "rsi": 60.8, "status": "Neutro ⚪" }, "1wk": { "rsi": 56.9, "status": "Neutro ⚪" } } },
+        { "name": "Netflix, Inc.", "ticker": "NFLX", "category": "AZIONI", "current_price": 62.05, "currency": "USD", "pe_ratio": 17.9, "dist_52w_pct": -46.8, "score": 98, "note": "RSI 1D in ipervenduto (26.2)", "rsi_signals": { "1h": { "rsi": 41.8, "status": "Neutro ⚪" }, "1d": { "rsi": 26.2, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 39.5, "status": "Neutro ⚪" } } },
+        { "name": "Adobe Inc.", "ticker": "ADBE", "category": "AZIONI", "current_price": 248.12, "currency": "USD", "pe_ratio": 13.9, "dist_52w_pct": -31.6, "score": 85, "note": "P/E basso (13.9)", "rsi_signals": { "1h": { "rsi": 49.3, "status": "Neutro ⚪" }, "1d": { "rsi": 53.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 56.8, "status": "Neutro ⚪" } } },
+        { "name": "PayPal Holdings, Inc.", "ticker": "PYPL", "category": "AZIONI", "current_price": 56.95, "currency": "USD", "pe_ratio": 10.9, "dist_52w_pct": -19.5, "score": 77, "note": "P/E molto basso (10.9)", "rsi_signals": { "1h": { "rsi": 66.4, "status": "Neutro ⚪" }, "1d": { "rsi": 58.9, "status": "Neutro ⚪" }, "1wk": { "rsi": 51.8, "status": "Neutro ⚪" } } },
+        { "name": "JPMorgan Chase & Co.", "ticker": "JPM", "category": "AZIONI", "current_price": 343.58, "currency": "USD", "pe_ratio": 14.4, "dist_52w_pct": -6.3, "score": 70, "note": "RSI 1H in ipercomprato estremo", "rsi_signals": { "1h": { "rsi": 77.0, "status": "Ipercomprato Estremo 🔴" }, "1d": { "rsi": 63.7, "status": "Neutro ⚪" }, "1wk": { "rsi": 45.4, "status": "Neutro ⚪" } } },
+        { "name": "Visa Inc.", "ticker": "V", "category": "AZIONI", "current_price": 410.54, "currency": "USD", "pe_ratio": 33.3, "dist_52w_pct": -1.0, "score": 50, "note": "RSI in ipercomprato", "rsi_signals": { "1h": { "rsi": 70.7, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 70.3, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 76.5, "status": "Ipercomprato Estremo 🔴" } } },
+        { "name": "Mastercard Incorporated", "ticker": "MA", "category": "AZIONI", "current_price": 635.7, "currency": "USD", "pe_ratio": 35.0, "dist_52w_pct": -0.9, "score": 50, "note": "RSI in ipercomprato", "rsi_signals": { "1h": { "rsi": 78.7, "status": "Ipercomprato Estremo 🔴" }, "1d": { "rsi": 73.6, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 73.3, "status": "Ipercomprato 🟠" } } },
+        { "name": "Johnson & Johnson", "ticker": "JNJ", "category": "AZIONI", "current_price": 275.2, "currency": "USD", "pe_ratio": 41.8, "dist_52w_pct": -2.1, "score": 40, "note": "P/E elevato", "rsi_signals": { "1h": { "rsi": 74.0, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 61.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 57.2, "status": "Neutro ⚪" } } },
+        { "name": "Walmart Inc.", "ticker": "WMT", "category": "AZIONI", "current_price": 121.25, "currency": "USD", "pe_ratio": 43.9, "dist_52w_pct": -10.3, "score": 25, "note": "RSI 1D in ipercomprato estremo", "rsi_signals": { "1h": { "rsi": 70.4, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 76.0, "status": "Ipercomprato Estremo 🔴" }, "1wk": { "rsi": 63.6, "status": "Neutro ⚪" } } },
+        { "name": "The Walt Disney Company", "ticker": "DIS", "category": "AZIONI", "current_price": 110.91, "currency": "USD", "pe_ratio": 22.9, "dist_52w_pct": -5.3, "score": 65, "note": "Area neutrale", "rsi_signals": { "1h": { "rsi": 57.4, "status": "Neutro ⚪" }, "1d": { "rsi": 60.8, "status": "Neutro ⚪" }, "1wk": { "rsi": 69.8, "status": "Neutro ⚪" } } },
+        { "name": "Exxon Mobil Corporation", "ticker": "XOM", "category": "AZIONI", "current_price": 183.29, "currency": "USD", "pe_ratio": 23.6, "dist_52w_pct": -0.9, "score": 60, "note": "RSI giornaliero in ipercomprato", "rsi_signals": { "1h": { "rsi": 64.6, "status": "Neutro ⚪" }, "1d": { "rsi": 73.5, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 71.8, "status": "Ipercomprato 🟠" } } },
+        { "name": "iShares Core MSCI World ETF", "ticker": "SWDA.MI", "category": "ETF", "current_price": 131.48, "currency": "EUR", "pe_ratio": null, "dist_52w_pct": -0.7, "score": 50, "note": "Indice globale in neutralità", "rsi_signals": { "1h": { "rsi": 46.8, "status": "Neutro ⚪" }, "1d": { "rsi": 50.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 65.7, "status": "Neutro ⚪" } } },
+        { "name": "iShares Core S&P 500 ETF", "ticker": "SXR8.DE", "category": "ETF", "current_price": 746.06, "currency": "EUR", "pe_ratio": null, "dist_52w_pct": -1.2, "score": 50, "note": "S&P 500 stabile", "rsi_signals": { "1h": { "rsi": 34.8, "status": "Neutro ⚪" }, "1d": { "rsi": 47.9, "status": "Neutro ⚪" }, "1wk": { "rsi": 65.8, "status": "Neutro ⚪" } } },
+        { "name": "Bitcoin Spot", "ticker": "BTC-USD", "category": "CRYPTO", "current_price": 78508.96, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -29.7, "score": 62, "note": "RSI 1H in ipervenduto (28.1)", "rsi_signals": { "1h": { "rsi": 28.1, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 34.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 64.9, "status": "Neutro ⚪" } } },
+        { "name": "Ethereum Spot", "ticker": "ETH-USD", "category": "CRYPTO", "current_price": 2242.61, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -43.2, "score": 88, "note": "Ipervenduto su 1H e 1D", "rsi_signals": { "1h": { "rsi": 27.1, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 26.6, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 58.8, "status": "Neutro ⚪" } } },
+        { "name": "Solana Spot", "ticker": "SOL-USD", "category": "CRYPTO", "current_price": 97.98, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -50.5, "score": 88, "note": "RSI 1D in ipervenduto", "rsi_signals": { "1h": { "rsi": 35.4, "status": "Neutro ⚪" }, "1d": { "rsi": 28.9, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 61.4, "status": "Neutro ⚪" } } },
+        { "name": "Binance Coin", "ticker": "BNB-USD", "category": "CRYPTO", "current_price": 717.02, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -36.2, "score": 70, "note": "RSI 1H in ipervenduto", "rsi_signals": { "1h": { "rsi": 34.0, "status": "Neutro ⚪" }, "1d": { "rsi": 45.4, "status": "Neutro ⚪" }, "1wk": { "rsi": 66.3, "status": "Neutro ⚪" } } },
+        { "name": "Oro (Gold Futures)", "ticker": "GC=F", "category": "COMMODITY", "current_price": 4019.4, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -28.0, "score": 62, "note": "RSI giornaliero vicino ipervenduto", "rsi_signals": { "1h": { "rsi": 38.7, "status": "Neutro ⚪" }, "1d": { "rsi": 31.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 48.2, "status": "Neutro ⚪" } } },
+        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "pe_ratio": n
