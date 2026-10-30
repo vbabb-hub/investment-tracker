@@ -39,8 +39,8 @@
       </nav>
     </div>
 
-    <div id="last-update" class="text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
-      Caricato.
+    <div class="text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
+      Stato: Operativo 🚀
     </div>
   </aside>
 
@@ -75,7 +75,7 @@
       </div>
     </section>
 
-    <!-- SEZIONE 2: SUGGERIMENTI E NOTE AGGIUNTIVE -->
+    <!-- SEZIONE 2: SUGGERIMENTI E NOTE -->
     <section id="sec-suggestions" class="tab-content hidden">
       <header class="mb-6">
         <h2 class="text-xl md:text-2xl font-bold text-slate-100">💡 Suggerimenti & Note di Acquisto</h2>
@@ -183,8 +183,8 @@
   </main>
 
   <script>
-    // Dati incorporati sicuri e completi
-    let globalData = {
+    // Dati globali completi e incorporati (zero fetch esterni, zero blocchi CORS)
+    const globalData = {
       "items": [
         { "name": "Apple Inc.", "ticker": "AAPL", "category": "AZIONI", "current_price": 348.91, "currency": "USD", "pe_ratio": 40.0, "dist_52w_pct": -0.8, "score": 50, "note": "RSI Neutro (1D: 66.5)", "rsi_signals": { "1h": { "rsi": 56.2, "status": "Neutro ⚪" }, "1d": { "rsi": 66.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 58.7, "status": "Neutro ⚪" } } },
         { "name": "Microsoft Corporation", "ticker": "MSFT", "category": "AZIONI", "current_price": 530.14, "currency": "USD", "pe_ratio": 29.5, "dist_52w_pct": -3.8, "score": 50, "note": "RSI 1W in ipercomprato estremo (80.9)", "rsi_signals": { "1h": { "rsi": 47.5, "status": "Neutro ⚪" }, "1d": { "rsi": 46.3, "status": "Neutro ⚪" }, "1wk": { "rsi": 80.9, "status": "Ipercomprato Estremo 🔴" } } },
@@ -213,4 +213,4 @@
         { "name": "Solana Spot", "ticker": "SOL-USD", "category": "CRYPTO", "current_price": 97.98, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -50.5, "score": 88, "note": "RSI 1D in ipervenduto", "rsi_signals": { "1h": { "rsi": 35.4, "status": "Neutro ⚪" }, "1d": { "rsi": 28.9, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 61.4, "status": "Neutro ⚪" } } },
         { "name": "Binance Coin", "ticker": "BNB-USD", "category": "CRYPTO", "current_price": 717.02, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -36.2, "score": 70, "note": "RSI 1H in ipervenduto", "rsi_signals": { "1h": { "rsi": 34.0, "status": "Neutro ⚪" }, "1d": { "rsi": 45.4, "status": "Neutro ⚪" }, "1wk": { "rsi": 66.3, "status": "Neutro ⚪" } } },
         { "name": "Oro (Gold Futures)", "ticker": "GC=F", "category": "COMMODITY", "current_price": 4019.4, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -28.0, "score": 62, "note": "RSI giornaliero vicino ipervenduto", "rsi_signals": { "1h": { "rsi": 38.7, "status": "Neutro ⚪" }, "1d": { "rsi": 31.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 48.2, "status": "Neutro ⚪" } } },
-        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "pe_ratio": n
+        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "curren
