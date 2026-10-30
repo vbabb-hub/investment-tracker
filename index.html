@@ -47,7 +47,7 @@
   <!-- Area Contenuto Principale -->
   <main class="flex-1 p-4 md:p-8 overflow-y-auto">
 
-    <!-- SEZIONE 1: SCANNER & WATCHLIST ORIGINALE -->
+    <!-- SEZIONE 1: SCANNER & WATCHLIST -->
     <section id="sec-scanner" class="tab-content">
       <header class="mb-6">
         <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
@@ -183,7 +183,6 @@
   </main>
 
   <script>
-    // Dati globali completi e incorporati (zero fetch esterni, zero blocchi CORS)
     const globalData = {
       "items": [
         { "name": "Apple Inc.", "ticker": "AAPL", "category": "AZIONI", "current_price": 348.91, "currency": "USD", "pe_ratio": 40.0, "dist_52w_pct": -0.8, "score": 50, "note": "RSI Neutro (1D: 66.5)", "rsi_signals": { "1h": { "rsi": 56.2, "status": "Neutro ⚪" }, "1d": { "rsi": 66.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 58.7, "status": "Neutro ⚪" } } },
@@ -213,4 +212,222 @@
         { "name": "Solana Spot", "ticker": "SOL-USD", "category": "CRYPTO", "current_price": 97.98, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -50.5, "score": 88, "note": "RSI 1D in ipervenduto", "rsi_signals": { "1h": { "rsi": 35.4, "status": "Neutro ⚪" }, "1d": { "rsi": 28.9, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 61.4, "status": "Neutro ⚪" } } },
         { "name": "Binance Coin", "ticker": "BNB-USD", "category": "CRYPTO", "current_price": 717.02, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -36.2, "score": 70, "note": "RSI 1H in ipervenduto", "rsi_signals": { "1h": { "rsi": 34.0, "status": "Neutro ⚪" }, "1d": { "rsi": 45.4, "status": "Neutro ⚪" }, "1wk": { "rsi": 66.3, "status": "Neutro ⚪" } } },
         { "name": "Oro (Gold Futures)", "ticker": "GC=F", "category": "COMMODITY", "current_price": 4019.4, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -28.0, "score": 62, "note": "RSI giornaliero vicino ipervenduto", "rsi_signals": { "1h": { "rsi": 38.7, "status": "Neutro ⚪" }, "1d": { "rsi": 31.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 48.2, "status": "Neutro ⚪" } } },
-        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "curren
+        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -57.3, "score": 100, "note": "RSI 1D in forte ipervenduto (19.9)", "rsi_signals": { "1h": { "rsi": 31.7, "status": "Neutro ⚪" }, "1d": { "rsi": 19.9, "status": "Ipervenduto Estremo 🟢" }, "1wk": { "rsi": 40.5, "status": "Neutro ⚪" } } }
+      ],
+      "paper_portfolio": [
+        { "id": "trade_nvda", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:24", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
+      ],
+      "dca_portfolio": [
+        { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
+      ],
+      "earnings_calendar": [
+        { "ticker": "AAPL", "name": "Apple Inc.", "category": "AZIONI", "earnings_date": "2026-11-02", "ex_dividend_date": "2026-08-10" },
+        { "ticker": "MSFT", "name": "Microsoft Corporation", "category": "AZIONI", "earnings_date": "2026-10-28", "ex_dividend_date": "2026-11-19" },
+        { "ticker": "NVDA", "name": "NVIDIA Corporation", "category": "AZIONI", "earnings_date": "2026-11-17", "ex_dividend_date": "2026-09-10" }
+      ]
+    };
+
+    let currentSort = { column: null, ascending: true };
+    let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
+    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
+
+    // ESPORTAZIONE GLOBALE ESPLICITA PER EVITARE IL REFERENCEERROR
+    window.switchTab = function(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      const target = document.getElementById(`sec-${tabId}`);
+      if (target) target.classList.remove('hidden');
+
+      const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
+      const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
+
+      ['scanner', 'suggestions', 'unique', 'dca', 'calendar'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (btn) {
+          if (t === tabId) {
+            btn.classList.add(...activeBtnClass);
+            btn.classList.remove(...inactiveBtnClass);
+          } else {
+            btn.classList.remove(...activeBtnClass);
+            btn.classList.add(...inactiveBtnClass);
+          }
+        }
+      });
+    };
+
+    window.sortTable = function(column) {
+      if (!globalData || !globalData.items) return;
+      if (currentSort.column === column) {
+        currentSort.ascending = !currentSort.ascending;
+      } else {
+        currentSort.column = column;
+        currentSort.ascending = true;
+      }
+
+      let items = [...globalData.items];
+      items.sort((a, b) => {
+        let valA, valB;
+        if (column === 'name') { valA = a.name; valB = b.name; }
+        else if (column === 'category') { valA = a.category; valB = b.category; }
+        else if (column === 'current_price') { valA = a.current_price; valB = b.current_price; }
+        else if (column === 'pe_ratio') { valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999; }
+        else if (column === 'dist_52w_pct') { valA = a.dist_52w_pct || 0; valB = b.dist_52w_pct || 0; }
+        else if (column === 'rsi_1h') { valA = a.rsi_signals?.['1h']?.rsi || 50; valB = b.rsi_signals?.['1h']?.rsi || 50; }
+        else if (column === 'rsi_1d') { valA = a.rsi_signals?.['1d']?.rsi || 50; valB = b.rsi_signals?.['1d']?.rsi || 50; }
+        else if (column === 'rsi_1w') { valA = a.rsi_signals?.['1wk']?.rsi || 50; valB = b.rsi_signals?.['1wk']?.rsi || 50; }
+
+        if (valA < valB) return currentSort.ascending ? -1 : 1;
+        if (valA > valB) return currentSort.ascending ? 1 : -1;
+        return 0;
+      });
+
+      renderTable(items);
+    };
+
+    function renderRsiBadge(signal) {
+      if (!signal) return '<span class="text-slate-500">-</span>';
+      const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
+                         signal.rsi >= 70 ? 'bg-rose-900/50 text-rose-300 border-rose-700' :
+                         signal.rsi <= 25 ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
+                         signal.rsi <= 30 ? 'bg-emerald-900/50 text-emerald-300 border-emerald-700' : 
+                         'bg-slate-700 text-slate-300 border-slate-600';
+      return `<div class="inline-block px-2 py-1 rounded border text-[11px] ${colorClass}">${signal.rsi} (${signal.status ? signal.status.split(' ')[0] : ''})</div>`;
+    }
+
+    function renderTable(items) {
+      const tbody = document.getElementById('table-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      items.forEach(item => {
+        const rsi = item.rsi_signals || {};
+        const peDisplay = item.pe_ratio ? item.pe_ratio : '<span class="text-slate-500">N/D</span>';
+        let distDisplay = '<span class="text-slate-500">N/D</span>';
+        if (item.dist_52w_pct !== null && item.dist_52w_pct !== undefined) {
+          const distColor = item.dist_52w_pct < 0 ? 'text-amber-400' : 'text-emerald-400';
+          distDisplay = `<span class="${distColor}">${item.dist_52w_pct > 0 ? '+' : ''}${item.dist_52w_pct}%</span>`;
+        }
+
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
+            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
+            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency || 'USD'}</td>
+            <td class="p-3 md:p-4 text-center font-mono">${peDisplay}</td>
+            <td class="p-3 md:p-4 text-center font-mono">${distDisplay}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
+            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function renderSuggestions(items) {
+      const tbody = document.getElementById('suggestions-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      items.forEach(item => {
+        const score = item.score !== undefined ? item.score : 50;
+        let scoreColor = 'text-slate-300 bg-slate-700';
+        if (score >= 70) scoreColor = 'text-emerald-300 bg-emerald-950 border border-emerald-800';
+        else if (score <= 40) scoreColor = 'text-rose-300 bg-rose-950 border border-rose-800';
+
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
+            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
+            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency || 'USD'}</td>
+            <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-mono font-bold text-xs ${scoreColor}">${score} / 100</span></td>
+            <td class="p-3 md:p-4 text-slate-300 text-xs">${item.note || 'Nessuna nota.'}</td>
+          </tr>
+        `;
+      });
+    }
+
+    function renderPortfolio(portfolio, dcaPortfolio) {
+      const tbody = document.getElementById('portfolio-body');
+      if (tbody) {
+        tbody.innerHTML = '';
+        const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(`${trade.ticker}_${trade.buy_date}`));
+
+        if (activePortfolio.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna posizione aperta.</td></tr>`;
+        } else {
+          activePortfolio.forEach(trade => {
+            const isPos = trade.pnl_pct >= 0;
+            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+            tbody.innerHTML += `
+              <tr class="hover:bg-slate-750 transition-colors">
+                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
+                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
+                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
+                <td class="p-3 md:p-4">${trade.buy_price} $</td>
+                <td class="p-3 md:p-4">${trade.current_value} $</td>
+                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
+                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
+                <td class="p-3 md:p-4 text-center">
+                  <button onclick="removedTrades.push('${trade.ticker}_${trade.buy_date}'); localStorage.setItem('removed_unique_trades_v2', JSON.stringify(removedTrades)); renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);" class="px-2 py-1 bg-rose-950 text-rose-300 rounded text-xs">✕</button>
+                </td>
+              </tr>
+            `;
+          });
+        }
+      }
+
+      const dcaTbody = document.getElementById('dca-body');
+      if (dcaTbody) {
+        dcaTbody.innerHTML = '';
+        const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
+
+        if (activeDca.length === 0) {
+          dcaTbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva.</td></tr>`;
+        } else {
+          activeDca.forEach(trade => {
+            const isPos = trade.pnl_pct >= 0;
+            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
+            dcaTbody.innerHTML += `
+              <tr class="hover:bg-slate-750 transition-colors">
+                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
+                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
+                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
+                <td class="p-3 md:p-4">${trade.buy_price} $</td>
+                <td class="p-3 md:p-4">${trade.current_value} $</td>
+                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
+                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
+                <td class="p-3 md:p-4 text-center">
+                  <button onclick="removedDcaTrades.push('${trade.id}'); localStorage.setItem('removed_dca_trades_v2', JSON.stringify(removedDcaTrades)); renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);" class="px-2 py-1 bg-rose-950 text-rose-300 rounded text-xs">✕</button>
+                </td>
+              </tr>
+            `;
+          });
+        }
+      }
+    }
+
+    function renderCalendar(calendar) {
+      const tbody = document.getElementById('calendar-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      calendar.forEach(item => {
+        tbody.innerHTML += `
+          <tr class="hover:bg-slate-750 transition-colors">
+            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400">(${item.ticker})</span></td>
+            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-xs">${item.category}</span></td>
+            <td class="p-3 md:p-4 text-center font-mono text-emerald-400">${item.earnings_date || 'N/D'}</td>
+            <td class="p-3 md:p-4 text-center font-mono text-amber-400">${item.ex_dividend_date || 'N/D'}</td>
+          </tr>
+        `;
+      });
+    }
+
+    // Inizializzazione automatica all'avvio della pagina
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTable(globalData.items);
+      renderSuggestions(globalData.items);
+      renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
+      renderCalendar(globalData.earnings_calendar);
+    });
+  </script>
+</body>
+</html>
