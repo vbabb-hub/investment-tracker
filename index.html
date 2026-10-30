@@ -36,6 +36,10 @@
         <button onclick="switchTab('calendar')" id="tab-btn-calendar" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
           📅 Utili & Dividendi
         </button>
+
+        <button onclick="switchTab('telegram')" id="tab-btn-telegram" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
+          ⚙️ Notifiche Telegram
+        </button>
       </nav>
     </div>
 
@@ -107,11 +111,16 @@
           <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
           <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto.</p>
         </div>
-        <!-- Card Riepilogativa Totali -->
-        <div id="unique-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-6 shadow-md text-xs md:text-sm">
-          <div><span class="text-slate-400 block">Investito:</span> <span id="unique-tot-invested" class="font-bold text-slate-200">0 $</span></div>
-          <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="unique-tot-value" class="font-bold text-slate-200">0 $</span></div>
-          <div><span class="text-slate-400 block">P&L Overall:</span> <span id="unique-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <!-- Card Riepilogativa Totali -->
+          <div id="unique-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-4 shadow-md text-xs md:text-sm">
+            <div><span class="text-slate-400 block">Investito:</span> <span id="unique-tot-invested" class="font-bold text-slate-200">0 $</span></div>
+            <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="unique-tot-value" class="font-bold text-slate-200">0 $</span></div>
+            <div><span class="text-slate-400 block">P&L Overall:</span> <span id="unique-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+          </div>
+          <button onclick="sendTelegramReport('unique')" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-3 py-2 rounded-lg text-xs flex items-center gap-1.5 shadow">
+            📲 Report Telegram
+          </button>
         </div>
       </header>
 
@@ -143,11 +152,16 @@
           <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
           <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto).</p>
         </div>
-        <!-- Card Riepilogativa Totali -->
-        <div id="dca-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-6 shadow-md text-xs md:text-sm">
-          <div><span class="text-slate-400 block">Investito:</span> <span id="dca-tot-invested" class="font-bold text-slate-200">0 $</span></div>
-          <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="dca-tot-value" class="font-bold text-slate-200">0 $</span></div>
-          <div><span class="text-slate-400 block">P&L Overall:</span> <span id="dca-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <!-- Card Riepilogativa Totali -->
+          <div id="dca-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-4 shadow-md text-xs md:text-sm">
+            <div><span class="text-slate-400 block">Investito:</span> <span id="dca-tot-invested" class="font-bold text-slate-200">0 $</span></div>
+            <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="dca-tot-value" class="font-bold text-slate-200">0 $</span></div>
+            <div><span class="text-slate-400 block">P&L Overall:</span> <span id="dca-tot-pnl" class="font-bold">0 $ (0%)</span></div>
+          </div>
+          <button onclick="sendTelegramReport('dca')" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-3 py-2 rounded-lg text-xs flex items-center gap-1.5 shadow">
+            📲 Report Telegram
+          </button>
         </div>
       </header>
 
@@ -193,6 +207,39 @@
             <!-- Dinamico -->
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- SEZIONE 6: CONFIGURAZIONE TELEGRAM -->
+    <section id="sec-telegram" class="tab-content hidden">
+      <header class="mb-6">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100">⚙️ Configurazione Notifiche Telegram</h3>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Inserisci le credenziali del tuo Bot Telegram per ricevere avvisi e report direttamente sul telefono.</p>
+      </header>
+
+      <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 shadow-xl max-w-2xl space-y-4">
+        <div>
+          <label class="block text-xs uppercase font-semibold text-slate-300 mb-1">Bot Token</label>
+          <input type="text" id="tg-token" placeholder="es. 123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ" class="w-full bg-slate-900 border border-slate-700 rounded p-2.5 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
+          <p class="text-[11px] text-slate-500 mt-1">Ottenibile da <span class="text-sky-400 font-mono">@BotFather</span> su Telegram.</p>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-semibold text-slate-300 mb-1">Chat ID</label>
+          <input type="text" id="tg-chatid" placeholder="es. 987654321" class="w-full bg-slate-900 border border-slate-700 rounded p-2.5 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
+          <p class="text-[11px] text-slate-500 mt-1">Ottenibile avviando <span class="text-sky-400 font-mono">@userinfobot</span> su Telegram.</p>
+        </div>
+
+        <div class="pt-2 flex gap-3">
+          <button onclick="saveTelegramConfig()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2 rounded text-xs transition">
+            💾 Salva Credenziali
+          </button>
+          <button onclick="testTelegramBot()" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-4 py-2 rounded text-xs transition">
+            🧪 Invia Messaggio di Prova
+          </button>
+        </div>
+
+        <div id="tg-status-msg" class="hidden text-xs p-3 rounded mt-3"></div>
       </div>
     </section>
 
@@ -289,7 +336,7 @@
       const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
       const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
 
-      ['scanner', 'suggestions', 'unique', 'dca', 'calendar'].forEach(t => {
+      ['scanner', 'suggestions', 'unique', 'dca', 'calendar', 'telegram'].forEach(t => {
         const btn = document.getElementById(`tab-btn-${t}`);
         if (btn) {
           if (t === tabId) {
@@ -523,7 +570,6 @@
           });
         }
 
-        // Calcolo e aggiornamento card riepilogativa Acquisti Singoli
         const diffUsd = totValue - totInvested;
         const diffPct = totInvested > 0 ? ((diffUsd / totInvested) * 100).toFixed(2) : 0;
         const isOverallPos = diffUsd >= 0;
@@ -569,7 +615,6 @@
           });
         }
 
-        // Calcolo e aggiornamento card riepilogativa DCA
         const diffDcaUsd = totDcaValue - totDcaInvested;
         const diffDcaPct = totDcaInvested > 0 ? ((diffDcaUsd / totDcaInvested) * 100).toFixed(2) : 0;
         const isDcaPos = diffDcaUsd >= 0;
@@ -598,12 +643,119 @@
       });
     }
 
+    // --- LOGICA NOTIFICHE TELEGRAM ---
+    function saveTelegramConfig() {
+      const token = document.getElementById('tg-token').value.trim();
+      const chatId = document.getElementById('tg-chatid').value.trim();
+
+      localStorage.setItem('tg_bot_token', token);
+      localStorage.setItem('tg_chat_id', chatId);
+
+      showTelegramStatus('Credenziali salvate con successo!', 'emerald');
+    }
+
+    function loadTelegramConfig() {
+      const token = localStorage.getItem('tg_bot_token') || '';
+      const chatId = localStorage.getItem('tg_chat_id') || '';
+
+      document.getElementById('tg-token').value = token;
+      document.getElementById('tg-chatid').value = chatId;
+    }
+
+    function showTelegramStatus(text, color) {
+      const el = document.getElementById('tg-status-msg');
+      el.classList.remove('hidden', 'bg-emerald-950', 'text-emerald-300', 'border-emerald-800', 'bg-rose-950', 'text-rose-300', 'border-rose-800');
+      if (color === 'emerald') {
+        el.classList.add('bg-emerald-950', 'text-emerald-300', 'border', 'border-emerald-800');
+      } else {
+        el.classList.add('bg-rose-950', 'text-rose-300', 'border', 'border-rose-800');
+      }
+      el.innerText = text;
+    }
+
+    async function sendTelegramMessage(text) {
+      const token = localStorage.getItem('tg_bot_token');
+      const chatId = localStorage.getItem('tg_chat_id');
+
+      if (!token || !chatId) {
+        alert('Configura prima il Token e il Chat ID nella sezione Notifiche Telegram.');
+        switchTab('telegram');
+        return false;
+      }
+
+      const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: text,
+            parse_mode: 'HTML'
+          })
+        });
+
+        const data = await response.json();
+        return data.ok;
+      } catch (e) {
+        console.error('Errore invio Telegram:', e);
+        return false;
+      }
+    }
+
+    async function testTelegramBot() {
+      saveTelegramConfig();
+      const success = await sendTelegramMessage('🚀 <b>Investment Tracker</b>\n\nMessaggio di prova inviato con successo!');
+      if (success) {
+        showTelegramStatus('Messaggio di prova inviato con successo sul tuo Telegram!', 'emerald');
+      } else {
+        showTelegramStatus('Errore durante l\'invio. Verifica il Token e il Chat ID inseriti.', 'rose');
+      }
+    }
+
+    async function sendTelegramReport(type) {
+      let title = type === 'unique' ? '💼 Report Acquisti Singoli' : '🔄 Report Piano Accumulo (DCA)';
+      let portfolio = type === 'unique' 
+        ? (globalData.paper_portfolio || []).filter(t => !removedTrades.includes(`${t.ticker}_${t.buy_date}`))
+        : (globalData.dca_portfolio || []).filter(t => !removedDcaTrades.includes(t.id));
+
+      let totInvested = 0;
+      let totValue = 0;
+      let itemsList = '';
+
+      portfolio.forEach(t => {
+        totInvested += (t.invested || 100);
+        totValue += (t.current_value || t.buy_price);
+        const sign = t.pnl_pct >= 0 ? '+' : '';
+        itemsList += `• <b>${t.name}</b>: ${t.current_value}$ (${sign}${t.pnl_pct}%)\n`;
+      });
+
+      const diffUsd = totValue - totInvested;
+      const diffPct = totInvested > 0 ? ((diffUsd / totInvested) * 100).toFixed(2) : 0;
+      const signOverall = diffUsd >= 0 ? '+' : '';
+
+      let message = `<b>${title}</b>\n\n`;
+      message += `💵 <b>Investito:</b> ${totInvested.toFixed(2)} $\n`;
+      message += `📊 <b>Valore Attuale:</b> ${totValue.toFixed(2)} $\n`;
+      message += `📈 <b>P&L Overall:</b> ${signOverall}${diffUsd.toFixed(2)} $ (${signOverall}${diffPct}%)\n\n`;
+      message += `<b>Posizioni Attive (${portfolio.length}):</b>\n${itemsList}`;
+
+      const sent = await sendTelegramMessage(message);
+      if (sent) {
+        alert('Report inviato con successo su Telegram!');
+      } else {
+        alert('Errore durante l\'invio del report. Controlla le impostazioni Telegram.');
+      }
+    }
+
     // Inizializzazione automatica all'avvio della pagina
     window.addEventListener('DOMContentLoaded', () => {
       renderTable(globalData.items);
       renderSuggestions(globalData.items);
       renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
       renderCalendar(globalData.earnings_calendar);
+      loadTelegramConfig();
     });
   </script>
 </body>
