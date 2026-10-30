@@ -2,9 +2,9 @@ name: Telegram Investment Alert
 
 on:
   schedule:
-    # Esegue automaticamente ogni giorno alle ore 09:00 UTC
-    - cron: '0 9 * * *'
-  workflow_dispatch: # Ti consente anche di testarlo manualmente cliccando su "Run workflow" in GitHub
+    # Esegue automaticamente ogni giorno alle 07:00, 16:00, 20:00 e 22:00 UTC
+    - cron: '0 8,15,19,21 * * *'
+  workflow_dispatch: # Permette anche il test manuale da GitHub
 
 jobs:
   send-alert:
