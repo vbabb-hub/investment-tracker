@@ -36,7 +36,7 @@
     </div>
 
     <div id="last-update" class="hidden md:block text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
-      Caricato con successo.
+      Caricato.
     </div>
   </aside>
 
@@ -49,7 +49,7 @@
     <!-- SEZIONE 1: SCANNER MERCATO -->
     <section id="sec-scanner" class="tab-content">
       <header class="mb-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato & Rating</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
         <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni della tabella per ordinare i titoli.</p>
       </header>
 
@@ -60,7 +60,7 @@
               <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
               <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
               <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-              <th onclick="sortTable('score')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400 font-bold text-emerald-400">Score (0-100) ↕</th>
+              <th onclick="sortTable('score')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400 font-bold text-emerald-400">Score ↕</th>
               <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
               <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
               <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
@@ -88,10 +88,10 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Data Ingresso</th>
-              <th class="p-3 md:p-4">Trigger Scattato</th>
-              <th class="p-3 md:p-4">Prezzo Acquisto</th>
-              <th class="p-3 md:p-4">Valore Attuale</th>
-              <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
+              <th class="p-3 md:p-4">Trigger</th>
+              <th class="p-3 md:p-4">Prezzo</th>
+              <th class="p-3 md:p-4">Valore</th>
+              <th class="p-3 md:p-4 text-right">Utile ($)</th>
               <th class="p-3 md:p-4 text-right">P&L (%)</th>
               <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
@@ -116,10 +116,10 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Data Quota</th>
-              <th class="p-3 md:p-4">Trigger Scattato</th>
-              <th class="p-3 md:p-4">Prezzo Quota</th>
-              <th class="p-3 md:p-4">Valore Attuale</th>
-              <th class="p-3 md:p-4 text-right">Utile Netto ($)</th>
+              <th class="p-3 md:p-4">Trigger</th>
+              <th class="p-3 md:p-4">Prezzo</th>
+              <th class="p-3 md:p-4">Valore</th>
+              <th class="p-3 md:p-4 text-right">Utile ($)</th>
               <th class="p-3 md:p-4 text-right">P&L (%)</th>
               <th class="p-3 md:p-4 text-center">Azione</th>
             </tr>
@@ -144,8 +144,8 @@
             <tr>
               <th class="p-3 md:p-4">Asset</th>
               <th class="p-3 md:p-4">Categoria</th>
-              <th class="p-3 md:p-4 text-center">Prossimi Utili (Earnings)</th>
-              <th class="p-3 md:p-4 text-center">Stacco Dividendo (Ex-Div)</th>
+              <th class="p-3 md:p-4 text-center">Prossimi Utili</th>
+              <th class="p-3 md:p-4 text-center">Stacco Dividendo</th>
             </tr>
           </thead>
           <tbody id="calendar-body" class="divide-y divide-slate-700">
@@ -158,7 +158,7 @@
   </main>
 
   <script>
-    // Dati incorporati direttamente per evitare blocchi di rete su mobile/GitHub Pages
+    // Dati incorporati per garantire il funzionamento istantaneo senza blocchi CORS su mobile
     let globalData = {
       "last_updated": "2026-10-30T05:40:24.077684Z",
       "items": [
@@ -197,4 +197,4 @@
         { "id": "trade_googl", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:24", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
         { "id": "trade_meta", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
         { "id": "trade_nflx", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0 },
-        { "
+        { "id": "trade_eth-usd", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy
