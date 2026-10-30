@@ -1,15 +1,15 @@
 {
-  "last_updated": "2026-10-30T16:42:41.337943Z",
+  "last_updated": "2026-10-30T17:37:31.226052Z",
   "items": [
     {
       "id": "sug_aapl",
       "ticker": "AAPL",
       "name": "Apple Inc.",
       "category": "AZIONI",
-      "current_price": 347.33,
+      "current_price": 346.5,
       "currency": "USD",
-      "pe_ratio": 39.8,
-      "dist_52w_pct": -1.3,
+      "pe_ratio": 39.7,
+      "dist_52w_pct": -1.5,
       "score": 50,
       "rsi_signals": {
         "1h": {
@@ -17,11 +17,11 @@
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 59.2,
+          "rsi": 57.8,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 57.9,
+          "rsi": 57.4,
           "status": "Neutro \u26aa"
         }
       }
@@ -31,22 +31,22 @@
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
       "category": "AZIONI",
-      "current_price": 522.19,
+      "current_price": 519.6,
       "currency": "USD",
-      "pe_ratio": 27.3,
-      "dist_52w_pct": -5.3,
+      "pe_ratio": 27.1,
+      "dist_52w_pct": -5.7,
       "score": 55,
       "rsi_signals": {
         "1h": {
-          "rsi": 42.4,
+          "rsi": 37.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 36.3,
+          "rsi": 35.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 79.6,
+          "rsi": 78.8,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         }
       }
@@ -56,22 +56,22 @@
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
       "category": "AZIONI",
-      "current_price": 204.42,
+      "current_price": 203.28,
       "currency": "USD",
-      "pe_ratio": 25.8,
-      "dist_52w_pct": -16.0,
+      "pe_ratio": 25.7,
+      "dist_52w_pct": -16.5,
       "score": 62,
       "rsi_signals": {
         "1h": {
-          "rsi": 12.0,
+          "rsi": 11.2,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 30.8,
+          "rsi": 30.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 49.0,
+          "rsi": 48.5,
           "status": "Neutro \u26aa"
         }
       }
@@ -81,243 +81,18 @@
       "ticker": "AMZN",
       "name": "Amazon.com, Inc.",
       "category": "AZIONI",
-      "current_price": 240.45,
+      "current_price": 238.21,
       "currency": "USD",
-      "pe_ratio": 19.3,
-      "dist_52w_pct": -16.3,
+      "pe_ratio": 19.2,
+      "dist_52w_pct": -17.1,
       "score": 72,
       "rsi_signals": {
         "1h": {
-          "rsi": 24.9,
+          "rsi": 19.3,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 33.8,
-          "status": "Neutro \u26aa"
-        },
-        "1wk": {
-          "rsi": 53.5,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_googl",
-      "ticker": "GOOGL",
-      "name": "Alphabet Inc. (Google)",
-      "category": "AZIONI",
-      "current_price": 280.39,
-      "currency": "USD",
-      "pe_ratio": 14.6,
-      "dist_52w_pct": -31.4,
-      "score": 100,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 12.6,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1d": {
-          "rsi": 14.2,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1wk": {
-          "rsi": 37.3,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_meta",
-      "ticker": "META",
-      "name": "Meta Platforms, Inc.",
-      "category": "AZIONI",
-      "current_price": 621.77,
-      "currency": "USD",
-      "pe_ratio": 21.2,
-      "dist_52w_pct": -20.3,
-      "score": 100,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 59.8,
-          "status": "Neutro \u26aa"
-        },
-        "1d": {
-          "rsi": 18.3,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1wk": {
-          "rsi": 53.0,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_tsla",
-      "ticker": "TSLA",
-      "name": "Tesla, Inc.",
-      "category": "AZIONI",
-      "current_price": 400.91,
-      "currency": "USD",
-      "pe_ratio": 440.6,
-      "dist_52w_pct": -19.6,
-      "score": 52,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 48.0,
-          "status": "Neutro \u26aa"
-        },
-        "1d": {
-          "rsi": 60.3,
-          "status": "Neutro \u26aa"
-        },
-        "1wk": {
-          "rsi": 74.3,
-          "status": "Ipercomprato \ud83d\udfe0"
-        }
-      }
-    },
-    {
-      "id": "sug_amd",
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices, Inc.",
-      "category": "AZIONI",
-      "current_price": 503.4,
-      "currency": "USD",
-      "pe_ratio": 128.4,
-      "dist_52w_pct": -23.6,
-      "score": 52,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 18.9,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1d": {
-          "rsi": 35.3,
-          "status": "Neutro \u26aa"
-        },
-        "1wk": {
-          "rsi": 47.9,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_intc",
-      "ticker": "INTC",
-      "name": "Intel Corporation",
-      "category": "AZIONI",
-      "current_price": 64.89,
-      "currency": "USD",
-      "pe_ratio": 29.6,
-      "dist_52w_pct": -54.4,
-      "score": 95,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 9.1,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1d": {
-          "rsi": 22.5,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
-        },
-        "1wk": {
-          "rsi": 38.5,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_qcom",
-      "ticker": "QCOM",
-      "name": "QUALCOMM Incorporated",
-      "category": "AZIONI",
-      "current_price": 165.24,
-      "currency": "USD",
-      "pe_ratio": 19.1,
-      "dist_52w_pct": -36.4,
-      "score": 80,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 25.3,
-          "status": "Ipervenduto \ud83d\udd35"
-        },
-        "1d": {
-          "rsi": 42.9,
-          "status": "Neutro \u26aa"
-        },
-        "1wk": {
-          "rsi": 49.7,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_nflx",
-      "ticker": "NFLX",
-      "name": "Netflix, Inc.",
-      "category": "AZIONI",
-      "current_price": 62.29,
-      "currency": "USD",
-      "pe_ratio": 18.0,
-      "dist_52w_pct": -46.6,
-      "score": 98,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 62.1,
-          "status": "Neutro \u26aa"
-        },
-        "1d": {
-          "rsi": 25.9,
-          "status": "Ipervenduto \ud83d\udd35"
-        },
-        "1wk": {
-          "rsi": 39.7,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_adbe",
-      "ticker": "ADBE",
-      "name": "Adobe Inc.",
-      "category": "AZIONI",
-      "current_price": 251.29,
-      "currency": "USD",
-      "pe_ratio": 14.0,
-      "dist_52w_pct": -30.7,
-      "score": 85,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 58.8,
-          "status": "Neutro \u26aa"
-        },
-        "1d": {
-          "rsi": 58.1,
-          "status": "Neutro \u26aa"
-        },
-        "1wk": {
-          "rsi": 57.9,
-          "status": "Neutro \u26aa"
-        }
-      }
-    },
-    {
-      "id": "sug_pypl",
-      "ticker": "PYPL",
-      "name": "PayPal Holdings, Inc.",
-      "category": "AZIONI",
-      "current_price": 57.35,
-      "currency": "USD",
-      "pe_ratio": 10.9,
-      "dist_52w_pct": -18.5,
-      "score": 77,
-      "rsi_signals": {
-        "1h": {
-          "rsi": 71.2,
-          "status": "Ipercomprato \ud83d\udfe0"
-        },
-        "1d": {
-          "rsi": 58.3,
+          "rsi": 32.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -327,26 +102,251 @@
       }
     },
     {
+      "id": "sug_googl",
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc. (Google)",
+      "category": "AZIONI",
+      "current_price": 278.87,
+      "currency": "USD",
+      "pe_ratio": 14.6,
+      "dist_52w_pct": -31.8,
+      "score": 100,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 12.4,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1d": {
+          "rsi": 14.0,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1wk": {
+          "rsi": 36.9,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_meta",
+      "ticker": "META",
+      "name": "Meta Platforms, Inc.",
+      "category": "AZIONI",
+      "current_price": 617.24,
+      "currency": "USD",
+      "pe_ratio": 21.1,
+      "dist_52w_pct": -20.8,
+      "score": 100,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 58.1,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 17.8,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1wk": {
+          "rsi": 52.5,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_tsla",
+      "ticker": "TSLA",
+      "name": "Tesla, Inc.",
+      "category": "AZIONI",
+      "current_price": 398.16,
+      "currency": "USD",
+      "pe_ratio": 437.5,
+      "dist_52w_pct": -20.2,
+      "score": 52,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 34.8,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 58.8,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 73.9,
+          "status": "Ipercomprato \ud83d\udfe0"
+        }
+      }
+    },
+    {
+      "id": "sug_amd",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "category": "AZIONI",
+      "current_price": 498.52,
+      "currency": "USD",
+      "pe_ratio": 127.2,
+      "dist_52w_pct": -24.3,
+      "score": 52,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 14.4,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1d": {
+          "rsi": 34.8,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 47.3,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_intc",
+      "ticker": "INTC",
+      "name": "Intel Corporation",
+      "category": "AZIONI",
+      "current_price": 64.21,
+      "currency": "USD",
+      "pe_ratio": 29.3,
+      "dist_52w_pct": -54.9,
+      "score": 95,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 5.9,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1d": {
+          "rsi": 22.3,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1wk": {
+          "rsi": 38.3,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_qcom",
+      "ticker": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "category": "AZIONI",
+      "current_price": 163.27,
+      "currency": "USD",
+      "pe_ratio": 18.9,
+      "dist_52w_pct": -37.2,
+      "score": 80,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 21.5,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
+        },
+        "1d": {
+          "rsi": 41.7,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 49.0,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_nflx",
+      "ticker": "NFLX",
+      "name": "Netflix, Inc.",
+      "category": "AZIONI",
+      "current_price": 62.14,
+      "currency": "USD",
+      "pe_ratio": 18.0,
+      "dist_52w_pct": -46.8,
+      "score": 98,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 58.3,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 25.2,
+          "status": "Ipervenduto \ud83d\udd35"
+        },
+        "1wk": {
+          "rsi": 39.6,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_adbe",
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "category": "AZIONI",
+      "current_price": 250.54,
+      "currency": "USD",
+      "pe_ratio": 14.0,
+      "dist_52w_pct": -30.9,
+      "score": 85,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 57.9,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 57.7,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 57.6,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
+      "id": "sug_pypl",
+      "ticker": "PYPL",
+      "name": "PayPal Holdings, Inc.",
+      "category": "AZIONI",
+      "current_price": 57.19,
+      "currency": "USD",
+      "pe_ratio": 10.9,
+      "dist_52w_pct": -18.7,
+      "score": 77,
+      "rsi_signals": {
+        "1h": {
+          "rsi": 67.0,
+          "status": "Neutro \u26aa"
+        },
+        "1d": {
+          "rsi": 57.4,
+          "status": "Neutro \u26aa"
+        },
+        "1wk": {
+          "rsi": 52.2,
+          "status": "Neutro \u26aa"
+        }
+      }
+    },
+    {
       "id": "sug_jpm",
       "ticker": "JPM",
       "name": "JPMorgan Chase & Co.",
       "category": "AZIONI",
-      "current_price": 339.24,
+      "current_price": 338.17,
       "currency": "USD",
       "pe_ratio": 14.2,
-      "dist_52w_pct": -7.4,
+      "dist_52w_pct": -7.7,
       "score": 70,
       "rsi_signals": {
         "1h": {
-          "rsi": 48.2,
+          "rsi": 47.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 55.9,
+          "rsi": 54.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 42.5,
+          "rsi": 41.7,
           "status": "Neutro \u26aa"
         }
       }
@@ -356,22 +356,22 @@
       "ticker": "V",
       "name": "Visa Inc.",
       "category": "AZIONI",
-      "current_price": 415.18,
+      "current_price": 416.21,
       "currency": "USD",
-      "pe_ratio": 33.7,
-      "dist_52w_pct": -0.4,
+      "pe_ratio": 33.8,
+      "dist_52w_pct": -0.2,
       "score": 50,
       "rsi_signals": {
         "1h": {
-          "rsi": 84.0,
+          "rsi": 84.5,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 70.7,
+          "rsi": 71.2,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
-          "rsi": 77.5,
+          "rsi": 77.7,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         }
       }
@@ -381,22 +381,22 @@
       "ticker": "MA",
       "name": "Mastercard Incorporated",
       "category": "AZIONI",
-      "current_price": 636.32,
+      "current_price": 639.17,
       "currency": "USD",
-      "pe_ratio": 35.0,
-      "dist_52w_pct": -1.2,
+      "pe_ratio": 35.2,
+      "dist_52w_pct": -0.8,
       "score": 50,
       "rsi_signals": {
         "1h": {
-          "rsi": 81.0,
+          "rsi": 82.2,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 72.1,
+          "rsi": 73.0,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
-          "rsi": 73.4,
+          "rsi": 73.7,
           "status": "Ipercomprato \ud83d\udfe0"
         }
       }
@@ -406,22 +406,22 @@
       "ticker": "JNJ",
       "name": "Johnson & Johnson",
       "category": "AZIONI",
-      "current_price": 275.71,
+      "current_price": 276.75,
       "currency": "USD",
-      "pe_ratio": 41.8,
-      "dist_52w_pct": -2.2,
+      "pe_ratio": 42.0,
+      "dist_52w_pct": -1.9,
       "score": 40,
       "rsi_signals": {
         "1h": {
-          "rsi": 73.0,
+          "rsi": 74.4,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 60.4,
+          "rsi": 61.1,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 57.5,
+          "rsi": 58.0,
           "status": "Neutro \u26aa"
         }
       }
@@ -431,22 +431,22 @@
       "ticker": "WMT",
       "name": "Walmart Inc.",
       "category": "AZIONI",
-      "current_price": 124.11,
+      "current_price": 123.88,
       "currency": "USD",
-      "pe_ratio": 45.0,
-      "dist_52w_pct": -8.2,
+      "pe_ratio": 44.9,
+      "dist_52w_pct": -8.3,
       "score": 25,
       "rsi_signals": {
         "1h": {
-          "rsi": 88.7,
+          "rsi": 84.2,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 77.4,
+          "rsi": 77.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
-          "rsi": 65.9,
+          "rsi": 65.7,
           "status": "Neutro \u26aa"
         }
       }
@@ -456,22 +456,22 @@
       "ticker": "DIS",
       "name": "The Walt Disney Company",
       "category": "AZIONI",
-      "current_price": 111.44,
+      "current_price": 111.24,
       "currency": "USD",
-      "pe_ratio": 23.0,
-      "dist_52w_pct": -4.8,
-      "score": 60,
+      "pe_ratio": 22.9,
+      "dist_52w_pct": -5.0,
+      "score": 65,
       "rsi_signals": {
         "1h": {
-          "rsi": 77.2,
+          "rsi": 75.9,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 61.1,
+          "rsi": 60.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 70.7,
+          "rsi": 70.4,
           "status": "Ipercomprato \ud83d\udfe0"
         }
       }
@@ -481,22 +481,22 @@
       "ticker": "XOM",
       "name": "Exxon Mobil Corporation",
       "category": "AZIONI",
-      "current_price": 185.61,
+      "current_price": 187.03,
       "currency": "USD",
-      "pe_ratio": 23.9,
-      "dist_52w_pct": -1.5,
+      "pe_ratio": 24.1,
+      "dist_52w_pct": -0.8,
       "score": 60,
       "rsi_signals": {
         "1h": {
-          "rsi": 61.7,
+          "rsi": 65.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 72.7,
+          "rsi": 74.0,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
-          "rsi": 72.8,
+          "rsi": 73.4,
           "status": "Ipercomprato \ud83d\udfe0"
         }
       }
@@ -506,22 +506,22 @@
       "ticker": "SWDA.MI",
       "name": "iShares Core MSCI World ETF",
       "category": "ETF",
-      "current_price": 129.58,
+      "current_price": 129.69,
       "currency": "EUR",
       "pe_ratio": null,
-      "dist_52w_pct": -2.1,
+      "dist_52w_pct": -2.0,
       "score": 50,
       "rsi_signals": {
         "1h": {
-          "rsi": 25.8,
+          "rsi": 26.8,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
-          "rsi": 33.6,
+          "rsi": 34.1,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 61.7,
+          "rsi": 62.0,
           "status": "Neutro \u26aa"
         }
       }
@@ -531,22 +531,22 @@
       "ticker": "SXR8.DE",
       "name": "iShares Core S&P 500 ETF",
       "category": "ETF",
-      "current_price": 734.0,
+      "current_price": 734.62,
       "currency": "EUR",
       "pe_ratio": null,
-      "dist_52w_pct": -2.8,
+      "dist_52w_pct": -2.7,
       "score": 50,
       "rsi_signals": {
         "1h": {
-          "rsi": 21.0,
+          "rsi": 21.9,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 31.8,
+          "rsi": 32.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 61.6,
+          "rsi": 61.9,
           "status": "Neutro \u26aa"
         }
       }
@@ -556,22 +556,22 @@
       "ticker": "BTC-USD",
       "name": "Bitcoin Spot",
       "category": "CRYPTO",
-      "current_price": 77316.46,
+      "current_price": 77024.19,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -30.5,
+      "dist_52w_pct": -30.7,
       "score": 70,
       "rsi_signals": {
         "1h": {
-          "rsi": 51.4,
+          "rsi": 34.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 33.0,
+          "rsi": 32.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 63.2,
+          "rsi": 62.8,
           "status": "Neutro \u26aa"
         }
       }
@@ -581,22 +581,22 @@
       "ticker": "ETH-USD",
       "name": "Ethereum Spot",
       "category": "CRYPTO",
-      "current_price": 2231.07,
+      "current_price": 2237.87,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -43.0,
+      "dist_52w_pct": -42.8,
       "score": 88,
       "rsi_signals": {
         "1h": {
-          "rsi": 58.5,
+          "rsi": 52.1,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 27.2,
+          "rsi": 27.6,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
-          "rsi": 58.4,
+          "rsi": 58.7,
           "status": "Neutro \u26aa"
         }
       }
@@ -606,22 +606,22 @@
       "ticker": "SOL-USD",
       "name": "Solana Spot",
       "category": "CRYPTO",
-      "current_price": 95.05,
+      "current_price": 94.9,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -49.9,
+      "dist_52w_pct": -50.0,
       "score": 88,
       "rsi_signals": {
         "1h": {
-          "rsi": 49.1,
+          "rsi": 35.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 26.1,
+          "rsi": 25.9,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
-          "rsi": 59.6,
+          "rsi": 59.5,
           "status": "Neutro \u26aa"
         }
       }
@@ -631,15 +631,15 @@
       "ticker": "BNB-USD",
       "name": "Binance Coin",
       "category": "CRYPTO",
-      "current_price": 700.32,
+      "current_price": 700.48,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -36.6,
       "score": 70,
       "rsi_signals": {
         "1h": {
-          "rsi": 36.9,
-          "status": "Neutro \u26aa"
+          "rsi": 18.6,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
           "rsi": 42.8,
@@ -656,22 +656,22 @@
       "ticker": "GC=F",
       "name": "Oro (Gold Futures)",
       "category": "COMMODITY",
-      "current_price": 3907.3,
+      "current_price": 3896.1,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -30.1,
-      "score": 88,
+      "dist_52w_pct": -30.3,
+      "score": 95,
       "rsi_signals": {
         "1h": {
-          "rsi": 16.6,
+          "rsi": 15.8,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 25.5,
-          "status": "Ipervenduto \ud83d\udd35"
+          "rsi": 25.0,
+          "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1wk": {
-          "rsi": 44.6,
+          "rsi": 44.3,
           "status": "Neutro \u26aa"
         }
       }
@@ -681,22 +681,22 @@
       "ticker": "SI=F",
       "name": "Argento (Silver Futures)",
       "category": "COMMODITY",
-      "current_price": 49.26,
+      "current_price": 49.17,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -59.4,
+      "dist_52w_pct": -59.5,
       "score": 100,
       "rsi_signals": {
         "1h": {
-          "rsi": 18.9,
+          "rsi": 18.3,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 16.8,
+          "rsi": 16.7,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1wk": {
-          "rsi": 37.8,
+          "rsi": 37.7,
           "status": "Neutro \u26aa"
         }
       }
@@ -711,10 +711,10 @@
       "buy_price": 213.66,
       "invested": 100.0,
       "shares": 0.468,
-      "current_price": 204.42,
-      "current_value": 95.67,
-      "pnl_pct": -4.33,
-      "pnl_usd": -4.33
+      "current_price": 203.28,
+      "current_value": 95.14,
+      "pnl_pct": -4.86,
+      "pnl_usd": -4.86
     },
     {
       "id": "trade_amzn",
@@ -724,10 +724,10 @@
       "buy_price": 243.79,
       "invested": 100.0,
       "shares": 0.4102,
-      "current_price": 240.45,
-      "current_value": 98.63,
-      "pnl_pct": -1.37,
-      "pnl_usd": -1.37
+      "current_price": 238.21,
+      "current_value": 97.71,
+      "pnl_pct": -2.29,
+      "pnl_usd": -2.29
     },
     {
       "id": "trade_googl",
@@ -737,10 +737,10 @@
       "buy_price": 283.82,
       "invested": 100.0,
       "shares": 0.3523,
-      "current_price": 280.39,
-      "current_value": 98.78,
-      "pnl_pct": -1.22,
-      "pnl_usd": -1.22
+      "current_price": 278.87,
+      "current_value": 98.25,
+      "pnl_pct": -1.75,
+      "pnl_usd": -1.75
     },
     {
       "id": "trade_meta",
@@ -750,10 +750,10 @@
       "buy_price": 624.52,
       "invested": 100.0,
       "shares": 0.1601,
-      "current_price": 621.77,
-      "current_value": 99.55,
-      "pnl_pct": -0.45,
-      "pnl_usd": -0.45
+      "current_price": 617.24,
+      "current_value": 98.82,
+      "pnl_pct": -1.18,
+      "pnl_usd": -1.18
     },
     {
       "id": "trade_nflx",
@@ -763,10 +763,10 @@
       "buy_price": 62.05,
       "invested": 100.0,
       "shares": 1.6116,
-      "current_price": 62.29,
-      "current_value": 100.39,
-      "pnl_pct": 0.39,
-      "pnl_usd": 0.39
+      "current_price": 62.14,
+      "current_value": 100.14,
+      "pnl_pct": 0.14,
+      "pnl_usd": 0.14
     },
     {
       "id": "trade_eth-usd",
@@ -776,10 +776,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2231.07,
-      "current_value": 98.84,
-      "pnl_pct": -1.16,
-      "pnl_usd": -1.16
+      "current_price": 2237.87,
+      "current_value": 99.14,
+      "pnl_pct": -0.86,
+      "pnl_usd": -0.86
     },
     {
       "id": "trade_sol-usd",
@@ -789,10 +789,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.05,
-      "current_value": 98.79,
-      "pnl_pct": -1.21,
-      "pnl_usd": -1.21
+      "current_price": 94.9,
+      "current_value": 98.64,
+      "pnl_pct": -1.36,
+      "pnl_usd": -1.36
     },
     {
       "id": "trade_bnb-usd",
@@ -802,10 +802,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 700.32,
-      "current_value": 100.36,
-      "pnl_pct": 0.36,
-      "pnl_usd": 0.36
+      "current_price": 700.48,
+      "current_value": 100.38,
+      "pnl_pct": 0.38,
+      "pnl_usd": 0.38
     },
     {
       "id": "trade_si=f",
@@ -815,10 +815,10 @@
       "buy_price": 52.19,
       "invested": 100.0,
       "shares": 1.9161,
-      "current_price": 49.26,
-      "current_value": 94.39,
-      "pnl_pct": -5.61,
-      "pnl_usd": -5.61
+      "current_price": 49.17,
+      "current_value": 94.21,
+      "pnl_pct": -5.79,
+      "pnl_usd": -5.79
     },
     {
       "id": "trade_btc-usd",
@@ -828,10 +828,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 77316.46,
-      "current_value": 100.51,
-      "pnl_pct": 0.51,
-      "pnl_usd": 0.51,
+      "current_price": 77024.19,
+      "current_value": 100.13,
+      "pnl_pct": 0.13,
+      "pnl_usd": 0.13,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -842,10 +842,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 3907.3,
-      "current_value": 97.29,
-      "pnl_pct": -2.71,
-      "pnl_usd": -2.71,
+      "current_price": 3896.1,
+      "current_value": 97.01,
+      "pnl_pct": -2.99,
+      "pnl_usd": -2.99,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -856,10 +856,10 @@
       "buy_price": 130.16,
       "invested": 100.0,
       "shares": 0.7683,
-      "current_price": 129.58,
-      "current_value": 99.56,
-      "pnl_pct": -0.44,
-      "pnl_usd": -0.44,
+      "current_price": 129.69,
+      "current_value": 99.64,
+      "pnl_pct": -0.36,
+      "pnl_usd": -0.36,
       "trigger_reason": "RSI 1H (28.1)"
     },
     {
@@ -870,10 +870,10 @@
       "buy_price": 737.0,
       "invested": 100.0,
       "shares": 0.1357,
-      "current_price": 734.0,
-      "current_value": 99.6,
-      "pnl_pct": -0.4,
-      "pnl_usd": -0.4,
+      "current_price": 734.62,
+      "current_value": 99.69,
+      "pnl_pct": -0.31,
+      "pnl_usd": -0.31,
       "trigger_reason": "RSI 1H (18.1)"
     },
     {
@@ -884,10 +884,10 @@
       "buy_price": 514.16,
       "invested": 100.0,
       "shares": 0.1945,
-      "current_price": 503.4,
-      "current_value": 97.91,
-      "pnl_pct": -2.09,
-      "pnl_usd": -2.09,
+      "current_price": 498.52,
+      "current_value": 96.96,
+      "pnl_pct": -3.04,
+      "pnl_usd": -3.04,
       "trigger_reason": "RSI 1H (23.6)"
     },
     {
@@ -898,10 +898,10 @@
       "buy_price": 64.5,
       "invested": 100.0,
       "shares": 1.5504,
-      "current_price": 64.89,
-      "current_value": 100.61,
-      "pnl_pct": 0.61,
-      "pnl_usd": 0.61,
+      "current_price": 64.21,
+      "current_value": 99.55,
+      "pnl_pct": -0.45,
+      "pnl_usd": -0.45,
       "trigger_reason": "RSI 1D (22.4)"
     },
     {
@@ -912,10 +912,10 @@
       "buy_price": 171.37,
       "invested": 100.0,
       "shares": 0.5835,
-      "current_price": 165.24,
-      "current_value": 96.42,
-      "pnl_pct": -3.58,
-      "pnl_usd": -3.58,
+      "current_price": 163.27,
+      "current_value": 95.27,
+      "pnl_pct": -4.73,
+      "pnl_usd": -4.73,
       "trigger_reason": "RSI 1H (27.0)"
     }
   ],
@@ -928,10 +928,10 @@
       "buy_price": 213.66,
       "invested": 100.0,
       "shares": 0.468,
-      "current_price": 204.42,
-      "current_value": 95.67,
-      "pnl_pct": -4.33,
-      "pnl_usd": -4.33
+      "current_price": 203.28,
+      "current_value": 95.14,
+      "pnl_pct": -4.86,
+      "pnl_usd": -4.86
     },
     {
       "id": "dca_amzn_20261029205927",
@@ -941,10 +941,10 @@
       "buy_price": 243.79,
       "invested": 100.0,
       "shares": 0.4102,
-      "current_price": 240.45,
-      "current_value": 98.63,
-      "pnl_pct": -1.37,
-      "pnl_usd": -1.37
+      "current_price": 238.21,
+      "current_value": 97.71,
+      "pnl_pct": -2.29,
+      "pnl_usd": -2.29
     },
     {
       "id": "dca_googl_20261029205928",
@@ -954,10 +954,10 @@
       "buy_price": 283.82,
       "invested": 100.0,
       "shares": 0.3523,
-      "current_price": 280.39,
-      "current_value": 98.78,
-      "pnl_pct": -1.22,
-      "pnl_usd": -1.22
+      "current_price": 278.87,
+      "current_value": 98.25,
+      "pnl_pct": -1.75,
+      "pnl_usd": -1.75
     },
     {
       "id": "dca_meta_20261029205929",
@@ -967,10 +967,10 @@
       "buy_price": 624.52,
       "invested": 100.0,
       "shares": 0.1601,
-      "current_price": 621.77,
-      "current_value": 99.55,
-      "pnl_pct": -0.45,
-      "pnl_usd": -0.45
+      "current_price": 617.24,
+      "current_value": 98.82,
+      "pnl_pct": -1.18,
+      "pnl_usd": -1.18
     },
     {
       "id": "dca_nflx_20261029205933",
@@ -980,10 +980,10 @@
       "buy_price": 62.05,
       "invested": 100.0,
       "shares": 1.6116,
-      "current_price": 62.29,
-      "current_value": 100.39,
-      "pnl_pct": 0.39,
-      "pnl_usd": 0.39
+      "current_price": 62.14,
+      "current_value": 100.14,
+      "pnl_pct": 0.14,
+      "pnl_usd": 0.14
     },
     {
       "id": "dca_eth-usd_20261029205943",
@@ -993,10 +993,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2231.07,
-      "current_value": 98.84,
-      "pnl_pct": -1.16,
-      "pnl_usd": -1.16
+      "current_price": 2237.87,
+      "current_value": 99.14,
+      "pnl_pct": -0.86,
+      "pnl_usd": -0.86
     },
     {
       "id": "dca_sol-usd_20261029205944",
@@ -1006,10 +1006,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.05,
-      "current_value": 98.79,
-      "pnl_pct": -1.21,
-      "pnl_usd": -1.21
+      "current_price": 94.9,
+      "current_value": 98.64,
+      "pnl_pct": -1.36,
+      "pnl_usd": -1.36
     },
     {
       "id": "dca_bnb-usd_20261029205944",
@@ -1019,10 +1019,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 700.32,
-      "current_value": 100.36,
-      "pnl_pct": 0.36,
-      "pnl_usd": 0.36
+      "current_price": 700.48,
+      "current_value": 100.38,
+      "pnl_pct": 0.38,
+      "pnl_usd": 0.38
     },
     {
       "id": "dca_si=f_20261029205946",
@@ -1032,10 +1032,10 @@
       "buy_price": 52.19,
       "invested": 100.0,
       "shares": 1.9161,
-      "current_price": 49.26,
-      "current_value": 94.39,
-      "pnl_pct": -5.61,
-      "pnl_usd": -5.61
+      "current_price": 49.17,
+      "current_value": 94.21,
+      "pnl_pct": -5.79,
+      "pnl_usd": -5.79
     },
     {
       "id": "dca_nvda_20261030004433",
@@ -1045,10 +1045,10 @@
       "buy_price": 213.66,
       "invested": 100.0,
       "shares": 0.468,
-      "current_price": 204.42,
-      "current_value": 95.67,
-      "pnl_pct": -4.33,
-      "pnl_usd": -4.33,
+      "current_price": 203.28,
+      "current_value": 95.14,
+      "pnl_pct": -4.86,
+      "pnl_usd": -4.86,
       "trigger_reason": "RSI 1H (26.2)"
     },
     {
@@ -1059,10 +1059,10 @@
       "buy_price": 243.79,
       "invested": 100.0,
       "shares": 0.4102,
-      "current_price": 240.45,
-      "current_value": 98.63,
-      "pnl_pct": -1.37,
-      "pnl_usd": -1.37,
+      "current_price": 238.21,
+      "current_value": 97.71,
+      "pnl_pct": -2.29,
+      "pnl_usd": -2.29,
       "trigger_reason": "RSI 1H (24.8)"
     },
     {
@@ -1073,10 +1073,10 @@
       "buy_price": 283.82,
       "invested": 100.0,
       "shares": 0.3523,
-      "current_price": 280.39,
-      "current_value": 98.78,
-      "pnl_pct": -1.22,
-      "pnl_usd": -1.22,
+      "current_price": 278.87,
+      "current_value": 98.25,
+      "pnl_pct": -1.75,
+      "pnl_usd": -1.75,
       "trigger_reason": "RSI 1D (26.7)"
     },
     {
@@ -1087,10 +1087,10 @@
       "buy_price": 624.52,
       "invested": 100.0,
       "shares": 0.1601,
-      "current_price": 621.77,
-      "current_value": 99.55,
-      "pnl_pct": -0.45,
-      "pnl_usd": -0.45,
+      "current_price": 617.24,
+      "current_value": 98.82,
+      "pnl_pct": -1.18,
+      "pnl_usd": -1.18,
       "trigger_reason": "RSI 1D (23.5)"
     },
     {
@@ -1101,10 +1101,10 @@
       "buy_price": 62.05,
       "invested": 100.0,
       "shares": 1.6116,
-      "current_price": 62.29,
-      "current_value": 100.39,
-      "pnl_pct": 0.39,
-      "pnl_usd": 0.39,
+      "current_price": 62.14,
+      "current_value": 100.14,
+      "pnl_pct": 0.14,
+      "pnl_usd": 0.14,
       "trigger_reason": "RSI 1D (25.9)"
     },
     {
@@ -1115,10 +1115,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 77316.46,
-      "current_value": 100.51,
-      "pnl_pct": 0.51,
-      "pnl_usd": 0.51,
+      "current_price": 77024.19,
+      "current_value": 100.13,
+      "pnl_pct": 0.13,
+      "pnl_usd": 0.13,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -1129,10 +1129,10 @@
       "buy_price": 2210.29,
       "invested": 100.0,
       "shares": 0.0452,
-      "current_price": 2231.07,
-      "current_value": 100.84,
-      "pnl_pct": 0.84,
-      "pnl_usd": 0.84,
+      "current_price": 2237.87,
+      "current_value": 101.15,
+      "pnl_pct": 1.15,
+      "pnl_usd": 1.15,
       "trigger_reason": "RSI 1D (24.7)"
     },
     {
@@ -1143,10 +1143,10 @@
       "buy_price": 93.73,
       "invested": 100.0,
       "shares": 1.0669,
-      "current_price": 95.05,
-      "current_value": 101.41,
-      "pnl_pct": 1.41,
-      "pnl_usd": 1.41,
+      "current_price": 94.9,
+      "current_value": 101.25,
+      "pnl_pct": 1.25,
+      "pnl_usd": 1.25,
       "trigger_reason": "RSI 1D (23.2)"
     },
     {
@@ -1157,10 +1157,10 @@
       "buy_price": 689.64,
       "invested": 100.0,
       "shares": 0.145,
-      "current_price": 700.32,
-      "current_value": 101.55,
-      "pnl_pct": 1.55,
-      "pnl_usd": 1.55,
+      "current_price": 700.48,
+      "current_value": 101.57,
+      "pnl_pct": 1.57,
+      "pnl_usd": 1.57,
       "trigger_reason": "RSI 1H (20.9)"
     },
     {
@@ -1171,10 +1171,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 3907.3,
-      "current_value": 97.29,
-      "pnl_pct": -2.71,
-      "pnl_usd": -2.71,
+      "current_price": 3896.1,
+      "current_value": 97.01,
+      "pnl_pct": -2.99,
+      "pnl_usd": -2.99,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -1185,10 +1185,10 @@
       "buy_price": 51.94,
       "invested": 100.0,
       "shares": 1.9253,
-      "current_price": 49.26,
-      "current_value": 94.84,
-      "pnl_pct": -5.16,
-      "pnl_usd": -5.16,
+      "current_price": 49.17,
+      "current_value": 94.67,
+      "pnl_pct": -5.33,
+      "pnl_usd": -5.33,
       "trigger_reason": "RSI 1D (19.4)"
     },
     {
@@ -1199,10 +1199,10 @@
       "buy_price": 130.16,
       "invested": 100.0,
       "shares": 0.7683,
-      "current_price": 129.58,
-      "current_value": 99.56,
-      "pnl_pct": -0.44,
-      "pnl_usd": -0.44,
+      "current_price": 129.69,
+      "current_value": 99.64,
+      "pnl_pct": -0.36,
+      "pnl_usd": -0.36,
       "trigger_reason": "RSI 1H (28.1)"
     },
     {
@@ -1213,10 +1213,10 @@
       "buy_price": 737.0,
       "invested": 100.0,
       "shares": 0.1357,
-      "current_price": 734.0,
-      "current_value": 99.6,
-      "pnl_pct": -0.4,
-      "pnl_usd": -0.4,
+      "current_price": 734.62,
+      "current_value": 99.69,
+      "pnl_pct": -0.31,
+      "pnl_usd": -0.31,
       "trigger_reason": "RSI 1H (18.1)"
     },
     {
@@ -1227,10 +1227,10 @@
       "buy_price": 514.16,
       "invested": 100.0,
       "shares": 0.1945,
-      "current_price": 503.4,
-      "current_value": 97.91,
-      "pnl_pct": -2.09,
-      "pnl_usd": -2.09,
+      "current_price": 498.52,
+      "current_value": 96.96,
+      "pnl_pct": -3.04,
+      "pnl_usd": -3.04,
       "trigger_reason": "RSI 1H (23.6)"
     },
     {
@@ -1241,10 +1241,10 @@
       "buy_price": 64.5,
       "invested": 100.0,
       "shares": 1.5504,
-      "current_price": 64.89,
-      "current_value": 100.61,
-      "pnl_pct": 0.61,
-      "pnl_usd": 0.61,
+      "current_price": 64.21,
+      "current_value": 99.55,
+      "pnl_pct": -0.45,
+      "pnl_usd": -0.45,
       "trigger_reason": "RSI 1D (22.4)"
     },
     {
@@ -1255,10 +1255,10 @@
       "buy_price": 171.37,
       "invested": 100.0,
       "shares": 0.5835,
-      "current_price": 165.24,
-      "current_value": 96.42,
-      "pnl_pct": -3.58,
-      "pnl_usd": -3.58,
+      "current_price": 163.27,
+      "current_value": 95.27,
+      "pnl_pct": -4.73,
+      "pnl_usd": -4.73,
       "trigger_reason": "RSI 1H (27.0)"
     }
   ],
