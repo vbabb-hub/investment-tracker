@@ -79,17 +79,17 @@
     <section id="sec-suggestions" class="tab-content hidden">
       <header class="mb-6">
         <h2 class="text-xl md:text-2xl font-bold text-slate-100">💡 Suggerimenti & Note di Acquisto</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Valutazione dei titoli con punteggio (0-100) e motivazione tecnica in chiaro.</p>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Valutazione dei titoli con punteggio (0-100) e motivazione tecnica in chiaro. Clicca sulle intestazioni per ordinare.</p>
       </header>
 
       <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
         <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
             <tr>
-              <th class="p-3 md:p-4">Asset</th>
-              <th class="p-3 md:p-4">Categoria</th>
-              <th class="p-3 md:p-4">Prezzo</th>
-              <th class="p-3 md:p-4 text-center">Score (0-100)</th>
+              <th onclick="sortSuggestions('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
+              <th onclick="sortSuggestions('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Categoria ↕</th>
+              <th onclick="sortSuggestions('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
+              <th onclick="sortSuggestions('score')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Score (0-100) ↕</th>
               <th class="p-3 md:p-4">Motivazione / Note</th>
             </tr>
           </thead>
@@ -215,10 +215,39 @@
         { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -57.3, "score": 100, "note": "RSI 1D in forte ipervenduto (19.9)", "rsi_signals": { "1h": { "rsi": 31.7, "status": "Neutro ⚪" }, "1d": { "rsi": 19.9, "status": "Ipervenduto Estremo 🟢" }, "1wk": { "rsi": 40.5, "status": "Neutro ⚪" } } }
       ],
       "paper_portfolio": [
-        { "id": "trade_nvda", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:24", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
+        { "id": "trade_nvda", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:24", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" },
+        { "id": "trade_amzn", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1H (24.8)" },
+        { "id": "trade_googl", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:24", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (15.6)" },
+        { "id": "trade_meta", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (27.8)" },
+        { "id": "trade_nflx", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1D (26.2)" },
+        { "id": "trade_eth-usd", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65, "trigger_reason": "RSI 1D (26.6)" },
+        { "id": "trade_sol-usd", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84, "trigger_reason": "RSI 1D (28.9)" },
+        { "id": "trade_bnb-usd", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75, "trigger_reason": "RSI 1H (34.0)" },
+        { "id": "trade_si=f", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73, "trigger_reason": "RSI 1D (19.9)" },
+        { "id": "trade_btc-usd", "ticker": "BTC-USD", "name": "Bitcoin Spot", "buy_date": "2026-10-30 00:44", "buy_price": 76955.4, "invested": 100.0, "shares": 0.0013, "current_price": 78508.96, "current_value": 102.06, "pnl_pct": 2.06, "pnl_usd": 2.06, "trigger_reason": "RSI 1H (28.1)" },
+        { "id": "trade_gc_f", "ticker": "GC=F", "name": "Oro (Gold Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 4020.7, "invested": 100.0, "shares": 0.0249, "current_price": 4019.4, "current_value": 100.08, "pnl_pct": 0.08, "pnl_usd": 0.08, "trigger_reason": "RSI 1D (31.6)" }
       ],
       "dca_portfolio": [
-        { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" }
+        { "id": "dca_nvda_20261029205927", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:59", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
+        { "id": "dca_amzn_20261029205927", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0 },
+        { "id": "dca_googl_20261029205928", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:59", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
+        { "id": "dca_meta_20261029205929", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01 },
+        { "id": "dca_nflx_20261029205933", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0 },
+        { "id": "dca_eth-usd_20261029205943", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65 },
+        { "id": "dca_sol-usd_20261029205944", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84 },
+        { "id": "dca_bnb-usd_20261029205944", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75 },
+        { "id": "dca_si=f_20261029205946", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73 },
+        { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" },
+        { "id": "dca_amzn_20261030004433", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1H (24.8)" },
+        { "id": "dca_googl_20261030004434", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-30 00:44", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (26.7)" },
+        { "id": "dca_meta_20261030004434", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (23.5)" },
+        { "id": "dca_nflx_20261030004437", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1D (25.9)" },
+        { "id": "dca_btc-usd_20261030004445", "ticker": "BTC-USD", "name": "Bitcoin Spot", "buy_date": "2026-10-30 00:44", "buy_price": 76955.4, "invested": 100.0, "shares": 0.0013, "current_price": 78508.96, "current_value": 102.06, "pnl_pct": 2.06, "pnl_usd": 2.06, "trigger_reason": "RSI 1H (27.7)" },
+        { "id": "dca_eth-usd_20261030004445", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-30 00:44", "buy_price": 2210.29, "invested": 100.0, "shares": 0.0452, "current_price": 2242.61, "current_value": 101.37, "pnl_pct": 1.37, "pnl_usd": 1.37, "trigger_reason": "RSI 1D (24.7)" },
+        { "id": "dca_sol-usd_20261030004446", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-30 00:44", "buy_price": 93.73, "invested": 100.0, "shares": 1.0669, "current_price": 97.98, "current_value": 104.53, "pnl_pct": 4.53, "pnl_usd": 4.53, "trigger_reason": "RSI 1D (23.2)" },
+        { "id": "dca_bnb-usd_20261030004446", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-30 00:44", "buy_price": 689.64, "invested": 100.0, "shares": 0.145, "current_price": 717.02, "current_value": 103.97, "pnl_pct": 3.97, "pnl_usd": 3.97, "trigger_reason": "RSI 1H (20.9)" },
+        { "id": "dca_gc_f_20261030004447", "ticker": "GC=F", "name": "Oro (Gold Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 4020.7, "invested": 100.0, "shares": 0.0249, "current_price": 4019.4, "current_value": 100.08, "pnl_pct": 0.08, "pnl_usd": 0.08, "trigger_reason": "RSI 1D (30.0)" },
+        { "id": "dca_si_f_20261030004447", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 51.94, "invested": 100.0, "shares": 1.9253, "current_price": 51.81, "current_value": 99.75, "pnl_pct": -0.25, "pnl_usd": -0.25, "trigger_reason": "RSI 1D (19.4)" }
       ],
       "earnings_calendar": [
         { "ticker": "AAPL", "name": "Apple Inc.", "category": "AZIONI", "earnings_date": "2026-11-02", "ex_dividend_date": "2026-08-10" },
@@ -228,10 +257,10 @@
     };
 
     let currentSort = { column: null, ascending: true };
+    let currentSugSort = { column: null, ascending: true };
     let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
     let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
 
-    // ESPORTAZIONE GLOBALE ESPLICITA PER EVITARE IL REFERENCEERROR
     window.switchTab = function(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       const target = document.getElementById(`sec-${tabId}`);
@@ -281,6 +310,31 @@
       });
 
       renderTable(items);
+    };
+
+    window.sortSuggestions = function(column) {
+      if (!globalData || !globalData.items) return;
+      if (currentSugSort.column === column) {
+        currentSugSort.ascending = !currentSugSort.ascending;
+      } else {
+        currentSugSort.column = column;
+        currentSugSort.ascending = true;
+      }
+
+      let items = [...globalData.items];
+      items.sort((a, b) => {
+        let valA, valB;
+        if (column === 'name') { valA = a.name; valB = b.name; }
+        else if (column === 'category') { valA = a.category; valB = b.category; }
+        else if (column === 'current_price') { valA = a.current_price; valB = b.current_price; }
+        else if (column === 'score') { valA = a.score || 50; valB = b.score || 50; }
+
+        if (valA < valB) return currentSugSort.ascending ? -1 : 1;
+        if (valA > valB) return currentSugSort.ascending ? 1 : -1;
+        return 0;
+      });
+
+      renderSuggestions(items);
     };
 
     function renderRsiBadge(signal) {
