@@ -1,0 +1,25 @@
+name: Telegram Investment Alert
+
+on:
+  schedule:
+    # Esegue automaticamente ogni giorno alle ore 09:00 UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Ti consente anche di testarlo manualmente cliccando su "Run workflow" in GitHub
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Alert Script
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python check_market.py
