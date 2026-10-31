@@ -1,762 +1,287 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investment Tracker & Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Tracker Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col md:flex-row">
-
-  <!-- Sidebar Navigazione Sezioni -->
-  <aside class="w-full md:w-64 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 p-6 flex flex-col justify-between shrink-0">
-    <div>
-      <h1 class="text-xl font-bold text-emerald-400 mb-1">Investment Tracker</h1>
-      <p class="text-slate-400 text-xs mb-6">Pannello di controllo e analytics.</p>
-      
-      <nav class="space-y-2">
-        <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Sezioni Dashboard</label>
-        
-        <button onclick="switchTab('scanner')" id="tab-btn-scanner" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-emerald-600 text-white shadow-lg">
-          📊 Scanner & Watchlist
-        </button>
-
-        <button onclick="switchTab('suggestions')" id="tab-btn-suggestions" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
-          💡 Suggerimenti & Note
-        </button>
-
-        <button onclick="switchTab('unique')" id="tab-btn-unique" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
-          💼 Acquisti Singoli (100$)
-        </button>
-
-        <button onclick="switchTab('dca')" id="tab-btn-dca" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
-          🔄 Piano Accumulo (DCA)
-        </button>
-
-        <button onclick="switchTab('calendar')" id="tab-btn-calendar" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
-          📅 Utili & Dividendi
-        </button>
-
-        <button onclick="switchTab('telegram')" id="tab-btn-telegram" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
-          ⚙️ Notifiche Telegram
-        </button>
-      </nav>
-    </div>
-
-    <div class="text-xs text-slate-500 border-t border-slate-700 pt-4 mt-6">
-      Stato: Operativo 🚀
-    </div>
-  </aside>
-
-  <!-- Area Contenuto Principale -->
-  <main class="flex-1 p-4 md:p-8 overflow-y-auto">
-
-    <!-- SEZIONE 1: SCANNER & WATCHLIST -->
-    <section id="sec-scanner" class="tab-content">
-      <header class="mb-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">📊 Scanner di Mercato</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Clicca sulle intestazioni per ordinare i titoli.</p>
-      </header>
-
-      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
-        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-            <tr>
-              <th onclick="sortTable('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-              <th onclick="sortTable('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Cat. ↕</th>
-              <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-              <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
-              <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
-              <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
-              <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
-              <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
-            </tr>
-          </thead>
-          <tbody id="table-body" class="divide-y divide-slate-700">
-            <!-- Dinamico -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SEZIONE 2: SUGGERIMENTI E NOTE -->
-    <section id="sec-suggestions" class="tab-content hidden">
-      <header class="mb-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-100">💡 Suggerimenti & Note di Acquisto</h2>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Valutazione dei titoli con punteggio (0-100) e motivazione tecnica in chiaro. Clicca sulle intestazioni per ordinare.</p>
-      </header>
-
-      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
-        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-            <tr>
-              <th onclick="sortSuggestions('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-              <th onclick="sortSuggestions('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Categoria ↕</th>
-              <th onclick="sortSuggestions('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-              <th onclick="sortSuggestions('score')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Score (0-100) ↕</th>
-              <th class="p-3 md:p-4">Motivazione / Note</th>
-            </tr>
-          </thead>
-          <tbody id="suggestions-body" class="divide-y divide-slate-700">
-            <!-- Dinamico -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SEZIONE 3: PORTAFOGLIO UNICO -->
-    <section id="sec-unique" class="tab-content hidden">
-      <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 class="text-xl md:text-2xl font-bold text-slate-100">💼 Portafoglio Acquisto Singolo</h3>
-          <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di acquisto una tantum (100$) al primo segnale di ipervenduto.</p>
-        </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <!-- Card Riepilogativa Totali -->
-          <div id="unique-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-4 shadow-md text-xs md:text-sm">
-            <div><span class="text-slate-400 block">Investito:</span> <span id="unique-tot-invested" class="font-bold text-slate-200">0 $</span></div>
-            <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="unique-tot-value" class="font-bold text-slate-200">0 $</span></div>
-            <div><span class="text-slate-400 block">P&L Overall:</span> <span id="unique-tot-pnl" class="font-bold">0 $ (0%)</span></div>
-          </div>
-          <button onclick="sendTelegramReport('unique')" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-3 py-2 rounded-lg text-xs flex items-center gap-1.5 shadow">
-            📲 Report Telegram
-          </button>
-        </div>
-      </header>
-
-      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
-        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-            <tr>
-              <th onclick="sortPortfolio('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-              <th onclick="sortPortfolio('buy_date')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Data Ingresso ↕</th>
-              <th onclick="sortPortfolio('trigger_reason')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Trigger ↕</th>
-              <th onclick="sortPortfolio('buy_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-              <th onclick="sortPortfolio('current_value')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Valore ↕</th>
-              <th onclick="sortPortfolio('pnl_usd')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">Utile ($) ↕</th>
-              <th onclick="sortPortfolio('pnl_pct')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">P&L (%) ↕</th>
-              <th class="p-3 md:p-4 text-center">Azione</th>
-            </tr>
-          </thead>
-          <tbody id="portfolio-body" class="divide-y divide-slate-700">
-            <!-- Dinamico -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SEZIONE 4: PIANO ACCUMULO DCA -->
-    <section id="sec-dca" class="tab-content hidden">
-      <header class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 class="text-xl md:text-2xl font-bold text-slate-100">🔄 Piano Accumulo (DCA)</h3>
-          <p class="text-slate-400 text-xs md:text-sm mt-1">Simulazione di accumulo progressivo (100$ per ogni giorno in ipervenduto).</p>
-        </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <!-- Card Riepilogativa Totali -->
-          <div id="dca-summary-card" class="bg-slate-800 border border-slate-700 rounded-lg p-3 flex items-center gap-4 shadow-md text-xs md:text-sm">
-            <div><span class="text-slate-400 block">Investito:</span> <span id="dca-tot-invested" class="font-bold text-slate-200">0 $</span></div>
-            <div><span class="text-slate-400 block">Valore Attuale:</span> <span id="dca-tot-value" class="font-bold text-slate-200">0 $</span></div>
-            <div><span class="text-slate-400 block">P&L Overall:</span> <span id="dca-tot-pnl" class="font-bold">0 $ (0%)</span></div>
-          </div>
-          <button onclick="sendTelegramReport('dca')" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-3 py-2 rounded-lg text-xs flex items-center gap-1.5 shadow">
-            📲 Report Telegram
-          </button>
-        </div>
-      </header>
-
-      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
-        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-            <tr>
-              <th onclick="sortDca('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-              <th onclick="sortDca('buy_date')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Data Quota ↕</th>
-              <th onclick="sortDca('trigger_reason')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Trigger ↕</th>
-              <th onclick="sortDca('buy_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
-              <th onclick="sortDca('current_value')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Valore ↕</th>
-              <th onclick="sortDca('pnl_usd')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">Utile ($) ↕</th>
-              <th onclick="sortDca('pnl_pct')" class="p-3 md:p-4 text-right cursor-pointer hover:text-emerald-400">P&L (%) ↕</th>
-              <th class="p-3 md:p-4 text-center">Azione</th>
-            </tr>
-          </thead>
-          <tbody id="dca-body" class="divide-y divide-slate-700">
-            <!-- Dinamico -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SEZIONE 5: UTILI E DIVIDENDI -->
-    <section id="sec-calendar" class="tab-content hidden">
-      <header class="mb-6">
-        <h3 class="text-xl md:text-2xl font-bold text-slate-100">📅 Calendario Rilascio Utili & Dividendi</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Date previste per la pubblicazione delle trimestrali e dello stacco dividendi. Clicca sulle intestazioni per ordinare.</p>
-      </header>
-
-      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700">
-        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
-          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700 select-none">
-            <tr>
-              <th onclick="sortCalendar('name')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Asset ↕</th>
-              <th onclick="sortCalendar('category')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Categoria ↕</th>
-              <th onclick="sortCalendar('earnings_date')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Prossimi Utili ↕</th>
-              <th onclick="sortCalendar('ex_dividend_date')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Stacco Dividendo ↕</th>
-            </tr>
-          </thead>
-          <tbody id="calendar-body" class="divide-y divide-slate-700">
-            <!-- Dinamico -->
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SEZIONE 6: CONFIGURAZIONE TELEGRAM -->
-    <section id="sec-telegram" class="tab-content hidden">
-      <header class="mb-6">
-        <h3 class="text-xl md:text-2xl font-bold text-slate-100">⚙️ Configurazione Notifiche Telegram</h3>
-        <p class="text-slate-400 text-xs md:text-sm mt-1">Inserisci le credenziali del tuo Bot Telegram per ricevere avvisi e report direttamente sul telefono.</p>
-      </header>
-
-      <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 shadow-xl max-w-2xl space-y-4">
-        <div>
-          <label class="block text-xs uppercase font-semibold text-slate-300 mb-1">Bot Token</label>
-          <input type="text" id="tg-token" placeholder="es. 123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ" class="w-full bg-slate-900 border border-slate-700 rounded p-2.5 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
-          <p class="text-[11px] text-slate-500 mt-1">Ottenibile da <span class="text-sky-400 font-mono">@BotFather</span> su Telegram.</p>
-        </div>
-
-        <div>
-          <label class="block text-xs uppercase font-semibold text-slate-300 mb-1">Chat ID</label>
-          <input type="text" id="tg-chatid" placeholder="es. 987654321" class="w-full bg-slate-900 border border-slate-700 rounded p-2.5 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
-          <p class="text-[11px] text-slate-500 mt-1">Ottenibile avviando <span class="text-sky-400 font-mono">@userinfobot</span> su Telegram.</p>
-        </div>
-
-        <div class="pt-2 flex gap-3">
-          <button onclick="saveTelegramConfig()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2 rounded text-xs transition">
-            💾 Salva Credenziali
-          </button>
-          <button onclick="testTelegramBot()" class="bg-sky-600 hover:bg-sky-500 text-white font-medium px-4 py-2 rounded text-xs transition">
-            🧪 Invia Messaggio di Prova
-          </button>
-        </div>
-
-        <div id="tg-status-msg" class="hidden text-xs p-3 rounded mt-3"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    const globalData = {
-      "items": [
-        { "name": "Apple Inc.", "ticker": "AAPL", "category": "AZIONI", "current_price": 348.91, "currency": "USD", "pe_ratio": 40.0, "dist_52w_pct": -0.8, "score": 50, "note": "RSI Neutro (1D: 66.5)", "rsi_signals": { "1h": { "rsi": 56.2, "status": "Neutro ⚪" }, "1d": { "rsi": 66.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 58.7, "status": "Neutro ⚪" } } },
-        { "name": "Microsoft Corporation", "ticker": "MSFT", "category": "AZIONI", "current_price": 530.14, "currency": "USD", "pe_ratio": 29.5, "dist_52w_pct": -3.8, "score": 50, "note": "RSI 1W in ipercomprato estremo (80.9)", "rsi_signals": { "1h": { "rsi": 47.5, "status": "Neutro ⚪" }, "1d": { "rsi": 46.3, "status": "Neutro ⚪" }, "1wk": { "rsi": 80.9, "status": "Ipercomprato Estremo 🔴" } } },
-        { "name": "NVIDIA Corporation", "ticker": "NVDA", "category": "AZIONI", "current_price": 213.66, "currency": "USD", "pe_ratio": 27.0, "dist_52w_pct": -12.2, "score": 55, "note": "RSI 1H in ipervenduto (26.2)", "rsi_signals": { "1h": { "rsi": 26.2, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 34.7, "status": "Neutro ⚪" }, "1wk": { "rsi": 53.2, "status": "Neutro ⚪" } } },
-        { "name": "Amazon.com, Inc.", "ticker": "AMZN", "category": "AZIONI", "current_price": 243.79, "currency": "USD", "pe_ratio": 19.6, "dist_52w_pct": -15.1, "score": 72, "note": "RSI 1H in forte ipervenduto (24.8)", "rsi_signals": { "1h": { "rsi": 24.8, "status": "Ipervenduto Estremo 🟢" }, "1d": { "rsi": 34.1, "status": "Neutro ⚪" }, "1wk": { "rsi": 55.1, "status": "Neutro ⚪" } } },
-        { "name": "Alphabet Inc. (Google)", "ticker": "GOOGL", "category": "AZIONI", "current_price": 283.82, "currency": "USD", "pe_ratio": 14.8, "dist_52w_pct": -30.5, "score": 100, "note": "Ipervenduto estremo su 1H e 1D (RSI 15.6) + P/E basso", "rsi_signals": { "1h": { "rsi": 18.1, "status": "Ipervenduto Estremo 🟢" }, "1d": { "rsi": 15.6, "status": "Ipervenduto Estremo 🟢" }, "1wk": { "rsi": 38.1, "status": "Neutro ⚪" } } },
-        { "name": "Meta Platforms, Inc.", "ticker": "META", "category": "AZIONI", "current_price": 624.52, "currency": "USD", "pe_ratio": 21.3, "dist_52w_pct": -19.9, "score": 90, "note": "RSI 1D in ipervenduto (27.8)", "rsi_signals": { "1h": { "rsi": 55.1, "status": "Neutro ⚪" }, "1d": { "rsi": 27.8, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 53.3, "status": "Neutro ⚪" } } },
-        { "name": "Tesla, Inc.", "ticker": "TSLA", "category": "AZIONI", "current_price": 403.3, "currency": "USD", "pe_ratio": 443.2, "dist_52w_pct": -19.2, "score": 52, "note": "P/E elevato (443.2)", "rsi_signals": { "1h": { "rsi": 40.0, "status": "Neutro ⚪" }, "1d": { "rsi": 59.1, "status": "Neutro ⚪" }, "1wk": { "rsi": 74.6, "status": "Ipercomprato 🟠" } } },
-        { "name": "Advanced Micro Devices, Inc.", "ticker": "AMD", "category": "AZIONI", "current_price": 566.42, "currency": "USD", "pe_ratio": 144.5, "dist_52w_pct": -14.0, "score": 45, "note": "RSI Neutro, P/E alto", "rsi_signals": { "1h": { "rsi": 56.7, "status": "Neutro ⚪" }, "1d": { "rsi": 42.0, "status": "Neutro ⚪" }, "1wk": { "rsi": 54.8, "status": "Neutro ⚪" } } },
-        { "name": "Intel Corporation", "ticker": "INTC", "category": "AZIONI", "current_price": 92.07, "currency": "USD", "pe_ratio": 42.6, "dist_52w_pct": -35.3, "score": 60, "note": "Forte sconto dai massimi (-35.3%)", "rsi_signals": { "1h": { "rsi": 39.9, "status": "Neutro ⚪" }, "1d": { "rsi": 35.2, "status": "Neutro ⚪" }, "1wk": { "rsi": 49.9, "status": "Neutro ⚪" } } },
-        { "name": "QUALCOMM Incorporated", "ticker": "QCOM", "category": "AZIONI", "current_price": 185.41, "currency": "USD", "pe_ratio": 21.5, "dist_52w_pct": -28.7, "score": 72, "note": "Buon P/E e sconto dai massimi", "rsi_signals": { "1h": { "rsi": 54.3, "status": "Neutro ⚪" }, "1d": { "rsi": 60.8, "status": "Neutro ⚪" }, "1wk": { "rsi": 56.9, "status": "Neutro ⚪" } } },
-        { "name": "Netflix, Inc.", "ticker": "NFLX", "category": "AZIONI", "current_price": 62.05, "currency": "USD", "pe_ratio": 17.9, "dist_52w_pct": -46.8, "score": 98, "note": "RSI 1D in ipervenduto (26.2)", "rsi_signals": { "1h": { "rsi": 41.8, "status": "Neutro ⚪" }, "1d": { "rsi": 26.2, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 39.5, "status": "Neutro ⚪" } } },
-        { "name": "Adobe Inc.", "ticker": "ADBE", "category": "AZIONI", "current_price": 248.12, "currency": "USD", "pe_ratio": 13.9, "dist_52w_pct": -31.6, "score": 85, "note": "P/E basso (13.9)", "rsi_signals": { "1h": { "rsi": 49.3, "status": "Neutro ⚪" }, "1d": { "rsi": 53.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 56.8, "status": "Neutro ⚪" } } },
-        { "name": "PayPal Holdings, Inc.", "ticker": "PYPL", "category": "AZIONI", "current_price": 56.95, "currency": "USD", "pe_ratio": 10.9, "dist_52w_pct": -19.5, "score": 77, "note": "P/E molto basso (10.9)", "rsi_signals": { "1h": { "rsi": 66.4, "status": "Neutro ⚪" }, "1d": { "rsi": 58.9, "status": "Neutro ⚪" }, "1wk": { "rsi": 51.8, "status": "Neutro ⚪" } } },
-        { "name": "JPMorgan Chase & Co.", "ticker": "JPM", "category": "AZIONI", "current_price": 343.58, "currency": "USD", "pe_ratio": 14.4, "dist_52w_pct": -6.3, "score": 70, "note": "RSI 1H in ipercomprato estremo", "rsi_signals": { "1h": { "rsi": 77.0, "status": "Ipercomprato Estremo 🔴" }, "1d": { "rsi": 63.7, "status": "Neutro ⚪" }, "1wk": { "rsi": 45.4, "status": "Neutro ⚪" } } },
-        { "name": "Visa Inc.", "ticker": "V", "category": "AZIONI", "current_price": 410.54, "currency": "USD", "pe_ratio": 33.3, "dist_52w_pct": -1.0, "score": 50, "note": "RSI in ipercomprato", "rsi_signals": { "1h": { "rsi": 70.7, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 70.3, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 76.5, "status": "Ipercomprato Estremo 🔴" } } },
-        { "name": "Mastercard Incorporated", "ticker": "MA", "category": "AZIONI", "current_price": 635.7, "currency": "USD", "pe_ratio": 35.0, "dist_52w_pct": -0.9, "score": 50, "note": "RSI in ipercomprato", "rsi_signals": { "1h": { "rsi": 78.7, "status": "Ipercomprato Estremo 🔴" }, "1d": { "rsi": 73.6, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 73.3, "status": "Ipercomprato 🟠" } } },
-        { "name": "Johnson & Johnson", "ticker": "JNJ", "category": "AZIONI", "current_price": 275.2, "currency": "USD", "pe_ratio": 41.8, "dist_52w_pct": -2.1, "score": 40, "note": "P/E elevato", "rsi_signals": { "1h": { "rsi": 74.0, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 61.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 57.2, "status": "Neutro ⚪" } } },
-        { "name": "Walmart Inc.", "ticker": "WMT", "category": "AZIONI", "current_price": 121.25, "currency": "USD", "pe_ratio": 43.9, "dist_52w_pct": -10.3, "score": 25, "note": "RSI 1D in ipercomprato estremo", "rsi_signals": { "1h": { "rsi": 70.4, "status": "Ipercomprato 🟠" }, "1d": { "rsi": 76.0, "status": "Ipercomprato Estremo 🔴" }, "1wk": { "rsi": 63.6, "status": "Neutro ⚪" } } },
-        { "name": "The Walt Disney Company", "ticker": "DIS", "category": "AZIONI", "current_price": 110.91, "currency": "USD", "pe_ratio": 22.9, "dist_52w_pct": -5.3, "score": 65, "note": "Area neutrale", "rsi_signals": { "1h": { "rsi": 57.4, "status": "Neutro ⚪" }, "1d": { "rsi": 60.8, "status": "Neutro ⚪" }, "1wk": { "rsi": 69.8, "status": "Neutro ⚪" } } },
-        { "name": "Exxon Mobil Corporation", "ticker": "XOM", "category": "AZIONI", "current_price": 183.29, "currency": "USD", "pe_ratio": 23.6, "dist_52w_pct": -0.9, "score": 60, "note": "RSI giornaliero in ipercomprato", "rsi_signals": { "1h": { "rsi": 64.6, "status": "Neutro ⚪" }, "1d": { "rsi": 73.5, "status": "Ipercomprato 🟠" }, "1wk": { "rsi": 71.8, "status": "Ipercomprato 🟠" } } },
-        { "name": "iShares Core MSCI World ETF", "ticker": "SWDA.MI", "category": "ETF", "current_price": 131.48, "currency": "EUR", "pe_ratio": null, "dist_52w_pct": -0.7, "score": 50, "note": "Indice globale in neutralità", "rsi_signals": { "1h": { "rsi": 46.8, "status": "Neutro ⚪" }, "1d": { "rsi": 50.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 65.7, "status": "Neutro ⚪" } } },
-        { "name": "iShares Core S&P 500 ETF", "ticker": "SXR8.DE", "category": "ETF", "current_price": 746.06, "currency": "EUR", "pe_ratio": null, "dist_52w_pct": -1.2, "score": 50, "note": "S&P 500 stabile", "rsi_signals": { "1h": { "rsi": 34.8, "status": "Neutro ⚪" }, "1d": { "rsi": 47.9, "status": "Neutro ⚪" }, "1wk": { "rsi": 65.8, "status": "Neutro ⚪" } } },
-        { "name": "Bitcoin Spot", "ticker": "BTC-USD", "category": "CRYPTO", "current_price": 78508.96, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -29.7, "score": 62, "note": "RSI 1H in ipervenduto (28.1)", "rsi_signals": { "1h": { "rsi": 28.1, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 34.5, "status": "Neutro ⚪" }, "1wk": { "rsi": 64.9, "status": "Neutro ⚪" } } },
-        { "name": "Ethereum Spot", "ticker": "ETH-USD", "category": "CRYPTO", "current_price": 2242.61, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -43.2, "score": 88, "note": "Ipervenduto su 1H e 1D", "rsi_signals": { "1h": { "rsi": 27.1, "status": "Ipervenduto 🔵" }, "1d": { "rsi": 26.6, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 58.8, "status": "Neutro ⚪" } } },
-        { "name": "Solana Spot", "ticker": "SOL-USD", "category": "CRYPTO", "current_price": 97.98, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -50.5, "score": 88, "note": "RSI 1D in ipervenduto", "rsi_signals": { "1h": { "rsi": 35.4, "status": "Neutro ⚪" }, "1d": { "rsi": 28.9, "status": "Ipervenduto 🔵" }, "1wk": { "rsi": 61.4, "status": "Neutro ⚪" } } },
-        { "name": "Binance Coin", "ticker": "BNB-USD", "category": "CRYPTO", "current_price": 717.02, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -36.2, "score": 70, "note": "RSI 1H in ipervenduto", "rsi_signals": { "1h": { "rsi": 34.0, "status": "Neutro ⚪" }, "1d": { "rsi": 45.4, "status": "Neutro ⚪" }, "1wk": { "rsi": 66.3, "status": "Neutro ⚪" } } },
-        { "name": "Oro (Gold Futures)", "ticker": "GC=F", "category": "COMMODITY", "current_price": 4019.4, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -28.0, "score": 62, "note": "RSI giornaliero vicino ipervenduto", "rsi_signals": { "1h": { "rsi": 38.7, "status": "Neutro ⚪" }, "1d": { "rsi": 31.6, "status": "Neutro ⚪" }, "1wk": { "rsi": 48.2, "status": "Neutro ⚪" } } },
-        { "name": "Argento (Silver Futures)", "ticker": "SI=F", "category": "COMMODITY", "current_price": 51.81, "currency": "USD", "pe_ratio": null, "dist_52w_pct": -57.3, "score": 100, "note": "RSI 1D in forte ipervenduto (19.9)", "rsi_signals": { "1h": { "rsi": 31.7, "status": "Neutro ⚪" }, "1d": { "rsi": 19.9, "status": "Ipervenduto Estremo 🟢" }, "1wk": { "rsi": 40.5, "status": "Neutro ⚪" } } }
-      ],
-      "paper_portfolio": [
-        { "id": "trade_nvda", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:24", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" },
-        { "id": "trade_amzn", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1H (24.8)" },
-        { "id": "trade_googl", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:24", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (15.6)" },
-        { "id": "trade_meta", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (27.8)" },
-        { "id": "trade_nflx", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:24", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1D (26.2)" },
-        { "id": "trade_eth-usd", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65, "trigger_reason": "RSI 1D (26.6)" },
-        { "id": "trade_sol-usd", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84, "trigger_reason": "RSI 1D (28.9)" },
-        { "id": "trade_bnb-usd", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75, "trigger_reason": "RSI 1H (34.0)" },
-        { "id": "trade_si=f", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73, "trigger_reason": "RSI 1D (19.9)" },
-        { "id": "trade_btc-usd", "ticker": "BTC-USD", "name": "Bitcoin Spot", "buy_date": "2026-10-30 00:44", "buy_price": 76955.4, "invested": 100.0, "shares": 0.0013, "current_price": 78508.96, "current_value": 102.06, "pnl_pct": 2.06, "pnl_usd": 2.06, "trigger_reason": "RSI 1H (28.1)" },
-        { "id": "trade_gc_f", "ticker": "GC=F", "name": "Oro (Gold Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 4020.7, "invested": 100.0, "shares": 0.0249, "current_price": 4019.4, "current_value": 100.08, "pnl_pct": 0.08, "pnl_usd": 0.08, "trigger_reason": "RSI 1D (31.6)" }
-      ],
-      "dca_portfolio": [
-        { "id": "dca_nvda_20261029205927", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-29 20:59", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
-        { "id": "dca_amzn_20261029205927", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI" },
-        { "id": "dca_googl_20261029205928", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-29 20:59", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
-        { "id": "dca_meta_20261029205929", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI" },
-        { "id": "dca_nflx_20261029205933", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-29 20:59", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI" },
-        { "id": "dca_eth-usd_20261029205943", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-29 20:59", "buy_price": 2258.22, "invested": 100.0, "shares": 0.0443, "current_price": 2242.61, "current_value": 99.35, "pnl_pct": -0.65, "pnl_usd": -0.65, "trigger_reason": "RSI" },
-        { "id": "dca_sol-usd_20261029205944", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-29 20:59", "buy_price": 96.21, "invested": 100.0, "shares": 1.0394, "current_price": 97.98, "current_value": 101.84, "pnl_pct": 1.84, "pnl_usd": 1.84, "trigger_reason": "RSI" },
-        { "id": "dca_bnb-usd_20261029205944", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-29 20:59", "buy_price": 697.6, "invested": 100.0, "shares": 0.1433, "current_price": 717.02, "current_value": 102.75, "pnl_pct": 2.75, "pnl_usd": 2.75, "trigger_reason": "RSI" },
-        { "id": "dca_si=f_20261029205946", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-29 20:59", "buy_price": 52.19, "invested": 100.0, "shares": 1.9161, "current_price": 51.81, "current_value": 99.27, "pnl_pct": -0.73, "pnl_usd": -0.73, "trigger_reason": "RSI" },
-        { "id": "dca_nvda_20261030004433", "ticker": "NVDA", "name": "NVIDIA Corporation", "buy_date": "2026-10-30 00:44", "buy_price": 213.66, "invested": 100.0, "shares": 0.468, "current_price": 213.66, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1H (26.2)" },
-        { "id": "dca_amzn_20261030004433", "ticker": "AMZN", "name": "Amazon.com, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 243.79, "invested": 100.0, "shares": 0.4102, "current_price": 243.79, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1H (24.8)" },
-        { "id": "dca_googl_20261030004434", "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "buy_date": "2026-10-30 00:44", "buy_price": 283.82, "invested": 100.0, "shares": 0.3523, "current_price": 283.82, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (26.7)" },
-        { "id": "dca_meta_20261030004434", "ticker": "META", "name": "Meta Platforms, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 624.52, "invested": 100.0, "shares": 0.1601, "current_price": 624.52, "current_value": 99.99, "pnl_pct": -0.01, "pnl_usd": -0.01, "trigger_reason": "RSI 1D (23.5)" },
-        { "id": "dca_nflx_20261030004437", "ticker": "NFLX", "name": "Netflix, Inc.", "buy_date": "2026-10-30 00:44", "buy_price": 62.05, "invested": 100.0, "shares": 1.6116, "current_price": 62.05, "current_value": 100.0, "pnl_pct": 0.0, "pnl_usd": 0.0, "trigger_reason": "RSI 1D (25.9)" },
-        { "id": "dca_btc-usd_20261030004445", "ticker": "BTC-USD", "name": "Bitcoin Spot", "buy_date": "2026-10-30 00:44", "buy_price": 76955.4, "invested": 100.0, "shares": 0.0013, "current_price": 78508.96, "current_value": 102.06, "pnl_pct": 2.06, "pnl_usd": 2.06, "trigger_reason": "RSI 1H (27.7)" },
-        { "id": "dca_eth-usd_20261030004445", "ticker": "ETH-USD", "name": "Ethereum Spot", "buy_date": "2026-10-30 00:44", "buy_price": 2210.29, "invested": 100.0, "shares": 0.0452, "current_price": 2242.61, "current_value": 101.37, "pnl_pct": 1.37, "pnl_usd": 1.37, "trigger_reason": "RSI 1D (24.7)" },
-        { "id": "dca_sol-usd_20261030004446", "ticker": "SOL-USD", "name": "Solana Spot", "buy_date": "2026-10-30 00:44", "buy_price": 93.73, "invested": 100.0, "shares": 1.0669, "current_price": 97.98, "current_value": 104.53, "pnl_pct": 4.53, "pnl_usd": 4.53, "trigger_reason": "RSI 1D (23.2)" },
-        { "id": "dca_bnb-usd_20261030004446", "ticker": "BNB-USD", "name": "Binance Coin", "buy_date": "2026-10-30 00:44", "buy_price": 689.64, "invested": 100.0, "shares": 0.145, "current_price": 717.02, "current_value": 103.97, "pnl_pct": 3.97, "pnl_usd": 3.97, "trigger_reason": "RSI 1H (20.9)" },
-        { "id": "dca_gc_f_20261030004447", "ticker": "GC=F", "name": "Oro (Gold Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 4020.7, "invested": 100.0, "shares": 0.0249, "current_price": 4019.4, "current_value": 100.08, "pnl_pct": 0.08, "pnl_usd": 0.08, "trigger_reason": "RSI 1D (30.0)" },
-        { "id": "dca_si_f_20261030004447", "ticker": "SI=F", "name": "Argento (Silver Futures)", "buy_date": "2026-10-30 00:44", "buy_price": 51.94, "invested": 100.0, "shares": 1.9253, "current_price": 51.81, "current_value": 99.75, "pnl_pct": -0.25, "pnl_usd": -0.25, "trigger_reason": "RSI 1D (19.4)" }
-      ],
-      "earnings_calendar": [
-        { "ticker": "AAPL", "name": "Apple Inc.", "category": "AZIONI", "earnings_date": "2026-11-02", "ex_dividend_date": "2026-08-10" },
-        { "ticker": "MSFT", "name": "Microsoft Corporation", "category": "AZIONI", "earnings_date": "2026-10-28", "ex_dividend_date": "2026-11-19" },
-        { "ticker": "NVDA", "name": "NVIDIA Corporation", "category": "AZIONI", "earnings_date": "2026-11-17", "ex_dividend_date": "2026-09-10" }
-      ]
-    };
-
-    let currentSort = { column: null, ascending: true };
-    let currentSugSort = { column: null, ascending: true };
-    let currentPortSort = { column: null, ascending: true };
-    let currentDcaSort = { column: null, ascending: true };
-    let currentCalSort = { column: null, ascending: true };
-
-    let removedTrades = JSON.parse(localStorage.getItem('removed_unique_trades_v2') || '[]');
-    let removedDcaTrades = JSON.parse(localStorage.getItem('removed_dca_trades_v2') || '[]');
-
-    window.switchTab = function(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      const target = document.getElementById(`sec-${tabId}`);
-      if (target) target.classList.remove('hidden');
-
-      const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
-      const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
-
-      ['scanner', 'suggestions', 'unique', 'dca', 'calendar', 'telegram'].forEach(t => {
-        const btn = document.getElementById(`tab-btn-${t}`);
-        if (btn) {
-          if (t === tabId) {
-            btn.classList.add(...activeBtnClass);
-            btn.classList.remove(...inactiveBtnClass);
-          } else {
-            btn.classList.remove(...activeBtnClass);
-            btn.classList.add(...inactiveBtnClass);
-          }
-        }
-      });
-    };
-
-    window.sortTable = function(column) {
-      if (!globalData || !globalData.items) return;
-      if (currentSort.column === column) {
-        currentSort.ascending = !currentSort.ascending;
-      } else {
-        currentSort.column = column;
-        currentSort.ascending = true;
-      }
-
-      let items = [...globalData.items];
-      items.sort((a, b) => {
-        let valA, valB;
-        if (column === 'name') { valA = a.name; valB = b.name; }
-        else if (column === 'category') { valA = a.category; valB = b.category; }
-        else if (column === 'current_price') { valA = a.current_price; valB = b.current_price; }
-        else if (column === 'pe_ratio') { valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999; }
-        else if (column === 'dist_52w_pct') { valA = a.dist_52w_pct || 0; valB = b.dist_52w_pct || 0; }
-        else if (column === 'rsi_1h') { valA = a.rsi_signals?.['1h']?.rsi || 50; valB = b.rsi_signals?.['1h']?.rsi || 50; }
-        else if (column === 'rsi_1d') { valA = a.rsi_signals?.['1d']?.rsi || 50; valB = b.rsi_signals?.['1d']?.rsi || 50; }
-        else if (column === 'rsi_1w') { valA = a.rsi_signals?.['1wk']?.rsi || 50; valB = b.rsi_signals?.['1wk']?.rsi || 50; }
-
-        if (valA < valB) return currentSort.ascending ? -1 : 1;
-        if (valA > valB) return currentSort.ascending ? 1 : -1;
-        return 0;
-      });
-
-      renderTable(items);
-    };
-
-    window.sortSuggestions = function(column) {
-      if (!globalData || !globalData.items) return;
-      if (currentSugSort.column === column) {
-        currentSugSort.ascending = !currentSugSort.ascending;
-      } else {
-        currentSugSort.column = column;
-        currentSugSort.ascending = true;
-      }
-
-      let items = [...globalData.items];
-      items.sort((a, b) => {
-        let valA, valB;
-        if (column === 'name') { valA = a.name; valB = b.name; }
-        else if (column === 'category') { valA = a.category; valB = b.category; }
-        else if (column === 'current_price') { valA = a.current_price; valB = b.current_price; }
-        else if (column === 'score') { valA = a.score || 50; valB = b.score || 50; }
-
-        if (valA < valB) return currentSugSort.ascending ? -1 : 1;
-        if (valA > valB) return currentSugSort.ascending ? 1 : -1;
-        return 0;
-      });
-
-      renderSuggestions(items);
-    };
-
-    window.sortPortfolio = function(column) {
-      if (!globalData || !globalData.paper_portfolio) return;
-      if (currentPortSort.column === column) {
-        currentPortSort.ascending = !currentPortSort.ascending;
-      } else {
-        currentPortSort.column = column;
-        currentPortSort.ascending = true;
-      }
-
-      let portfolio = [...globalData.paper_portfolio];
-      portfolio.sort((a, b) => {
-        let valA = a[column];
-        let valB = b[column];
-        if (valA === undefined || valA === null) valA = '';
-        if (valB === undefined || valB === null) valB = '';
-
-        if (valA < valB) return currentPortSort.ascending ? -1 : 1;
-        if (valA > valB) return currentPortSort.ascending ? 1 : -1;
-        return 0;
-      });
-
-      renderPortfolio(portfolio, globalData.dca_portfolio);
-    };
-
-    window.sortDca = function(column) {
-      if (!globalData || !globalData.dca_portfolio) return;
-      if (currentDcaSort.column === column) {
-        currentDcaSort.ascending = !currentDcaSort.ascending;
-      } else {
-        currentDcaSort.column = column;
-        currentDcaSort.ascending = true;
-      }
-
-      let dcaPortfolio = [...globalData.dca_portfolio];
-      dcaPortfolio.sort((a, b) => {
-        let valA = a[column];
-        let valB = b[column];
-        if (valA === undefined || valA === null) valA = '';
-        if (valB === undefined || valB === null) valB = '';
-
-        if (valA < valB) return currentDcaSort.ascending ? -1 : 1;
-        if (valA > valB) return currentDcaSort.ascending ? 1 : -1;
-        return 0;
-      });
-
-      renderPortfolio(globalData.paper_portfolio, dcaPortfolio);
-    };
-
-    window.sortCalendar = function(column) {
-      if (!globalData || !globalData.earnings_calendar) return;
-      if (currentCalSort.column === column) {
-        currentCalSort.ascending = !currentCalSort.ascending;
-      } else {
-        currentCalSort.column = column;
-        currentCalSort.ascending = true;
-      }
-
-      let calendar = [...globalData.earnings_calendar];
-      calendar.sort((a, b) => {
-        let valA = a[column] || '';
-        let valB = b[column] || '';
-        if (valA < valB) return currentCalSort.ascending ? -1 : 1;
-        if (valA > valB) return currentCalSort.ascending ? 1 : -1;
-        return 0;
-      });
-
-      renderCalendar(calendar);
-    };
-
-    function renderRsiBadge(signal) {
-      if (!signal) return '<span class="text-slate-500">-</span>';
-      const colorClass = signal.rsi >= 75 ? 'bg-rose-950 text-rose-300 border-rose-800' :
-                         signal.rsi >= 70 ? 'bg-rose-900/50 text-rose-300 border-rose-700' :
-                         signal.rsi <= 25 ? 'bg-emerald-950 text-emerald-300 border-emerald-800' :
-                         signal.rsi <= 30 ? 'bg-emerald-900/50 text-emerald-300 border-emerald-700' : 
-                         'bg-slate-700 text-slate-300 border-slate-600';
-      return `<div class="inline-block px-2 py-1 rounded border text-[11px] ${colorClass}">${signal.rsi} (${signal.status ? signal.status.split(' ')[0] : ''})</div>`;
-    }
-
-    function renderTable(items) {
-      const tbody = document.getElementById('table-body');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      items.forEach(item => {
-        const rsi = item.rsi_signals || {};
-        const peDisplay = item.pe_ratio ? item.pe_ratio : '<span class="text-slate-500">N/D</span>';
-        let distDisplay = '<span class="text-slate-500">N/D</span>';
-        if (item.dist_52w_pct !== null && item.dist_52w_pct !== undefined) {
-          const distColor = item.dist_52w_pct < 0 ? 'text-amber-400' : 'text-emerald-400';
-          distDisplay = `<span class="${distColor}">${item.dist_52w_pct > 0 ? '+' : ''}${item.dist_52w_pct}%</span>`;
-        }
-
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-750 transition-colors">
-            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
-            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
-            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency || 'USD'}</td>
-            <td class="p-3 md:p-4 text-center font-mono">${peDisplay}</td>
-            <td class="p-3 md:p-4 text-center font-mono">${distDisplay}</td>
-            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1h'])}</td>
-            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1d'])}</td>
-            <td class="p-3 md:p-4 text-center">${renderRsiBadge(rsi['1wk'])}</td>
-          </tr>
-        `;
-      });
-    }
-
-    function renderSuggestions(items) {
-      const tbody = document.getElementById('suggestions-body');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      items.forEach(item => {
-        const score = item.score !== undefined ? item.score : 50;
-        let scoreColor = 'text-slate-300 bg-slate-700';
-        if (score >= 70) scoreColor = 'text-emerald-300 bg-emerald-950 border border-emerald-800';
-        else if (score <= 40) scoreColor = 'text-rose-300 bg-rose-950 border border-rose-800';
-
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-750 transition-colors">
-            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400 block md:inline">(${item.ticker})</span></td>
-            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-[10px] md:text-xs">${item.category}</span></td>
-            <td class="p-3 md:p-4 font-semibold text-slate-200">${item.current_price} ${item.currency || 'USD'}</td>
-            <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-mono font-bold text-xs ${scoreColor}">${score} / 100</span></td>
-            <td class="p-3 md:p-4 text-slate-300 text-xs">${item.note || 'Nessuna nota.'}</td>
-          </tr>
-        `;
-      });
-    }
-
-    function renderPortfolio(portfolio, dcaPortfolio) {
-      const tbody = document.getElementById('portfolio-body');
-      if (tbody) {
-        tbody.innerHTML = '';
-        const activePortfolio = (portfolio || []).filter(trade => !removedTrades.includes(`${trade.ticker}_${trade.buy_date}`));
-
-        let totInvested = 0;
-        let totValue = 0;
-
-        if (activePortfolio.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna posizione aperta.</td></tr>`;
-        } else {
-          activePortfolio.forEach(trade => {
-            totInvested += (trade.invested || 100);
-            totValue += (trade.current_value || trade.buy_price);
-
-            const isPos = trade.pnl_pct >= 0;
-            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
-            tbody.innerHTML += `
-              <tr class="hover:bg-slate-750 transition-colors">
-                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
-                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
-                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
-                <td class="p-3 md:p-4">${trade.buy_price} $</td>
-                <td class="p-3 md:p-4">${trade.current_value} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
-                <td class="p-3 md:p-4 text-center">
-                  <button onclick="removedTrades.push('${trade.ticker}_${trade.buy_date}'); localStorage.setItem('removed_unique_trades_v2', JSON.stringify(removedTrades)); renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);" class="px-2 py-1 bg-rose-950 text-rose-300 rounded text-xs">✕</button>
-                </td>
-              </tr>
-            `;
-          });
-        }
-
-        const diffUsd = totValue - totInvested;
-        const diffPct = totInvested > 0 ? ((diffUsd / totInvested) * 100).toFixed(2) : 0;
-        const isOverallPos = diffUsd >= 0;
-        const overallColor = isOverallPos ? 'text-emerald-400' : 'text-rose-400';
-
-        document.getElementById('unique-tot-invested').innerText = totInvested.toFixed(2) + ' $';
-        document.getElementById('unique-tot-value').innerText = totValue.toFixed(2) + ' $';
-        document.getElementById('unique-tot-pnl').className = `font-bold ${overallColor}`;
-        document.getElementById('unique-tot-pnl').innerText = `${isOverallPos ? '+' : ''}${diffUsd.toFixed(2)} $ (${isOverallPos ? '+' : ''}${diffPct}%)`;
-      }
-
-      const dcaTbody = document.getElementById('dca-body');
-      if (dcaTbody) {
-        dcaTbody.innerHTML = '';
-        const activeDca = (dcaPortfolio || []).filter(trade => !removedDcaTrades.includes(trade.id));
-
-        let totDcaInvested = 0;
-        let totDcaValue = 0;
-
-        if (activeDca.length === 0) {
-          dcaTbody.innerHTML = `<tr><td colspan="8" class="p-4 text-center text-slate-500">Nessuna quota DCA attiva.</td></tr>`;
-        } else {
-          activeDca.forEach(trade => {
-            totDcaInvested += (trade.invested || 100);
-            totDcaValue += (trade.current_value || trade.buy_price);
-
-            const isPos = trade.pnl_pct >= 0;
-            const pnlColor = isPos ? 'text-emerald-400 font-semibold' : 'text-rose-400 font-semibold';
-            dcaTbody.innerHTML += `
-              <tr class="hover:bg-slate-750 transition-colors">
-                <td class="p-3 md:p-4 font-medium">${trade.name}</td>
-                <td class="p-3 md:p-4 text-xs text-slate-300">${trade.buy_date}</td>
-                <td class="p-3 md:p-4"><span class="px-2 py-1 bg-slate-700 text-emerald-300 rounded text-[11px]">${trade.trigger_reason || 'RSI'}</span></td>
-                <td class="p-3 md:p-4">${trade.buy_price} $</td>
-                <td class="p-3 md:p-4">${trade.current_value} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_usd} $</td>
-                <td class="p-3 md:p-4 text-right ${pnlColor}">${isPos ? '+' : ''}${trade.pnl_pct}%</td>
-                <td class="p-3 md:p-4 text-center">
-                  <button onclick="removedDcaTrades.push('${trade.id}'); localStorage.setItem('removed_dca_trades_v2', JSON.stringify(removedDcaTrades)); renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);" class="px-2 py-1 bg-rose-950 text-rose-300 rounded text-xs">✕</button>
-                </td>
-              </tr>
-            `;
-          });
-        }
-
-        const diffDcaUsd = totDcaValue - totDcaInvested;
-        const diffDcaPct = totDcaInvested > 0 ? ((diffDcaUsd / totDcaInvested) * 100).toFixed(2) : 0;
-        const isDcaPos = diffDcaUsd >= 0;
-        const dcaColor = isDcaPos ? 'text-emerald-400' : 'text-rose-400';
-
-        document.getElementById('dca-tot-invested').innerText = totDcaInvested.toFixed(2) + ' $';
-        document.getElementById('dca-tot-value').innerText = totDcaValue.toFixed(2) + ' $';
-        document.getElementById('dca-tot-pnl').className = `font-bold ${dcaColor}`;
-        document.getElementById('dca-tot-pnl').innerText = `${isDcaPos ? '+' : ''}${diffDcaUsd.toFixed(2)} $ (${isDcaPos ? '+' : ''}${diffDcaPct}%)`;
-      }
-    }
-
-    function renderCalendar(calendar) {
-      const tbody = document.getElementById('calendar-body');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-      calendar.forEach(item => {
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-750 transition-colors">
-            <td class="p-3 md:p-4 font-medium">${item.name} <span class="text-xs text-slate-400">(${item.ticker})</span></td>
-            <td class="p-3 md:p-4"><span class="px-2 py-0.5 bg-slate-700 rounded text-xs">${item.category}</span></td>
-            <td class="p-3 md:p-4 text-center font-mono text-emerald-400">${item.earnings_date || 'N/D'}</td>
-            <td class="p-3 md:p-4 text-center font-mono text-amber-400">${item.ex_dividend_date || 'N/D'}</td>
-          </tr>
-        `;
-      });
-    }
-
-    // --- LOGICA NOTIFICHE TELEGRAM ---
-    function saveTelegramConfig() {
-      const token = document.getElementById('tg-token').value.trim();
-      const chatId = document.getElementById('tg-chatid').value.trim();
-
-      localStorage.setItem('tg_bot_token', token);
-      localStorage.setItem('tg_chat_id', chatId);
-
-      showTelegramStatus('Credenziali salvate con successo!', 'emerald');
-    }
-
-    function loadTelegramConfig() {
-      const token = localStorage.getItem('tg_bot_token') || '';
-      const chatId = localStorage.getItem('tg_chat_id') || '';
-
-      document.getElementById('tg-token').value = token;
-      document.getElementById('tg-chatid').value = chatId;
-    }
-
-    function showTelegramStatus(text, color) {
-      const el = document.getElementById('tg-status-msg');
-      el.classList.remove('hidden', 'bg-emerald-950', 'text-emerald-300', 'border-emerald-800', 'bg-rose-950', 'text-rose-300', 'border-rose-800');
-      if (color === 'emerald') {
-        el.classList.add('bg-emerald-950', 'text-emerald-300', 'border', 'border-emerald-800');
-      } else {
-        el.classList.add('bg-rose-950', 'text-rose-300', 'border', 'border-rose-800');
-      }
-      el.innerText = text;
-    }
-
-    async function sendTelegramMessage(text) {
-      const token = localStorage.getItem('tg_bot_token');
-      const chatId = localStorage.getItem('tg_chat_id');
-
-      if (!token || !chatId) {
-        alert('Configura prima il Token e il Chat ID nella sezione Notifiche Telegram.');
-        switchTab('telegram');
-        return false;
-      }
-
-      const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: text,
-            parse_mode: 'HTML'
-          })
+<body>
+    <header>
+        <h1>📊 Investment Tracker Dashboard</h1>
+        <p id="last-updated-display">Ultimo aggiornamento: Caricamento in corso...</p>
+    </header>
+
+    <main>
+        <!-- Sezione Suggerimenti & Note -->
+        <section id="suggestions-section">
+            <h2>🎯 Suggerimenti & Note</h2>
+            <div class="table-container">
+                <table id="suggestions-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Prezzo</th>
+                            <th>P/E</th>
+                            <th>Dist. 52W</th>
+                            <th>RSI 1H</th>
+                            <th>RSI 1D</th>
+                            <th>RSI 1WK</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="suggestions-tbody">
+                        <!-- Popolato dinamicamente da JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sezione Telegram Configuration -->
+        <section id="telegram-config-section">
+            <h2>⚙️ Configurazione Telegram</h2>
+            <div class="config-form">
+                <label for="tg-token">Bot Token:</label>
+                <input type="password" id="tg-token" placeholder="Inserisci il Token del Bot">
+                
+                <label for="tg-chat-id">Chat ID:</label>
+                <input type="text" id="tg-chat-id" placeholder="Es. 123456789">
+                
+                <div class="button-group">
+                    <button onclick="saveTelegramCredentials()">Salva Credenziali</button>
+                    <button onclick="sendTestTelegramMessage()">Invia Messaggio di Prova</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione Acquisti Singoli -->
+        <section id="single-purchases-section">
+            <div class="section-header">
+                <h2>🛍️ Acquisti Singoli</h2>
+                <button onclick="sendTelegramReport('paper_portfolio')">Report Telegram</button>
+            </div>
+            <div class="table-container">
+                <table id="paper-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Data</th>
+                            <th>Prezzo Acq.</th>
+                            <th>Investito</th>
+                            <th>Prezzo Att.</th>
+                            <th>Valore Att.</th>
+                            <th>P&L %</th>
+                            <th>P&L $</th>
+                            <th>Motivo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paper-tbody">
+                        <!-- Popolato dinamicamente da JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Sezione DCA -->
+        <section id="dca-section">
+            <div class="section-header">
+                <h2>🔄 Accumulo (DCA)</h2>
+                <button onclick="sendTelegramReport('dca_portfolio')">Report Telegram</button>
+            </div>
+            <div class="table-container">
+                <table id="dca-table">
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Data</th>
+                            <th>Prezzo Acq.</th>
+                            <th>Investito</th>
+                            <th>Prezzo Att.</th>
+                            <th>Valore Att.</th>
+                            <th>P&L %</th>
+                            <th>P&L $</th>
+                            <th>Motivo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dca-tbody">
+                        <!-- Popolato dinamicamente da JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Carica le credenziali Telegram salvate nel localStorage all'avvio
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedToken = localStorage.getItem('tg_token');
+            const savedChatId = localStorage.getItem('tg_chat_id');
+            if (savedToken) document.getElementById('tg-token').value = savedToken;
+            if (savedChatId) document.getElementById('tg-chat-id').value = savedChatId;
+
+            loadDashboardData();
         });
 
-        const data = await response.json();
-        return data.ok;
-      } catch (e) {
-        console.error('Errore invio Telegram:', e);
-        return false;
-      }
-    }
+        // Salva le credenziali Telegram in locale
+        function saveTelegramCredentials() {
+            const token = document.getElementById('tg-token').value.trim();
+            const chatId = document.getElementById('tg-chat-id').value.trim();
+            
+            if (!token || !chatId) {
+                alert('Inserisci sia il Token che il Chat ID!');
+                return;
+            }
 
-    async function testTelegramBot() {
-      saveTelegramConfig();
-      const success = await sendTelegramMessage('🚀 <b>Investment Tracker</b>\n\nMessaggio di prova inviato con successo!');
-      if (success) {
-        showTelegramStatus('Messaggio di prova inviato con successo sul tuo Telegram!', 'emerald');
-      } else {
-        showTelegramStatus('Errore durante l\'invio. Verifica il Token e il Chat ID inseriti.', 'rose');
-      }
-    }
+            localStorage.setItem('tg_token', token);
+            localStorage.setItem('tg_chat_id', chatId);
+            alert('Credenziali salvate con successo nel browser!');
+        }
 
-    async function sendTelegramReport(type) {
-      let title = type === 'unique' ? '💼 Report Acquisti Singoli' : '🔄 Report Piano Accumulo (DCA)';
-      let portfolio = type === 'unique' 
-        ? (globalData.paper_portfolio || []).filter(t => !removedTrades.includes(`${t.ticker}_${t.buy_date}`))
-        : (globalData.dca_portfolio || []).filter(t => !removedDcaTrades.includes(t.id));
+        // Funzione per inviare messaggi tramite Telegram API
+        async function sendTelegramMessage(text) {
+            const token = localStorage.getItem('tg_token') || document.getElementById('tg-token').value.trim();
+            const chatId = localStorage.getItem('tg_chat_id') || document.getElementById('tg-chat-id').value.trim();
 
-      let totInvested = 0;
-      let totValue = 0;
-      let itemsList = '';
+            if (!token || !chatId) {
+                alert('Configura prima il Token ed il Chat ID nelle impostazioni!');
+                return false;
+            }
 
-      portfolio.forEach(t => {
-        totInvested += (t.invested || 100);
-        totValue += (t.current_value || t.buy_price);
-        const sign = t.pnl_pct >= 0 ? '+' : '';
-        itemsList += `• <b>${t.name}</b>: ${t.current_value}$ (${sign}${t.pnl_pct}%)\n`;
-      });
+            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: text,
+                        parse_mode: 'HTML'
+                    })
+                });
 
-      const diffUsd = totValue - totInvested;
-      const diffPct = totInvested > 0 ? ((diffUsd / totInvested) * 100).toFixed(2) : 0;
-      const signOverall = diffUsd >= 0 ? '+' : '';
+                const data = await response.json();
+                if (data.ok) {
+                    return true;
+                } else {
+                    alert('Errore Telegram: ' + data.description);
+                    return false;
+                }
+            } catch (err) {
+                alert('Errore durante la chiamata API di Telegram: ' + err.message);
+                return false;
+            }
+        }
 
-      let message = `<b>${title}</b>\n\n`;
-      message += `💵 <b>Investito:</b> ${totInvested.toFixed(2)} $\n`;
-      message += `📊 <b>Valore Attuale:</b> ${totValue.toFixed(2)} $\n`;
-      message += `📈 <b>P&L Overall:</b> ${signOverall}${diffUsd.toFixed(2)} $ (${signOverall}${diffPct}%)\n\n`;
-      message += `<b>Posizioni Attive (${portfolio.length}):</b>\n${itemsList}`;
+        async function sendTestTelegramMessage() {
+            const ok = await sendTelegramMessage('✅ <b>Test Telegram</b>: Connessione completata con successo!');
+            if (ok) alert('Messaggio di prova inviato su Telegram!');
+        }
 
-      const sent = await sendTelegramMessage(message);
-      if (sent) {
-        alert('Report inviato con successo su Telegram!');
-      } else {
-        alert('Errore durante l\'invio del report. Controlla le impostazioni Telegram.');
-      }
-    }
+        // Caricamento dati con CACHE-BUSTING per evitare dati obsoleti
+        let globalData = null;
 
-    // Inizializzazione automatica all'avvio della pagina
-    window.addEventListener('DOMContentLoaded', () => {
-      renderTable(globalData.items);
-      renderSuggestions(globalData.items);
-      renderPortfolio(globalData.paper_portfolio, globalData.dca_portfolio);
-      renderCalendar(globalData.earnings_calendar);
-      loadTelegramConfig();
-    });
-  </script>
+        async function loadDashboardData() {
+            try {
+                // PARAMETRO CACHE-BUSTING: aggiunge un timestamp per forzare il download del file aggiornato
+                const cacheBuster = '?t=' + new Date().getTime();
+                const response = await fetch('history.json' + cacheBuster);
+                
+                if (!response.ok) {
+                    throw new Error('Impossibile caricare history.json');
+                }
+
+                globalData = await response.json();
+                renderDashboard(globalData);
+            } catch (error) {
+                console.error('Errore durante il caricamento dei dati:', error);
+                document.getElementById('last-updated-display').innerText = 'Errore nel caricamento dei dati.';
+            }
+        }
+
+        function renderDashboard(data) {
+            // Formattazione data aggiornamento
+            if (data.last_updated) {
+                const date = new Date(data.last_updated);
+                document.getElementById('last-updated-display').innerText = `Ultimo aggiornamento: ${date.toLocaleString('it-IT')}`;
+            }
+
+            // Render Suggerimenti
+            const sugTbody = document.getElementById('suggestions-tbody');
+            sugTbody.innerHTML = '';
+            (data.items || []).forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><b>${item.ticker}</b></td>
+                    <td>${item.name}</td>
+                    <td>${item.category}</td>
+                    <td>${item.current_price} ${item.currency}</td>
+                    <td>${item.pe_ratio !== null ? item.pe_ratio : '-'}</td>
+                    <td>${item.dist_52w_pct}%</td>
+                    <td>${item.rsi_signals['1h'] ? item.rsi_signals['1h'].status : '-'} (${item.rsi_signals['1h'] ? item.rsi_signals['1h'].rsi : ''})</td>
+                    <td>${item.rsi_signals['1d'] ? item.rsi_signals['1d'].status : '-'} (${item.rsi_signals['1d'] ? item.rsi_signals['1d'].rsi : ''})</td>
+                    <td>${item.rsi_signals['1wk'] ? item.rsi_signals['1wk'].status : '-'} (${item.rsi_signals['1wk'] ? item.rsi_signals['1wk'].rsi : ''})</td>
+                    <td><b>${item.score}/100</b></td>
+                `;
+                sugTbody.appendChild(tr);
+            });
+
+            // Render Paper Portfolio
+            renderPortfolioTable('paper-tbody', data.paper_portfolio || []);
+
+            // Render DCA Portfolio
+            renderPortfolioTable('dca-tbody', data.dca_portfolio || []);
+        }
+
+        function renderPortfolioTable(tbodyId, list) {
+            const tbody = document.getElementById(tbodyId);
+            tbody.innerHTML = '';
+            list.forEach(item => {
+                const tr = document.createElement('tr');
+                const pnlClass = item.pnl_pct >= 0 ? 'color: green;' : 'color: red;';
+                tr.innerHTML = `
+                    <td><b>${item.ticker}</b></td>
+                    <td>${item.buy_date}</td>
+                    <td>${item.buy_price}</td>
+                    <td>${item.invested}$</td>
+                    <td>${item.current_price}</td>
+                    <td>${item.current_value}$</td>
+                    <td style="${pnlClass}"><b>${item.pnl_pct}%</b></td>
+                    <td style="${pnlClass}"><b>${item.pnl_usd}$</b></td>
+                    <td><small>${item.trigger_reason || 'Manuale'}</small></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Invia Report delle sezioni Acquisti/DCA
+        async function sendTelegramReport(type) {
+            if (!globalData || !globalData[type]) return;
+            const list = globalData[type];
+            const title = type === 'paper_portfolio' ? '🛍️ <b>Report Acquisti Singoli</b>' : '🔄 <b>Report DCA</b>';
+
+            let msg = `${title}\n\n`;
+            let totalInvested = 0;
+            let totalValue = 0;
+
+            list.forEach(item => {
+                totalInvested += item.invested;
+                totalValue += item.current_value;
+                msg += `• <b>${item.ticker}</b> (${item.name})\n`;
+                msg += `  Acq: ${item.buy_price}$ | Att: ${item.current_price}$\n`;
+                msg += `  P&L: <b>${item.pnl_pct}%</b> (${item.pnl_usd}$)\n\n`;
+            });
+
+            const totalPnl = totalValue - totalInvested;
+            const totalPnlPct = ((totalPnl / totalInvested) * 100).toFixed(2);
+            msg += `💰 <b>Totale Investito:</b> ${totalInvested.toFixed(2)}$\n`;
+            msg += `📈 <b>Valore Attuale:</b> ${totalValue.toFixed(2)}$\n`;
+            msg += `📊 <b>P&L Complessivo:</b> ${totalPnlPct}% (${totalPnl.toFixed(2)}$)`;
+
+            const ok = await sendTelegramMessage(msg);
+            if (ok) alert('Report inviato su Telegram!');
+        }
+    </script>
 </body>
 </html>
