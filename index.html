@@ -337,5 +337,193 @@
       renderTable(items);
     };
 
+    // --- HELPER ---
+    const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fmtNum = (v, d = 2) => (v === null || v === undefined || isNaN(v)) ? '-' : Number(v).toLocaleString('it-IT', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const fmtPrice = (v, cur) => (v === null || v === undefined) ? '-' : `${fmtNum(v)} ${cur === 'EUR' ? '€' : '$'}`;
+    const pnlClass = v => v > 0 ? 'text-emerald-400' : (v < 0 ? 'text-rose-400' : 'text-slate-300');
+    const emptyRow = (cols, msg) => `<tr><td colspan="${cols}" class="p-6 text-center text-slate-500">${msg}</td></tr>`;
+
+    function rsiCell(sig) {
+      if (!sig || sig.rsi === undefined || sig.rsi === null) return '<td class="p-3 md:p-4 text-center text-slate-500">-</td>';
+      const v = sig.rsi;
+      const cls = v <= 30 ? 'text-emerald-400 font-bold' : (v >= 70 ? 'text-rose-400 font-bold' : 'text-slate-300');
+      return `<td class="p-3 md:p-4 text-center ${cls}" title="${esc(sig.status)}">${fmtNum(v, 1)}</td>`;
+    }
+
+    function sortBy(arr, state, column, getter) {
+      if (state.column === column) state.ascending = !state.ascending;
+      else { state.column = column; state.ascending = true; }
+      return [...arr].sort((a, b) => {
+        const x = getter(a, column), y = getter(b, column);
+        if (x < y) return state.ascending ? -1 : 1;
+        if (x > y) return state.ascending ? 1 : -1;
+        return 0;
+      });
+    }
+
+    // --- RENDER: SCANNER ---
+    function renderTable(items) {
+      const body = document.getElementById('table-body');
+      if (!items.length) { body.innerHTML = emptyRow(8, 'Nessun dato disponibile.'); return; }
+      body.innerHTML = items.map(i => {
+        const dist = i.dist_52w_pct;
+        return `<tr class="hover:bg-slate-700/30">
+          <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(i.name)}</div><div class="text-[10px] text-slate-500">${esc(i.ticker)}</div></td>
+          <td class="p-3 md:p-4 text-slate-400">${esc(i.category)}</td>
+          <td class="p-3 md:p-4 font-medium">${fmtPrice(i.current_price, i.currency)}</td>
+          <td class="p-3 md:p-4 text-center text-slate-300">${i.pe_ratio ? fmtNum(i.pe_ratio, 1) : '-'}</td>
+          <td class="p-3 md:p-4 text-center ${pnlClass(dist)}">${dist === undefined || dist === null ? '-' : fmtNum(dist, 1) + '%'}</td>
+          ${rsiCell(i.rsi_signals?.['1h'])}${rsiCell(i.rsi_signals?.['1d'])}${rsiCell(i.rsi_signals?.['1wk'])}
+        </tr>`;
+      }).join('');
+    }
+
+    // --- RENDER: SUGGERIMENTI ---
+    function suggestionNote(i) {
+      const notes = [];
+      ['1h', '1d', '1wk'].forEach(tf => {
+        const s = i.rsi_signals?.[tf];
+        if (s && s.status && !s.status.startsWith('Neutro')) notes.push(`RSI ${tf === '1wk' ? '1w' : tf}: ${s.status} (${fmtNum(s.rsi, 1)})`);
+      });
+      if (i.dist_52w_pct !== undefined && i.dist_52w_pct !== null && i.dist_52w_pct <= -15) notes.push(`${fmtNum(i.dist_52w_pct, 1)}% dal massimo a 52 settimane`);
+      return notes.length ? notes.join(' • ') : 'Nessun segnale estremo: situazione neutrale.';
+    }
+
+    function renderSuggestions(items) {
+      const body = document.getElementById('suggestions-body');
+      if (!items.length) { body.innerHTML = emptyRow(5, 'Nessun suggerimento disponibile.'); return; }
+      body.innerHTML = items.map(i => {
+        const sc = i.score ?? 0;
+        const cls = sc >= 70 ? 'bg-emerald-600/20 text-emerald-300' : (sc >= 50 ? 'bg-amber-600/20 text-amber-300' : 'bg-slate-700 text-slate-300');
+        return `<tr class="hover:bg-slate-700/30">
+          <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(i.name)}</div><div class="text-[10px] text-slate-500">${esc(i.ticker)}</div></td>
+          <td class="p-3 md:p-4 text-slate-400">${esc(i.category)}</td>
+          <td class="p-3 md:p-4 font-medium">${fmtPrice(i.current_price, i.currency)}</td>
+          <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-bold ${cls}">${sc}</span></td>
+          <td class="p-3 md:p-4 text-slate-300 whitespace-normal min-w-[260px]">${esc(suggestionNote(i))}</td>
+        </tr>`;
+      }).join('');
+    }
+
     window.sortSuggestions = function(column) {
-      if (!globalData || !globalData.item
+      if (!globalData || !globalData.items) return;
+      renderSuggestions(sortBy(globalData.items, currentSugSort, column, (o, c) => c === 'name' || c === 'category' ? (o[c] || '') : (o[c] ?? 0)));
+    };
+
+    // --- RENDER: PORTAFOGLI ---
+    function renderTradeRows(list, bodyId, prefix, removeFn) {
+      const body = document.getElementById(bodyId);
+      if (!list.length) { body.innerHTML = emptyRow(8, 'Nessuna operazione simulata.'); return; }
+      body.innerHTML = list.map(t => `<tr class="hover:bg-slate-700/30">
+        <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(t.name)}</div><div class="text-[10px] text-slate-500">${esc(t.ticker)}</div></td>
+        <td class="p-3 md:p-4 text-slate-300">${esc(t.buy_date)}</td>
+        <td class="p-3 md:p-4 text-slate-400">${esc(t.trigger_reason)}</td>
+        <td class="p-3 md:p-4">${fmtNum(t.buy_price)} $</td>
+        <td class="p-3 md:p-4">${fmtNum(t.current_value)} $</td>
+        <td class="p-3 md:p-4 text-right ${pnlClass(t.pnl_usd)}">${fmtNum(t.pnl_usd)} $</td>
+        <td class="p-3 md:p-4 text-right font-semibold ${pnlClass(t.pnl_pct)}">${fmtNum(t.pnl_pct)}%</td>
+        <td class="p-3 md:p-4 text-center"><button onclick="${removeFn}('${esc(t.id)}')" class="text-rose-400 hover:text-rose-300" title="Rimuovi dalla vista">🗑️</button></td>
+      </tr>`).join('');
+    }
+
+    function renderTotals(list, prefix) {
+      const inv = list.reduce((a, t) => a + (t.invested || 0), 0);
+      const val = list.reduce((a, t) => a + (t.current_value || 0), 0);
+      const pnl = val - inv, pct = inv ? (pnl / inv) * 100 : 0;
+      document.getElementById(`${prefix}-tot-invested`).innerText = `${fmtNum(inv)} $`;
+      document.getElementById(`${prefix}-tot-value`).innerText = `${fmtNum(val)} $`;
+      const el = document.getElementById(`${prefix}-tot-pnl`);
+      el.innerText = `${fmtNum(pnl)} $ (${fmtNum(pct)}%)`;
+      el.className = `font-bold ${pnlClass(pnl)}`;
+    }
+
+    let uniqueList = [], dcaList = [];
+    function renderPortfolio(unique, dca) {
+      uniqueList = unique.filter(t => !removedTrades.includes(t.id));
+      dcaList = dca.filter(t => !removedDcaTrades.includes(t.id));
+      renderTradeRows(uniqueList, 'portfolio-body', 'unique', 'removeTrade');
+      renderTradeRows(dcaList, 'dca-body', 'dca', 'removeDcaTrade');
+      renderTotals(uniqueList, 'unique');
+      renderTotals(dcaList, 'dca');
+    }
+
+    window.removeTrade = function(id) {
+      removedTrades.push(id);
+      localStorage.setItem('removed_unique_trades_v2', JSON.stringify(removedTrades));
+      renderPortfolio(globalData.paper_portfolio || [], globalData.dca_portfolio || []);
+    };
+    window.removeDcaTrade = function(id) {
+      removedDcaTrades.push(id);
+      localStorage.setItem('removed_dca_trades_v2', JSON.stringify(removedDcaTrades));
+      renderPortfolio(globalData.paper_portfolio || [], globalData.dca_portfolio || []);
+    };
+
+    const tradeGetter = (o, c) => ['name', 'buy_date', 'trigger_reason'].includes(c) ? (o[c] || '') : (o[c] ?? 0);
+    window.sortPortfolio = function(column) {
+      uniqueList = sortBy(uniqueList, currentPortSort, column, tradeGetter);
+      renderTradeRows(uniqueList, 'portfolio-body', 'unique', 'removeTrade');
+    };
+    window.sortDca = function(column) {
+      dcaList = sortBy(dcaList, currentDcaSort, column, tradeGetter);
+      renderTradeRows(dcaList, 'dca-body', 'dca', 'removeDcaTrade');
+    };
+
+    // --- RENDER: CALENDARIO ---
+    function renderCalendar(items) {
+      const body = document.getElementById('calendar-body');
+      if (!items.length) { body.innerHTML = emptyRow(4, 'Nessuna data disponibile.'); return; }
+      body.innerHTML = items.map(i => `<tr class="hover:bg-slate-700/30">
+        <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(i.name)}</div><div class="text-[10px] text-slate-500">${esc(i.ticker)}</div></td>
+        <td class="p-3 md:p-4 text-slate-400">${esc(i.category)}</td>
+        <td class="p-3 md:p-4 text-center text-slate-300">${esc(i.earnings_date || '-')}</td>
+        <td class="p-3 md:p-4 text-center text-slate-300">${esc(i.ex_dividend_date || '-')}</td>
+      </tr>`).join('');
+    }
+    window.sortCalendar = function(column) {
+      if (!globalData || !globalData.earnings_calendar) return;
+      renderCalendar(sortBy(globalData.earnings_calendar, currentCalSort, column, (o, c) => o[c] || '9999-99-99'));
+    };
+
+    // --- TELEGRAM (credenziali salvate solo nel browser) ---
+    function tgStatus(msg, ok) {
+      const el = document.getElementById('tg-status-msg');
+      el.className = `text-xs p-3 rounded mt-3 ${ok ? 'bg-emerald-900/40 text-emerald-300' : 'bg-rose-900/40 text-rose-300'}`;
+      el.innerText = msg;
+    }
+    function loadTelegramConfig() {
+      document.getElementById('tg-token').value = localStorage.getItem('tg_token') || '';
+      document.getElementById('tg-chatid').value = localStorage.getItem('tg_chatid') || '';
+    }
+    window.saveTelegramConfig = function() {
+      localStorage.setItem('tg_token', document.getElementById('tg-token').value.trim());
+      localStorage.setItem('tg_chatid', document.getElementById('tg-chatid').value.trim());
+      tgStatus('Credenziali salvate nel browser.', true);
+    };
+    async function sendTelegram(text) {
+      const token = localStorage.getItem('tg_token'), chat = localStorage.getItem('tg_chatid');
+      if (!token || !chat) { tgStatus('Inserisci e salva prima Bot Token e Chat ID.', false); return; }
+      try {
+        const r = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chat, text })
+        });
+        const j = await r.json();
+        tgStatus(j.ok ? 'Messaggio inviato ✅' : `Errore Telegram: ${j.description}`, !!j.ok);
+      } catch (e) { tgStatus('Errore di rete: ' + e.message, false); }
+    }
+    window.testTelegramBot = function() { sendTelegram('🧪 Messaggio di prova da Investment Tracker'); };
+    window.sendTelegramReport = function(kind) {
+      const list = kind === 'dca' ? dcaList : uniqueList;
+      const inv = list.reduce((a, t) => a + t.invested, 0), val = list.reduce((a, t) => a + t.current_value, 0);
+      const pnl = val - inv;
+      const lines = list.map(t => `• ${t.ticker}: ${fmtNum(t.pnl_pct)}% (${fmtNum(t.pnl_usd)} $)`).join('\n');
+      sendTelegram(`📊 Report ${kind === 'dca' ? 'DCA' : 'Acquisti Singoli'}\nInvestito: ${fmtNum(inv)} $\nValore: ${fmtNum(val)} $\nP&L: ${fmtNum(pnl)} $ (${fmtNum(inv ? pnl / inv * 100 : 0)}%)\n\n${lines}`);
+    };
+
+    // --- AVVIO ---
+    loadTelegramConfig();
+    loadDashboardData();
+  </script>
+</body>
+</html>
