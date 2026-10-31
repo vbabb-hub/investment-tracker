@@ -37,6 +37,10 @@
           📅 Utili & Dividendi
         </button>
 
+        <button onclick="switchTab('stats')" id="tab-btn-stats" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
+          📈 Statistiche & Backtest
+        </button>
+
         <button onclick="switchTab('telegram')" id="tab-btn-telegram" class="w-full text-left px-3 py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center gap-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700">
           ⚙️ Notifiche Telegram
         </button>
@@ -72,6 +76,8 @@
               <th onclick="sortTable('current_price')" class="p-3 md:p-4 cursor-pointer hover:text-emerald-400">Prezzo ↕</th>
               <th onclick="sortTable('pe_ratio')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">P/E ↕</th>
               <th onclick="sortTable('dist_52w_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Dist. 52w ↕</th>
+              <th onclick="sortTable('sma200_dist_pct')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">vs SMA200 ↕</th>
+              <th onclick="sortTable('rel_volume')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">Vol. rel. ↕</th>
               <th onclick="sortTable('rsi_1h')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1h ↕</th>
               <th onclick="sortTable('rsi_1d')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1d ↕</th>
               <th onclick="sortTable('rsi_1w')" class="p-3 md:p-4 text-center cursor-pointer hover:text-emerald-400">RSI 1w ↕</th>
@@ -215,6 +221,49 @@
       </div>
     </section>
 
+    <!-- SEZIONE: STATISTICHE & BACKTEST -->
+    <section id="sec-stats" class="tab-content hidden">
+      <header class="mb-6">
+        <h3 class="text-xl md:text-2xl font-bold text-slate-100">📈 Statistiche & Backtest</h3>
+        <p class="text-slate-400 text-xs md:text-sm mt-1">Cosa è successo storicamente dopo un segnale RSI 1D sotto <span id="stats-level">30</span>: rendimento a <span id="stats-horizon">20</span> sedute, ultimi 5 anni sulla watchlist.</p>
+      </header>
+
+      <div id="stats-cards" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6"></div>
+
+      <h4 class="text-sm font-semibold text-slate-200 mb-2">Per titolo (backtest storico)</h4>
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-6">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+            <tr>
+              <th class="p-3 md:p-4">Asset</th>
+              <th class="p-3 md:p-4 text-center">Segnali</th>
+              <th class="p-3 md:p-4 text-center">Win rate</th>
+              <th class="p-3 md:p-4 text-right">Rend. medio</th>
+            </tr>
+          </thead>
+          <tbody id="stats-ticker-body" class="divide-y divide-slate-700"></tbody>
+        </table>
+      </div>
+
+      <h4 class="text-sm font-semibold text-slate-200 mb-2">Operazioni simulate live</h4>
+      <div class="overflow-x-auto bg-slate-800 rounded-lg shadow-xl border border-slate-700 mb-4">
+        <table class="w-full text-left text-xs md:text-sm border-collapse whitespace-nowrap">
+          <thead class="bg-slate-700/50 text-slate-300 uppercase text-[10px] md:text-xs border-b border-slate-700">
+            <tr>
+              <th class="p-3 md:p-4">Gruppo</th>
+              <th class="p-3 md:p-4 text-center">Operazioni</th>
+              <th class="p-3 md:p-4 text-center">Win rate</th>
+              <th class="p-3 md:p-4 text-right">P&L medio</th>
+              <th class="p-3 md:p-4 text-right">Migliore</th>
+              <th class="p-3 md:p-4 text-right">Peggiore</th>
+            </tr>
+          </thead>
+          <tbody id="stats-live-body" class="divide-y divide-slate-700"></tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-slate-500">Analisi storica a scopo informativo: i risultati passati non garantiscono quelli futuri. I segnali ravvicinati possono sovrapporsi e il campione per singolo titolo è piccolo.</p>
+    </section>
+
     <!-- SEZIONE 6: CONFIGURAZIONE TELEGRAM -->
     <section id="sec-telegram" class="tab-content hidden">
       <header class="mb-6">
@@ -270,7 +319,7 @@
       const activeBtnClass = ['bg-emerald-600', 'text-white', 'shadow-lg'];
       const inactiveBtnClass = ['bg-slate-700/50', 'text-slate-300', 'hover:bg-slate-700'];
 
-      ['scanner', 'suggestions', 'unique', 'dca', 'calendar', 'telegram'].forEach(t => {
+      ['scanner', 'suggestions', 'unique', 'dca', 'calendar', 'stats', 'telegram'].forEach(t => {
         const btn = document.getElementById(`tab-btn-${t}`);
         if (btn) {
           if (t === tabId) {
@@ -302,6 +351,7 @@
         renderSuggestions(globalData.items || []);
         renderPortfolio(globalData.paper_portfolio || [], globalData.dca_portfolio || []);
         renderCalendar(globalData.earnings_calendar || []);
+        renderStats(globalData);
       } catch (e) {
         console.error('Errore di caricamento:', e);
         document.getElementById('last-updated-badge').innerText = 'Errore caricamento dati';
@@ -325,6 +375,8 @@
         else if (column === 'current_price') { valA = a.current_price; valB = b.current_price; }
         else if (column === 'pe_ratio') { valA = a.pe_ratio || 9999; valB = b.pe_ratio || 9999; }
         else if (column === 'dist_52w_pct') { valA = a.dist_52w_pct || 0; valB = b.dist_52w_pct || 0; }
+        else if (column === 'sma200_dist_pct') { valA = a.sma200_dist_pct ?? -9999; valB = b.sma200_dist_pct ?? -9999; }
+        else if (column === 'rel_volume') { valA = a.rel_volume ?? -1; valB = b.rel_volume ?? -1; }
         else if (column === 'rsi_1h') { valA = a.rsi_signals?.['1h']?.rsi || 50; valB = b.rsi_signals?.['1h']?.rsi || 50; }
         else if (column === 'rsi_1d') { valA = a.rsi_signals?.['1d']?.rsi || 50; valB = b.rsi_signals?.['1d']?.rsi || 50; }
         else if (column === 'rsi_1w') { valA = a.rsi_signals?.['1wk']?.rsi || 50; valB = b.rsi_signals?.['1wk']?.rsi || 50; }
@@ -343,6 +395,27 @@
     const fmtPrice = (v, cur) => (v === null || v === undefined) ? '-' : `${fmtNum(v)} ${cur === 'EUR' ? '€' : '$'}`;
     const pnlClass = v => v > 0 ? 'text-emerald-400' : (v < 0 ? 'text-rose-400' : 'text-slate-300');
     const emptyRow = (cols, msg) => `<tr><td colspan="${cols}" class="p-6 text-center text-slate-500">${msg}</td></tr>`;
+
+    const ALERT_THRESHOLD = 70; // allineata a ALERT_THRESHOLD in scripts/fetch_performance.py
+
+    function smaCell(i) {
+      const d = i.sma200_dist_pct;
+      if (d === undefined || d === null) return '<td class="p-3 md:p-4 text-center text-slate-500">-</td>';
+      const regime = i.sma50_above_200 === true ? 'SMA50 > SMA200 (regime rialzista)' : (i.sma50_above_200 === false ? 'SMA50 < SMA200 (regime ribassista)' : '');
+      return `<td class="p-3 md:p-4 text-center ${d >= 0 ? 'text-emerald-400' : 'text-rose-400'}" title="${regime}">${d >= 0 ? '▲' : '▼'} ${fmtNum(Math.abs(d), 1)}%</td>`;
+    }
+
+    function volCell(v) {
+      if (v === undefined || v === null) return '<td class="p-3 md:p-4 text-center text-slate-500">-</td>';
+      const cls = v >= 1.5 ? 'text-amber-300 font-bold' : (v < 0.7 ? 'text-slate-500' : 'text-slate-300');
+      return `<td class="p-3 md:p-4 text-center ${cls}">${fmtNum(v, 1)}×</td>`;
+    }
+
+    function partsTitle(i) {
+      const p = i.score_parts;
+      if (!p) return '';
+      return `RSI ${p.rsi}/35 · Trend ${p.trend}/25 · Volume ${p.volume}/15 · Dist.52w ${p.distanza_52w}/15 · P/E ${p.valutazione}/10`;
+    }
 
     function rsiCell(sig) {
       if (!sig || sig.rsi === undefined || sig.rsi === null) return '<td class="p-3 md:p-4 text-center text-slate-500">-</td>';
@@ -365,7 +438,7 @@
     // --- RENDER: SCANNER ---
     function renderTable(items) {
       const body = document.getElementById('table-body');
-      if (!items.length) { body.innerHTML = emptyRow(8, 'Nessun dato disponibile.'); return; }
+      if (!items.length) { body.innerHTML = emptyRow(10, 'Nessun dato disponibile.'); return; }
       body.innerHTML = items.map(i => {
         const dist = i.dist_52w_pct;
         return `<tr class="hover:bg-slate-700/30">
@@ -374,6 +447,7 @@
           <td class="p-3 md:p-4 font-medium">${fmtPrice(i.current_price, i.currency)}</td>
           <td class="p-3 md:p-4 text-center text-slate-300">${i.pe_ratio ? fmtNum(i.pe_ratio, 1) : '-'}</td>
           <td class="p-3 md:p-4 text-center ${pnlClass(dist)}">${dist === undefined || dist === null ? '-' : fmtNum(dist, 1) + '%'}</td>
+          ${smaCell(i)}${volCell(i.rel_volume)}
           ${rsiCell(i.rsi_signals?.['1h'])}${rsiCell(i.rsi_signals?.['1d'])}${rsiCell(i.rsi_signals?.['1wk'])}
         </tr>`;
       }).join('');
@@ -381,6 +455,7 @@
 
     // --- RENDER: SUGGERIMENTI ---
     function suggestionNote(i) {
+      if (i.note) return i.note;
       const notes = [];
       ['1h', '1d', '1wk'].forEach(tf => {
         const s = i.rsi_signals?.[tf];
@@ -400,7 +475,7 @@
           <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(i.name)}</div><div class="text-[10px] text-slate-500">${esc(i.ticker)}</div></td>
           <td class="p-3 md:p-4 text-slate-400">${esc(i.category)}</td>
           <td class="p-3 md:p-4 font-medium">${fmtPrice(i.current_price, i.currency)}</td>
-          <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-bold ${cls}">${sc}</span></td>
+          <td class="p-3 md:p-4 text-center"><span class="px-2 py-1 rounded font-bold ${cls}" title="${esc(partsTitle(i))}">${sc >= ALERT_THRESHOLD ? '🔔 ' : ''}${sc}</span></td>
           <td class="p-3 md:p-4 text-slate-300 whitespace-normal min-w-[260px]">${esc(suggestionNote(i))}</td>
         </tr>`;
       }).join('');
@@ -484,6 +559,61 @@
       if (!globalData || !globalData.earnings_calendar) return;
       renderCalendar(sortBy(globalData.earnings_calendar, currentCalSort, column, (o, c) => o[c] || '9999-99-99'));
     };
+
+    // --- RENDER: STATISTICHE ---
+    function statCard(title, s, accent) {
+      if (!s || !s.n) return `<div class="bg-slate-800 border border-slate-700 rounded-lg p-4"><div class="text-xs text-slate-400 mb-1">${title}</div><div class="text-slate-500 text-sm">Nessun segnale</div></div>`;
+      return `<div class="bg-slate-800 border border-slate-700 rounded-lg p-4">
+        <div class="text-xs text-slate-400 mb-2">${title}</div>
+        <div class="flex items-end gap-4">
+          <div><div class="text-2xl font-bold ${accent}">${fmtNum(s.win_rate, 0)}%</div><div class="text-[10px] text-slate-500 uppercase">win rate</div></div>
+          <div><div class="text-lg font-semibold ${pnlClass(s.avg_ret)}">${s.avg_ret > 0 ? '+' : ''}${fmtNum(s.avg_ret)}%</div><div class="text-[10px] text-slate-500 uppercase">rend. medio</div></div>
+          <div><div class="text-lg font-semibold text-slate-300">${s.n}</div><div class="text-[10px] text-slate-500 uppercase">segnali</div></div>
+        </div></div>`;
+    }
+
+    function liveStats(label, trades) {
+      if (!trades.length) return '';
+      const pcts = trades.map(t => t.pnl_pct || 0);
+      const wins = pcts.filter(p => p > 0).length;
+      const avg = pcts.reduce((a, b) => a + b, 0) / pcts.length;
+      return `<tr>
+        <td class="p-3 md:p-4 text-slate-200">${label}</td>
+        <td class="p-3 md:p-4 text-center">${trades.length}</td>
+        <td class="p-3 md:p-4 text-center">${fmtNum(wins / trades.length * 100, 0)}%</td>
+        <td class="p-3 md:p-4 text-right ${pnlClass(avg)}">${fmtNum(avg)}%</td>
+        <td class="p-3 md:p-4 text-right text-emerald-400">${fmtNum(Math.max(...pcts))}%</td>
+        <td class="p-3 md:p-4 text-right text-rose-400">${fmtNum(Math.min(...pcts))}%</td></tr>`;
+    }
+
+    function renderStats(data) {
+      const st = data.stats;
+      const cards = document.getElementById('stats-cards');
+      if (!st) {
+        cards.innerHTML = '<div class="text-slate-500 text-sm sm:col-span-3">Statistiche disponibili dopo il prossimo aggiornamento orario dei dati.</div>';
+      } else {
+        document.getElementById('stats-horizon').innerText = st.horizon_days;
+        document.getElementById('stats-level').innerText = st.rsi_level;
+        cards.innerHTML = statCard('Tutti i segnali', st.overall, 'text-slate-100')
+          + statCard('Trend rialzista (prezzo > SMA200)', st.trend_up, 'text-emerald-400')
+          + statCard('Contro trend (prezzo < SMA200)', st.trend_down, 'text-rose-400');
+      }
+
+      const rows = (data.items || []).filter(i => i.backtest && i.backtest.n > 0)
+        .sort((a, b) => b.backtest.avg_ret - a.backtest.avg_ret);
+      document.getElementById('stats-ticker-body').innerHTML = rows.length ? rows.map(i => `<tr class="hover:bg-slate-700/30">
+        <td class="p-3 md:p-4"><div class="font-semibold text-slate-100">${esc(i.name)}</div><div class="text-[10px] text-slate-500">${esc(i.ticker)}</div></td>
+        <td class="p-3 md:p-4 text-center text-slate-300">${i.backtest.n}</td>
+        <td class="p-3 md:p-4 text-center text-slate-300">${fmtNum(i.backtest.win_rate, 0)}%</td>
+        <td class="p-3 md:p-4 text-right ${pnlClass(i.backtest.avg_ret)}">${i.backtest.avg_ret > 0 ? '+' : ''}${fmtNum(i.backtest.avg_ret)}%</td></tr>`).join('')
+        : emptyRow(4, 'Nessun dato storico disponibile.');
+
+      const uniq = uniqueList, dca = dcaList;
+      const byTf = tf => dca.filter(t => (t.trigger_reason || '').toUpperCase().startsWith('RSI ' + tf));
+      const live = liveStats('Acquisti singoli (tutti)', uniq) + liveStats('DCA (tutti)', dca)
+        + liveStats('DCA · trigger RSI 1H', byTf('1H')) + liveStats('DCA · trigger RSI 1D', byTf('1D')) + liveStats('DCA · trigger RSI 1W', byTf('1W'));
+      document.getElementById('stats-live-body').innerHTML = live || emptyRow(6, 'Nessuna operazione simulata.');
+    }
 
     // --- TELEGRAM (credenziali salvate solo nel browser) ---
     function tgStatus(msg, ok) {
