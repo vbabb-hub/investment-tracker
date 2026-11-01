@@ -1,5 +1,6 @@
 import os
 import json
+import time
 from datetime import datetime
 import numpy as np
 import yfinance as yf
@@ -175,6 +176,7 @@ def scan_market():
     for item in watchlist:
         ticker_symbol = item["ticker"]
         category = item["category"]
+        time.sleep(0.25)  # evita il rate limit di Yahoo con watchlist lunghe
 
         try:
             ticker = yf.Ticker(ticker_symbol)
@@ -191,6 +193,8 @@ def scan_market():
 
             current_price = round(float(hist_day["Close"].iloc[-1]), 2)
             currency = "USD" if "-USD" in ticker_symbol or "=F" in ticker_symbol else "EUR" if (".MI" in ticker_symbol or ".DE" in ticker_symbol) else "USD"
+            if info.get("currency") in ("USD", "EUR", "CHF", "GBP"):
+                currency = info["currency"]  # valuta reale del listino (es. Parigi/Amsterdam = EUR, Zurigo = CHF)
             current_prices[ticker_symbol] = current_price
 
             pe_ratio = info.get("trailingPE") or info.get("forwardPE")
