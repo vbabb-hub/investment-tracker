@@ -1,31 +1,792 @@
 [
-  { "ticker": "AAPL", "name": "Apple Inc.", "category": "AZIONI" },
-  { "ticker": "MSFT", "name": "Microsoft Corporation", "category": "AZIONI" },
-  { "ticker": "NVDA", "name": "NVIDIA Corporation", "category": "AZIONI" },
-  { "ticker": "AMZN", "name": "Amazon.com, Inc.", "category": "AZIONI" },
-  { "ticker": "GOOGL", "name": "Alphabet Inc. (Google)", "category": "AZIONI" },
-  { "ticker": "META", "name": "Meta Platforms, Inc.", "category": "AZIONI" },
-  { "ticker": "TSLA", "name": "Tesla, Inc.", "category": "AZIONI" },
-  { "ticker": "AMD", "name": "Advanced Micro Devices, Inc.", "category": "AZIONI" },
-  { "ticker": "INTC", "name": "Intel Corporation", "category": "AZIONI" },
-  { "ticker": "QCOM", "name": "QUALCOMM Incorporated", "category": "AZIONI" },
-  { "ticker": "NFLX", "name": "Netflix, Inc.", "category": "AZIONI" },
-  { "ticker": "ADBE", "name": "Adobe Inc.", "category": "AZIONI" },
-  { "ticker": "PYPL", "name": "PayPal Holdings, Inc.", "category": "AZIONI" },
-  { "ticker": "JPM", "name": "JPMorgan Chase & Co.", "category": "AZIONI" },
-  { "ticker": "V", "name": "Visa Inc.", "category": "AZIONI" },
-  { "ticker": "MA", "name": "Mastercard Incorporated", "category": "AZIONI" },
-  { "ticker": "JNJ", "name": "Johnson & Johnson", "category": "AZIONI" },
-  { "ticker": "WMT", "name": "Walmart Inc.", "category": "AZIONI" },
-  { "ticker": "DIS", "name": "The Walt Disney Company", "category": "AZIONI" },
-  { "ticker": "XOM", "name": "Exxon Mobil Corporation", "category": "AZIONI" },
-  { "ticker": "SWDA.MI", "name": "iShares Core MSCI World ETF", "category": "ETF" },
-  { "ticker": "SXR8.DE", "name": "iShares Core S&P 500 ETF", "category": "ETF" },
-  { "ticker": "BTC-USD", "name": "Bitcoin Spot", "category": "CRYPTO" },
-  { "ticker": "ETH-USD", "name": "Ethereum Spot", "category": "CRYPTO" },
-  { "ticker": "SOL-USD", "name": "Solana Spot", "category": "CRYPTO" },
-  { "ticker": "BNB-USD", "name": "Binance Coin", "category": "CRYPTO" },
-  { "ticker": "GC=F", "name": "Oro (Gold Futures)", "category": "COMMODITY" },
-  { "ticker": "SI=F", "name": "Argento (Silver Futures)", "category": "COMMODITY" },
-  { "ticker": "IT0005564178.MI", "name": "BTP Valore Ottobre 2028", "category": "BTP" }
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc. (Google)",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta Platforms, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AMD",
+    "name": "Advanced Micro Devices, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "INTC",
+    "name": "Intel Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "QCOM",
+    "name": "QUALCOMM Incorporated",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NFLX",
+    "name": "Netflix, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ADBE",
+    "name": "Adobe Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PYPL",
+    "name": "PayPal Holdings, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "JPM",
+    "name": "JPMorgan Chase & Co.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "V",
+    "name": "Visa Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MA",
+    "name": "Mastercard Incorporated",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "JNJ",
+    "name": "Johnson & Johnson",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "WMT",
+    "name": "Walmart Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "DIS",
+    "name": "The Walt Disney Company",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "XOM",
+    "name": "Exxon Mobil Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SWDA.MI",
+    "name": "iShares Core MSCI World ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SXR8.DE",
+    "name": "iShares Core S&P 500 ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "BTC-USD",
+    "name": "Bitcoin Spot",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "ETH-USD",
+    "name": "Ethereum Spot",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "SOL-USD",
+    "name": "Solana Spot",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "BNB-USD",
+    "name": "Binance Coin",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "GC=F",
+    "name": "Oro (Gold Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "SI=F",
+    "name": "Argento (Silver Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "IT0005564178.MI",
+    "name": "BTP Valore Ottobre 2028",
+    "category": "BTP"
+  },
+  {
+    "ticker": "AVGO",
+    "name": "Broadcom Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ORCL",
+    "name": "Oracle Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "CRM",
+    "name": "Salesforce, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "CSCO",
+    "name": "Cisco Systems, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "IBM",
+    "name": "IBM",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TXN",
+    "name": "Texas Instruments",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AMAT",
+    "name": "Applied Materials",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MU",
+    "name": "Micron Technology",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "LRCX",
+    "name": "Lam Research",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NOW",
+    "name": "ServiceNow, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "INTU",
+    "name": "Intuit Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "UBER",
+    "name": "Uber Technologies",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PLTR",
+    "name": "Palantir Technologies",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TSM",
+    "name": "Taiwan Semiconductor (ADR)",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ASML",
+    "name": "ASML Holding (ADR)",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SHOP",
+    "name": "Shopify Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BAC",
+    "name": "Bank of America",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "GS",
+    "name": "Goldman Sachs",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MS",
+    "name": "Morgan Stanley",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BRK-B",
+    "name": "Berkshire Hathaway B",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AXP",
+    "name": "American Express",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BLK",
+    "name": "BlackRock, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "LLY",
+    "name": "Eli Lilly and Company",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "UNH",
+    "name": "UnitedHealth Group",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ABBV",
+    "name": "AbbVie Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MRK",
+    "name": "Merck & Co.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PFE",
+    "name": "Pfizer Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TMO",
+    "name": "Thermo Fisher Scientific",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ISRG",
+    "name": "Intuitive Surgical",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NVO",
+    "name": "Novo Nordisk (ADR)",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "KO",
+    "name": "The Coca-Cola Company",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PEP",
+    "name": "PepsiCo, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PG",
+    "name": "Procter & Gamble",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MCD",
+    "name": "McDonald's Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NKE",
+    "name": "NIKE, Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SBUX",
+    "name": "Starbucks Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "COST",
+    "name": "Costco Wholesale",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "HD",
+    "name": "The Home Depot",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BKNG",
+    "name": "Booking Holdings",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "CAT",
+    "name": "Caterpillar Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BA",
+    "name": "The Boeing Company",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "GE",
+    "name": "GE Aerospace",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "LMT",
+    "name": "Lockheed Martin",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "CVX",
+    "name": "Chevron Corporation",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NEE",
+    "name": "NextEra Energy",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "VZ",
+    "name": "Verizon Communications",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "T",
+    "name": "AT&T Inc.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ENI.MI",
+    "name": "Eni S.p.A.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ENEL.MI",
+    "name": "Enel S.p.A.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ISP.MI",
+    "name": "Intesa Sanpaolo",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "UCG.MI",
+    "name": "UniCredit",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "RACE.MI",
+    "name": "Ferrari N.V.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "G.MI",
+    "name": "Assicurazioni Generali",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "LDO.MI",
+    "name": "Leonardo S.p.A.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "STLAM.MI",
+    "name": "Stellantis N.V.",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PRY.MI",
+    "name": "Prysmian",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MONC.MI",
+    "name": "Moncler",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TRN.MI",
+    "name": "Terna",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SRG.MI",
+    "name": "Snam",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "PST.MI",
+    "name": "Poste Italiane",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BAMI.MI",
+    "name": "Banco BPM",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TEN.MI",
+    "name": "Tenaris",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "CPR.MI",
+    "name": "Davide Campari-Milano",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MB.MI",
+    "name": "Mediobanca",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "REC.MI",
+    "name": "Recordati",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AMP.MI",
+    "name": "Amplifon",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "BC.MI",
+    "name": "Brunello Cucinelli",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SAP.DE",
+    "name": "SAP SE",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "SIE.DE",
+    "name": "Siemens AG",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ALV.DE",
+    "name": "Allianz SE",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MBG.DE",
+    "name": "Mercedes-Benz Group",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "DTE.DE",
+    "name": "Deutsche Telekom",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "IFX.DE",
+    "name": "Infineon Technologies",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "ASML.AS",
+    "name": "ASML Holding (Amsterdam)",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "MC.PA",
+    "name": "LVMH",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "OR.PA",
+    "name": "L'Oréal",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "TTE.PA",
+    "name": "TotalEnergies",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "AIR.PA",
+    "name": "Airbus SE",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "RMS.PA",
+    "name": "Hermès",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NESN.SW",
+    "name": "Nestlé",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "NOVN.SW",
+    "name": "Novartis",
+    "category": "AZIONI"
+  },
+  {
+    "ticker": "VWCE.DE",
+    "name": "Vanguard FTSE All-World UCITS Acc",
+    "category": "ETF"
+  },
+  {
+    "ticker": "EUNL.DE",
+    "name": "iShares Core MSCI World UCITS Acc",
+    "category": "ETF"
+  },
+  {
+    "ticker": "VUAA.DE",
+    "name": "Vanguard S&P 500 UCITS Acc",
+    "category": "ETF"
+  },
+  {
+    "ticker": "IS3N.DE",
+    "name": "iShares Core MSCI EM IMI UCITS Acc",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SXRV.DE",
+    "name": "iShares Nasdaq 100 UCITS Acc",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SXRT.DE",
+    "name": "iShares Core EURO STOXX 50 UCITS",
+    "category": "ETF"
+  },
+  {
+    "ticker": "EXS1.DE",
+    "name": "iShares Core DAX UCITS",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SGLD.MI",
+    "name": "Invesco Physical Gold ETC",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SPY",
+    "name": "SPDR S&P 500 ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "QQQ",
+    "name": "Invesco QQQ (Nasdaq 100)",
+    "category": "ETF"
+  },
+  {
+    "ticker": "IWM",
+    "name": "iShares Russell 2000",
+    "category": "ETF"
+  },
+  {
+    "ticker": "VTI",
+    "name": "Vanguard Total Stock Market",
+    "category": "ETF"
+  },
+  {
+    "ticker": "VGK",
+    "name": "Vanguard FTSE Europe",
+    "category": "ETF"
+  },
+  {
+    "ticker": "VWO",
+    "name": "Vanguard FTSE Emerging Markets",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SCHD",
+    "name": "Schwab US Dividend Equity",
+    "category": "ETF"
+  },
+  {
+    "ticker": "VNQ",
+    "name": "Vanguard Real Estate (REIT)",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLK",
+    "name": "Technology Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLF",
+    "name": "Financial Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLE",
+    "name": "Energy Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLV",
+    "name": "Health Care Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLI",
+    "name": "Industrial Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XLU",
+    "name": "Utilities Select Sector SPDR",
+    "category": "ETF"
+  },
+  {
+    "ticker": "SMH",
+    "name": "VanEck Semiconductor ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "GDX",
+    "name": "VanEck Gold Miners ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "URA",
+    "name": "Global X Uranium ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "ITA",
+    "name": "iShares US Aerospace & Defense",
+    "category": "ETF"
+  },
+  {
+    "ticker": "ICLN",
+    "name": "iShares Global Clean Energy",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XBI",
+    "name": "SPDR S&P Biotech ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "EWI",
+    "name": "iShares MSCI Italy ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "INDA",
+    "name": "iShares MSCI India ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "EWJ",
+    "name": "iShares MSCI Japan ETF",
+    "category": "ETF"
+  },
+  {
+    "ticker": "TLT",
+    "name": "iShares 20+ Year Treasury Bond",
+    "category": "ETF"
+  },
+  {
+    "ticker": "IEF",
+    "name": "iShares 7-10 Year Treasury Bond",
+    "category": "ETF"
+  },
+  {
+    "ticker": "AGG",
+    "name": "iShares Core US Aggregate Bond",
+    "category": "ETF"
+  },
+  {
+    "ticker": "LQD",
+    "name": "iShares Investment Grade Corp Bond",
+    "category": "ETF"
+  },
+  {
+    "ticker": "HYG",
+    "name": "iShares High Yield Corp Bond",
+    "category": "ETF"
+  },
+  {
+    "ticker": "XRP-USD",
+    "name": "XRP",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "ADA-USD",
+    "name": "Cardano",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "DOGE-USD",
+    "name": "Dogecoin",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "AVAX-USD",
+    "name": "Avalanche",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "LINK-USD",
+    "name": "Chainlink",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "LTC-USD",
+    "name": "Litecoin",
+    "category": "CRYPTO"
+  },
+  {
+    "ticker": "CL=F",
+    "name": "Petrolio WTI (Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "BZ=F",
+    "name": "Petrolio Brent (Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "NG=F",
+    "name": "Gas Naturale (Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "HG=F",
+    "name": "Rame (Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "PL=F",
+    "name": "Platino (Futures)",
+    "category": "COMMODITY"
+  },
+  {
+    "ticker": "KC=F",
+    "name": "Caffè (Futures)",
+    "category": "COMMODITY"
+  }
 ]
