@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01T04:45:35.394479Z",
+  "last_updated": "2026-11-01T05:40:38.280027Z",
   "items": [
     {
       "id": "sug_aapl",
@@ -641,9 +641,9 @@
       "sma50_above_200": true,
       "rel_volume": 1.15,
       "backtest": {
-        "n": 31,
-        "win_rate": 61.3,
-        "avg_ret": 3.54
+        "n": 32,
+        "win_rate": 62.5,
+        "avg_ret": 3.72
       }
     },
     {
@@ -952,7 +952,7 @@
       "ticker": "BTC-USD",
       "name": "Bitcoin Spot",
       "category": "CRYPTO",
-      "current_price": 77682.56,
+      "current_price": 77664.36,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -30.1,
@@ -964,14 +964,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (71.5) \u2022 sopra SMA200 (+6.2%) \u2022 volume 1.8x la media \u2022 -30.1% dal massimo 52w",
+      "note": "sopra SMA200 (+6.2%) \u2022 volume 1.8x la media \u2022 -30.1% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 71.5,
-          "status": "Ipercomprato \ud83d\udfe0"
+          "rsi": 64.5,
+          "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 35.5,
+          "rsi": 35.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -979,8 +979,8 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 81901.31,
-      "sma200": 73132.92,
+      "sma50": 81900.94,
+      "sma200": 73132.82,
       "sma200_dist_pct": 6.2,
       "sma50_above_200": true,
       "rel_volume": 1.83,
@@ -995,7 +995,7 @@
       "ticker": "ETH-USD",
       "name": "Ethereum Spot",
       "category": "CRYPTO",
-      "current_price": 2264.21,
+      "current_price": 2262.26,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -42.2,
@@ -1007,14 +1007,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (77.3) \u2022 sopra SMA200 (+4.9%) \u2022 volume 1.9x la media \u2022 -42.2% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (70.3) \u2022 sopra SMA200 (+4.8%) \u2022 volume 1.9x la media \u2022 -42.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 77.3,
-          "status": "Ipercomprato Estremo \ud83d\udd34"
+          "rsi": 70.3,
+          "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 33.3,
+          "rsi": 33.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -1022,9 +1022,9 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 2520.77,
-      "sma200": 2158.17,
-      "sma200_dist_pct": 4.9,
+      "sma50": 2520.73,
+      "sma200": 2158.16,
+      "sma200_dist_pct": 4.8,
       "sma50_above_200": true,
       "rel_volume": 1.86,
       "backtest": {
@@ -1038,7 +1038,7 @@
       "ticker": "SOL-USD",
       "name": "Solana Spot",
       "category": "CRYPTO",
-      "current_price": 95.33,
+      "current_price": 95.35,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -49.5,
@@ -1050,14 +1050,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (29.5) \u2022 sopra SMA200 (+7.4%) \u2022 volume 1.8x la media \u2022 -49.5% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (29.6) \u2022 sopra SMA200 (+7.4%) \u2022 volume 1.8x la media \u2022 -49.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 45.5,
+          "rsi": 40.1,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 29.5,
+          "rsi": 29.6,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
@@ -1081,7 +1081,7 @@
       "ticker": "BNB-USD",
       "name": "Binance Coin",
       "category": "CRYPTO",
-      "current_price": 703.58,
+      "current_price": 703.74,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -35.9,
@@ -1096,19 +1096,19 @@
       "note": "sopra SMA200 (+7.5%) \u2022 volume 1.9x la media \u2022 -35.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 42.3,
+          "rsi": 48.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 45.2,
+          "rsi": 45.3,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 64.3,
+          "rsi": 64.4,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 748.59,
+      "sma50": 748.6,
       "sma200": 654.78,
       "sma200_dist_pct": 7.5,
       "sma50_above_200": true,
@@ -1194,10 +1194,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2264.21,
-      "current_value": 100.3,
-      "pnl_pct": 0.3,
-      "pnl_usd": 0.3
+      "current_price": 2262.26,
+      "current_value": 100.22,
+      "pnl_pct": 0.22,
+      "pnl_usd": 0.22
     },
     {
       "id": "trade_sol-usd",
@@ -1207,10 +1207,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.33,
-      "current_value": 99.09,
-      "pnl_pct": -0.91,
-      "pnl_usd": -0.91
+      "current_price": 95.35,
+      "current_value": 99.11,
+      "pnl_pct": -0.89,
+      "pnl_usd": -0.89
     },
     {
       "id": "trade_bnb-usd",
@@ -1220,10 +1220,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 703.58,
-      "current_value": 100.82,
-      "pnl_pct": 0.82,
-      "pnl_usd": 0.82
+      "current_price": 703.74,
+      "current_value": 100.85,
+      "pnl_pct": 0.85,
+      "pnl_usd": 0.85
     },
     {
       "id": "trade_si=f",
@@ -1246,10 +1246,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 77682.56,
-      "current_value": 100.99,
-      "pnl_pct": 0.99,
-      "pnl_usd": 0.99,
+      "current_price": 77664.36,
+      "current_value": 100.96,
+      "pnl_pct": 0.96,
+      "pnl_usd": 0.96,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -1425,10 +1425,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2264.21,
-      "current_value": 100.3,
-      "pnl_pct": 0.3,
-      "pnl_usd": 0.3
+      "current_price": 2262.26,
+      "current_value": 100.22,
+      "pnl_pct": 0.22,
+      "pnl_usd": 0.22
     },
     {
       "id": "dca_sol-usd_20261029205944",
@@ -1438,10 +1438,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.33,
-      "current_value": 99.09,
-      "pnl_pct": -0.91,
-      "pnl_usd": -0.91
+      "current_price": 95.35,
+      "current_value": 99.11,
+      "pnl_pct": -0.89,
+      "pnl_usd": -0.89
     },
     {
       "id": "dca_bnb-usd_20261029205944",
@@ -1451,10 +1451,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 703.58,
-      "current_value": 100.82,
-      "pnl_pct": 0.82,
-      "pnl_usd": 0.82
+      "current_price": 703.74,
+      "current_value": 100.85,
+      "pnl_pct": 0.85,
+      "pnl_usd": 0.85
     },
     {
       "id": "dca_si=f_20261029205946",
@@ -1547,10 +1547,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 77682.56,
-      "current_value": 100.99,
-      "pnl_pct": 0.99,
-      "pnl_usd": 0.99,
+      "current_price": 77664.36,
+      "current_value": 100.96,
+      "pnl_pct": 0.96,
+      "pnl_usd": 0.96,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -1561,10 +1561,10 @@
       "buy_price": 2210.29,
       "invested": 100.0,
       "shares": 0.0452,
-      "current_price": 2264.21,
-      "current_value": 102.34,
-      "pnl_pct": 2.34,
-      "pnl_usd": 2.34,
+      "current_price": 2262.26,
+      "current_value": 102.25,
+      "pnl_pct": 2.25,
+      "pnl_usd": 2.25,
       "trigger_reason": "RSI 1D (24.7)"
     },
     {
@@ -1575,10 +1575,10 @@
       "buy_price": 93.73,
       "invested": 100.0,
       "shares": 1.0669,
-      "current_price": 95.33,
-      "current_value": 101.71,
-      "pnl_pct": 1.71,
-      "pnl_usd": 1.71,
+      "current_price": 95.35,
+      "current_value": 101.73,
+      "pnl_pct": 1.73,
+      "pnl_usd": 1.73,
       "trigger_reason": "RSI 1D (23.2)"
     },
     {
@@ -1589,10 +1589,10 @@
       "buy_price": 689.64,
       "invested": 100.0,
       "shares": 0.145,
-      "current_price": 703.58,
-      "current_value": 102.02,
-      "pnl_pct": 2.02,
-      "pnl_usd": 2.02,
+      "current_price": 703.74,
+      "current_value": 102.04,
+      "pnl_pct": 2.04,
+      "pnl_usd": 2.04,
       "trigger_reason": "RSI 1H (20.9)"
     },
     {
@@ -1855,10 +1855,10 @@
       "buy_price": 2246.66,
       "invested": 100.0,
       "shares": 0.0445,
-      "current_price": 2264.21,
-      "current_value": 100.76,
-      "pnl_pct": 0.76,
-      "pnl_usd": 0.76,
+      "current_price": 2262.26,
+      "current_value": 100.67,
+      "pnl_pct": 0.67,
+      "pnl_usd": 0.67,
       "trigger_reason": "RSI 1D (28.2)"
     },
     {
@@ -1897,10 +1897,10 @@
       "buy_price": 96.33,
       "invested": 100.0,
       "shares": 1.0381,
-      "current_price": 95.33,
-      "current_value": 98.96,
-      "pnl_pct": -1.04,
-      "pnl_usd": -1.04,
+      "current_price": 95.35,
+      "current_value": 98.98,
+      "pnl_pct": -1.02,
+      "pnl_usd": -1.02,
       "trigger_reason": "RSI 1D (29.8)"
     },
     {
@@ -2051,10 +2051,10 @@
       "buy_price": 95.46,
       "invested": 100.0,
       "shares": 1.0476,
-      "current_price": 95.33,
-      "current_value": 99.87,
-      "pnl_pct": -0.13,
-      "pnl_usd": -0.13,
+      "current_price": 95.35,
+      "current_value": 99.89,
+      "pnl_pct": -0.11,
+      "pnl_usd": -0.11,
       "trigger_reason": "RSI 1D (29.7)"
     },
     {
@@ -2247,14 +2247,14 @@
     "rsi_level": 30,
     "alert_threshold": 70,
     "overall": {
-      "n": 1025,
-      "win_rate": 54.6,
-      "avg_ret": 1.63
+      "n": 1026,
+      "win_rate": 54.7,
+      "avg_ret": 1.64
     },
     "trend_up": {
-      "n": 338,
-      "win_rate": 60.7,
-      "avg_ret": 3.16
+      "n": 339,
+      "win_rate": 60.8,
+      "avg_ret": 3.18
     },
     "trend_down": {
       "n": 504,
