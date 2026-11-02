@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02T22:36:00.002438Z",
+  "last_updated": "2026-11-02T23:33:13.039179Z",
   "items": [
     {
       "id": "sug_aapl",
@@ -870,22 +870,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -1.9,
-      "score": 34,
+      "score": 24,
       "score_parts": {
         "rsi": 3,
-        "trend": 21,
+        "trend": 11,
         "volume": 5,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+7.0%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 48.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 38.6,
+          "rsi": 36.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -893,10 +893,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 129.02,
-      "sma200": 121.51,
-      "sma200_dist_pct": 7.0,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.44,
       "backtest": {
         "n": 21,
@@ -913,22 +913,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -2.6,
-      "score": 29,
+      "score": 23,
       "score_parts": {
-        "rsi": 3,
-        "trend": 21,
+        "rsi": 7,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+7.7%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 46.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 35.3,
+          "rsi": 34.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -936,10 +936,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 730.16,
-      "sma200": 682.62,
-      "sma200_dist_pct": 7.7,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.82,
       "backtest": {
         "n": 26,
@@ -952,7 +952,7 @@
       "ticker": "BTC-USD",
       "name": "Bitcoin Spot",
       "category": "CRYPTO",
-      "current_price": 76674.6,
+      "current_price": 76666.89,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -30.8,
@@ -964,14 +964,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (12.8) \u2022 sopra SMA200 (+4.8%) \u2022 -30.8% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (17.1) \u2022 sopra SMA200 (+4.8%) \u2022 -30.8% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 12.8,
+          "rsi": 17.1,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 31.7,
+          "rsi": 31.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -979,8 +979,8 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 81912.64,
-      "sma200": 73156.51,
+      "sma50": 81912.49,
+      "sma200": 73156.47,
       "sma200_dist_pct": 4.8,
       "sma50_above_200": true,
       "rel_volume": 0.91,
@@ -995,10 +995,10 @@
       "ticker": "ETH-USD",
       "name": "Ethereum Spot",
       "category": "CRYPTO",
-      "current_price": 2246.17,
+      "current_price": 2248.15,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -42.6,
+      "dist_52w_pct": -42.5,
       "score": 64,
       "score_parts": {
         "rsi": 14,
@@ -1007,14 +1007,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (18.3) \u2022 sopra SMA200 (+4.1%) \u2022 -42.6% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (20.7) \u2022 sopra SMA200 (+4.2%) \u2022 -42.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 18.3,
+          "rsi": 20.7,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 31.5,
+          "rsi": 31.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -1022,9 +1022,9 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 2510.86,
-      "sma200": 2157.17,
-      "sma200_dist_pct": 4.1,
+      "sma50": 2510.9,
+      "sma200": 2157.18,
+      "sma200_dist_pct": 4.2,
       "sma50_above_200": true,
       "rel_volume": 1.07,
       "backtest": {
@@ -1038,10 +1038,10 @@
       "ticker": "SOL-USD",
       "name": "Solana Spot",
       "category": "CRYPTO",
-      "current_price": 91.6,
+      "current_price": 91.7,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -51.5,
+      "dist_52w_pct": -51.4,
       "score": 79,
       "score_parts": {
         "rsi": 29,
@@ -1050,14 +1050,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (19.2) \u2022 RSI 1H ipervenduto (20.2) \u2022 sopra SMA200 (+3.1%) \u2022 -51.5% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (19.3) \u2022 RSI 1H ipervenduto (22.1) \u2022 sopra SMA200 (+3.2%) \u2022 -51.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 20.2,
+          "rsi": 22.1,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 19.2,
+          "rsi": 19.3,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1wk": {
@@ -1067,7 +1067,7 @@
       },
       "sma50": 108.79,
       "sma200": 88.85,
-      "sma200_dist_pct": 3.1,
+      "sma200_dist_pct": 3.2,
       "sma50_above_200": true,
       "rel_volume": 1.1,
       "backtest": {
@@ -1081,30 +1081,30 @@
       "ticker": "BNB-USD",
       "name": "Binance Coin",
       "category": "CRYPTO",
-      "current_price": 696.98,
+      "current_price": 697.12,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -35.9,
-      "score": 55,
+      "dist_52w_pct": -35.8,
+      "score": 53,
       "score_parts": {
-        "rsi": 10,
+        "rsi": 8,
         "trend": 25,
         "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (23.5) \u2022 sopra SMA200 (+6.3%) \u2022 -35.9% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (27.4) \u2022 sopra SMA200 (+6.3%) \u2022 -35.8% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 23.5,
-          "status": "Ipervenduto Estremo \ud83d\udfe2"
+          "rsi": 27.4,
+          "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
-          "rsi": 38.8,
+          "rsi": 38.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 62.3,
+          "rsi": 62.4,
           "status": "Neutro \u26aa"
         }
       },
@@ -1124,38 +1124,38 @@
       "ticker": "GC=F",
       "name": "Oro (Gold Futures)",
       "category": "COMMODITY",
-      "current_price": 3956.6,
+      "current_price": 3955.8,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -29.2,
-      "score": 29,
+      "score": 24,
       "score_parts": {
         "rsi": 9,
         "trend": 0,
-        "volume": 5,
+        "volume": 0,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "sotto SMA200 (-12.4%) \u2022 -29.2% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (72.6) \u2022 sotto SMA200 (-12.4%) \u2022 -29.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 69.1,
-          "status": "Neutro \u26aa"
+          "rsi": 72.6,
+          "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 32.5,
+          "rsi": 32.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 45.2,
+          "rsi": 45.1,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 4280.32,
+      "sma50": 4280.3,
       "sma200": 4515.98,
       "sma200_dist_pct": -12.4,
       "sma50_above_200": false,
-      "rel_volume": 1.14,
+      "rel_volume": 0.0,
       "backtest": {
         "n": 27,
         "win_rate": 59.3,
@@ -1171,18 +1171,18 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -58.2,
-      "score": 50,
+      "score": 40,
       "score_parts": {
         "rsi": 15,
         "trend": 0,
-        "volume": 15,
+        "volume": 5,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (25.4) \u2022 sotto SMA200 (-28.3%) \u2022 volume 613.7x la media \u2022 -58.2% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (25.4) \u2022 sotto SMA200 (-28.3%) \u2022 -58.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 58.9,
+          "rsi": 58.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -1198,7 +1198,7 @@
       "sma200": 70.68,
       "sma200_dist_pct": -28.3,
       "sma50_above_200": false,
-      "rel_volume": 613.72,
+      "rel_volume": 1.43,
       "backtest": {
         "n": 32,
         "win_rate": 59.4,
@@ -2920,9 +2920,9 @@
       "sma50_above_200": false,
       "rel_volume": 1.32,
       "backtest": {
-        "n": 36,
-        "win_rate": 63.9,
-        "avg_ret": 3.4
+        "n": 35,
+        "win_rate": 62.9,
+        "avg_ret": 3.0
       }
     },
     {
@@ -3178,9 +3178,9 @@
       "sma50_above_200": true,
       "rel_volume": 0.93,
       "backtest": {
-        "n": 41,
-        "win_rate": 65.9,
-        "avg_ret": 2.05
+        "n": 40,
+        "win_rate": 65.0,
+        "avg_ret": 1.9
       }
     },
     {
@@ -3235,22 +3235,22 @@
       "currency": "EUR",
       "pe_ratio": 18.2,
       "dist_52w_pct": -4.5,
-      "score": 35,
+      "score": 25,
       "score_parts": {
         "rsi": 5,
-        "trend": 21,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 0,
         "valutazione": 7
       },
-      "note": "RSI 1H ipervenduto (27.1) \u2022 sopra SMA200 (+19.4%)",
+      "note": "RSI 1H ipervenduto (27.1)",
       "rsi_signals": {
         "1h": {
           "rsi": 27.1,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
-          "rsi": 57.8,
+          "rsi": 65.3,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3258,10 +3258,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 24.58,
-      "sma200": 22.21,
-      "sma200_dist_pct": 19.4,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.08,
       "backtest": {
         "n": 20,
@@ -3278,22 +3278,22 @@
       "currency": "EUR",
       "pe_ratio": 22.2,
       "dist_52w_pct": -9.4,
-      "score": 17,
+      "score": 28,
       "score_parts": {
         "rsi": 5,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "RSI 1D ipercomprato (72.3) \u2022 sotto SMA200 (-0.4%)",
+      "note": "RSI 1D ipercomprato (71.6)",
       "rsi_signals": {
         "1h": {
           "rsi": 56.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 72.3,
+          "rsi": 71.6,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
@@ -3301,10 +3301,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 9.03,
-      "sma200": 9.37,
-      "sma200_dist_pct": -0.4,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.67,
       "backtest": {
         "n": 27,
@@ -3321,22 +3321,22 @@
       "currency": "EUR",
       "pe_ratio": 10.6,
       "dist_52w_pct": -14.2,
-      "score": 29,
+      "score": 38,
       "score_parts": {
-        "rsi": 8,
-        "trend": 6,
+        "rsi": 12,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 10
       },
-      "note": "sotto SMA200 (-0.2%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 68.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 37.9,
+          "rsi": 33.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3344,10 +3344,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 6.45,
-      "sma200": 5.96,
-      "sma200_dist_pct": -0.2,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.99,
       "backtest": {
         "n": 20,
@@ -3364,22 +3364,22 @@
       "currency": "EUR",
       "pe_ratio": 10.7,
       "dist_52w_pct": -13.9,
-      "score": 26,
+      "score": 34,
       "score_parts": {
-        "rsi": 5,
-        "trend": 6,
+        "rsi": 8,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 10
       },
-      "note": "sotto SMA200 (-0.5%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 67.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 41.6,
+          "rsi": 35.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3387,10 +3387,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 80.08,
-      "sma200": 74.76,
-      "sma200_dist_pct": -0.5,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.89,
       "backtest": {
         "n": 20,
@@ -3407,22 +3407,22 @@
       "currency": "EUR",
       "pe_ratio": 38.9,
       "dist_52w_pct": -4.9,
-      "score": 28,
+      "score": 18,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 0,
         "valutazione": 3
       },
-      "note": "sopra SMA200 (+12.3%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 56.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 58.4,
+          "rsi": 54.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3430,10 +3430,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 353.41,
-      "sma200": 319.55,
-      "sma200_dist_pct": 12.3,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.32,
       "backtest": {
         "n": 35,
@@ -3450,22 +3450,22 @@
       "currency": "EUR",
       "pe_ratio": 14.6,
       "dist_52w_pct": -7.2,
-      "score": 42,
+      "score": 28,
       "score_parts": {
         "rsi": 2,
-        "trend": 25,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 10
       },
-      "note": "RSI 1H ipercomprato (81.1) \u2022 sopra SMA200 (+9.5%)",
+      "note": "RSI 1H ipercomprato (81.1)",
       "rsi_signals": {
         "1h": {
           "rsi": 81.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 56.9,
+          "rsi": 53.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3473,10 +3473,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 43.42,
-      "sma200": 39.22,
-      "sma200_dist_pct": 9.5,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.66,
       "backtest": {
         "n": 25,
@@ -3493,22 +3493,22 @@
       "currency": "EUR",
       "pe_ratio": 26.0,
       "dist_52w_pct": -21.4,
-      "score": 17,
+      "score": 28,
       "score_parts": {
         "rsi": 2,
-        "trend": 0,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 10,
         "valutazione": 3
       },
-      "note": "RSI 1D ipercomprato (75.9) \u2022 sotto SMA200 (-2.5%) \u2022 -21.4% dal massimo 52w",
+      "note": "RSI 1D ipercomprato (75.1) \u2022 -21.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 67.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 75.9,
+          "rsi": 75.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
@@ -3516,10 +3516,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 49.73,
-      "sma200": 53.36,
-      "sma200_dist_pct": -2.5,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.12,
       "backtest": {
         "n": 30,
@@ -3536,22 +3536,22 @@
       "currency": "EUR",
       "pe_ratio": 4.5,
       "dist_52w_pct": -59.6,
-      "score": 30,
+      "score": 41,
       "score_parts": {
         "rsi": 5,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 15,
         "valutazione": 10
       },
-      "note": "RSI 1H ipercomprato (72.3) \u2022 sotto SMA200 (-24.4%) \u2022 -59.6% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (72.3) \u2022 -59.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 72.3,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 59.5,
+          "rsi": 57.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3559,10 +3559,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 4.2,
-      "sma200": 5.61,
-      "sma200_dist_pct": -24.4,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.69,
       "backtest": {
         "n": 48,
@@ -3579,22 +3579,22 @@
       "currency": "EUR",
       "pe_ratio": 27.7,
       "dist_52w_pct": -29.3,
-      "score": 15,
+      "score": 26,
       "score_parts": {
         "rsi": 2,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 10,
         "valutazione": 3
       },
-      "note": "sotto SMA200 (-8.6%) \u2022 -29.3% dal massimo 52w",
+      "note": "-29.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 68.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 41.5,
+          "rsi": 40.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3602,10 +3602,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 119.0,
-      "sma200": 121.74,
-      "sma200_dist_pct": -8.6,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.6,
       "backtest": {
         "n": 24,
@@ -3622,22 +3622,22 @@
       "currency": "EUR",
       "pe_ratio": 19.1,
       "dist_52w_pct": -24.6,
-      "score": 27,
+      "score": 38,
       "score_parts": {
         "rsi": 8,
-        "trend": 0,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 10,
         "valutazione": 7
       },
-      "note": "RSI 1W ipervenduto (25.5) \u2022 RSI 1H ipercomprato (77.5) \u2022 sotto SMA200 (-9.5%) \u2022 -24.6% dal massimo 52w",
+      "note": "RSI 1W ipervenduto (25.5) \u2022 RSI 1H ipercomprato (77.5) \u2022 -24.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 77.5,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 54.5,
+          "rsi": 46.1,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3645,10 +3645,10 @@
           "status": "Ipervenduto \ud83d\udd35"
         }
       },
-      "sma50": 44.3,
-      "sma200": 49.48,
-      "sma200_dist_pct": -9.5,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.09,
       "backtest": {
         "n": 50,
@@ -3665,33 +3665,33 @@
       "currency": "EUR",
       "pe_ratio": 18.7,
       "dist_52w_pct": -8.2,
-      "score": 16,
+      "score": 27,
       "score_parts": {
         "rsi": 2,
-        "trend": 0,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "sotto SMA200 (-1.1%)",
+      "note": "RSI 1D ipercomprato (72.5)",
       "rsi_signals": {
         "1h": {
           "rsi": 47.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 69.2,
-          "status": "Neutro \u26aa"
+          "rsi": 72.5,
+          "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
           "rsi": 40.1,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 9.37,
-      "sma200": 9.66,
-      "sma200_dist_pct": -1.1,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.09,
       "backtest": {
         "n": 28,
@@ -3708,22 +3708,22 @@
       "currency": "EUR",
       "pe_ratio": 18.7,
       "dist_52w_pct": -10.0,
-      "score": 27,
+      "score": 23,
       "score_parts": {
         "rsi": 0,
-        "trend": 15,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "RSI 1D ipercomprato (88.4) \u2022 sopra SMA200 (+2.3%)",
+      "note": "RSI 1D ipercomprato (87.9)",
       "rsi_signals": {
         "1h": {
           "rsi": 64.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 88.4,
+          "rsi": 87.9,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
@@ -3731,10 +3731,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 5.71,
-      "sma200": 6.04,
-      "sma200_dist_pct": 2.3,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.95,
       "backtest": {
         "n": 29,
@@ -3751,22 +3751,22 @@
       "currency": "EUR",
       "pe_ratio": 13.2,
       "dist_52w_pct": -17.4,
-      "score": 31,
+      "score": 36,
       "score_parts": {
         "rsi": 5,
-        "trend": 6,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 10,
         "valutazione": 10
       },
-      "note": "RSI 1H ipercomprato (70.0) \u2022 sotto SMA200 (-0.3%) \u2022 -17.4% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (70.0) \u2022 -17.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 70.0,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 47.9,
+          "rsi": 42.3,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3774,10 +3774,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 25.42,
-      "sma200": 24.43,
-      "sma200_dist_pct": -0.3,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.62,
       "backtest": {
         "n": 27,
@@ -3794,22 +3794,22 @@
       "currency": "EUR",
       "pe_ratio": 10.7,
       "dist_52w_pct": -22.4,
-      "score": 38,
+      "score": 39,
       "score_parts": {
-        "rsi": 12,
-        "trend": 6,
+        "rsi": 8,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 10,
         "valutazione": 10
       },
-      "note": "sotto SMA200 (-2.8%) \u2022 -22.4% dal massimo 52w",
+      "note": "-22.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 42.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 34.7,
+          "rsi": 35.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3817,10 +3817,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 15.2,
-      "sma200": 13.92,
-      "sma200_dist_pct": -2.8,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.78,
       "backtest": {
         "n": 22,
@@ -3837,22 +3837,22 @@
       "currency": "EUR",
       "pe_ratio": 16.4,
       "dist_52w_pct": -5.1,
-      "score": 36,
+      "score": 26,
       "score_parts": {
         "rsi": 3,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "sopra SMA200 (+9.1%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 32.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 52.8,
+          "rsi": 56.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3860,10 +3860,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 25.02,
-      "sma200": 24.19,
-      "sma200_dist_pct": 9.1,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.88,
       "backtest": {
         "n": 25,
@@ -3880,22 +3880,22 @@
       "currency": "EUR",
       "pe_ratio": 42.7,
       "dist_52w_pct": -6.2,
-      "score": 28,
+      "score": 18,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 0
       },
-      "note": "RSI 1H ipercomprato (80.5) \u2022 sopra SMA200 (+7.5%)",
+      "note": "RSI 1H ipercomprato (80.5)",
       "rsi_signals": {
         "1h": {
           "rsi": 80.5,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 55.4,
+          "rsi": 50.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3903,10 +3903,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 6.1,
-      "sma200": 5.95,
-      "sma200_dist_pct": 7.5,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.94,
       "backtest": {
         "n": 36,
@@ -3923,22 +3923,22 @@
       "currency": "EUR",
       "pe_ratio": 17.0,
       "dist_52w_pct": -12.4,
-      "score": 42,
+      "score": 28,
       "score_parts": {
         "rsi": 5,
-        "trend": 25,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "sopra SMA200 (+11.5%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 58.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 52.0,
+          "rsi": 50.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3946,15 +3946,15 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 27.1,
-      "sma200": 22.97,
-      "sma200_dist_pct": 11.5,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.97,
       "backtest": {
         "n": 36,
         "win_rate": 72.2,
-        "avg_ret": 4.06
+        "avg_ret": NaN
       }
     },
     {
@@ -3966,22 +3966,22 @@
       "currency": "EUR",
       "pe_ratio": 22.2,
       "dist_52w_pct": -2.8,
-      "score": 30,
+      "score": 20,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 7
       },
-      "note": "sopra SMA200 (+5.4%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 55.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 50.0,
+          "rsi": 51.1,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -3989,10 +3989,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 52.71,
-      "sma200": 50.22,
-      "sma200_dist_pct": 5.4,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.45,
       "backtest": {
         "n": 36,
@@ -4009,22 +4009,22 @@
       "currency": "EUR",
       "pe_ratio": 33.5,
       "dist_52w_pct": -23.3,
-      "score": 62,
+      "score": 48,
       "score_parts": {
         "rsi": 9,
-        "trend": 25,
+        "trend": 11,
         "volume": 15,
         "distanza_52w": 10,
         "valutazione": 3
       },
-      "note": "sopra SMA200 (+2.1%) \u2022 volume 2.5x la media \u2022 -23.3% dal massimo 52w",
+      "note": "volume 2.5x la media \u2022 -23.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 58.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 34.6,
+          "rsi": 30.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4032,10 +4032,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 12.04,
-      "sma200": 11.16,
-      "sma200_dist_pct": 2.1,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 2.52,
       "backtest": {
         "n": 42,
@@ -4052,33 +4052,33 @@
       "currency": "EUR",
       "pe_ratio": 43.9,
       "dist_52w_pct": -13.0,
-      "score": 30,
+      "score": 20,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 5,
         "valutazione": 0
       },
-      "note": "RSI 1D ipercomprato (70.4) \u2022 RSI 1H ipercomprato (77.0) \u2022 sopra SMA200 (+8.6%)",
+      "note": "RSI 1H ipercomprato (77.0)",
       "rsi_signals": {
         "1h": {
           "rsi": 77.0,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 70.4,
-          "status": "Ipercomprato \ud83d\udfe0"
+          "rsi": 66.4,
+          "status": "Neutro \u26aa"
         },
         "1wk": {
           "rsi": 48.5,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 82.5,
-      "sma200": 82.05,
-      "sma200_dist_pct": 8.6,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.05,
       "backtest": {
         "n": 41,
@@ -4095,33 +4095,33 @@
       "currency": "EUR",
       "pe_ratio": 30.5,
       "dist_52w_pct": -8.9,
-      "score": 32,
+      "score": 22,
       "score_parts": {
         "rsi": 3,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 3
       },
-      "note": "RSI 1W ipercomprato (79.1) \u2022 sopra SMA200 (+28.1%)",
+      "note": "RSI 1D ipercomprato (70.9) \u2022 RSI 1W ipercomprato (79.1)",
       "rsi_signals": {
         "1h": {
           "rsi": 37.9,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 69.4,
-          "status": "Neutro \u26aa"
+          "rsi": 70.9,
+          "status": "Ipercomprato \ud83d\udfe0"
         },
         "1wk": {
           "rsi": 79.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         }
       },
-      "sma50": 191.78,
-      "sma200": 164.39,
-      "sma200_dist_pct": 28.1,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.74,
       "backtest": {
         "n": 41,
@@ -4138,22 +4138,22 @@
       "currency": "EUR",
       "pe_ratio": 27.0,
       "dist_52w_pct": -7.3,
-      "score": 35,
+      "score": 21,
       "score_parts": {
         "rsi": 2,
-        "trend": 25,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 3
       },
-      "note": "sopra SMA200 (+4.4%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 67.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 46.7,
+          "rsi": 42.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4161,10 +4161,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 271.45,
-      "sma200": 259.06,
-      "sma200_dist_pct": 4.4,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.85,
       "backtest": {
         "n": 29,
@@ -4181,22 +4181,22 @@
       "currency": "EUR",
       "pe_ratio": 14.4,
       "dist_52w_pct": -3.1,
-      "score": 33,
+      "score": 23,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 10
       },
-      "note": "sopra SMA200 (+11.3%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 63.9,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 66.1,
+          "rsi": 65.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4204,10 +4204,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 434.4,
-      "sma200": 395.58,
-      "sma200_dist_pct": 11.3,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.7,
       "backtest": {
         "n": 30,
@@ -4224,22 +4224,22 @@
       "currency": "EUR",
       "pe_ratio": 7.2,
       "dist_52w_pct": -34.0,
-      "score": 35,
+      "score": 46,
       "score_parts": {
         "rsi": 8,
-        "trend": 0,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 15,
         "valutazione": 10
       },
-      "note": "RSI 1W ipervenduto (29.4) \u2022 sotto SMA200 (-13.8%) \u2022 -34.0% dal massimo 52w",
+      "note": "RSI 1W ipervenduto (29.4) \u2022 -34.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 62.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 59.3,
+          "rsi": 56.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4247,10 +4247,10 @@
           "status": "Ipervenduto \ud83d\udd35"
         }
       },
-      "sma50": 42.89,
-      "sma200": 47.74,
-      "sma200_dist_pct": -13.8,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.01,
       "backtest": {
         "n": 42,
@@ -4267,22 +4267,22 @@
       "currency": "EUR",
       "pe_ratio": 14.5,
       "dist_52w_pct": -24.8,
-      "score": 24,
+      "score": 35,
       "score_parts": {
         "rsi": 2,
-        "trend": 0,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 10,
         "valutazione": 10
       },
-      "note": "sotto SMA200 (-8.5%) \u2022 -24.8% dal massimo 52w",
+      "note": "-24.8% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 43.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 57.7,
+          "rsi": 61.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4290,10 +4290,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 26.93,
-      "sma200": 28.24,
-      "sma200_dist_pct": -8.5,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.0,
       "backtest": {
         "n": 33,
@@ -4310,22 +4310,22 @@
       "currency": "EUR",
       "pe_ratio": 56.5,
       "dist_52w_pct": -41.5,
-      "score": 23,
+      "score": 34,
       "score_parts": {
         "rsi": 8,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 15,
         "valutazione": 0
       },
-      "note": "sotto SMA200 (-9.0%) \u2022 -41.5% dal massimo 52w",
+      "note": "-41.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 64.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 40.0,
+          "rsi": 35.3,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4333,10 +4333,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 56.14,
-      "sma200": 57.17,
-      "sma200_dist_pct": -9.0,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.74,
       "backtest": {
         "n": 42,
@@ -4353,22 +4353,22 @@
       "currency": "EUR",
       "pe_ratio": 40.3,
       "dist_52w_pct": -19.1,
-      "score": 40,
+      "score": 26,
       "score_parts": {
         "rsi": 5,
-        "trend": 25,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 10,
         "valutazione": 0
       },
-      "note": "sopra SMA200 (+1.4%) \u2022 -19.1% dal massimo 52w",
+      "note": "-19.1% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 45.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 39.5,
+          "rsi": 39.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4376,10 +4376,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 1496.06,
-      "sma200": 1388.67,
-      "sma200_dist_pct": 1.4,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.9,
       "backtest": {
         "n": 41,
@@ -4396,22 +4396,22 @@
       "currency": "EUR",
       "pe_ratio": 17.9,
       "dist_52w_pct": -39.9,
-      "score": 30,
+      "score": 41,
       "score_parts": {
         "rsi": 8,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 15,
         "valutazione": 7
       },
-      "note": "RSI 1W ipervenduto (21.4) \u2022 sotto SMA200 (-15.5%) \u2022 -39.9% dal massimo 52w",
+      "note": "RSI 1W ipervenduto (21.4) \u2022 -39.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 64.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 59.1,
+          "rsi": 53.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4419,10 +4419,10 @@
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         }
       },
-      "sma50": 404.33,
-      "sma200": 466.05,
-      "sma200_dist_pct": -15.5,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.79,
       "backtest": {
         "n": 45,
@@ -4439,22 +4439,22 @@
       "currency": "EUR",
       "pe_ratio": 37.1,
       "dist_52w_pct": -1.3,
-      "score": 24,
+      "score": 14,
       "score_parts": {
         "rsi": 0,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 3
       },
-      "note": "RSI 1D ipercomprato (79.7) \u2022 RSI 1W ipercomprato (73.1) \u2022 RSI 1H ipercomprato (72.1) \u2022 sopra SMA200 (+15.9%)",
+      "note": "RSI 1D ipercomprato (80.1) \u2022 RSI 1W ipercomprato (73.1) \u2022 RSI 1H ipercomprato (72.1)",
       "rsi_signals": {
         "1h": {
           "rsi": 72.1,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 79.7,
+          "rsi": 80.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
@@ -4462,10 +4462,10 @@
           "status": "Ipercomprato \ud83d\udfe0"
         }
       },
-      "sma50": 391.79,
-      "sma200": 376.73,
-      "sma200_dist_pct": 15.9,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.85,
       "backtest": {
         "n": 35,
@@ -4482,33 +4482,33 @@
       "currency": "EUR",
       "pe_ratio": 9.7,
       "dist_52w_pct": -2.7,
-      "score": 38,
+      "score": 28,
       "score_parts": {
         "rsi": 5,
-        "trend": 21,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 0,
         "valutazione": 10
       },
-      "note": "RSI 1H ipervenduto (27.3) \u2022 sopra SMA200 (+14.8%)",
+      "note": "RSI 1D ipercomprato (76.1) \u2022 RSI 1H ipervenduto (27.3)",
       "rsi_signals": {
         "1h": {
           "rsi": 27.3,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
-          "rsi": 65.0,
-          "status": "Neutro \u26aa"
+          "rsi": 76.1,
+          "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
           "rsi": 66.9,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 78.47,
-      "sma200": 72.81,
-      "sma200_dist_pct": 14.8,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.13,
       "backtest": {
         "n": 28,
@@ -4525,22 +4525,22 @@
       "currency": "EUR",
       "pe_ratio": 26.1,
       "dist_52w_pct": -11.4,
-      "score": 31,
+      "score": 21,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 5,
         "valutazione": 3
       },
-      "note": "sopra SMA200 (+4.8%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 66.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 61.0,
+          "rsi": 57.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4548,10 +4548,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 194.48,
-      "sma200": 187.02,
-      "sma200_dist_pct": 4.8,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.87,
       "backtest": {
         "n": 32,
@@ -4568,22 +4568,22 @@
       "currency": "EUR",
       "pe_ratio": 30.7,
       "dist_52w_pct": -42.6,
-      "score": 23,
+      "score": 34,
       "score_parts": {
         "rsi": 5,
-        "trend": 0,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 15,
         "valutazione": 3
       },
-      "note": "sotto SMA200 (-19.6%) \u2022 -42.6% dal massimo 52w",
+      "note": "-42.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 68.1,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 55.8,
+          "rsi": 51.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4591,10 +4591,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 1370.02,
-      "sma200": 1642.45,
-      "sma200_dist_pct": -19.6,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.72,
       "backtest": {
         "n": 33,
@@ -4611,22 +4611,22 @@
       "currency": "CHF",
       "pe_ratio": 29.3,
       "dist_52w_pct": -2.8,
-      "score": 24,
+      "score": 14,
       "score_parts": {
         "rsi": 0,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 3
       },
-      "note": "RSI 1D ipercomprato (84.5) \u2022 sopra SMA200 (+7.9%)",
+      "note": "RSI 1D ipercomprato (85.0)",
       "rsi_signals": {
         "1h": {
           "rsi": 64.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 84.5,
+          "rsi": 85.0,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
@@ -4634,10 +4634,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 78.96,
-      "sma200": 78.42,
-      "sma200_dist_pct": 7.9,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.78,
       "backtest": {
         "n": 47,
@@ -4654,22 +4654,22 @@
       "currency": "CHF",
       "pe_ratio": 31.5,
       "dist_52w_pct": -2.6,
-      "score": 29,
+      "score": 19,
       "score_parts": {
         "rsi": 5,
-        "trend": 21,
+        "trend": 11,
         "volume": 0,
         "distanza_52w": 0,
         "valutazione": 3
       },
-      "note": "RSI 1D ipercomprato (76.6) \u2022 sopra SMA200 (+8.8%)",
+      "note": "RSI 1D ipercomprato (85.0)",
       "rsi_signals": {
         "1h": {
           "rsi": 30.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 76.6,
+          "rsi": 85.0,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1wk": {
@@ -4677,10 +4677,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 122.06,
-      "sma200": 120.88,
-      "sma200_dist_pct": 8.8,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 0.98,
       "backtest": {
         "n": 27,
@@ -4697,22 +4697,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -2.6,
-      "score": 44,
+      "score": 38,
       "score_parts": {
-        "rsi": 3,
-        "trend": 21,
+        "rsi": 7,
+        "trend": 11,
         "volume": 15,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+6.0%) \u2022 volume 2.1x la media",
+      "note": "volume 2.1x la media",
       "rsi_signals": {
         "1h": {
           "rsi": 52.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 36.9,
+          "rsi": 34.3,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4720,10 +4720,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 169.34,
-      "sma200": 159.74,
-      "sma200_dist_pct": 6.0,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 2.1,
       "backtest": {
         "n": 24,
@@ -4740,22 +4740,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -1.9,
-      "score": 44,
+      "score": 34,
       "score_parts": {
         "rsi": 3,
-        "trend": 21,
+        "trend": 11,
         "volume": 15,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+6.9%) \u2022 volume 2.7x la media",
+      "note": "volume 2.7x la media",
       "rsi_signals": {
         "1h": {
           "rsi": 48.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 38.8,
+          "rsi": 36.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4763,10 +4763,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 129.01,
-      "sma200": 121.51,
-      "sma200_dist_pct": 6.9,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 2.7,
       "backtest": {
         "n": 19,
@@ -4783,22 +4783,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -2.7,
-      "score": 34,
+      "score": 28,
       "score_parts": {
-        "rsi": 3,
-        "trend": 21,
+        "rsi": 7,
+        "trend": 11,
         "volume": 5,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+7.7%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 46.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 35.1,
+          "rsi": 34.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4806,10 +4806,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 130.93,
-      "sma200": 122.4,
-      "sma200_dist_pct": 7.7,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.11,
       "backtest": {
         "n": 7,
@@ -4826,33 +4826,33 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -11.0,
-      "score": 40,
+      "score": 51,
       "score_parts": {
-        "rsi": 9,
-        "trend": 6,
+        "rsi": 15,
+        "trend": 11,
         "volume": 15,
         "distanza_52w": 5,
         "valutazione": 5
       },
-      "note": "sotto SMA200 (-0.1%) \u2022 volume 2.5x la media",
+      "note": "RSI 1D ipervenduto (27.2) \u2022 volume 2.5x la media",
       "rsi_signals": {
         "1h": {
           "rsi": 67.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 31.4,
-          "status": "Neutro \u26aa"
+          "rsi": 27.2,
+          "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
           "rsi": 47.8,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 47.63,
-      "sma200": 45.42,
-      "sma200_dist_pct": -0.1,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 2.5,
       "backtest": {
         "n": 29,
@@ -4869,22 +4869,22 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -8.6,
-      "score": 55,
+      "score": 41,
       "score_parts": {
         "rsi": 15,
-        "trend": 25,
+        "trend": 11,
         "volume": 5,
         "distanza_52w": 5,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (29.4) \u2022 sopra SMA200 (+5.1%)",
+      "note": "RSI 1D ipervenduto (29.5)",
       "rsi_signals": {
         "1h": {
           "rsi": 42.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 29.4,
+          "rsi": 29.5,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
@@ -4892,10 +4892,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 1505.5,
-      "sma200": 1393.57,
-      "sma200_dist_pct": 5.1,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.05,
       "backtest": {
         "n": 31,
@@ -4912,22 +4912,22 @@
       "currency": "EUR",
       "pe_ratio": 18.3,
       "dist_52w_pct": -5.9,
-      "score": 44,
+      "score": 30,
       "score_parts": {
         "rsi": 5,
-        "trend": 25,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 5,
         "valutazione": 7
       },
-      "note": "sopra SMA200 (+2.0%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 63.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 51.1,
+          "rsi": 47.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4935,10 +4935,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 244.29,
-      "sma200": 236.6,
-      "sma200_dist_pct": 2.0,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.16,
       "backtest": {
         "n": 23,
@@ -4955,22 +4955,22 @@
       "currency": "EUR",
       "pe_ratio": 18.4,
       "dist_52w_pct": -2.4,
-      "score": 32,
+      "score": 22,
       "score_parts": {
         "rsi": 2,
-        "trend": 21,
+        "trend": 11,
         "volume": 2,
         "distanza_52w": 0,
         "valutazione": 7
       },
-      "note": "sopra SMA200 (+4.2%)",
+      "note": "Nessun segnale estremo: situazione neutrale.",
       "rsi_signals": {
         "1h": {
           "rsi": 64.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 62.8,
+          "rsi": 60.4,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -4978,10 +4978,10 @@
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 210.81,
-      "sma200": 205.55,
-      "sma200_dist_pct": 4.2,
-      "sma50_above_200": true,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.06,
       "backtest": {
         "n": 30,
@@ -4998,33 +4998,33 @@
       "currency": "EUR",
       "pe_ratio": null,
       "dist_52w_pct": -23.7,
-      "score": 29,
+      "score": 46,
       "score_parts": {
-        "rsi": 9,
-        "trend": 0,
+        "rsi": 15,
+        "trend": 11,
         "volume": 5,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "sotto SMA200 (-8.8%) \u2022 -23.7% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (25.1) \u2022 -23.7% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 48.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 32.4,
-          "status": "Neutro \u26aa"
+          "rsi": 25.1,
+          "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
           "rsi": 49.1,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 358.74,
-      "sma200": 373.4,
-      "sma200_dist_pct": -8.8,
-      "sma50_above_200": false,
+      "sma50": null,
+      "sma200": null,
+      "sma200_dist_pct": null,
+      "sma50_above_200": null,
       "rel_volume": 1.13,
       "backtest": {
         "n": 32,
@@ -6256,11 +6256,11 @@
       "note": "sotto SMA200 (-2.0%) \u2022 -51.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 46.3,
+          "rsi": 47.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 40.6,
+          "rsi": 40.7,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -6296,14 +6296,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (24.5) \u2022 sotto SMA200 (-9.0%) \u2022 -68.9% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (24.6) \u2022 sotto SMA200 (-9.0%) \u2022 -68.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 30.8,
+          "rsi": 32.9,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 24.5,
+          "rsi": 24.6,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1wk": {
@@ -6315,7 +6315,7 @@
       "sma200": 0.21,
       "sma200_dist_pct": -9.0,
       "sma50_above_200": true,
-      "rel_volume": 0.77,
+      "rel_volume": 0.76,
       "backtest": {
         "n": 84,
         "win_rate": 45.2,
@@ -6339,18 +6339,18 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (27.7) \u2022 sotto SMA200 (-18.7%) \u2022 -62.5% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (29.8) \u2022 sotto SMA200 (-18.7%) \u2022 -62.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 27.7,
+          "rsi": 29.8,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
-          "rsi": 33.2,
+          "rsi": 33.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 51.8,
+          "rsi": 51.9,
           "status": "Neutro \u26aa"
         }
       },
@@ -6370,10 +6370,10 @@
       "ticker": "AVAX-USD",
       "name": "Avalanche",
       "category": "CRYPTO",
-      "current_price": 8.36,
+      "current_price": 8.39,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -55.7,
+      "dist_52w_pct": -55.5,
       "score": 67,
       "score_parts": {
         "rsi": 22,
@@ -6382,24 +6382,24 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (25.5) \u2022 RSI 1H ipervenduto (19.7) \u2022 sopra SMA200 (+2.6%) \u2022 -55.7% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (25.8) \u2022 RSI 1H ipervenduto (22.9) \u2022 sopra SMA200 (+3.0%) \u2022 -55.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 19.7,
+          "rsi": 22.9,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 25.5,
+          "rsi": 25.8,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
-          "rsi": 58.4,
+          "rsi": 58.5,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 9.84,
       "sma200": 8.15,
-      "sma200_dist_pct": 2.6,
+      "sma200_dist_pct": 3.0,
       "sma50_above_200": true,
       "rel_volume": 0.97,
       "backtest": {
@@ -6413,36 +6413,36 @@
       "ticker": "LINK-USD",
       "name": "Chainlink",
       "category": "CRYPTO",
-      "current_price": 11.06,
+      "current_price": 11.11,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -37.3,
-      "score": 60,
+      "dist_52w_pct": -37.0,
+      "score": 52,
       "score_parts": {
-        "rsi": 10,
+        "rsi": 5,
         "trend": 25,
-        "volume": 5,
+        "volume": 2,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (28.8) \u2022 sopra SMA200 (+10.2%) \u2022 -37.3% dal massimo 52w",
+      "note": "sopra SMA200 (+10.7%) \u2022 -37.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 28.8,
-          "status": "Ipervenduto \ud83d\udd35"
+          "rsi": 35.9,
+          "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 39.7,
+          "rsi": 40.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 59.4,
+          "rsi": 59.6,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 12.62,
       "sma200": 10.03,
-      "sma200_dist_pct": 10.2,
+      "sma200_dist_pct": 10.7,
       "sma50_above_200": true,
       "rel_volume": 1.03,
       "backtest": {
@@ -6456,7 +6456,7 @@
       "ticker": "LTC-USD",
       "name": "Litecoin",
       "category": "CRYPTO",
-      "current_price": 53.71,
+      "current_price": 53.62,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -52.6,
@@ -6468,26 +6468,26 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (21.3) \u2022 sopra SMA200 (+3.0%) \u2022 -52.6% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (21.5) \u2022 sopra SMA200 (+2.8%) \u2022 -52.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 21.3,
+          "rsi": 21.5,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 32.2,
+          "rsi": 32.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 57.8,
+          "rsi": 57.7,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 61.66,
       "sma200": 52.15,
-      "sma200_dist_pct": 3.0,
+      "sma200_dist_pct": 2.8,
       "sma50_above_200": true,
-      "rel_volume": 0.68,
+      "rel_volume": 0.67,
       "backtest": {
         "n": 65,
         "win_rate": 46.2,
@@ -6499,38 +6499,38 @@
       "ticker": "CL=F",
       "name": "Petrolio WTI (Futures)",
       "category": "COMMODITY",
-      "current_price": 96.26,
+      "current_price": 96.41,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -19.4,
-      "score": 47,
+      "dist_52w_pct": -19.3,
+      "score": 45,
       "score_parts": {
         "rsi": 9,
         "trend": 21,
-        "volume": 2,
+        "volume": 0,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (18.3) \u2022 sopra SMA200 (+11.2%) \u2022 -19.4% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (21.7) \u2022 sopra SMA200 (+11.4%) \u2022 -19.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 18.3,
+          "rsi": 21.7,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 52.7,
+          "rsi": 52.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 58.8,
+          "rsi": 58.9,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 94.81,
+      "sma50": 94.82,
       "sma200": 86.53,
-      "sma200_dist_pct": 11.2,
+      "sma200_dist_pct": 11.4,
       "sma50_above_200": true,
-      "rel_volume": 1.36,
+      "rel_volume": 0.0,
       "backtest": {
         "n": 31,
         "win_rate": 38.7,
@@ -6542,22 +6542,22 @@
       "ticker": "BZ=F",
       "name": "Petrolio Brent (Futures)",
       "category": "COMMODITY",
-      "current_price": 104.23,
+      "current_price": 104.24,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -17.3,
-      "score": 47,
+      "score": 43,
       "score_parts": {
         "rsi": 7,
         "trend": 21,
-        "volume": 4,
+        "volume": 0,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (14.1) \u2022 sopra SMA200 (+12.5%) \u2022 volume 1.6x la media \u2022 -17.3% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (16.0) \u2022 sopra SMA200 (+12.5%) \u2022 -17.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 14.1,
+          "rsi": 16.0,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
@@ -6573,7 +6573,7 @@
       "sma200": 92.66,
       "sma200_dist_pct": 12.5,
       "sma50_above_200": true,
-      "rel_volume": 1.56,
+      "rel_volume": 0.0,
       "backtest": {
         "n": 35,
         "win_rate": 48.6,
@@ -6589,9 +6589,9 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -63.5,
-      "score": 29,
+      "score": 32,
       "score_parts": {
-        "rsi": 9,
+        "rsi": 12,
         "trend": 0,
         "volume": 0,
         "distanza_52w": 15,
@@ -6600,7 +6600,7 @@
       "note": "sotto SMA200 (-6.8%) \u2022 -63.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 41.9,
+          "rsi": 38.5,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -6608,7 +6608,7 @@
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 52.8,
+          "rsi": 52.7,
           "status": "Neutro \u26aa"
         }
       },
@@ -6616,7 +6616,7 @@
       "sma200": 3.07,
       "sma200_dist_pct": -6.8,
       "sma50_above_200": false,
-      "rel_volume": 0.83,
+      "rel_volume": 0.0,
       "backtest": {
         "n": 52,
         "win_rate": 57.7,
@@ -6632,18 +6632,18 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -4.2,
-      "score": 38,
+      "score": 32,
       "score_parts": {
         "rsi": 2,
         "trend": 25,
-        "volume": 6,
+        "volume": 0,
         "distanza_52w": 0,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+5.3%) \u2022 volume 23.6x la media",
+      "note": "sopra SMA200 (+5.3%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 56.5,
+          "rsi": 50.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -6659,7 +6659,7 @@
       "sma200": 6.21,
       "sma200_dist_pct": 5.3,
       "sma50_above_200": true,
-      "rel_volume": 23.56,
+      "rel_volume": 0.07,
       "backtest": {
         "n": 26,
         "win_rate": 69.2,
@@ -6671,7 +6671,7 @@
       "ticker": "PL=F",
       "name": "Platino (Futures)",
       "category": "COMMODITY",
-      "current_price": 1449.4,
+      "current_price": 1449.3,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -49.2,
@@ -6683,10 +6683,10 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (20.0) \u2022 sotto SMA200 (-23.1%) \u2022 volume 1178.4x la media \u2022 -49.2% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (20.0) \u2022 sotto SMA200 (-23.1%) \u2022 volume 2.7x la media \u2022 -49.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 60.0,
+          "rsi": 59.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -6699,10 +6699,10 @@
         }
       },
       "sma50": 1708.56,
-      "sma200": 1884.58,
+      "sma200": 1884.57,
       "sma200_dist_pct": -23.1,
       "sma50_above_200": false,
-      "rel_volume": 1178.42,
+      "rel_volume": 2.72,
       "backtest": {
         "n": 39,
         "win_rate": 61.5,
@@ -6827,10 +6827,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2246.17,
-      "current_value": 99.51,
-      "pnl_pct": -0.49,
-      "pnl_usd": -0.49
+      "current_price": 2248.15,
+      "current_value": 99.59,
+      "pnl_pct": -0.41,
+      "pnl_usd": -0.41
     },
     {
       "id": "trade_sol-usd",
@@ -6840,10 +6840,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 91.6,
-      "current_value": 95.21,
-      "pnl_pct": -4.79,
-      "pnl_usd": -4.79
+      "current_price": 91.7,
+      "current_value": 95.31,
+      "pnl_pct": -4.69,
+      "pnl_usd": -4.69
     },
     {
       "id": "trade_bnb-usd",
@@ -6853,10 +6853,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 696.98,
-      "current_value": 99.88,
-      "pnl_pct": -0.12,
-      "pnl_usd": -0.12
+      "current_price": 697.12,
+      "current_value": 99.9,
+      "pnl_pct": -0.1,
+      "pnl_usd": -0.1
     },
     {
       "id": "trade_si=f",
@@ -6879,10 +6879,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 76674.6,
-      "current_value": 99.68,
-      "pnl_pct": -0.32,
-      "pnl_usd": -0.32,
+      "current_price": 76666.89,
+      "current_value": 99.67,
+      "pnl_pct": -0.33,
+      "pnl_usd": -0.33,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -6893,10 +6893,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 3956.6,
-      "current_value": 98.52,
-      "pnl_pct": -1.48,
-      "pnl_usd": -1.48,
+      "current_price": 3955.8,
+      "current_value": 98.5,
+      "pnl_pct": -1.5,
+      "pnl_usd": -1.5,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -7579,10 +7579,10 @@
       "buy_price": 8.77,
       "invested": 100.0,
       "shares": 11.4025,
-      "current_price": 8.36,
-      "current_value": 95.32,
-      "pnl_pct": -4.68,
-      "pnl_usd": -4.68,
+      "current_price": 8.39,
+      "current_value": 95.67,
+      "pnl_pct": -4.33,
+      "pnl_usd": -4.33,
       "trigger_reason": "RSI 1D (29.6)"
     },
     {
@@ -7607,10 +7607,10 @@
       "buy_price": 11.38,
       "invested": 100.0,
       "shares": 8.7873,
-      "current_price": 11.06,
-      "current_value": 97.19,
-      "pnl_pct": -2.81,
-      "pnl_usd": -2.81,
+      "current_price": 11.11,
+      "current_value": 97.63,
+      "pnl_pct": -2.37,
+      "pnl_usd": -2.37,
       "trigger_reason": "RSI 1H (29.1)"
     },
     {
@@ -7621,10 +7621,10 @@
       "buy_price": 55.0,
       "invested": 100.0,
       "shares": 1.8182,
-      "current_price": 53.71,
-      "current_value": 97.66,
-      "pnl_pct": -2.34,
-      "pnl_usd": -2.34,
+      "current_price": 53.62,
+      "current_value": 97.49,
+      "pnl_pct": -2.51,
+      "pnl_usd": -2.51,
       "trigger_reason": "RSI 1H (21.4)"
     },
     {
@@ -7635,7 +7635,7 @@
       "buy_price": 1447.2,
       "invested": 100.0,
       "shares": 0.0691,
-      "current_price": 1449.4,
+      "current_price": 1449.3,
       "current_value": 100.15,
       "pnl_pct": 0.15,
       "pnl_usd": 0.15,
@@ -7649,10 +7649,10 @@
       "buy_price": 110.51,
       "invested": 100.0,
       "shares": 0.9049,
-      "current_price": 104.23,
-      "current_value": 94.32,
-      "pnl_pct": -5.68,
-      "pnl_usd": -5.68,
+      "current_price": 104.24,
+      "current_value": 94.33,
+      "pnl_pct": -5.67,
+      "pnl_usd": -5.67,
       "trigger_reason": "RSI 1H (28.8)"
     },
     {
@@ -7663,10 +7663,10 @@
       "buy_price": 100.59,
       "invested": 100.0,
       "shares": 0.9941,
-      "current_price": 96.26,
-      "current_value": 95.69,
-      "pnl_pct": -4.31,
-      "pnl_usd": -4.31,
+      "current_price": 96.41,
+      "current_value": 95.84,
+      "pnl_pct": -4.16,
+      "pnl_usd": -4.16,
       "trigger_reason": "RSI 1H (24.8)"
     },
     {
@@ -8094,10 +8094,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2246.17,
-      "current_value": 99.51,
-      "pnl_pct": -0.49,
-      "pnl_usd": -0.49
+      "current_price": 2248.15,
+      "current_value": 99.59,
+      "pnl_pct": -0.41,
+      "pnl_usd": -0.41
     },
     {
       "id": "dca_sol-usd_20261029205944",
@@ -8107,10 +8107,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 91.6,
-      "current_value": 95.21,
-      "pnl_pct": -4.79,
-      "pnl_usd": -4.79
+      "current_price": 91.7,
+      "current_value": 95.31,
+      "pnl_pct": -4.69,
+      "pnl_usd": -4.69
     },
     {
       "id": "dca_bnb-usd_20261029205944",
@@ -8120,10 +8120,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 696.98,
-      "current_value": 99.88,
-      "pnl_pct": -0.12,
-      "pnl_usd": -0.12
+      "current_price": 697.12,
+      "current_value": 99.9,
+      "pnl_pct": -0.1,
+      "pnl_usd": -0.1
     },
     {
       "id": "dca_si=f_20261029205946",
@@ -8216,10 +8216,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 76674.6,
-      "current_value": 99.68,
-      "pnl_pct": -0.32,
-      "pnl_usd": -0.32,
+      "current_price": 76666.89,
+      "current_value": 99.67,
+      "pnl_pct": -0.33,
+      "pnl_usd": -0.33,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -8230,10 +8230,10 @@
       "buy_price": 2210.29,
       "invested": 100.0,
       "shares": 0.0452,
-      "current_price": 2246.17,
-      "current_value": 101.53,
-      "pnl_pct": 1.53,
-      "pnl_usd": 1.53,
+      "current_price": 2248.15,
+      "current_value": 101.62,
+      "pnl_pct": 1.62,
+      "pnl_usd": 1.62,
       "trigger_reason": "RSI 1D (24.7)"
     },
     {
@@ -8244,10 +8244,10 @@
       "buy_price": 93.73,
       "invested": 100.0,
       "shares": 1.0669,
-      "current_price": 91.6,
-      "current_value": 97.73,
-      "pnl_pct": -2.27,
-      "pnl_usd": -2.27,
+      "current_price": 91.7,
+      "current_value": 97.83,
+      "pnl_pct": -2.17,
+      "pnl_usd": -2.17,
       "trigger_reason": "RSI 1D (23.2)"
     },
     {
@@ -8258,10 +8258,10 @@
       "buy_price": 689.64,
       "invested": 100.0,
       "shares": 0.145,
-      "current_price": 696.98,
-      "current_value": 101.06,
-      "pnl_pct": 1.06,
-      "pnl_usd": 1.06,
+      "current_price": 697.12,
+      "current_value": 101.08,
+      "pnl_pct": 1.08,
+      "pnl_usd": 1.08,
       "trigger_reason": "RSI 1H (20.9)"
     },
     {
@@ -8272,10 +8272,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 3956.6,
-      "current_value": 98.52,
-      "pnl_pct": -1.48,
-      "pnl_usd": -1.48,
+      "current_price": 3955.8,
+      "current_value": 98.5,
+      "pnl_pct": -1.5,
+      "pnl_usd": -1.5,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -8524,10 +8524,10 @@
       "buy_price": 2246.66,
       "invested": 100.0,
       "shares": 0.0445,
-      "current_price": 2246.17,
-      "current_value": 99.95,
-      "pnl_pct": -0.05,
-      "pnl_usd": -0.05,
+      "current_price": 2248.15,
+      "current_value": 100.04,
+      "pnl_pct": 0.04,
+      "pnl_usd": 0.04,
       "trigger_reason": "RSI 1D (28.2)"
     },
     {
@@ -8538,10 +8538,10 @@
       "buy_price": 3884.9,
       "invested": 100.0,
       "shares": 0.0257,
-      "current_price": 3956.6,
-      "current_value": 101.68,
-      "pnl_pct": 1.68,
-      "pnl_usd": 1.68,
+      "current_price": 3955.8,
+      "current_value": 101.66,
+      "pnl_pct": 1.66,
+      "pnl_usd": 1.66,
       "trigger_reason": "RSI 1D (24.5)"
     },
     {
@@ -8566,10 +8566,10 @@
       "buy_price": 96.33,
       "invested": 100.0,
       "shares": 1.0381,
-      "current_price": 91.6,
-      "current_value": 95.09,
-      "pnl_pct": -4.91,
-      "pnl_usd": -4.91,
+      "current_price": 91.7,
+      "current_value": 95.19,
+      "pnl_pct": -4.81,
+      "pnl_usd": -4.81,
       "trigger_reason": "RSI 1D (29.8)"
     },
     {
@@ -8720,10 +8720,10 @@
       "buy_price": 95.46,
       "invested": 100.0,
       "shares": 1.0476,
-      "current_price": 91.6,
-      "current_value": 95.96,
-      "pnl_pct": -4.04,
-      "pnl_usd": -4.04,
+      "current_price": 91.7,
+      "current_value": 96.06,
+      "pnl_pct": -3.94,
+      "pnl_usd": -3.94,
       "trigger_reason": "RSI 1D (29.7)"
     },
     {
@@ -8734,10 +8734,10 @@
       "buy_price": 3898.9,
       "invested": 100.0,
       "shares": 0.0256,
-      "current_price": 3956.6,
-      "current_value": 101.29,
-      "pnl_pct": 1.29,
-      "pnl_usd": 1.29,
+      "current_price": 3955.8,
+      "current_value": 101.27,
+      "pnl_pct": 1.27,
+      "pnl_usd": 1.27,
       "trigger_reason": "RSI 1D (25.1)"
     },
     {
@@ -9350,10 +9350,10 @@
       "buy_price": 8.77,
       "invested": 100.0,
       "shares": 11.4025,
-      "current_price": 8.36,
-      "current_value": 95.32,
-      "pnl_pct": -4.68,
-      "pnl_usd": -4.68,
+      "current_price": 8.39,
+      "current_value": 95.67,
+      "pnl_pct": -4.33,
+      "pnl_usd": -4.33,
       "trigger_reason": "RSI 1D (29.6)"
     },
     {
@@ -9378,10 +9378,10 @@
       "buy_price": 11.38,
       "invested": 100.0,
       "shares": 8.7873,
-      "current_price": 11.06,
-      "current_value": 97.19,
-      "pnl_pct": -2.81,
-      "pnl_usd": -2.81,
+      "current_price": 11.11,
+      "current_value": 97.63,
+      "pnl_pct": -2.37,
+      "pnl_usd": -2.37,
       "trigger_reason": "RSI 1H (29.1)"
     },
     {
@@ -9392,10 +9392,10 @@
       "buy_price": 55.0,
       "invested": 100.0,
       "shares": 1.8182,
-      "current_price": 53.71,
-      "current_value": 97.66,
-      "pnl_pct": -2.34,
-      "pnl_usd": -2.34,
+      "current_price": 53.62,
+      "current_value": 97.49,
+      "pnl_pct": -2.51,
+      "pnl_usd": -2.51,
       "trigger_reason": "RSI 1H (21.4)"
     },
     {
@@ -9406,10 +9406,10 @@
       "buy_price": 2252.9,
       "invested": 100.0,
       "shares": 0.0444,
-      "current_price": 2246.17,
-      "current_value": 99.73,
-      "pnl_pct": -0.27,
-      "pnl_usd": -0.27,
+      "current_price": 2248.15,
+      "current_value": 99.82,
+      "pnl_pct": -0.18,
+      "pnl_usd": -0.18,
       "trigger_reason": "RSI 1D (29.8)"
     },
     {
@@ -9420,10 +9420,10 @@
       "buy_price": 703.97,
       "invested": 100.0,
       "shares": 0.1421,
-      "current_price": 696.98,
-      "current_value": 99.04,
-      "pnl_pct": -0.96,
-      "pnl_usd": -0.96,
+      "current_price": 697.12,
+      "current_value": 99.06,
+      "pnl_pct": -0.94,
+      "pnl_usd": -0.94,
       "trigger_reason": "RSI 1H (26.9)"
     },
     {
@@ -9434,7 +9434,7 @@
       "buy_price": 1447.2,
       "invested": 100.0,
       "shares": 0.0691,
-      "current_price": 1449.4,
+      "current_price": 1449.3,
       "current_value": 100.15,
       "pnl_pct": 0.15,
       "pnl_usd": 0.15,
@@ -9588,10 +9588,10 @@
       "buy_price": 94.06,
       "invested": 100.0,
       "shares": 1.0632,
-      "current_price": 91.6,
-      "current_value": 97.39,
-      "pnl_pct": -2.61,
-      "pnl_usd": -2.61,
+      "current_price": 91.7,
+      "current_value": 97.5,
+      "pnl_pct": -2.5,
+      "pnl_usd": -2.5,
       "trigger_reason": "RSI 1D (25.2)"
     },
     {
@@ -9602,10 +9602,10 @@
       "buy_price": 3904.2,
       "invested": 100.0,
       "shares": 0.0256,
-      "current_price": 3956.6,
-      "current_value": 101.29,
-      "pnl_pct": 1.29,
-      "pnl_usd": 1.29,
+      "current_price": 3955.8,
+      "current_value": 101.27,
+      "pnl_pct": 1.27,
+      "pnl_usd": 1.27,
       "trigger_reason": "RSI 1D (26.4)"
     },
     {
@@ -10232,10 +10232,10 @@
       "buy_price": 8.65,
       "invested": 100.0,
       "shares": 11.5607,
-      "current_price": 8.36,
-      "current_value": 96.65,
-      "pnl_pct": -3.35,
-      "pnl_usd": -3.35,
+      "current_price": 8.39,
+      "current_value": 96.99,
+      "pnl_pct": -3.01,
+      "pnl_usd": -3.01,
       "trigger_reason": "RSI 1D (26.2)"
     },
     {
@@ -10246,10 +10246,10 @@
       "buy_price": 11.29,
       "invested": 100.0,
       "shares": 8.8574,
-      "current_price": 11.06,
-      "current_value": 97.96,
-      "pnl_pct": -2.04,
-      "pnl_usd": -2.04,
+      "current_price": 11.11,
+      "current_value": 98.41,
+      "pnl_pct": -1.59,
+      "pnl_usd": -1.59,
       "trigger_reason": "RSI 1H (13.3)"
     },
     {
@@ -10260,10 +10260,10 @@
       "buy_price": 1446.1,
       "invested": 100.0,
       "shares": 0.0692,
-      "current_price": 1449.4,
-      "current_value": 100.3,
-      "pnl_pct": 0.3,
-      "pnl_usd": 0.3,
+      "current_price": 1449.3,
+      "current_value": 100.29,
+      "pnl_pct": 0.29,
+      "pnl_usd": 0.29,
       "trigger_reason": "RSI 1D (19.3)"
     },
     {
@@ -10274,10 +10274,10 @@
       "buy_price": 110.51,
       "invested": 100.0,
       "shares": 0.9049,
-      "current_price": 104.23,
-      "current_value": 94.32,
-      "pnl_pct": -5.68,
-      "pnl_usd": -5.68,
+      "current_price": 104.24,
+      "current_value": 94.33,
+      "pnl_pct": -5.67,
+      "pnl_usd": -5.67,
       "trigger_reason": "RSI 1H (28.8)"
     },
     {
@@ -10288,10 +10288,10 @@
       "buy_price": 100.59,
       "invested": 100.0,
       "shares": 0.9941,
-      "current_price": 96.26,
-      "current_value": 95.69,
-      "pnl_pct": -4.31,
-      "pnl_usd": -4.31,
+      "current_price": 96.41,
+      "current_value": 95.84,
+      "pnl_pct": -4.16,
+      "pnl_usd": -4.16,
       "trigger_reason": "RSI 1H (24.8)"
     },
     {
@@ -10512,10 +10512,10 @@
       "buy_price": 77593.39,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 76674.6,
-      "current_value": 99.68,
-      "pnl_pct": -0.32,
-      "pnl_usd": -0.32,
+      "current_price": 76666.89,
+      "current_value": 99.67,
+      "pnl_pct": -0.33,
+      "pnl_usd": -0.33,
       "trigger_reason": "RSI 1H (28.0)"
     },
     {
@@ -10526,10 +10526,10 @@
       "buy_price": 702.35,
       "invested": 100.0,
       "shares": 0.1424,
-      "current_price": 696.98,
-      "current_value": 99.25,
-      "pnl_pct": -0.75,
-      "pnl_usd": -0.75,
+      "current_price": 697.12,
+      "current_value": 99.27,
+      "pnl_pct": -0.73,
+      "pnl_usd": -0.73,
       "trigger_reason": "RSI 1H (25.4)"
     },
     {
@@ -10596,10 +10596,10 @@
       "buy_price": 54.6,
       "invested": 100.0,
       "shares": 1.8315,
-      "current_price": 53.71,
-      "current_value": 98.37,
-      "pnl_pct": -1.63,
-      "pnl_usd": -1.63,
+      "current_price": 53.62,
+      "current_value": 98.21,
+      "pnl_pct": -1.79,
+      "pnl_usd": -1.79,
       "trigger_reason": "RSI 1H (25.1)"
     },
     {
@@ -10624,10 +10624,10 @@
       "buy_price": 2249.7,
       "invested": 100.0,
       "shares": 0.0445,
-      "current_price": 2246.17,
-      "current_value": 99.95,
-      "pnl_pct": -0.05,
-      "pnl_usd": -0.05,
+      "current_price": 2248.15,
+      "current_value": 100.04,
+      "pnl_pct": 0.04,
+      "pnl_usd": 0.04,
       "trigger_reason": "RSI 1H (19.1)"
     },
     {
@@ -11681,17 +11681,17 @@
     "rsi_level": 30,
     "alert_threshold": 70,
     "overall": {
-      "n": 5642,
+      "n": 5640,
       "win_rate": 56.6,
-      "avg_ret": 1.72
+      "avg_ret": NaN
     },
     "trend_up": {
-      "n": 1889,
+      "n": 1888,
       "win_rate": 60.7,
-      "avg_ret": 2.13
+      "avg_ret": NaN
     },
     "trend_down": {
-      "n": 2691,
+      "n": 2690,
       "win_rate": 56.3,
       "avg_ret": 2.19
     }
