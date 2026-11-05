@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04T23:38:43.033615Z",
+  "last_updated": "2026-11-05T00:53:18.776448Z",
   "items": [
     {
       "id": "sug_aapl",
@@ -51,7 +51,7 @@
       "category": "AZIONI",
       "current_price": 555.8,
       "currency": "USD",
-      "pe_ratio": 28.2,
+      "pe_ratio": 29.0,
       "dist_52w_pct": -0.6,
       "score": 30,
       "score_parts": {
@@ -193,7 +193,7 @@
       "note": "RSI 1D ipervenduto (20.9) \u2022 RSI 1W ipervenduto (23.7) \u2022 sotto SMA200 (-14.9%) \u2022 -29.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 66.1,
+          "rsi": 66.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -524,7 +524,7 @@
       "category": "AZIONI",
       "current_price": 60.2,
       "currency": "USD",
-      "pe_ratio": 11.6,
+      "pe_ratio": 11.5,
       "dist_52w_pct": -11.7,
       "score": 40,
       "score_parts": {
@@ -623,7 +623,7 @@
       "note": "RSI 1D ipercomprato (74.7) \u2022 RSI 1W ipercomprato (79.6) \u2022 sopra SMA200 (+27.3%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 67.4,
+          "rsi": 67.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -641,9 +641,9 @@
       "sma50_above_200": true,
       "rel_volume": 1.48,
       "backtest": {
-        "n": 31,
-        "win_rate": 61.3,
-        "avg_ret": 3.54
+        "n": 32,
+        "win_rate": 62.5,
+        "avg_ret": 3.72
       }
     },
     {
@@ -653,7 +653,7 @@
       "category": "AZIONI",
       "current_price": 672.68,
       "currency": "USD",
-      "pe_ratio": 35.8,
+      "pe_ratio": 35.2,
       "dist_52w_pct": -0.1,
       "score": 26,
       "score_parts": {
@@ -739,7 +739,7 @@
       "category": "AZIONI",
       "current_price": 129.17,
       "currency": "USD",
-      "pe_ratio": 47.8,
+      "pe_ratio": 46.8,
       "dist_52w_pct": -4.4,
       "score": 17,
       "score_parts": {
@@ -792,10 +792,10 @@
         "distanza_52w": 0,
         "valutazione": 7
       },
-      "note": "RSI 1D ipercomprato (72.2) \u2022 RSI 1W ipercomprato (74.1) \u2022 RSI 1H ipercomprato (86.1) \u2022 sopra SMA200 (+15.4%) \u2022 volume 1.7x la media",
+      "note": "RSI 1D ipercomprato (72.2) \u2022 RSI 1W ipercomprato (74.1) \u2022 RSI 1H ipercomprato (85.7) \u2022 sopra SMA200 (+15.4%) \u2022 volume 1.7x la media",
       "rsi_signals": {
         "1h": {
-          "rsi": 86.1,
+          "rsi": 85.7,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -952,38 +952,38 @@
       "ticker": "BTC-USD",
       "name": "Bitcoin Spot",
       "category": "CRYPTO",
-      "current_price": 80482.94,
+      "current_price": 80655.25,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -25.1,
-      "score": 53,
+      "dist_52w_pct": -24.9,
+      "score": 43,
       "score_parts": {
         "rsi": 3,
         "trend": 25,
-        "volume": 10,
+        "volume": 0,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (76.2) \u2022 sopra SMA200 (+10.0%) \u2022 volume 1.6x la media \u2022 -25.1% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (79.1) \u2022 sopra SMA200 (+10.2%) \u2022 -24.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 76.2,
+          "rsi": 79.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 38.8,
+          "rsi": 39.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 69.0,
+          "rsi": 69.1,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 81993.74,
-      "sma200": 73181.39,
-      "sma200_dist_pct": 10.0,
+      "sma50": 81997.18,
+      "sma200": 73182.25,
+      "sma200_dist_pct": 10.2,
       "sma50_above_200": true,
-      "rel_volume": 1.62,
+      "rel_volume": 0.87,
       "backtest": {
         "n": 55,
         "win_rate": 56.4,
@@ -995,23 +995,23 @@
       "ticker": "ETH-USD",
       "name": "Ethereum Spot",
       "category": "CRYPTO",
-      "current_price": 2423.73,
+      "current_price": 2424.19,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -33.7,
-      "score": 49,
+      "score": 45,
       "score_parts": {
         "rsi": 0,
         "trend": 25,
-        "volume": 4,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (74.5) \u2022 sopra SMA200 (+12.4%) \u2022 volume 1.6x la media \u2022 -33.7% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (79.4) \u2022 sopra SMA200 (+12.4%) \u2022 -33.7% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 74.5,
-          "status": "Ipercomprato \ud83d\udfe0"
+          "rsi": 79.4,
+          "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
           "rsi": 45.6,
@@ -1023,10 +1023,10 @@
         }
       },
       "sma50": 2506.58,
-      "sma200": 2156.8,
+      "sma200": 2156.81,
       "sma200_dist_pct": 12.4,
       "sma50_above_200": true,
-      "rel_volume": 1.64,
+      "rel_volume": 0.71,
       "backtest": {
         "n": 65,
         "win_rate": 44.6,
@@ -1038,42 +1038,42 @@
       "ticker": "SOL-USD",
       "name": "Solana Spot",
       "category": "CRYPTO",
-      "current_price": 95.58,
+      "current_price": 96.11,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -44.3,
-      "score": 68,
+      "dist_52w_pct": -44.0,
+      "score": 58,
       "score_parts": {
         "rsi": 13,
         "trend": 25,
-        "volume": 10,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (25.9) \u2022 sopra SMA200 (+7.5%) \u2022 volume 1.6x la media \u2022 -44.3% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (27.5) \u2022 sopra SMA200 (+8.1%) \u2022 -44.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 63.3,
+          "rsi": 66.1,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 25.9,
+          "rsi": 27.5,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
-          "rsi": 61.6,
+          "rsi": 61.8,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 108.58,
-      "sma200": 88.92,
-      "sma200_dist_pct": 7.5,
+      "sma50": 108.59,
+      "sma200": 88.93,
+      "sma200_dist_pct": 8.1,
       "sma50_above_200": true,
-      "rel_volume": 1.65,
+      "rel_volume": 0.78,
       "backtest": {
-        "n": 62,
-        "win_rate": 37.1,
-        "avg_ret": -3.34
+        "n": 61,
+        "win_rate": 37.7,
+        "avg_ret": -3.39
       }
     },
     {
@@ -1081,38 +1081,38 @@
       "ticker": "BNB-USD",
       "name": "Binance Coin",
       "category": "CRYPTO",
-      "current_price": 718.51,
+      "current_price": 719.5,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -29.4,
-      "score": 42,
+      "dist_52w_pct": -29.3,
+      "score": 40,
       "score_parts": {
         "rsi": 0,
         "trend": 25,
-        "volume": 2,
+        "volume": 0,
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (71.3) \u2022 sopra SMA200 (+9.5%) \u2022 -29.4% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (73.0) \u2022 sopra SMA200 (+9.6%) \u2022 -29.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 71.3,
+          "rsi": 73.0,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 41.3,
+          "rsi": 41.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 65.0,
+          "rsi": 65.1,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 747.59,
-      "sma200": 656.25,
-      "sma200_dist_pct": 9.5,
+      "sma50": 747.61,
+      "sma200": 656.26,
+      "sma200_dist_pct": 9.6,
       "sma50_above_200": true,
-      "rel_volume": 1.14,
+      "rel_volume": 0.79,
       "backtest": {
         "n": 44,
         "win_rate": 65.9,
@@ -1124,10 +1124,10 @@
       "ticker": "GC=F",
       "name": "Oro (Gold Futures)",
       "category": "COMMODITY",
-      "current_price": 4072.1,
+      "current_price": 4098.0,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -27.1,
+      "dist_52w_pct": -26.6,
       "score": 17,
       "score_parts": {
         "rsi": 2,
@@ -1136,26 +1136,26 @@
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "sotto SMA200 (-9.7%) \u2022 -27.1% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (74.0) \u2022 sotto SMA200 (-9.1%) \u2022 -26.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 68.2,
-          "status": "Neutro \u26aa"
+          "rsi": 74.0,
+          "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 42.7,
+          "rsi": 44.8,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 49.0,
+          "rsi": 49.7,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 4252.98,
-      "sma200": 4509.3,
-      "sma200_dist_pct": -9.7,
+      "sma50": 4253.5,
+      "sma200": 4509.43,
+      "sma200_dist_pct": -9.1,
       "sma50_above_200": false,
-      "rel_volume": 0.01,
+      "rel_volume": 0.07,
       "backtest": {
         "n": 28,
         "win_rate": 57.1,
@@ -1167,10 +1167,10 @@
       "ticker": "SI=F",
       "name": "Argento (Silver Futures)",
       "category": "COMMODITY",
-      "current_price": 52.4,
+      "current_price": 52.53,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -56.8,
+      "dist_52w_pct": -56.7,
       "score": 40,
       "score_parts": {
         "rsi": 5,
@@ -1179,30 +1179,30 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (71.9) \u2022 sotto SMA200 (-25.4%) \u2022 volume 2.4x la media \u2022 -56.8% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (70.8) \u2022 sotto SMA200 (-25.3%) \u2022 volume 13.7x la media \u2022 -56.7% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 71.9,
+          "rsi": 70.8,
           "status": "Ipercomprato \ud83d\udfe0"
         },
         "1d": {
-          "rsi": 36.4,
+          "rsi": 36.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 43.7,
+          "rsi": 43.8,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 60.65,
-      "sma200": 70.27,
-      "sma200_dist_pct": -25.4,
+      "sma200": 70.28,
+      "sma200_dist_pct": -25.3,
       "sma50_above_200": false,
-      "rel_volume": 2.4,
+      "rel_volume": 13.73,
       "backtest": {
         "n": 33,
         "win_rate": 57.6,
-        "avg_ret": 2.48
+        "avg_ret": 2.49
       }
     },
     {
@@ -1298,7 +1298,7 @@
       "category": "AZIONI",
       "current_price": 227.11,
       "currency": "USD",
-      "pe_ratio": 21.1,
+      "pe_ratio": 20.8,
       "dist_52w_pct": -15.6,
       "score": 49,
       "score_parts": {
@@ -1351,7 +1351,7 @@
         "distanza_52w": 10,
         "valutazione": 3
       },
-      "note": "sopra SMA200 (+2.6%) \u2022 volume 1.8x la media \u2022 -20.5% dal massimo 52w",
+      "note": "sopra SMA200 (+2.3%) \u2022 volume 1.8x la media \u2022 -20.5% dal massimo 52w",
       "rsi_signals": {
         "1h": {
           "rsi": 60.8,
@@ -1362,13 +1362,13 @@
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 38.7,
+          "rsi": 38.2,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 109.3,
-      "sma200": 100.96,
-      "sma200_dist_pct": 2.6,
+      "sma50": 109.52,
+      "sma200": 101.3,
+      "sma200_dist_pct": 2.3,
       "sma50_above_200": true,
       "rel_volume": 1.82,
       "backtest": {
@@ -1526,7 +1526,7 @@
       "note": "sopra SMA200 (+5.5%) \u2022 -36.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 34.8,
+          "rsi": 35.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -1556,7 +1556,7 @@
       "category": "AZIONI",
       "current_price": 221.43,
       "currency": "USD",
-      "pe_ratio": 32.6,
+      "pe_ratio": 33.0,
       "dist_52w_pct": -49.5,
       "score": 50,
       "score_parts": {
@@ -1599,7 +1599,7 @@
       "category": "AZIONI",
       "current_price": 108.81,
       "currency": "USD",
-      "pe_ratio": 75.6,
+      "pe_ratio": 78.3,
       "dist_52w_pct": -39.1,
       "score": 41,
       "score_parts": {
@@ -1728,7 +1728,7 @@
       "category": "AZIONI",
       "current_price": 171.7,
       "currency": "USD",
-      "pe_ratio": 122.6,
+      "pe_ratio": 120.9,
       "dist_52w_pct": -19.4,
       "score": 56,
       "score_parts": {
@@ -1827,7 +1827,7 @@
       "note": "sotto SMA200 (-6.2%) \u2022 -25.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 41.1,
+          "rsi": 41.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -2039,10 +2039,10 @@
         "distanza_52w": 0,
         "valutazione": 10
       },
-      "note": "RSI 1D ipercomprato (82.9) \u2022 RSI 1W ipercomprato (75.0) \u2022 RSI 1H ipercomprato (87.2) \u2022 sopra SMA200 (+16.6%)",
+      "note": "RSI 1D ipercomprato (82.9) \u2022 RSI 1W ipercomprato (75.0) \u2022 RSI 1H ipercomprato (85.7) \u2022 sopra SMA200 (+16.6%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 87.2,
+          "rsi": 85.7,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -2244,7 +2244,7 @@
       "category": "AZIONI",
       "current_price": 294.83,
       "currency": "USD",
-      "pe_ratio": 51.2,
+      "pe_ratio": 50.7,
       "dist_52w_pct": -1.3,
       "score": 25,
       "score_parts": {
@@ -2287,7 +2287,7 @@
       "category": "AZIONI",
       "current_price": 150.36,
       "currency": "USD",
-      "pe_ratio": 155.0,
+      "pe_ratio": 151.9,
       "dist_52w_pct": -4.2,
       "score": 23,
       "score_parts": {
@@ -2330,7 +2330,7 @@
       "category": "AZIONI",
       "current_price": 30.79,
       "currency": "USD",
-      "pe_ratio": 41.6,
+      "pe_ratio": 44.0,
       "dist_52w_pct": -0.9,
       "score": 25,
       "score_parts": {
@@ -2416,7 +2416,7 @@
       "category": "AZIONI",
       "current_price": 482.1,
       "currency": "USD",
-      "pe_ratio": 57.8,
+      "pe_ratio": 58.3,
       "dist_52w_pct": -20.2,
       "score": 29,
       "score_parts": {
@@ -2459,7 +2459,7 @@
       "category": "AZIONI",
       "current_price": 42.18,
       "currency": "USD",
-      "pe_ratio": 10.4,
+      "pe_ratio": 10.3,
       "dist_52w_pct": -34.3,
       "score": 36,
       "score_parts": {
@@ -2515,7 +2515,7 @@
       "note": "sopra SMA200 (+17.2%) \u2022 volume 1.6x la media",
       "rsi_signals": {
         "1h": {
-          "rsi": 50.1,
+          "rsi": 50.0,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -2601,7 +2601,7 @@
       "note": "RSI 1W ipercomprato (85.7) \u2022 sopra SMA200 (+13.7%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 68.1,
+          "rsi": 68.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -2641,10 +2641,10 @@
         "distanza_52w": 10,
         "valutazione": 7
       },
-      "note": "RSI 1D ipercomprato (84.2) \u2022 RSI 1H ipercomprato (81.0) \u2022 sopra SMA200 (+0.1%) \u2022 volume 2.1x la media \u2022 -18.0% dal massimo 52w",
+      "note": "RSI 1D ipercomprato (84.2) \u2022 RSI 1H ipercomprato (81.1) \u2022 sopra SMA200 (+0.1%) \u2022 volume 2.1x la media \u2022 -18.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 81.0,
+          "rsi": 81.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -2803,15 +2803,15 @@
       "category": "AZIONI",
       "current_price": 355.44,
       "currency": "USD",
-      "pe_ratio": 24.9,
+      "pe_ratio": 25.4,
       "dist_52w_pct": -10.6,
-      "score": 33,
+      "score": 29,
       "score_parts": {
         "rsi": 2,
         "trend": 15,
         "volume": 4,
         "distanza_52w": 5,
-        "valutazione": 7
+        "valutazione": 3
       },
       "note": "RSI 1D ipercomprato (77.9) \u2022 sopra SMA200 (+7.6%) \u2022 volume 1.7x la media",
       "rsi_signals": {
@@ -2902,7 +2902,7 @@
       "note": "RSI 1D ipervenduto (21.4) \u2022 RSI 1W ipervenduto (23.2) \u2022 sotto SMA200 (-26.7%) \u2022 volume 1.7x la media \u2022 -44.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 34.7,
+          "rsi": 34.8,
           "status": "Neutro \u26aa"
         },
         "1d": {
@@ -3061,7 +3061,7 @@
       "category": "AZIONI",
       "current_price": 216.96,
       "currency": "USD",
-      "pe_ratio": 16.1,
+      "pe_ratio": 15.9,
       "dist_52w_pct": -8.3,
       "score": 44,
       "score_parts": {
@@ -3178,9 +3178,9 @@
       "sma50_above_200": true,
       "rel_volume": 0.81,
       "backtest": {
-        "n": 40,
-        "win_rate": 65.0,
-        "avg_ret": 1.9
+        "n": 41,
+        "win_rate": 65.9,
+        "avg_ret": 2.05
       }
     },
     {
@@ -3319,7 +3319,7 @@
       "category": "AZIONI",
       "current_price": 6.28,
       "currency": "EUR",
-      "pe_ratio": 11.2,
+      "pe_ratio": 11.0,
       "dist_52w_pct": -9.5,
       "score": 34,
       "score_parts": {
@@ -3372,10 +3372,10 @@
         "distanza_52w": 5,
         "valutazione": 10
       },
-      "note": "RSI 1H ipercomprato (86.1) \u2022 volume 2.0x la media",
+      "note": "RSI 1H ipercomprato (86.0) \u2022 volume 2.0x la media",
       "rsi_signals": {
         "1h": {
-          "rsi": 86.1,
+          "rsi": 86.0,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -3436,9 +3436,9 @@
       "sma50_above_200": null,
       "rel_volume": 2.19,
       "backtest": {
-        "n": 36,
-        "win_rate": 50.0,
-        "avg_ret": 2.3
+        "n": 35,
+        "win_rate": 51.4,
+        "avg_ret": 2.51
       }
     },
     {
@@ -3491,7 +3491,7 @@
       "category": "AZIONI",
       "current_price": 51.12,
       "currency": "EUR",
-      "pe_ratio": 25.3,
+      "pe_ratio": 25.6,
       "dist_52w_pct": -22.8,
       "score": 30,
       "score_parts": {
@@ -3737,9 +3737,9 @@
       "sma50_above_200": null,
       "rel_volume": 1.25,
       "backtest": {
-        "n": 29,
-        "win_rate": 65.5,
-        "avg_ret": 2.12
+        "n": 30,
+        "win_rate": 66.7,
+        "avg_ret": 2.07
       }
     },
     {
@@ -3759,10 +3759,10 @@
         "distanza_52w": 10,
         "valutazione": 10
       },
-      "note": "RSI 1H ipercomprato (78.9) \u2022 -15.6% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (78.4) \u2022 -15.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 78.9,
+          "rsi": 78.4,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -3864,7 +3864,7 @@
       "sma200": null,
       "sma200_dist_pct": null,
       "sma50_above_200": null,
-      "rel_volume": 2.12,
+      "rel_volume": 2.11,
       "backtest": {
         "n": 25,
         "win_rate": 60.0,
@@ -3878,7 +3878,7 @@
       "category": "AZIONI",
       "current_price": 6.61,
       "currency": "EUR",
-      "pe_ratio": 41.3,
+      "pe_ratio": 44.1,
       "dist_52w_pct": -3.1,
       "score": 11,
       "score_parts": {
@@ -4050,7 +4050,7 @@
       "category": "AZIONI",
       "current_price": 87.6,
       "currency": "EUR",
-      "pe_ratio": 41.7,
+      "pe_ratio": 43.2,
       "dist_52w_pct": -14.5,
       "score": 20,
       "score_parts": {
@@ -4361,10 +4361,10 @@
         "distanza_52w": 10,
         "valutazione": 3
       },
-      "note": "RSI 1H ipervenduto (25.5) \u2022 volume 2.1x la media \u2022 -23.2% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (25.4) \u2022 volume 2.1x la media \u2022 -23.2% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 25.5,
+          "rsi": 25.4,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1d": {
@@ -4394,7 +4394,7 @@
       "category": "AZIONI",
       "current_price": 416.25,
       "currency": "EUR",
-      "pe_ratio": 19.4,
+      "pe_ratio": 19.0,
       "dist_52w_pct": -36.4,
       "score": 40,
       "score_parts": {
@@ -4480,7 +4480,7 @@
       "category": "AZIONI",
       "current_price": 81.57,
       "currency": "EUR",
-      "pe_ratio": 9.4,
+      "pe_ratio": 9.5,
       "dist_52w_pct": -5.1,
       "score": 35,
       "score_parts": {
@@ -4566,7 +4566,7 @@
       "category": "AZIONI",
       "current_price": 1372.5,
       "currency": "EUR",
-      "pe_ratio": 31.7,
+      "pe_ratio": 31.9,
       "dist_52w_pct": -40.3,
       "score": 33,
       "score_parts": {
@@ -5221,10 +5221,10 @@
         "distanza_52w": 0,
         "valutazione": 7
       },
-      "note": "RSI 1H ipercomprato (79.4) \u2022 sopra SMA200 (+3.7%)",
+      "note": "RSI 1H ipercomprato (79.7) \u2022 sopra SMA200 (+3.7%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 79.4,
+          "rsi": 79.7,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -5522,10 +5522,10 @@
         "distanza_52w": 0,
         "valutazione": 3
       },
-      "note": "RSI 1D ipercomprato (76.8) \u2022 RSI 1W ipercomprato (74.8) \u2022 RSI 1H ipercomprato (78.1) \u2022 sopra SMA200 (+19.9%) \u2022 volume 1.7x la media",
+      "note": "RSI 1D ipercomprato (76.8) \u2022 RSI 1W ipercomprato (74.8) \u2022 RSI 1H ipercomprato (78.2) \u2022 sopra SMA200 (+19.9%) \u2022 volume 1.7x la media",
       "rsi_signals": {
         "1h": {
-          "rsi": 78.1,
+          "rsi": 78.2,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
@@ -5846,7 +5846,7 @@
       "backtest": {
         "n": 44,
         "win_rate": 34.1,
-        "avg_ret": -2.23
+        "avg_ret": -2.26
       }
     },
     {
@@ -6114,15 +6114,15 @@
       "category": "ETF",
       "current_price": 96.38,
       "currency": "USD",
-      "pe_ratio": 122.9,
+      "pe_ratio": null,
       "dist_52w_pct": -5.0,
-      "score": 9,
+      "score": 14,
       "score_parts": {
         "rsi": 2,
         "trend": 0,
         "volume": 2,
         "distanza_52w": 5,
-        "valutazione": 0
+        "valutazione": 5
       },
       "note": "sotto SMA200 (-0.8%)",
       "rsi_signals": {
@@ -6157,15 +6157,15 @@
       "category": "ETF",
       "current_price": 104.5,
       "currency": "USD",
-      "pe_ratio": 31.6,
+      "pe_ratio": null,
       "dist_52w_pct": -6.7,
-      "score": 12,
+      "score": 14,
       "score_parts": {
         "rsi": 2,
         "trend": 0,
         "volume": 2,
         "distanza_52w": 5,
-        "valutazione": 3
+        "valutazione": 5
       },
       "note": "RSI 1H ipercomprato (70.7) \u2022 sotto SMA200 (-1.6%)",
       "rsi_signals": {
@@ -6200,15 +6200,15 @@
       "category": "ETF",
       "current_price": 77.52,
       "currency": "USD",
-      "pe_ratio": 10.7,
+      "pe_ratio": null,
       "dist_52w_pct": -4.6,
-      "score": 17,
+      "score": 12,
       "score_parts": {
         "rsi": 5,
         "trend": 0,
         "volume": 2,
         "distanza_52w": 0,
-        "valutazione": 10
+        "valutazione": 5
       },
       "note": "RSI 1H ipercomprato (85.8) \u2022 sotto SMA200 (-0.9%)",
       "rsi_signals": {
@@ -6241,26 +6241,26 @@
       "ticker": "XRP-USD",
       "name": "XRP",
       "category": "CRYPTO",
-      "current_price": 1.31,
+      "current_price": 1.3,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -49.2,
-      "score": 51,
+      "dist_52w_pct": -49.6,
+      "score": 50,
       "score_parts": {
-        "rsi": 2,
+        "rsi": 5,
         "trend": 25,
-        "volume": 4,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+2.9%) \u2022 volume 1.7x la media \u2022 -49.2% dal massimo 52w",
+      "note": "sopra SMA200 (+2.1%) \u2022 -49.6% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 63.6,
+          "rsi": 67.9,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 40.4,
+          "rsi": 39.9,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -6270,9 +6270,9 @@
       },
       "sma50": 1.39,
       "sma200": 1.27,
-      "sma200_dist_pct": 2.9,
+      "sma200_dist_pct": 2.1,
       "sma50_above_200": true,
-      "rel_volume": 1.69,
+      "rel_volume": 0.9,
       "backtest": {
         "n": 77,
         "win_rate": 55.8,
@@ -6288,26 +6288,26 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -67.0,
-      "score": 46,
+      "score": 41,
       "score_parts": {
         "rsi": 15,
         "trend": 6,
-        "volume": 5,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1D ipervenduto (28.6) \u2022 sotto SMA200 (-4.0%) \u2022 -67.0% dal massimo 52w",
+      "note": "RSI 1D ipervenduto (26.6) \u2022 sotto SMA200 (-4.0%) \u2022 -67.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 67.2,
+          "rsi": 65.6,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 28.6,
+          "rsi": 26.6,
           "status": "Ipervenduto \ud83d\udd35"
         },
         "1wk": {
-          "rsi": 51.6,
+          "rsi": 51.3,
           "status": "Neutro \u26aa"
         }
       },
@@ -6315,7 +6315,7 @@
       "sma200": 0.21,
       "sma200_dist_pct": -4.0,
       "sma50_above_200": true,
-      "rel_volume": 1.37,
+      "rel_volume": 0.67,
       "backtest": {
         "n": 84,
         "win_rate": 45.2,
@@ -6331,26 +6331,26 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -56.8,
-      "score": 30,
+      "score": 25,
       "score_parts": {
         "rsi": 5,
         "trend": 0,
-        "volume": 5,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
       "note": "sotto SMA200 (-6.9%) \u2022 -56.8% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 67.7,
+          "rsi": 68.9,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 37.2,
+          "rsi": 36.2,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 53.6,
+          "rsi": 53.4,
           "status": "Neutro \u26aa"
         }
       },
@@ -6358,11 +6358,11 @@
       "sma200": 0.09,
       "sma200_dist_pct": -6.9,
       "sma50_above_200": false,
-      "rel_volume": 1.23,
+      "rel_volume": 0.55,
       "backtest": {
-        "n": 72,
-        "win_rate": 43.1,
-        "avg_ret": -2.35
+        "n": 71,
+        "win_rate": 43.7,
+        "avg_ret": -2.12
       }
     },
     {
@@ -6370,10 +6370,10 @@
       "ticker": "AVAX-USD",
       "name": "Avalanche",
       "category": "CRYPTO",
-      "current_price": 8.77,
+      "current_price": 8.75,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -52.7,
+      "dist_52w_pct": -52.8,
       "score": 52,
       "score_parts": {
         "rsi": 7,
@@ -6382,14 +6382,14 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+7.7%) \u2022 -52.7% dal massimo 52w",
+      "note": "sopra SMA200 (+7.5%) \u2022 -52.8% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 56.6,
+          "rsi": 62.2,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 33.4,
+          "rsi": 33.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -6399,9 +6399,9 @@
       },
       "sma50": 9.89,
       "sma200": 8.14,
-      "sma200_dist_pct": 7.7,
+      "sma200_dist_pct": 7.5,
       "sma50_above_200": true,
-      "rel_volume": 0.97,
+      "rel_volume": 0.85,
       "backtest": {
         "n": 82,
         "win_rate": 42.7,
@@ -6413,38 +6413,38 @@
       "ticker": "LINK-USD",
       "name": "Chainlink",
       "category": "CRYPTO",
-      "current_price": 11.46,
+      "current_price": 11.41,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -31.4,
-      "score": 53,
+      "dist_52w_pct": -31.7,
+      "score": 48,
       "score_parts": {
         "rsi": 3,
         "trend": 25,
-        "volume": 5,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+14.0%) \u2022 -31.4% dal massimo 52w",
+      "note": "sopra SMA200 (+13.5%) \u2022 -31.7% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 63.8,
+          "rsi": 63.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 39.4,
+          "rsi": 38.8,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 61.0,
+          "rsi": 60.9,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 12.62,
       "sma200": 10.05,
-      "sma200_dist_pct": 14.0,
+      "sma200_dist_pct": 13.5,
       "sma50_above_200": true,
-      "rel_volume": 1.4,
+      "rel_volume": 0.87,
       "backtest": {
         "n": 55,
         "win_rate": 45.5,
@@ -6456,26 +6456,26 @@
       "ticker": "LTC-USD",
       "name": "Litecoin",
       "category": "CRYPTO",
-      "current_price": 56.3,
+      "current_price": 56.24,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -50.3,
-      "score": 53,
+      "score": 52,
       "score_parts": {
-        "rsi": 3,
+        "rsi": 7,
         "trend": 25,
-        "volume": 5,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "sopra SMA200 (+8.0%) \u2022 -50.3% dal massimo 52w",
+      "note": "sopra SMA200 (+7.9%) \u2022 -50.3% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 66.9,
+          "rsi": 68.3,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 35.2,
+          "rsi": 35.0,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -6485,9 +6485,9 @@
       },
       "sma50": 61.78,
       "sma200": 52.14,
-      "sma200_dist_pct": 8.0,
+      "sma200_dist_pct": 7.9,
       "sma50_above_200": true,
-      "rel_volume": 1.05,
+      "rel_volume": 0.68,
       "backtest": {
         "n": 66,
         "win_rate": 45.5,
@@ -6499,10 +6499,10 @@
       "ticker": "CL=F",
       "name": "Petrolio WTI (Futures)",
       "category": "COMMODITY",
-      "current_price": 88.1,
+      "current_price": 87.92,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -26.3,
+      "dist_52w_pct": -26.4,
       "score": 52,
       "score_parts": {
         "rsi": 12,
@@ -6511,26 +6511,26 @@
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (10.1) \u2022 sopra SMA200 (+1.4%) \u2022 -26.3% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (11.6) \u2022 sopra SMA200 (+1.2%) \u2022 -26.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 10.1,
+          "rsi": 11.6,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
-          "rsi": 38.7,
+          "rsi": 38.5,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 52.3,
+          "rsi": 52.2,
           "status": "Neutro \u26aa"
         }
       },
       "sma50": 95.15,
       "sma200": 86.85,
-      "sma200_dist_pct": 1.4,
+      "sma200_dist_pct": 1.2,
       "sma50_above_200": true,
-      "rel_volume": 0.0,
+      "rel_volume": 0.02,
       "backtest": {
         "n": 31,
         "win_rate": 38.7,
@@ -6542,7 +6542,7 @@
       "ticker": "BZ=F",
       "name": "Petrolio Brent (Futures)",
       "category": "COMMODITY",
-      "current_price": 94.59,
+      "current_price": 94.62,
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -25.0,
@@ -6554,10 +6554,10 @@
         "distanza_52w": 10,
         "valutazione": 5
       },
-      "note": "RSI 1H ipervenduto (8.4) \u2022 sopra SMA200 (+1.7%) \u2022 -25.0% dal massimo 52w",
+      "note": "RSI 1H ipervenduto (10.5) \u2022 sopra SMA200 (+1.7%) \u2022 -25.0% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 8.4,
+          "rsi": 10.5,
           "status": "Ipervenduto Estremo \ud83d\udfe2"
         },
         "1d": {
@@ -6600,11 +6600,11 @@
       "note": "sotto SMA200 (-4.0%) \u2022 -62.4% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 57.5,
+          "rsi": 54.7,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 37.5,
+          "rsi": 37.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
@@ -6643,15 +6643,15 @@
       "note": "sopra SMA200 (+3.3%)",
       "rsi_signals": {
         "1h": {
-          "rsi": 45.1,
+          "rsi": 43.4,
           "status": "Neutro \u26aa"
         },
         "1d": {
-          "rsi": 45.3,
+          "rsi": 45.6,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 49.1,
+          "rsi": 49.4,
           "status": "Neutro \u26aa"
         }
       },
@@ -6659,7 +6659,7 @@
       "sma200": 6.22,
       "sma200_dist_pct": 3.3,
       "sma50_above_200": true,
-      "rel_volume": 0.12,
+      "rel_volume": 0.39,
       "backtest": {
         "n": 26,
         "win_rate": 69.2,
@@ -6671,10 +6671,10 @@
       "ticker": "PL=F",
       "name": "Platino (Futures)",
       "category": "COMMODITY",
-      "current_price": 1499.9,
+      "current_price": 1513.6,
       "currency": "USD",
       "pe_ratio": null,
-      "dist_52w_pct": -47.4,
+      "dist_52w_pct": -46.9,
       "score": 40,
       "score_parts": {
         "rsi": 5,
@@ -6683,30 +6683,30 @@
         "distanza_52w": 15,
         "valutazione": 5
       },
-      "note": "RSI 1H ipercomprato (86.2) \u2022 sotto SMA200 (-20.0%) \u2022 volume 4.3x la media \u2022 -47.4% dal massimo 52w",
+      "note": "RSI 1H ipercomprato (88.1) \u2022 sotto SMA200 (-19.3%) \u2022 volume 41.6x la media \u2022 -46.9% dal massimo 52w",
       "rsi_signals": {
         "1h": {
-          "rsi": 86.2,
+          "rsi": 88.1,
           "status": "Ipercomprato Estremo \ud83d\udd34"
         },
         "1d": {
-          "rsi": 35.6,
+          "rsi": 37.8,
           "status": "Neutro \u26aa"
         },
         "1wk": {
-          "rsi": 40.2,
+          "rsi": 41.3,
           "status": "Neutro \u26aa"
         }
       },
-      "sma50": 1692.74,
-      "sma200": 1875.61,
-      "sma200_dist_pct": -20.0,
+      "sma50": 1693.02,
+      "sma200": 1875.68,
+      "sma200_dist_pct": -19.3,
       "sma50_above_200": false,
-      "rel_volume": 4.3,
+      "rel_volume": 41.58,
       "backtest": {
         "n": 40,
         "win_rate": 60.0,
-        "avg_ret": 0.75
+        "avg_ret": 0.77
       }
     },
     {
@@ -6718,11 +6718,11 @@
       "currency": "USD",
       "pe_ratio": null,
       "dist_52w_pct": -34.1,
-      "score": 30,
+      "score": 28,
       "score_parts": {
         "rsi": 8,
         "trend": 0,
-        "volume": 2,
+        "volume": 0,
         "distanza_52w": 15,
         "valutazione": 5
       },
@@ -6745,7 +6745,7 @@
       "sma200": 304.41,
       "sma200_dist_pct": -8.2,
       "sma50_above_200": false,
-      "rel_volume": 1.18,
+      "rel_volume": 0.0,
       "backtest": {
         "n": 34,
         "win_rate": 50.0,
@@ -6827,10 +6827,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2423.73,
-      "current_value": 107.37,
-      "pnl_pct": 7.37,
-      "pnl_usd": 7.37
+      "current_price": 2424.19,
+      "current_value": 107.39,
+      "pnl_pct": 7.39,
+      "pnl_usd": 7.39
     },
     {
       "id": "trade_sol-usd",
@@ -6840,10 +6840,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.58,
-      "current_value": 99.35,
-      "pnl_pct": -0.65,
-      "pnl_usd": -0.65
+      "current_price": 96.11,
+      "current_value": 99.9,
+      "pnl_pct": -0.1,
+      "pnl_usd": -0.1
     },
     {
       "id": "trade_bnb-usd",
@@ -6853,10 +6853,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 718.51,
-      "current_value": 102.96,
-      "pnl_pct": 2.96,
-      "pnl_usd": 2.96
+      "current_price": 719.5,
+      "current_value": 103.1,
+      "pnl_pct": 3.1,
+      "pnl_usd": 3.1
     },
     {
       "id": "trade_si=f",
@@ -6866,10 +6866,10 @@
       "buy_price": 52.19,
       "invested": 100.0,
       "shares": 1.9161,
-      "current_price": 52.4,
-      "current_value": 100.4,
-      "pnl_pct": 0.4,
-      "pnl_usd": 0.4
+      "current_price": 52.53,
+      "current_value": 100.65,
+      "pnl_pct": 0.65,
+      "pnl_usd": 0.65
     },
     {
       "id": "trade_btc-usd",
@@ -6879,10 +6879,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 80482.94,
-      "current_value": 104.63,
-      "pnl_pct": 4.63,
-      "pnl_usd": 4.63,
+      "current_price": 80655.25,
+      "current_value": 104.85,
+      "pnl_pct": 4.85,
+      "pnl_usd": 4.85,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -6893,10 +6893,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 4072.1,
-      "current_value": 101.4,
-      "pnl_pct": 1.4,
-      "pnl_usd": 1.4,
+      "current_price": 4098.0,
+      "current_value": 102.04,
+      "pnl_pct": 2.04,
+      "pnl_usd": 2.04,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -7579,10 +7579,10 @@
       "buy_price": 8.77,
       "invested": 100.0,
       "shares": 11.4025,
-      "current_price": 8.77,
-      "current_value": 100.0,
-      "pnl_pct": 0.0,
-      "pnl_usd": 0.0,
+      "current_price": 8.75,
+      "current_value": 99.77,
+      "pnl_pct": -0.23,
+      "pnl_usd": -0.23,
       "trigger_reason": "RSI 1D (29.6)"
     },
     {
@@ -7607,10 +7607,10 @@
       "buy_price": 11.38,
       "invested": 100.0,
       "shares": 8.7873,
-      "current_price": 11.46,
-      "current_value": 100.7,
-      "pnl_pct": 0.7,
-      "pnl_usd": 0.7,
+      "current_price": 11.41,
+      "current_value": 100.26,
+      "pnl_pct": 0.26,
+      "pnl_usd": 0.26,
       "trigger_reason": "RSI 1H (29.1)"
     },
     {
@@ -7621,10 +7621,10 @@
       "buy_price": 55.0,
       "invested": 100.0,
       "shares": 1.8182,
-      "current_price": 56.3,
-      "current_value": 102.36,
-      "pnl_pct": 2.36,
-      "pnl_usd": 2.36,
+      "current_price": 56.24,
+      "current_value": 102.26,
+      "pnl_pct": 2.26,
+      "pnl_usd": 2.26,
       "trigger_reason": "RSI 1H (21.4)"
     },
     {
@@ -7635,10 +7635,10 @@
       "buy_price": 1447.2,
       "invested": 100.0,
       "shares": 0.0691,
-      "current_price": 1499.9,
-      "current_value": 103.64,
-      "pnl_pct": 3.64,
-      "pnl_usd": 3.64,
+      "current_price": 1513.6,
+      "current_value": 104.59,
+      "pnl_pct": 4.59,
+      "pnl_usd": 4.59,
       "trigger_reason": "RSI 1D (19.5)"
     },
     {
@@ -7649,10 +7649,10 @@
       "buy_price": 110.51,
       "invested": 100.0,
       "shares": 0.9049,
-      "current_price": 94.59,
-      "current_value": 85.59,
-      "pnl_pct": -14.41,
-      "pnl_usd": -14.41,
+      "current_price": 94.62,
+      "current_value": 85.62,
+      "pnl_pct": -14.38,
+      "pnl_usd": -14.38,
       "trigger_reason": "RSI 1H (28.8)"
     },
     {
@@ -7663,10 +7663,10 @@
       "buy_price": 100.59,
       "invested": 100.0,
       "shares": 0.9941,
-      "current_price": 88.1,
-      "current_value": 87.58,
-      "pnl_pct": -12.42,
-      "pnl_usd": -12.42,
+      "current_price": 87.92,
+      "current_value": 87.4,
+      "pnl_pct": -12.6,
+      "pnl_usd": -12.6,
       "trigger_reason": "RSI 1H (24.8)"
     },
     {
@@ -7957,10 +7957,10 @@
       "buy_price": 1.24,
       "invested": 100.0,
       "shares": 80.6452,
-      "current_price": 1.31,
-      "current_value": 105.65,
-      "pnl_pct": 5.65,
-      "pnl_usd": 5.65,
+      "current_price": 1.3,
+      "current_value": 104.84,
+      "pnl_pct": 4.84,
+      "pnl_usd": 4.84,
       "trigger_reason": "RSI 1H (24.1)"
     },
     {
@@ -8332,10 +8332,10 @@
       "buy_price": 2258.22,
       "invested": 100.0,
       "shares": 0.0443,
-      "current_price": 2423.73,
-      "current_value": 107.37,
-      "pnl_pct": 7.37,
-      "pnl_usd": 7.37
+      "current_price": 2424.19,
+      "current_value": 107.39,
+      "pnl_pct": 7.39,
+      "pnl_usd": 7.39
     },
     {
       "id": "dca_sol-usd_20261029205944",
@@ -8345,10 +8345,10 @@
       "buy_price": 96.21,
       "invested": 100.0,
       "shares": 1.0394,
-      "current_price": 95.58,
-      "current_value": 99.35,
-      "pnl_pct": -0.65,
-      "pnl_usd": -0.65
+      "current_price": 96.11,
+      "current_value": 99.9,
+      "pnl_pct": -0.1,
+      "pnl_usd": -0.1
     },
     {
       "id": "dca_bnb-usd_20261029205944",
@@ -8358,10 +8358,10 @@
       "buy_price": 697.6,
       "invested": 100.0,
       "shares": 0.1433,
-      "current_price": 718.51,
-      "current_value": 102.96,
-      "pnl_pct": 2.96,
-      "pnl_usd": 2.96
+      "current_price": 719.5,
+      "current_value": 103.1,
+      "pnl_pct": 3.1,
+      "pnl_usd": 3.1
     },
     {
       "id": "dca_si=f_20261029205946",
@@ -8371,10 +8371,10 @@
       "buy_price": 52.19,
       "invested": 100.0,
       "shares": 1.9161,
-      "current_price": 52.4,
-      "current_value": 100.4,
-      "pnl_pct": 0.4,
-      "pnl_usd": 0.4
+      "current_price": 52.53,
+      "current_value": 100.65,
+      "pnl_pct": 0.65,
+      "pnl_usd": 0.65
     },
     {
       "id": "dca_nvda_20261030004433",
@@ -8454,10 +8454,10 @@
       "buy_price": 76955.4,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 80482.94,
-      "current_value": 104.63,
-      "pnl_pct": 4.63,
-      "pnl_usd": 4.63,
+      "current_price": 80655.25,
+      "current_value": 104.85,
+      "pnl_pct": 4.85,
+      "pnl_usd": 4.85,
       "trigger_reason": "RSI 1H (27.7)"
     },
     {
@@ -8468,10 +8468,10 @@
       "buy_price": 2210.29,
       "invested": 100.0,
       "shares": 0.0452,
-      "current_price": 2423.73,
-      "current_value": 109.55,
-      "pnl_pct": 9.55,
-      "pnl_usd": 9.55,
+      "current_price": 2424.19,
+      "current_value": 109.57,
+      "pnl_pct": 9.57,
+      "pnl_usd": 9.57,
       "trigger_reason": "RSI 1D (24.7)"
     },
     {
@@ -8482,10 +8482,10 @@
       "buy_price": 93.73,
       "invested": 100.0,
       "shares": 1.0669,
-      "current_price": 95.58,
-      "current_value": 101.97,
-      "pnl_pct": 1.97,
-      "pnl_usd": 1.97,
+      "current_price": 96.11,
+      "current_value": 102.54,
+      "pnl_pct": 2.54,
+      "pnl_usd": 2.54,
       "trigger_reason": "RSI 1D (23.2)"
     },
     {
@@ -8496,10 +8496,10 @@
       "buy_price": 689.64,
       "invested": 100.0,
       "shares": 0.145,
-      "current_price": 718.51,
-      "current_value": 104.18,
-      "pnl_pct": 4.18,
-      "pnl_usd": 4.18,
+      "current_price": 719.5,
+      "current_value": 104.33,
+      "pnl_pct": 4.33,
+      "pnl_usd": 4.33,
       "trigger_reason": "RSI 1H (20.9)"
     },
     {
@@ -8510,10 +8510,10 @@
       "buy_price": 4020.7,
       "invested": 100.0,
       "shares": 0.0249,
-      "current_price": 4072.1,
-      "current_value": 101.4,
-      "pnl_pct": 1.4,
-      "pnl_usd": 1.4,
+      "current_price": 4098.0,
+      "current_value": 102.04,
+      "pnl_pct": 2.04,
+      "pnl_usd": 2.04,
       "trigger_reason": "RSI 1D (30.0)"
     },
     {
@@ -8524,10 +8524,10 @@
       "buy_price": 51.94,
       "invested": 100.0,
       "shares": 1.9253,
-      "current_price": 52.4,
-      "current_value": 100.89,
-      "pnl_pct": 0.89,
-      "pnl_usd": 0.89,
+      "current_price": 52.53,
+      "current_value": 101.14,
+      "pnl_pct": 1.14,
+      "pnl_usd": 1.14,
       "trigger_reason": "RSI 1D (19.4)"
     },
     {
@@ -8762,10 +8762,10 @@
       "buy_price": 2246.66,
       "invested": 100.0,
       "shares": 0.0445,
-      "current_price": 2423.73,
-      "current_value": 107.86,
-      "pnl_pct": 7.86,
-      "pnl_usd": 7.86,
+      "current_price": 2424.19,
+      "current_value": 107.88,
+      "pnl_pct": 7.88,
+      "pnl_usd": 7.88,
       "trigger_reason": "RSI 1D (28.2)"
     },
     {
@@ -8776,10 +8776,10 @@
       "buy_price": 3884.9,
       "invested": 100.0,
       "shares": 0.0257,
-      "current_price": 4072.1,
-      "current_value": 104.65,
-      "pnl_pct": 4.65,
-      "pnl_usd": 4.65,
+      "current_price": 4098.0,
+      "current_value": 105.32,
+      "pnl_pct": 5.32,
+      "pnl_usd": 5.32,
       "trigger_reason": "RSI 1D (24.5)"
     },
     {
@@ -8790,10 +8790,10 @@
       "buy_price": 49.13,
       "invested": 100.0,
       "shares": 2.0354,
-      "current_price": 52.4,
-      "current_value": 106.65,
-      "pnl_pct": 6.65,
-      "pnl_usd": 6.65,
+      "current_price": 52.53,
+      "current_value": 106.92,
+      "pnl_pct": 6.92,
+      "pnl_usd": 6.92,
       "trigger_reason": "RSI 1D (16.7)"
     },
     {
@@ -8804,10 +8804,10 @@
       "buy_price": 96.33,
       "invested": 100.0,
       "shares": 1.0381,
-      "current_price": 95.58,
-      "current_value": 99.22,
-      "pnl_pct": -0.78,
-      "pnl_usd": -0.78,
+      "current_price": 96.11,
+      "current_value": 99.77,
+      "pnl_pct": -0.23,
+      "pnl_usd": -0.23,
       "trigger_reason": "RSI 1D (29.8)"
     },
     {
@@ -8958,10 +8958,10 @@
       "buy_price": 95.46,
       "invested": 100.0,
       "shares": 1.0476,
-      "current_price": 95.58,
-      "current_value": 100.13,
-      "pnl_pct": 0.13,
-      "pnl_usd": 0.13,
+      "current_price": 96.11,
+      "current_value": 100.68,
+      "pnl_pct": 0.68,
+      "pnl_usd": 0.68,
       "trigger_reason": "RSI 1D (29.7)"
     },
     {
@@ -8972,10 +8972,10 @@
       "buy_price": 3898.9,
       "invested": 100.0,
       "shares": 0.0256,
-      "current_price": 4072.1,
-      "current_value": 104.25,
-      "pnl_pct": 4.25,
-      "pnl_usd": 4.25,
+      "current_price": 4098.0,
+      "current_value": 104.91,
+      "pnl_pct": 4.91,
+      "pnl_usd": 4.91,
       "trigger_reason": "RSI 1D (25.1)"
     },
     {
@@ -8986,10 +8986,10 @@
       "buy_price": 49.1,
       "invested": 100.0,
       "shares": 2.0367,
-      "current_price": 52.4,
-      "current_value": 106.72,
-      "pnl_pct": 6.72,
-      "pnl_usd": 6.72,
+      "current_price": 52.53,
+      "current_value": 106.99,
+      "pnl_pct": 6.99,
+      "pnl_usd": 6.99,
       "trigger_reason": "RSI 1D (16.7)"
     },
     {
@@ -9588,10 +9588,10 @@
       "buy_price": 8.77,
       "invested": 100.0,
       "shares": 11.4025,
-      "current_price": 8.77,
-      "current_value": 100.0,
-      "pnl_pct": 0.0,
-      "pnl_usd": 0.0,
+      "current_price": 8.75,
+      "current_value": 99.77,
+      "pnl_pct": -0.23,
+      "pnl_usd": -0.23,
       "trigger_reason": "RSI 1D (29.6)"
     },
     {
@@ -9616,10 +9616,10 @@
       "buy_price": 11.38,
       "invested": 100.0,
       "shares": 8.7873,
-      "current_price": 11.46,
-      "current_value": 100.7,
-      "pnl_pct": 0.7,
-      "pnl_usd": 0.7,
+      "current_price": 11.41,
+      "current_value": 100.26,
+      "pnl_pct": 0.26,
+      "pnl_usd": 0.26,
       "trigger_reason": "RSI 1H (29.1)"
     },
     {
@@ -9630,10 +9630,10 @@
       "buy_price": 55.0,
       "invested": 100.0,
       "shares": 1.8182,
-      "current_price": 56.3,
-      "current_value": 102.36,
-      "pnl_pct": 2.36,
-      "pnl_usd": 2.36,
+      "current_price": 56.24,
+      "current_value": 102.26,
+      "pnl_pct": 2.26,
+      "pnl_usd": 2.26,
       "trigger_reason": "RSI 1H (21.4)"
     },
     {
@@ -9644,10 +9644,10 @@
       "buy_price": 2252.9,
       "invested": 100.0,
       "shares": 0.0444,
-      "current_price": 2423.73,
-      "current_value": 107.61,
-      "pnl_pct": 7.61,
-      "pnl_usd": 7.61,
+      "current_price": 2424.19,
+      "current_value": 107.63,
+      "pnl_pct": 7.63,
+      "pnl_usd": 7.63,
       "trigger_reason": "RSI 1D (29.8)"
     },
     {
@@ -9658,10 +9658,10 @@
       "buy_price": 703.97,
       "invested": 100.0,
       "shares": 0.1421,
-      "current_price": 718.51,
-      "current_value": 102.1,
-      "pnl_pct": 2.1,
-      "pnl_usd": 2.1,
+      "current_price": 719.5,
+      "current_value": 102.24,
+      "pnl_pct": 2.24,
+      "pnl_usd": 2.24,
       "trigger_reason": "RSI 1H (26.9)"
     },
     {
@@ -9672,10 +9672,10 @@
       "buy_price": 1447.2,
       "invested": 100.0,
       "shares": 0.0691,
-      "current_price": 1499.9,
-      "current_value": 103.64,
-      "pnl_pct": 3.64,
-      "pnl_usd": 3.64,
+      "current_price": 1513.6,
+      "current_value": 104.59,
+      "pnl_pct": 4.59,
+      "pnl_usd": 4.59,
       "trigger_reason": "RSI 1D (19.5)"
     },
     {
@@ -9826,10 +9826,10 @@
       "buy_price": 94.06,
       "invested": 100.0,
       "shares": 1.0632,
-      "current_price": 95.58,
-      "current_value": 101.62,
-      "pnl_pct": 1.62,
-      "pnl_usd": 1.62,
+      "current_price": 96.11,
+      "current_value": 102.18,
+      "pnl_pct": 2.18,
+      "pnl_usd": 2.18,
       "trigger_reason": "RSI 1D (25.2)"
     },
     {
@@ -9840,10 +9840,10 @@
       "buy_price": 3904.2,
       "invested": 100.0,
       "shares": 0.0256,
-      "current_price": 4072.1,
-      "current_value": 104.25,
-      "pnl_pct": 4.25,
-      "pnl_usd": 4.25,
+      "current_price": 4098.0,
+      "current_value": 104.91,
+      "pnl_pct": 4.91,
+      "pnl_usd": 4.91,
       "trigger_reason": "RSI 1D (26.4)"
     },
     {
@@ -9854,10 +9854,10 @@
       "buy_price": 49.71,
       "invested": 100.0,
       "shares": 2.0117,
-      "current_price": 52.4,
-      "current_value": 105.41,
-      "pnl_pct": 5.41,
-      "pnl_usd": 5.41,
+      "current_price": 52.53,
+      "current_value": 105.67,
+      "pnl_pct": 5.67,
+      "pnl_usd": 5.67,
       "trigger_reason": "RSI 1D (20.8)"
     },
     {
@@ -10470,10 +10470,10 @@
       "buy_price": 8.65,
       "invested": 100.0,
       "shares": 11.5607,
-      "current_price": 8.77,
-      "current_value": 101.39,
-      "pnl_pct": 1.39,
-      "pnl_usd": 1.39,
+      "current_price": 8.75,
+      "current_value": 101.16,
+      "pnl_pct": 1.16,
+      "pnl_usd": 1.16,
       "trigger_reason": "RSI 1D (26.2)"
     },
     {
@@ -10484,10 +10484,10 @@
       "buy_price": 11.29,
       "invested": 100.0,
       "shares": 8.8574,
-      "current_price": 11.46,
-      "current_value": 101.51,
-      "pnl_pct": 1.51,
-      "pnl_usd": 1.51,
+      "current_price": 11.41,
+      "current_value": 101.06,
+      "pnl_pct": 1.06,
+      "pnl_usd": 1.06,
       "trigger_reason": "RSI 1H (13.3)"
     },
     {
@@ -10498,10 +10498,10 @@
       "buy_price": 1446.1,
       "invested": 100.0,
       "shares": 0.0692,
-      "current_price": 1499.9,
-      "current_value": 103.79,
-      "pnl_pct": 3.79,
-      "pnl_usd": 3.79,
+      "current_price": 1513.6,
+      "current_value": 104.74,
+      "pnl_pct": 4.74,
+      "pnl_usd": 4.74,
       "trigger_reason": "RSI 1D (19.3)"
     },
     {
@@ -10512,10 +10512,10 @@
       "buy_price": 110.51,
       "invested": 100.0,
       "shares": 0.9049,
-      "current_price": 94.59,
-      "current_value": 85.59,
-      "pnl_pct": -14.41,
-      "pnl_usd": -14.41,
+      "current_price": 94.62,
+      "current_value": 85.62,
+      "pnl_pct": -14.38,
+      "pnl_usd": -14.38,
       "trigger_reason": "RSI 1H (28.8)"
     },
     {
@@ -10526,10 +10526,10 @@
       "buy_price": 100.59,
       "invested": 100.0,
       "shares": 0.9941,
-      "current_price": 88.1,
-      "current_value": 87.58,
-      "pnl_pct": -12.42,
-      "pnl_usd": -12.42,
+      "current_price": 87.92,
+      "current_value": 87.4,
+      "pnl_pct": -12.6,
+      "pnl_usd": -12.6,
       "trigger_reason": "RSI 1H (24.8)"
     },
     {
@@ -10750,10 +10750,10 @@
       "buy_price": 77593.39,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 80482.94,
-      "current_value": 104.63,
-      "pnl_pct": 4.63,
-      "pnl_usd": 4.63,
+      "current_price": 80655.25,
+      "current_value": 104.85,
+      "pnl_pct": 4.85,
+      "pnl_usd": 4.85,
       "trigger_reason": "RSI 1H (28.0)"
     },
     {
@@ -10764,10 +10764,10 @@
       "buy_price": 702.35,
       "invested": 100.0,
       "shares": 0.1424,
-      "current_price": 718.51,
-      "current_value": 102.32,
-      "pnl_pct": 2.32,
-      "pnl_usd": 2.32,
+      "current_price": 719.5,
+      "current_value": 102.46,
+      "pnl_pct": 2.46,
+      "pnl_usd": 2.46,
       "trigger_reason": "RSI 1H (25.4)"
     },
     {
@@ -10834,10 +10834,10 @@
       "buy_price": 54.6,
       "invested": 100.0,
       "shares": 1.8315,
-      "current_price": 56.3,
-      "current_value": 103.11,
-      "pnl_pct": 3.11,
-      "pnl_usd": 3.11,
+      "current_price": 56.24,
+      "current_value": 103.0,
+      "pnl_pct": 3.0,
+      "pnl_usd": 3.0,
       "trigger_reason": "RSI 1H (25.1)"
     },
     {
@@ -10862,10 +10862,10 @@
       "buy_price": 2249.7,
       "invested": 100.0,
       "shares": 0.0445,
-      "current_price": 2423.73,
-      "current_value": 107.86,
-      "pnl_pct": 7.86,
-      "pnl_usd": 7.86,
+      "current_price": 2424.19,
+      "current_value": 107.88,
+      "pnl_pct": 7.88,
+      "pnl_usd": 7.88,
       "trigger_reason": "RSI 1H (19.1)"
     },
     {
@@ -10876,10 +10876,10 @@
       "buy_price": 1.24,
       "invested": 100.0,
       "shares": 80.6452,
-      "current_price": 1.31,
-      "current_value": 105.65,
-      "pnl_pct": 5.65,
-      "pnl_usd": 5.65,
+      "current_price": 1.3,
+      "current_value": 104.84,
+      "pnl_pct": 4.84,
+      "pnl_usd": 4.84,
       "trigger_reason": "RSI 1H (24.1)"
     },
     {
@@ -11072,10 +11072,10 @@
       "buy_price": 2254.75,
       "invested": 100.0,
       "shares": 0.0444,
-      "current_price": 2423.73,
-      "current_value": 107.61,
-      "pnl_pct": 7.61,
-      "pnl_usd": 7.61,
+      "current_price": 2424.19,
+      "current_value": 107.63,
+      "pnl_pct": 7.63,
+      "pnl_usd": 7.63,
       "trigger_reason": "RSI 1H (26.9)"
     },
     {
@@ -11086,10 +11086,10 @@
       "buy_price": 92.27,
       "invested": 100.0,
       "shares": 1.0838,
-      "current_price": 95.58,
-      "current_value": 103.59,
-      "pnl_pct": 3.59,
-      "pnl_usd": 3.59,
+      "current_price": 96.11,
+      "current_value": 104.16,
+      "pnl_pct": 4.16,
+      "pnl_usd": 4.16,
       "trigger_reason": "RSI 1D (19.8)"
     },
     {
@@ -11100,10 +11100,10 @@
       "buy_price": 50.67,
       "invested": 100.0,
       "shares": 1.9736,
-      "current_price": 52.4,
-      "current_value": 103.42,
-      "pnl_pct": 3.42,
-      "pnl_usd": 3.42,
+      "current_price": 52.53,
+      "current_value": 103.67,
+      "pnl_pct": 3.67,
+      "pnl_usd": 3.67,
       "trigger_reason": "RSI 1D (25.3)"
     },
     {
@@ -11632,10 +11632,10 @@
       "buy_price": 8.4,
       "invested": 100.0,
       "shares": 11.9048,
-      "current_price": 8.77,
-      "current_value": 104.41,
-      "pnl_pct": 4.41,
-      "pnl_usd": 4.41,
+      "current_price": 8.75,
+      "current_value": 104.17,
+      "pnl_pct": 4.17,
+      "pnl_usd": 4.17,
       "trigger_reason": "RSI 1D (25.9)"
     },
     {
@@ -11646,10 +11646,10 @@
       "buy_price": 53.85,
       "invested": 100.0,
       "shares": 1.857,
-      "current_price": 56.3,
-      "current_value": 104.55,
-      "pnl_pct": 4.55,
-      "pnl_usd": 4.55,
+      "current_price": 56.24,
+      "current_value": 104.44,
+      "pnl_pct": 4.44,
+      "pnl_usd": 4.44,
       "trigger_reason": "RSI 1H (28.7)"
     },
     {
@@ -11660,10 +11660,10 @@
       "buy_price": 105.06,
       "invested": 100.0,
       "shares": 0.9518,
-      "current_price": 94.59,
-      "current_value": 90.03,
-      "pnl_pct": -9.97,
-      "pnl_usd": -9.97,
+      "current_price": 94.62,
+      "current_value": 90.06,
+      "pnl_pct": -9.94,
+      "pnl_usd": -9.94,
       "trigger_reason": "RSI 1H (26.7)"
     },
     {
@@ -11674,10 +11674,10 @@
       "buy_price": 1451.2,
       "invested": 100.0,
       "shares": 0.0689,
-      "current_price": 1499.9,
-      "current_value": 103.34,
-      "pnl_pct": 3.34,
-      "pnl_usd": 3.34,
+      "current_price": 1513.6,
+      "current_value": 104.29,
+      "pnl_pct": 4.29,
+      "pnl_usd": 4.29,
       "trigger_reason": "RSI 1D (20.5)"
     },
     {
@@ -11744,10 +11744,10 @@
       "buy_price": 96.58,
       "invested": 100.0,
       "shares": 1.0354,
-      "current_price": 88.1,
-      "current_value": 91.22,
-      "pnl_pct": -8.78,
-      "pnl_usd": -8.78,
+      "current_price": 87.92,
+      "current_value": 91.03,
+      "pnl_pct": -8.97,
+      "pnl_usd": -8.97,
       "trigger_reason": "RSI 1H (26.5)"
     },
     {
@@ -11758,10 +11758,10 @@
       "buy_price": 76787.3,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 80482.94,
-      "current_value": 104.63,
-      "pnl_pct": 4.63,
-      "pnl_usd": 4.63,
+      "current_price": 80655.25,
+      "current_value": 104.85,
+      "pnl_pct": 4.85,
+      "pnl_usd": 4.85,
       "trigger_reason": "RSI 1H (26.1)"
     },
     {
@@ -11772,10 +11772,10 @@
       "buy_price": 695.99,
       "invested": 100.0,
       "shares": 0.1437,
-      "current_price": 718.51,
-      "current_value": 103.25,
-      "pnl_pct": 3.25,
-      "pnl_usd": 3.25,
+      "current_price": 719.5,
+      "current_value": 103.39,
+      "pnl_pct": 3.39,
+      "pnl_usd": 3.39,
       "trigger_reason": "RSI 1H (29.5)"
     },
     {
@@ -11800,10 +11800,10 @@
       "buy_price": 3933.2,
       "invested": 100.0,
       "shares": 0.0254,
-      "current_price": 4072.1,
-      "current_value": 103.43,
-      "pnl_pct": 3.43,
-      "pnl_usd": 3.43,
+      "current_price": 4098.0,
+      "current_value": 104.09,
+      "pnl_pct": 4.09,
+      "pnl_usd": 4.09,
       "trigger_reason": "RSI 1D (29.9)"
     },
     {
@@ -12248,10 +12248,10 @@
       "buy_price": 76946.12,
       "invested": 100.0,
       "shares": 0.0013,
-      "current_price": 80482.94,
-      "current_value": 104.63,
-      "pnl_pct": 4.63,
-      "pnl_usd": 4.63,
+      "current_price": 80655.25,
+      "current_value": 104.85,
+      "pnl_pct": 4.85,
+      "pnl_usd": 4.85,
       "trigger_reason": "RSI 1D (27.5)"
     },
     {
@@ -12262,10 +12262,10 @@
       "buy_price": 2265.29,
       "invested": 100.0,
       "shares": 0.0441,
-      "current_price": 2423.73,
-      "current_value": 106.89,
-      "pnl_pct": 6.89,
-      "pnl_usd": 6.89,
+      "current_price": 2424.19,
+      "current_value": 106.91,
+      "pnl_pct": 6.91,
+      "pnl_usd": 6.91,
       "trigger_reason": "RSI 1D (27.4)"
     },
     {
@@ -12276,10 +12276,10 @@
       "buy_price": 92.15,
       "invested": 100.0,
       "shares": 1.0852,
-      "current_price": 95.58,
-      "current_value": 103.72,
-      "pnl_pct": 3.72,
-      "pnl_usd": 3.72,
+      "current_price": 96.11,
+      "current_value": 104.3,
+      "pnl_pct": 4.3,
+      "pnl_usd": 4.3,
       "trigger_reason": "RSI 1D (14.7)"
     },
     {
@@ -12290,10 +12290,10 @@
       "buy_price": 49.57,
       "invested": 100.0,
       "shares": 2.0173,
-      "current_price": 52.4,
-      "current_value": 105.71,
-      "pnl_pct": 5.71,
-      "pnl_usd": 5.71,
+      "current_price": 52.53,
+      "current_value": 105.97,
+      "pnl_pct": 5.97,
+      "pnl_usd": 5.97,
       "trigger_reason": "RSI 1D (29.7)"
     },
     {
@@ -12626,10 +12626,10 @@
       "buy_price": 8.43,
       "invested": 100.0,
       "shares": 11.8624,
-      "current_price": 8.77,
-      "current_value": 104.03,
-      "pnl_pct": 4.03,
-      "pnl_usd": 4.03,
+      "current_price": 8.75,
+      "current_value": 103.8,
+      "pnl_pct": 3.8,
+      "pnl_usd": 3.8,
       "trigger_reason": "RSI 1D (22.8)"
     },
     {
@@ -12640,10 +12640,10 @@
       "buy_price": 53.66,
       "invested": 100.0,
       "shares": 1.8636,
-      "current_price": 56.3,
-      "current_value": 104.92,
-      "pnl_pct": 4.92,
-      "pnl_usd": 4.92,
+      "current_price": 56.24,
+      "current_value": 104.81,
+      "pnl_pct": 4.81,
+      "pnl_usd": 4.81,
       "trigger_reason": "RSI 1D (23.6)"
     },
     {
@@ -12654,10 +12654,10 @@
       "buy_price": 1417.7,
       "invested": 100.0,
       "shares": 0.0705,
-      "current_price": 1499.9,
-      "current_value": 105.74,
-      "pnl_pct": 5.74,
-      "pnl_usd": 5.74,
+      "current_price": 1513.6,
+      "current_value": 106.71,
+      "pnl_pct": 6.71,
+      "pnl_usd": 6.71,
       "trigger_reason": "RSI 1D (23.2)"
     },
     {
@@ -12724,10 +12724,10 @@
       "buy_price": 1.25,
       "invested": 100.0,
       "shares": 80.0,
-      "current_price": 1.31,
-      "current_value": 104.8,
-      "pnl_pct": 4.8,
-      "pnl_usd": 4.8,
+      "current_price": 1.3,
+      "current_value": 104.0,
+      "pnl_pct": 4.0,
+      "pnl_usd": 4.0,
       "trigger_reason": "RSI 1H (26.6)"
     },
     {
@@ -12738,10 +12738,10 @@
       "buy_price": 10.78,
       "invested": 100.0,
       "shares": 9.2764,
-      "current_price": 11.46,
-      "current_value": 106.31,
-      "pnl_pct": 6.31,
-      "pnl_usd": 6.31,
+      "current_price": 11.41,
+      "current_value": 105.84,
+      "pnl_pct": 5.84,
+      "pnl_usd": 5.84,
       "trigger_reason": "RSI 1H (21.0)"
     },
     {
@@ -12752,10 +12752,10 @@
       "buy_price": 95.11,
       "invested": 100.0,
       "shares": 1.0514,
-      "current_price": 88.1,
-      "current_value": 92.63,
-      "pnl_pct": -7.37,
-      "pnl_usd": -7.37,
+      "current_price": 87.92,
+      "current_value": 92.44,
+      "pnl_pct": -7.56,
+      "pnl_usd": -7.56,
       "trigger_reason": "RSI 1H (29.6)"
     },
     {
@@ -12836,10 +12836,10 @@
       "buy_price": 100.83,
       "invested": 100.0,
       "shares": 0.9918,
-      "current_price": 94.59,
-      "current_value": 93.81,
-      "pnl_pct": -6.19,
-      "pnl_usd": -6.19,
+      "current_price": 94.62,
+      "current_value": 93.84,
+      "pnl_pct": -6.16,
+      "pnl_usd": -6.16,
       "trigger_reason": "RSI 1H (25.0)"
     },
     {
@@ -12995,6 +12995,342 @@
       "pnl_pct": 0.0,
       "pnl_usd": 0.0,
       "trigger_reason": "RSI 1D (28.9)"
+    },
+    {
+      "id": "dca_googl_20261105005322",
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc. (Google)",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 288.93,
+      "invested": 100.0,
+      "shares": 0.3461,
+      "current_price": 288.93,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1WK (23.7)"
+    },
+    {
+      "id": "dca_meta_20261105005323",
+      "ticker": "META",
+      "name": "Meta Platforms, Inc.",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 630.0,
+      "invested": 100.0,
+      "shares": 0.1587,
+      "current_price": 630.0,
+      "current_value": 99.98,
+      "pnl_pct": -0.02,
+      "pnl_usd": -0.02,
+      "trigger_reason": "RSI 1D (21.0)"
+    },
+    {
+      "id": "dca_tsla_20261105005324",
+      "ticker": "TSLA",
+      "name": "Tesla, Inc.",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 385.19,
+      "invested": 100.0,
+      "shares": 0.2596,
+      "current_price": 385.19,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (26.3)"
+    },
+    {
+      "id": "dca_intc_20261105005326",
+      "ticker": "INTC",
+      "name": "Intel Corporation",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 58.27,
+      "invested": 100.0,
+      "shares": 1.7161,
+      "current_price": 58.27,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (21.6)"
+    },
+    {
+      "id": "dca_xom_20261105005335",
+      "ticker": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 169.27,
+      "invested": 100.0,
+      "shares": 0.5908,
+      "current_price": 169.27,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (17.9)"
+    },
+    {
+      "id": "dca_sol-usd_20261105005339",
+      "ticker": "SOL-USD",
+      "name": "Solana Spot",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 96.11,
+      "invested": 100.0,
+      "shares": 1.0405,
+      "current_price": 96.11,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (27.5)"
+    },
+    {
+      "id": "dca_lrcx_20261105005349",
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 221.43,
+      "invested": 100.0,
+      "shares": 0.4516,
+      "current_price": 221.43,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (28.0)"
+    },
+    {
+      "id": "dca_now_20261105005350",
+      "ticker": "NOW",
+      "name": "ServiceNow, Inc.",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 108.81,
+      "invested": 100.0,
+      "shares": 0.919,
+      "current_price": 108.81,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (25.7)"
+    },
+    {
+      "id": "dca_pltr_20261105005352",
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 171.7,
+      "invested": 100.0,
+      "shares": 0.5824,
+      "current_price": 171.7,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (29.0)"
+    },
+    {
+      "id": "dca_shop_20261105005355",
+      "ticker": "SHOP",
+      "name": "Shopify Inc.",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 153.03,
+      "invested": 100.0,
+      "shares": 0.6535,
+      "current_price": 153.03,
+      "current_value": 100.01,
+      "pnl_pct": 0.01,
+      "pnl_usd": 0.01,
+      "trigger_reason": "RSI 1D (29.2)"
+    },
+    {
+      "id": "dca_bac_20261105005356",
+      "ticker": "BAC",
+      "name": "Bank of America",
+      "buy_date": "2026-11-05 00:53",
+      "buy_price": 51.63,
+      "invested": 100.0,
+      "shares": 1.9369,
+      "current_price": 51.63,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1WK (27.3)"
+    },
+    {
+      "id": "dca_cat_20261105005416",
+      "ticker": "CAT",
+      "name": "Caterpillar Inc.",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 591.3,
+      "invested": 100.0,
+      "shares": 0.1691,
+      "current_price": 591.3,
+      "current_value": 99.99,
+      "pnl_pct": -0.01,
+      "pnl_usd": -0.01,
+      "trigger_reason": "RSI 1WK (23.2)"
+    },
+    {
+      "id": "dca_ba_20261105005417",
+      "ticker": "BA",
+      "name": "The Boeing Company",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 177.0,
+      "invested": 100.0,
+      "shares": 0.565,
+      "current_price": 177.0,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1WK (28.6)"
+    },
+    {
+      "id": "dca_lmt_20261105005419",
+      "ticker": "LMT",
+      "name": "Lockheed Martin",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 595.04,
+      "invested": 100.0,
+      "shares": 0.1681,
+      "current_price": 595.04,
+      "current_value": 100.03,
+      "pnl_pct": 0.03,
+      "pnl_usd": 0.03,
+      "trigger_reason": "RSI 1H (10.8)"
+    },
+    {
+      "id": "dca_cvx_20261105005420",
+      "ticker": "CVX",
+      "name": "Chevron Corporation",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 216.96,
+      "invested": 100.0,
+      "shares": 0.4609,
+      "current_price": 216.96,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (16.2)"
+    },
+    {
+      "id": "dca_eni_mi_20261105005423",
+      "ticker": "ENI.MI",
+      "name": "Eni S.p.A.",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 25.54,
+      "invested": 100.0,
+      "shares": 3.9154,
+      "current_price": 25.54,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (27.3)"
+    },
+    {
+      "id": "dca_pry_mi_20261105005430",
+      "ticker": "PRY.MI",
+      "name": "Prysmian",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 104.4,
+      "invested": 100.0,
+      "shares": 0.9579,
+      "current_price": 104.4,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (29.7)"
+    },
+    {
+      "id": "dca_asml_as_20261105005445",
+      "ticker": "ASML.AS",
+      "name": "ASML Holding (Amsterdam)",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 1337.6,
+      "invested": 100.0,
+      "shares": 0.0748,
+      "current_price": 1337.6,
+      "current_value": 100.05,
+      "pnl_pct": 0.05,
+      "pnl_usd": 0.05,
+      "trigger_reason": "RSI 1H (25.4)"
+    },
+    {
+      "id": "dca_sgld_mi_20261105005458",
+      "ticker": "SGLD.MI",
+      "name": "Invesco Physical Gold ETC",
+      "buy_date": "2026-11-05 00:54",
+      "buy_price": 346.27,
+      "invested": 100.0,
+      "shares": 0.2888,
+      "current_price": 346.27,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (28.9)"
+    },
+    {
+      "id": "dca_vwo_20261105005503",
+      "ticker": "VWO",
+      "name": "Vanguard FTSE Emerging Markets",
+      "buy_date": "2026-11-05 00:55",
+      "buy_price": 56.28,
+      "invested": 100.0,
+      "shares": 1.7768,
+      "current_price": 56.28,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (29.9)"
+    },
+    {
+      "id": "dca_xle_20261105005507",
+      "ticker": "XLE",
+      "name": "Energy Select Sector SPDR",
+      "buy_date": "2026-11-05 00:55",
+      "buy_price": 63.52,
+      "invested": 100.0,
+      "shares": 1.5743,
+      "current_price": 63.52,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (18.7)"
+    },
+    {
+      "id": "dca_ada-usd_20261105005523",
+      "ticker": "ADA-USD",
+      "name": "Cardano",
+      "buy_date": "2026-11-05 00:55",
+      "buy_price": 0.2,
+      "invested": 100.0,
+      "shares": 500.0,
+      "current_price": 0.2,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1D (26.6)"
+    },
+    {
+      "id": "dca_cl_f_20261105005527",
+      "ticker": "CL=F",
+      "name": "Petrolio WTI (Futures)",
+      "buy_date": "2026-11-05 00:55",
+      "buy_price": 87.92,
+      "invested": 100.0,
+      "shares": 1.1374,
+      "current_price": 87.92,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (11.6)"
+    },
+    {
+      "id": "dca_bz_f_20261105005528",
+      "ticker": "BZ=F",
+      "name": "Petrolio Brent (Futures)",
+      "buy_date": "2026-11-05 00:55",
+      "buy_price": 94.62,
+      "invested": 100.0,
+      "shares": 1.0569,
+      "current_price": 94.62,
+      "current_value": 100.0,
+      "pnl_pct": 0.0,
+      "pnl_usd": 0.0,
+      "trigger_reason": "RSI 1H (10.5)"
     }
   ],
   "earnings_calendar": [
@@ -13978,16 +14314,16 @@
     "alert_threshold": 70,
     "overall": {
       "n": 5652,
-      "win_rate": 56.5,
+      "win_rate": 56.6,
       "avg_ret": NaN
     },
     "trend_up": {
-      "n": 1894,
+      "n": 1895,
       "win_rate": 60.6,
       "avg_ret": NaN
     },
     "trend_down": {
-      "n": 2704,
+      "n": 2706,
       "win_rate": 56.4,
       "avg_ret": NaN
     }
